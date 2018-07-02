@@ -1,0 +1,68 @@
+[
+ {
+    "Name": {
+        "Last Name": "Lupo",
+        "First Name": "Remy"
+    },
+    "Character Name": "Lyle",
+    "Dominant Hand": "right",
+    "Shoes": "13W",
+    "Chest Relaxed": 46,
+    "Chest Expanded": 47,
+    "Waist Relaxed": 43,
+    "Waist Expanded": 44.5,
+    "Inseam to Ankle": 31,
+    "Inseam to Floor": 34,
+    "Head Circumference": 26,
+    "Neck": 20,
+    "Armscye": 24,
+    "Center Back to Wrist": 31.5,
+    "Full Hip":44,
+    "Half Girth":36,
+    "Full Girth":68.5
+},
+ {
+    "Name": {
+        "Last Name": "John",
+        "First Name": "Adam"
+    },
+    "Character Name": "Bickle",
+    "Dominant Hand": "Left",
+    "Shoes": "13M",
+    "Chest Relaxed": 42,
+    "Chest Expanded": 45,
+    "Waist Relaxed": 41,
+    "Waist Expanded": 44,
+    "Inseam to Ankle": 29,
+    "Inseam to Floor": 32,
+    "Head Circumference": 33,
+    "Neck": 18,
+    "Armscye": 22,
+    "Center Back to Wrist": 31,
+    "Full Hip":42,
+    "Half Girth":34,
+    "Full Girth":66.5
+},
+ {
+    "Name":{
+        "Last Name": "Nick",
+        "First Name": "Radson"
+    },
+    "Character Name": "Jeter",
+    "Dominant Hand": "right",
+    "Shoes": "12W",
+    "Chest Relaxed": 42,
+    "Chest Expanded": 43,
+    "Waist Relaxed": 41,
+    "Waist Expanded": 42.5,
+    "Inseam to Ankle": 29,
+    "Inseam to Floor": 32,
+    "Head Circumference": 22,
+    "Neck": 21,
+    "Armscye": 22,
+    "Center Back to Wrist": 33.5,
+    "Full Hip":42,
+    "Half Girth":34,
+    "Full Girth":64.5
+}
+]
