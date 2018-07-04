@@ -1,0 +1,22 @@
+[
+    {
+        "Name" : {
+            "LastName" : "Jorandby",
+            "FirstName" : "Stephi"
+        },
+        "email" : "STEPHI@nwmissouri.edu",
+        "userName" : "UserStephi",
+        "password" : "PasswordStephi",
+        "AccessLevel" : 1
+    },
+    {
+        "Name" : {
+            "LastName" : "Eloe",
+            "FirstName" : "Nathan"
+        },
+        "email" : "NATHANE@nwmissouri.edu",
+        "userName" : "UserNathan",
+        "password" : "PasswordNathan",
+        "AccessLevel" : 2
+    }
+]
