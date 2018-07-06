@@ -1,0 +1,38 @@
+[
+    {
+        "Name":{
+            "First name":"patrie",
+            "Last name":"jason"
+        },
+        "Email":"patrie.jas@gmail.com",
+        "Address":{
+            "Street":"3rd west",
+            "Apt":35,
+            "City":"Kansas",
+            "Zip-Code":"66648"
+        },
+        "Phone Number":"660-528-0654",
+        "Renting item":"shirt",
+        "Renting date":"7/6/2018",
+        "Return date":"7/12/2018"
+    },
+
+    {
+        "Name":{
+            "First name":"Buttler",
+            "Last name":"Willey"
+        },
+        "Email":"Butty.willey@gmail.com",
+        "Address":{
+            "Street":"3rd Northmanglie",
+            "Apt":10,
+            "City":"st.joe",
+            "Zip-Code":"66348"
+        },
+        "Phone Number":"660-678-0994",
+        "Renting item":"pant",
+        "Renting date":"7/2/2018",
+        "Return date":"8/2/2018"
+    }
+
+]

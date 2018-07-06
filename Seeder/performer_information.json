@@ -1,0 +1,61 @@
+[ 
+    {
+    "Name": {
+        "Last Name": "crandy",
+        "First Name": "Remy"
+    },
+    "Age": 26,
+    "Email Id":"crandy.remy@gmail.com",
+    "Address":{
+        "Street":"1121 N college Drive", 
+        "Apt":25,
+        "city":"Maryville", 
+        "Zip-code":64468},
+    "Height":5.6, 
+    "Play Name":"Sherlock holmes",
+    "Costume":"Halloween",
+    "Character Name":"Inspector",
+    "Dominant hand":"Right",
+    "Estimated weight":150,
+    "Corrective eyeware":"glasses",
+    "Hair color and length":"black & 22inch",
+    "Facial hair color and length":"grey & 2inch",
+    "Piercings":"ear",
+    "Tattoos?":"no",
+    "Shoes":"casual",
+    "Shirt":"casual",
+    "Paint":"low-fit",
+    "Medical Allergies":"no"
+},
+
+
+{ 
+    "Name": {
+    "Last Name": "john",
+    "First Name": "sophia"
+},
+"Age": 24,
+"Email Id":"john.so@gmail.com",
+"Address":{"Street":"1122N western Drive", 
+    "Apt":10,
+    "city":"Maryville", 
+    "Zip-code":64468},
+"Height":5.8, 
+"Play Name":"Greek Drama",
+"Costume":"Mask",
+"Character Name":"Antigone",
+"Dominant hand":"Left",
+"Estimated weight":160,
+"Corrective eyeware":"Lens",
+"Hair color and length":"White & 20inch",
+"Facial hair color and length":"Black& 2inch",
+"Piercings":"nose",
+"Tattoos?":"hand",
+"Shoes":"Sandals",
+"Shirt":"Formal",
+"Paint":"slim-fit",
+"Medical Allergies":"no" }
+
+
+
+]
