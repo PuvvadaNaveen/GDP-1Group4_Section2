@@ -1,0 +1,25 @@
+[
+    {
+        "Character name":"Antagonist",
+        "Play title":"Dracula",
+        "Performer name":"Bram Stoker's",
+        "Clothing item":"track",
+        "Color":"brownish",
+        "Notes":"",
+        "Sizes":36,
+        "Play date":"8/15/2018",
+        "date to deliver the item":"8/10/2018"
+    },
+
+    {
+        "Character name":"Romeo",
+        "Play title":"Romeo and Juliet",
+        "Performer name":"Leonardo Dicaprio",
+        "Clothing item":"Elizbethan",
+        "Color":"yellow",
+        "Notes":"",
+        "Sizes":32,
+        "Play date":"9/10/2018",
+        "date to deliver the item":"9/1/2018"
+    }
+]
