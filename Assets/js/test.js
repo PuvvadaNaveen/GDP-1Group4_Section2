@@ -4,3 +4,6 @@ function myFunction() {
     document.getElementById("myModal1")
 
 }
+function emailSent(){
+    window.alert("Email sent");
+}
