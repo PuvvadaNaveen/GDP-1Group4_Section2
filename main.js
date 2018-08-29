@@ -9,9 +9,9 @@ var http = require('http').Server(app);  // inject app into the server
 
 
 // set up the view engine
-app.set("views", path.resolve(__dirname, "assets")); // path to views
+app.set("views", path.resolve(__dirname, "Views")); // path to views
 app.set("view engine", "ejs"); // specify view engine
-app.use(express.static(__dirname + '/assets'));
+app.use(express.static(__dirname + '/Views'));
 
 
 // set up an http request logger to log every request automagically
@@ -25,9 +25,12 @@ app.get("/", function (request, response) {
 app.get("/home", function (request, response) {
     response.sendfile(path.join(__dirname +"/views/Homepage.html"));
 });
+// app.get("/basic", function (request, response) {
+//     response.sendfile(path.join(__dirname +"/views/Basic_info.html"));
+// });
 app.get("/basic", function (request, response) {
-    response.sendfile(path.join(__dirname +"/views/Basic_info.html"));
-});
+    response.render("Basic_info")
+  })
 app.get("/measure", function (request, response) {
     response.sendfile(path.join(__dirname +"/views/measure.html"));
 });
