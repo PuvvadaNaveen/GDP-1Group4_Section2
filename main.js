@@ -20,10 +20,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // handle http GET requests (default & /new-entry)
 app.get("/", function (request, response) {
-    response.sendfile(path.join(__dirname +"/views/Homepage.html"));
+    response.render("Homepage")
 });
 app.get("/home", function (request, response) {
-    response.sendfile(path.join(__dirname +"/views/Homepage.html"));
+    response.render("Homepage")
 });
 // app.get("/basic", function (request, response) {
 //     response.sendfile(path.join(__dirname +"/views/Basic_info.html"));
@@ -35,12 +35,8 @@ app.get("/measure", function (request, response) {
     response.sendfile(path.join(__dirname +"/views/measure.html"));
 });
 app.get("/signup_login", function (request, response) {
-    response.sendfile(path.join(__dirname  +"/views/Signup_Login.html"));
+    response.render("SIgnup_Login")
 });
-
-
-
-
 
 // if we get a 404 status, render 404.ejs view
 app.use(function (request, response) {
