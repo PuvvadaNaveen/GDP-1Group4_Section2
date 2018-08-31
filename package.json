@@ -13,6 +13,7 @@
         "body-parser": "latest",
         "ejs": "latest",
         "serve-favicon": "^2.4.5",
-        "nodemailer": "latest"
+        "nodemailer": "latest",
+        "mailgun-js": "latest"
     }
 }
