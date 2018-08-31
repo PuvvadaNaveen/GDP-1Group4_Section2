@@ -6,13 +6,14 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/s530479-ShivaKumar/GDP-1Group4_Section2"
-      },
+    },
     "dependencies": {
         "express": "latest",
         "morgan": "latest",
         "body-parser": "latest",
         "ejs": "latest",
         "serve-favicon": "^2.4.5",
-        "nodemailer": "latest"
+        "nodemailer": "latest",
+        "mailgun-js": "latest"
     }
 }
