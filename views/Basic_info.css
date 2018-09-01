@@ -1,8 +1,7 @@
 .body{
     background-image: url("measure.jpg");
-    background-size:40%;
+    background-size:50%;
     background-repeat: no-repeat;
     
-
-   
+    background-position: right top; 
 }
