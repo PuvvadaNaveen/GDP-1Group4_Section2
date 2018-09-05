@@ -14,7 +14,7 @@
         "mailgun-js": "latest",
         "mongodb": "^3.1.4",
         "morgan": "latest",
-        "nodemailer": "latest",
+        "nodemailer": "^4.6.8",
         "serve-favicon": "^2.4.5"
     }
 }
