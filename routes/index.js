@@ -16,6 +16,15 @@ function ensureAuthenticated(req, res, next){
 	router.get('/home', (request, response, next) => {
     response.render('Homepage.ejs')
 })
+router.get('/find', (request, response, next) => {
+    response.render('findperformer.ejs')
+})
+router.get('/findp', (request, response, next) => {
+    response.render('findplay.ejs')
+})
+router.get('/fin', (request, response, next) => {
+    response.render('finddate.ejs')
+})
 
 router.get('/basic', (request, response, next) => {
     response.render('Basic_info.ejs')
