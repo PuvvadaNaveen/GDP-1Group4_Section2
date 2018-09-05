@@ -1,3 +1,9 @@
+.body{
+    background-image: url("1.jpg");
+    background-size:100%;
+    background-repeat: no-repeat; 
+    
+}
 div.absolute {
     position: absolute;
     top: 250px;
@@ -13,3 +19,4 @@ div.absolute {
     width: 400px;
     height: 100px; 
 }
+
