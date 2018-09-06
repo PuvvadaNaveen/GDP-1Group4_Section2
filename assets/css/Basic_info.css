@@ -3,4 +3,14 @@
     background-size:40%;
     background-repeat: no-repeat;
     background-position: right top; 
+    font-family: Georgia, serif;
+    font-size: 16px;
 }
+
+.form-group{
+    
+    margin-right: 590px;
+  }
+  .b{
+      margin-left: 470px;
+  }

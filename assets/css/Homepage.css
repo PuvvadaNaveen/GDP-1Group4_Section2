@@ -2,11 +2,21 @@
     background-image: url("final1.jpg");
     background-size:100%;
     background-repeat: no-repeat;
-   
+    font-size: 16px;
+    font-family: Georgia, serif;
 }
 marquee{
-    font-size: 30px;
+    font-size: 25px;
     color: rgb(14, 12, 12);
-    padding-top:180px;
+    padding-top:290px;
     font-family: "Courier New, Courier, monospace"
 } 
+
+.h{
+    margin-left: 200px;
+}
+
+.form-group{
+    margin-left: 0px;
+    margin-right: 720px;
+  }
