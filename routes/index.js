@@ -29,6 +29,9 @@ router.get('/fin', (request, response, next) => {
 router.get('/basic', (request, response, next) => {
     response.render('Basic_info.ejs')
 })
+router.get('/rental', (request, response, next) => {
+    response.render('Rental Form.ejs')
+})
 
 router.get('/Signup_Login', (request, response, next) => {
     response.render('SIgnup_Login.ejs')
