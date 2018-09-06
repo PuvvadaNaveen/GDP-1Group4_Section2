@@ -1,16 +1,13 @@
 <% include header %>
 <head>
   
-
- <link rel ="stylesheet" 
-type="text/css" 
-href="/css/Homepage.css"/> 
+ <link rel ="stylesheet" type="text/css" href="/css/Homepage.css"/> 
 
 </head>
 <body>
 
   <div class="container">
-    <h2>Test Table</h2>
+    <h1>Performers Details</h1><br>
     <table class="table">
       <thead>
         <tr>
@@ -30,7 +27,7 @@ href="/css/Homepage.css"/>
           <td>Sherlock Holmes</td>
           <td>Duck</td>
           <td>
-            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Click here</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Click here</button>
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -48,23 +45,26 @@ href="/css/Homepage.css"/>
                 <li><a data-toggle="tab" href="#other">Other</a></li>
               </ul>
               <div class="tab-content">
+                <br>
                   <% include upper %>
                   <% include lower %>
                   <div id="other" class="tab-pane fade">
-                      <form action="#">
+                      <form action="#" class="form-group">
                           Dominant Hand:&nbsp;&nbsp;
-                          <input type="text" name="dominanthand"><br>
+                          <input class="form-control" type="text" name="dominanthand"><br>
                           Other over Body Padding:&nbsp;&nbsp;
-                          <input type="text" name="otheroverbodypadding" placeholder="Enter measurement value">
+                          <input class="form-control" type="text" name="otheroverbodypadding" placeholder="Enter measurement value">
 
                           <br><br>
-                          <input type="submit" value="submit">
+                          <div class="h">
+                          <input class="btn btn-primary" type="submit" value="submit">
+                        </div>
                   </div>
                 </div>
             </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
 
@@ -73,7 +73,7 @@ href="/css/Homepage.css"/>
           </td>
           <td>06/28/2018</td>
           <td>
-            <button id="selectEmployee" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">Select Employee</button>
+            <button id="selectEmployee" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">Select Employee</button>
             <div id="myModal1" class="modal fade" role="dialog">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -91,13 +91,10 @@ href="/css/Homepage.css"/>
                         </select>
                         <br>
                         <br>
-                        <button onclick="myFunction()" type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+                        <button onclick="myFunction()" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                        <!-- <p id="demo"> </p> -->
                         
-                        <p id="demo"></p>
                   </div>
-                  <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div> -->
                 </div>
             
               </div>

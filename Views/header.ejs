@@ -2,9 +2,6 @@
 <html>
 
   <head>
-    <link type="text/css"
-    rel="stylesheet"
-    href="../assets/css/Test.css" />
     <title>Stephi_Designer_App</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,21 +9,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="../assets/js/Test.js"></script>
+    <link type="text/css" rel="stylesheet" href="../assets/css/Test.css" />
   </head>
 
   <body class="body">
-        <nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">NWMSU</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="home"><span class="glyphicon glyphicon-home">
-                      </span> &nbsp; Home</a></li>
+      <li><a href="home"><span class="glyphicon glyphicon-home"></span> &nbsp; Home</a></li>
       <li><a href="rental">Rentals</a></li>
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Find
-        <span class="caret"></span></a>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Find</a>
         <ul class="dropdown-menu">
           <li><a href="find">Performer Name</a></li>
           <li><a href="findp">play</a></li>
@@ -35,11 +31,8 @@
       </li>
       <li><a href="basic">Basic Information form</a></li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <!-- <li><a href="SIgnup_Login"><span class="glyphicon glyphicon-log-out">
-                  </span> Log Out &nbsp; &nbsp;</a></li> -->
-        <li role="presentation"><a href="/users/logout"><span class="glyphicon glyphicon-log-out">
-        </span> Logout &nbsp; &nbsp;</a></li>
-    </ul>
+    <li class="pull-right">
+     <a href="/users/logout" class="btn btn-danger navbar-btn" > Logout &nbsp; &nbsp;</a>
+    </li>
   </div>
-</nav>
+ </nav>
