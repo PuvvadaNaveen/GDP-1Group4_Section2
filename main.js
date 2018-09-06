@@ -92,7 +92,7 @@ app.post("/mail",function(req, res){
     }
   });
   var mailOptions = {
-    from: 'mutukulashiva099@gmail.com',
+    from: 'Projectteamsec02group04@gmail.com',
     to: req.body.email1,
     subject: 'Collecting performers details',
     html: '<p>Hello,</p><p>Please fill the basic information form.</p><p>Here is the link for form :<a href="http://127.0.0.1:8089/basic"> Click here</a></p></br><p>Regards</p>',  
