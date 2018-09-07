@@ -95,7 +95,7 @@ app.post("/mail",function(req, res){
     from: 'Projectteamsec02group04@gmail.com',
     to: req.body.email1,
     subject: 'Collecting performers details',
-    html: '<p>Hello,</p><p>Please fill the basic information form.</p><p>Here is the link for form :<a href="http://127.0.0.1:8089/basic"> Click here</a></p></br><p>Regards</p>',  
+    html: '<p>Hello,</p><p>Please fill the basic information form.</p><p>Here is the link for form :<a href="http://localhost:8089/form"> Click here</a></p></br><p>Regards</p>',  
   };
   
   transporter.sendMail(mailOptions, function(error, info){

@@ -36,6 +36,9 @@ router.get('/rental', (request, response, next) => {
 router.get('/Signup_Login', (request, response, next) => {
     response.render('SIgnup_Login.ejs')
 })
+router.get('/form', (request, response, next) => {
+    response.render('form.ejs')
+})
 }
 
 module.exports = router;
