@@ -1,39 +1,43 @@
+.body{
+  
+    font-size: 16px;
+    font-family: Georgia, serif;
+}
 
 * {
     box-sizing: border-box;
 }
-
-/* Create two equal columns that floats next to each other */
-.column {
-    font-size: 25px;
+p{
+    font-size: 26px; 
+    font-family: Georgia, serif;
+}
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
     float: left;
-    width: 25%;
-    padding: 30px;
-    height: 300px; /* Should be removed. Only for demonstration */
+    width: 80%;
+    background: #f1f1f1;
 }
 
-/* Clear floats after the columns */
-.row:after {
+form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+form.example button:hover {
+    background: #0b7dda;
+}
+
+form.example::after {
     content: "";
-    display: table;
     clear: both;
-}
-input[type=text] {
-    width: 130px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-    background-image: url('searchicon.png');
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-    
-}
-
-input[type=text]:focus {
-    width: 50%;
+    display: table;
 }
