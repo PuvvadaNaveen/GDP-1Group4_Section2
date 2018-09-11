@@ -38,7 +38,7 @@ app.use(cookieParser());
 
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'Assets')));
-app.use(favicon(path.join(__dirname,'Images','favicon.ico')));
+app.use(favicon(path.join(__dirname,'Images','favicon-16x16.png')));
 
 // Express Session
 app.use(session({
