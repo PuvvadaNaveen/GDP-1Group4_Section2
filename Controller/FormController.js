@@ -31,5 +31,20 @@ api.post('/save',  function (req, res) {
 
     
   })
+
+  api.get('/getinfo',  function (req, res) {
+    console.log("getinfybefore");  
+      console.log("getinfyafter");
+
+     Model.find({}, function (err, form) {
+         if (err) throw err;
+         console.log(form);
+         return res.json(form);
+     });
+    //  return res.redirect('/basic')
+    
+ 
+     
+   })
   module.exports = api;
   
