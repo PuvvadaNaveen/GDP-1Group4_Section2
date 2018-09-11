@@ -1,14 +1,32 @@
-<h2 class="page-header">Login</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <head>
+  
+ <link rel ="stylesheet" type="text/css" href="/css/login.css"/> 
+
+</head>
+
+<body>
+
+
+<img src="/css/pic.jpg" class="img-responsive" alt="Cinque Terre" width="200" height="200"> 
 <form method="post" action="/users/login">
-  <div class="form-group">
-    <label>Username</label>
-    <input type="text" class="form-control" name="username" placeholder="Username">
+ 
+
+  <div class="container">
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder=" Enter Username" name="username" required>
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+        
+    <button type="submit">Login</button>
+  
   </div>
-  <div class="form-group">
-    <label>Password</label>
-    <input type="password" class="form-control" name="password" placeholder="Password">
-  </div>
-  <div class="b">
-  <button type="submit" class="btn btn-primary">Submit</button>
-  </div>
-</form>
+  </form>
+
+ 
+
+</body>
+</html>
