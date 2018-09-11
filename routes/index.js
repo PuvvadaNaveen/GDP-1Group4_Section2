@@ -13,8 +13,8 @@ function ensureAuthenticated(req, res, next){
 		//req.flash('error_msg','You are not logged in');
 		res.redirect('/users/login');
 	}
-	router.get('/home', (request, response, next) => {
-    response.render('Homepage.ejs')
+router.get('/home', (request, response, next) => {
+response.render('Homepage.ejs')
 })
 router.get('/find', (request, response, next) => {
     response.render('findperformer.ejs')

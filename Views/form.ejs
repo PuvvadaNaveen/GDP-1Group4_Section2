@@ -11,79 +11,79 @@
 </head>
 <body>
     <div class="k">
-<h2 >Basic information form</h2>
+<h2>Basic information form</h2>
 <br>
-<form action="#">
+<form name ="form" method ="POST" action="/FormController/save" onsubmit="return validateMayWeTextYou()">
     <div class="form-group">
     First name:<br>
-    <input class="form-control"  type="text" name="firstname">
+    <input class="form-control"  type="text" name="firstname" required>
   </div>
     <div class="form-group">
     Last name:<br>
-    <input class="form-control" type="text" name="lastname">
+    <input class="form-control" type="text" name="lastname" required>
   </div>
   <div class="form-group">
     Character Name:<br>
-    <input class="form-control" type="text" name="charactername">
+    <input class="form-control" type="text" name="charactername" required>
   </div>
   <div class="form-group">
     Phone Number:<br>
-    <input class="form-control" type="text" name="phonenumber">
+    <input class="form-control" type="number" name="phonenumber" required>
   </div>
     May we text you?<br>
-    <input type="radio" name="textchoice" value="yes"> Yes<br>
-    <input type="radio" name="textchoice" value="no"> No<br><br>
+    <input id='CheckedYes' type="radio" name="textchoice" value="yes" required> Yes<br>
+    <input id='CheckedNo' type="radio" name="textchoice" value="no"> No<br><br>
     <div class="form-group">
     University email Address:<br>
-    <input class="form-control" type="text" name="email">
+    <input class="form-control" type="email" name="email" required>
     </div>
     "I understand that I must check my Northwest student email DAILY as requests for fitting appointments will be sent to that email. I will respond to a fitting request as soon as possible. I understand that failing to check my university email does not excuse me from missing a fitting appointment. Missed appointments will be rescheduled at the discretion of the Costume Shop."<br>
-    <input type="checkbox" name="agreement" value="iagree"> Yes, I understand.<br><br>
+    <input type="checkbox" name="agreement" value="iagree" required> Yes, I understand.<br><br>
     Dominant Hand: <br>
-    <input type="checkbox" name="dominanthand" value="right"> Right<br>
+    <input type="checkbox" name="dominanthand" value="right" required> Right<br>
     <input type="checkbox" name="dominanthand" value="left"> Left<br><br>
     <div class="form-group">
     Height:<br>
-    <input class="form-control" type="text" name="heught">
+    <input class="form-control" type="text" name="heught" required>
     </div>
     <div class="form-group">
     Estimated Weight: <br>
-    <input class="form-control" type="text" name="estimatedweight">
+    <input class="form-control" type="number" name="estimatedweight" placeholder="Enter weight in pounds">
     </div>
     Corrective Eyewear:<br>
-    <input type="radio" name="eyewearchoice" value="none"> None<br>
+    <input type="radio" name="eyewearchoice" value="none" required> None<br>
     <input type="radio" name="eyewearchoice" value="glasses"> Glasses<br>
     <input type="radio" name="eyewearchoice" value="contacts"> Contacts<br>
     <input type="radio" name="eyewearchoice" value="withoutglasses"> I wear glasses but can perform without them<br><br>
     <div class="form-group">
     Hair color and length:<br>
-    <input class="form-control" type="text" name="hair"><br>
+    <input class="form-control" type="text" name="hair" required><br>
     Facial Hair: color, length, and growth time:<br>
-    <input class="form-control" type="text" name="facialhai">
+    <input class="form-control" type="text" name="facialhai" required>
     </div>
     I understand that I may not permanently change the color, length, or style of my hair between casting and performance without the express permission of both the Costume Designer and Artistic Director.<br>
-    <input type="checkbox" name="hairagreement" value="iagree"> Yes, I understand.<br><br>
+    <input type="checkbox" name="hairagreement" value="iagree" required> Yes, I understand.<br><br>
     Do you have pierced ears?<br>
-    <input type="radio" name="earschoice" value="yes"> Yes<br>
+    <input type="radio" name="earschoice" value="yes" required> Yes<br>
     <input type="radio" name="earschoice" value="no"> No<br><br>
     <div class="form-group">
     Do you have any other piercings? How many and where?<br>
-    <input class="form-control" type="text" name="otherpiercings"><br>
+    <input class="form-control" type="text" name="otherpiercings" required><br>
     Do you have any tattoos?<br>
-    <input class="form-control" type="text" name="tattoos">
+    <input class="form-control" type="text" name="tattoos" required>
     </div>
     "I understand that if I have tattos I must provide my own tattoo cover makeup if asked. I understand that if I have piercings I may be asked to remove them or provide my own clear spacer during performances. I understand that I am not allowed to permanently alter my body with additional tattoos, piercings, etc. between casting and performance."<br>
-    <input type="checkbox" name="tattooagreement" value="iagree"> Yes, I understand.<br><br>
+    <input type="checkbox" name="tattooagreement" value="iagree" required> Yes, I understand.<br><br>
     COMMENTS ABOUT THE BODY (OR COSTUME) OF ANY PERFORMER (YOURSELF INCLUDED) WILL NOT BE TOLERATED FROM ANY PERFORMER OR MEMBER OF THE PRODUCTION STAFF.<br>
     <div class="form-group">
-    <input class="form-control" type="text" name="comments"><br>
+    <input class="form-control" type="text" name="comments" required><br>
     Shoes: <br>
-    <input class="form-control" type="text" name="shoes"><br>
+    <input class="form-control" type="text" name="shoes" required><br>
     Dance Shoes: Size and Type<br>
-    <input class="form-control" type="text" name="danceshoes">
+    <input class="form-control" type="text" name="danceshoes" required>
     </div>
     Shirt <br>
-    <input type="checkbox" name="shirtsize" value="xs"> XS.<br>
+    <input type="checkbox" name="shirtsize" value="xs" required> XS.<br>
     <input type="checkbox" name="shirtsize" value="s"> S.<br>
     <input type="checkbox" name="shirtsize" value="l"> L.<br>
     <input type="checkbox" name="shirtsize" value="xl"> XL.<br>
@@ -100,7 +100,7 @@
     <input class="form-control" type="text" name="ring">
     </div>
     Are you allergic to any of the following?<br>
-    <input type="checkbox" name="allergy" value="Fabric/fiber"> Fabric/fiber.<br>
+    <input type="checkbox" name="allergy" value="Fabric/fiber" required> Fabric/fiber.<br>
     <input type="checkbox" name="allergy" value="Detergent"> Detergent.<br>
     <input type="checkbox" name="allergy" value="Environmental"> Environmental.<br>
     <input type="checkbox" name="allergy" value="Fragrance"> Fragrance.<br>

@@ -6,3 +6,8 @@ function myFunction() {
 function emailSent(){
     window.alert("Email sent");
 }
+
+function validateMayWeTextYou(){
+    var checkedYes = document.getElementById();
+
+}
