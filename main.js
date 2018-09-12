@@ -26,6 +26,7 @@ var db = mongoose.connection;
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var forms = require('./Controller/FormController')
+var rentals = require('./Controller/RentalController')
 
 // Init App
 var app = express();
@@ -90,6 +91,7 @@ app.use(function (req, res, next) {
 app.use('/', routes);
 app.use('/users', users);
 app.use('/FormController', forms);
+app.use('/RentalController', rentals);
 
 
 // mail for access code
