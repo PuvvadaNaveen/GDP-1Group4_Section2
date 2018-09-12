@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var formCont = require('../Controller/FormController');
 
 // Get Homepage
 router.get('/', ensureAuthenticated, function(req, res){
+    
 	res.render('Homepage.ejs');
 });
 
@@ -29,6 +31,11 @@ router.get('/fin', (request, response, next) => {
 router.get('/basic', (request, response, next) => {
     response.render('Basic_info.ejs')
 })
+
+router.get('/access', (request, response, next) => {
+    response.render('access_code.ejs')
+})
+
 router.get('/rental', (request, response, next) => {
     response.render('Rental Form.ejs')
 })
