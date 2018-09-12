@@ -1,6 +1,8 @@
 const express = require('express')
 const api = express.Router()
 const Model = require('../models/form')
+const mongoose = require('mongoose')
+const db = mongoose.connection;
 
 
 api.post('/save',  function (req, res) {
@@ -63,29 +65,44 @@ api.post('/save',  function (req, res) {
         allergies : allergies
 
     });
+    db.collection('forms').save(newForm, (err, result) => {
+        if(err) return console.log('erroe')
+        console.log("saved");
+        return res.redirect('/basic')
+    })
 
-    Model.create(newForm, function (err, form) {
-        if (err) throw err;
-        console.log(form);
-    });
-    return res.redirect('/basic')
+    // Model.create(newForm, function (err, form) {
+    //     if (err) throw err;
+    //     console.log(form);
+    // });
+    
 
     
   })
 
   api.get('/getinfo',  function (req, res) {
-    console.log("getinfybefore");  
-      console.log("getinfyafter");
-
      Model.find({}, function (err, form) {
          if (err) throw err;
          console.log(form);
          return res.json(form);
      });
     //  return res.redirect('/basic')
-    
- 
-     
    })
+
+   api.post('/getByName',  function (req, res) {
+      var query = {firstname : req.body.firstname};
+
+      db.collection('forms').findOne(query, function(err, result){
+          if (err) throw err;
+        //   console.log(result);
+          return res.json(result);
+      })
+
+    //  Model.findOne({query}, function (err, form) {
+    //      if (err) throw err;
+    //      console.log(form);
+    //      return res.json(form);
+    //  });
+    })
   module.exports = api;
   
