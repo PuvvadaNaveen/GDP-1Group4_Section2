@@ -16,7 +16,11 @@ router.get('/login', function (req, res) {
 	res.render('login');
 });
 
-
+//Forgot Password
+router.get('/resetpassword', function (req, res) {
+	// res.send('hiii');
+	res.render('password.ejs');
+});
 
 
 // Register User
