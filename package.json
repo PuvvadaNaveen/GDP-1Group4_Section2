@@ -1,32 +1,33 @@
 {
-    "name": "costume-designier",
-    "version": "0.0.1",
-    "description": "costume-designier",
-    "main": "main.js",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/s530479-ShivaKumar/GDP-1Group4_Section2"
-    },
-    "dependencies": {
-        "bcryptjs": "*",
-        "body-parser": "latest",
-        "connect-flash": "*",
-        "cookie-parser": "^1.4.1",
-        "ejs": "latest",
-        "express": "latest",
-        "express-handlebars": "*",
-        "express-messages": "*",
-        "express-session": "*",
-        "express-validator": "*",
-        "mailgun-js": "latest",
-        "mongodb": "^3.1.4",
-        "mongoose": "*",
-        "morgan": "latest",
-        "nodemailer": "latest",
-        "nodemon": "^1.18.4",
-        "passport": "*",
-        "passport-http": "*",
-        "passport-local": "*",
-        "serve-favicon": "^2.4.5"
-    }
+  "name": "costume-designier",
+  "version": "0.0.1",
+  "description": "costume-designier",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/s530479-ShivaKumar/GDP-1Group4_Section2"
+  },
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "latest",
+    "connect-flash": "*",
+    "cookie-parser": "^1.4.1",
+    "ejs": "latest",
+    "express": "latest",
+    "express-handlebars": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "mailgun-js": "latest",
+    "mongodb": "^3.1.4",
+    "mongoose": "*",
+    "morgan": "latest",
+    "nodemailer": "latest",
+    "nodemon": "^1.18.4",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*",
+    "randomstring": "^1.1.5",
+    "serve-favicon": "^2.4.5"
+  }
 }

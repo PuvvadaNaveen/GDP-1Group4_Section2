@@ -12,6 +12,10 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
+var randomstring = require('randomstring');
+var access_code = module.exports = randomstring.generate(7);
+
+
 
 mongoose.connect('mongodb://akhil:forgdp2@ds235461.mlab.com:35461/gdpdb1');
 mongoose.connection.once('open', ()=>{
@@ -86,6 +90,34 @@ app.use(function (req, res, next) {
 app.use('/', routes);
 app.use('/users', users);
 app.use('/FormController', forms);
+
+
+// mail for access code
+app.post("/access_mail",function(req, res){
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'Projectteamsec02group04@gmail.com',
+      pass: 'Projectteam05'
+    }
+  });
+  var mailOptions = {
+    from: 'Projectteamsec02group04@gmail.com',
+    to: req.body.email1,
+    subject: 'Access code for registration', 
+    html: 'The access code for Registration is  ' + access_code,
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+      console.log(access_code);
+      res.send('Mail Sent Successfully');
+    }
+  });
+});
 
 //mail
 app.post("/mail",function(req, res){
