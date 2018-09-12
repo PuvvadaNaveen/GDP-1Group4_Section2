@@ -4,6 +4,7 @@ const Model = require('../models/rental')
 
 
 api.post('/rental1',  function (req, res) {
+    console.log("ssss")
     var Date1 = req.body.Date1;
     var Date2 = req.body.Date2;
     var firstname = req.body.firstname;
@@ -41,9 +42,9 @@ api.post('/rental1',  function (req, res) {
             if (err) throw err;
             console.log(rental);
         });
-        return res.redirect('/basic')
+        // return res.redirect('/basic')
     
-        
+        res.send("saved")
       })
       module.exports = api;
       
