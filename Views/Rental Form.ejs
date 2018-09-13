@@ -4,54 +4,102 @@
 
 <link rel ="stylesheet" 
 type="text/css" 
-href="Rental.css"  />
+href="/css/Rental.css"  />
 
 </head>
-<body>
-
-        <div class="container">
-                
-              <h2>Costume Rental Form</h2>
-              
-
-                     <form action="rental" method="post">
-                    <label for="Rental Start Date">Rental Start Date:</label>
-                    <input type="date" id="D" placeholder="Enter Start Date" name="Date1">
-                    <label for="Rental Due Date">Rental Due Date:</label>
-                    <input type="date" id="D" placeholder="Enter Due Date" name="Date2">
-                    <h4>Rental Information</h4>
-                    Contact Name:
-                    <input type="text" name="firstname"><br>
-                    Phone Number:
-                    <input type="text" name="phn"><br>
-                    Email:
-                    <input type="text" name="mail"><br>
-                    Studio:
-                    <input type="text" name="std"><br>
-                    Print Name:
-                    <input type="text" name="prnt"><br>
-                    Rental Time Requested:
-                    <input type="text" name="firstname"><br>
-              </form>
-            
-                                <!-- <form action="sign"> -->
-                                        <label for="Signature">Signature:</label>
-                                        <input type=" Sign" id="Sign" placeholder="Signature" name="S">
-                                        <label for="Date">Date:</label>
-                                        <input type="D" id="Da" placeholder="Enter Date" name="t">   
-                                        <h4>For Office Use Only</h4>
-                                        <label for="Rental Fee">Rental Fee:</label>
-                                        <input type=" F" id="fe" placeholder="Rental Fee" name="fee">
-                                        <label for="Deposit">Deposit:</label>
-                                        <input type="De" id="Dep" placeholder="Enter Deposit Amount" name="amt"></br>
-                                        <label for="Date Returned">Date Returned:</label>
-                                        <input type=" ret" id="r" placeholder="Enter Return Date" name="rtn"></br>
-                                        <label for="Additional Charges">Additional Charges:</label>
-                                        <input type="Ad" id="Ac" placeholder="Enter Additional Charges" name="charges">    
-
-</form>
-
+<body>    
+        <br>         
+       <h2>Costume Rental Form</h2>
+                      
+                        <div class="container">
+                           <form method="post" action="/RentalController/rental1" >
+                              
+ 
+                                    <div class="row">
+                                                <div class="col-25">
+                                                  <label for="name">Name</label>
+                                                </div>
+                                                <div class="col-75">
+                                                  <input type="text" id="D" name="firstname" placeholder="Enter name..">
+                                                </div>
+                                              </div>
+                                             <div class="row">
+                                                <div class="col-25">
+                                                  <label for="Phone Number">Phone Number</label>
+                                                </div>
+                                                <div class="col-75">
+                                                  <input type="text" id="D" name="phn" placeholder="Enter phone number..">
+                                                </div>
+                                                 </div>
+                                                 <div class="row">
+                                                            <div class="col-25">
+                                                              <label for="Email id">Email id</label>
+                                                            </div>
+                                                            <div class="col-75">
+                                                              <input type="text" id="D" name="mail" placeholder="Enter email id..">
+                                                            </div>
+                                                             </div>
+                            <div class="row">
+                              <div class="col-25">
+                                <label for="Rental Start Date">Rental Start Date</label>
+                                
+                              </div>
+                              
+                              <div class="col-75">
+                               <input type="date" id="D" placeholder="Enter Start Date" name="Date1">
+                              </div>
+                        </div>
+                              <div class="row">
+                              <div class="col-25">
+                                <label for="Rental Due Date">Rental Due Date</label>
+                              </div>
+                              <div class="col-75">
+                                          <input type="date" id="D" placeholder="Enter Due Date" name="Date2">
+                              </div>
+                        </div>
+                          
+                                        <div class="row">
+                                                <div class="col-25">
+                                                <label for="Rental fee">Rental fee</label>
+                                                </div>
+                                                <div class="col-75">
+                                                <input type="text" id="D" name="fee" placeholder="Enter Rental fee..">
+                                                </div>
+                                        </div>
+                                        <div class="row">
+                                                <div class="col-25">
+                                                <label for="Deposit">Deposit </label>
+                                         </div>
+                                                <div class="col-75">
+                                                <input type="text" id="D" name="amt" placeholder="Enter deposit fee..">
+                                                </div>
+                                        </div>
+                                        <div class="row">
+                                                <div class="col-25">
+                                                <label for="Date Returned "> Date Returned</label>
+                                        </div>
+                                                <div class="col-75">
+                                                 <input type="text" id="D" name="rtn" placeholder="Enter Date Returned ..">
+                                                </div>
+                                        </div>
+                                        <div class="row">
+                                                 <div class="col-25">
+                                                 <label for="Additional Charges "> Additional Charges</label>
+                                        </div>
+                                                <div class="col-75">
+                                                 <input type="text" id="D" name="charges" placeholder="Enter Additional Charges ..">
+                                                 </div>
+                                         </div>
+                                         
+                                         <br>
+                            <div class="row">
+                              <input type="submit" value="Submit">
+                            </div>
+                          </form>
+                        </div>
                         
-              
-        </div>
+                        </body>
+                        </html>
+       
+                  
               </body>
