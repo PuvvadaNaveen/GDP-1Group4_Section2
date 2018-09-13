@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var formCont = require('../Controller/FormController');
+var rentalController = require('../Controller/RentalController');
+const mongoose = require('mongoose')
+const db = mongoose.connection;
 
 // Get Homepage
 router.get('/', ensureAuthenticated, function(req, res){
@@ -38,6 +41,14 @@ router.get('/access', (request, response, next) => {
 
 router.get('/rental', (request, response, next) => {
     response.render('Rental Form.ejs')
+})
+router.get('/rental_list', (request, response, next) => {
+    db.collection('rentals').find().toArray(function(err,result){
+        if (err) throw err;
+        console.log(result);
+        response.render('rental_list.ejs',{list : result});
+    // response.render('rental_list.ejs')
+})
 })
 
 router.get('/Signup_Login', (request, response, next) => {

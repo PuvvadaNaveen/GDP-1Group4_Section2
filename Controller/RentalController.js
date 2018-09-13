@@ -1,6 +1,8 @@
 const express = require('express')
 const api = express.Router()
 const Model = require('../models/rental')
+const mongoose = require('mongoose')
+const db = mongoose.connection;
 
 
 api.post('/rental1',  function (req, res) {
@@ -46,5 +48,14 @@ api.post('/rental1',  function (req, res) {
     
         res.send("saved")
       })
+
+//   api.get('/getrentals',  function (req, res) {
+//      db.collection('rentals').find().toArray(function(err,result){
+//         if (err) throw err;
+//         console.log(result);
+//         res.render('rental_list.ejs',{list : result});
+//      });
+//     //  return res.redirect('/basic')
+//    })
       module.exports = api;
       
