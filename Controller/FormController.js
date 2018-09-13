@@ -8,6 +8,8 @@ const db = mongoose.connection;
 api.post('/save',  function (req, res) {
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
+    var playname = req.body.playname;
+    var playdate = req.body.playdate;
     var charactername = req.body.charactername;
     var phonenumber = req.body.phonenumber;
     var textchoice =req.body.textchoice;
@@ -38,6 +40,8 @@ api.post('/save',  function (req, res) {
     var newForm = new Model({
         firstname:firstname,
         lastname: lastname,
+        playname:playname,
+        playdate:playdate,
         charactername: charactername,
         phonenumber: phonenumber,
         textchoice: textchoice,
@@ -66,28 +70,34 @@ api.post('/save',  function (req, res) {
 
     });
     db.collection('forms').save(newForm, (err, result) => {
-        if(err) return console.log('erroe')
+        if(err) return console.log('error')
         console.log("saved");
         return res.redirect('/basic')
     })
-
     // Model.create(newForm, function (err, form) {
     //     if (err) throw err;
     //     console.log(form);
-    // });
-    
-
-    
+    // });  
   })
-
-  api.get('/getinfo',  function (req, res) {
-     Model.find({}, function (err, form) {
-         if (err) throw err;
-         console.log(form);
-         return res.json(form);
-     });
-    //  return res.redirect('/basic')
-   })
+// commented by shiva
+//   api.get('/getinfo',  function (req, res) {
+//      Model.find({}, function (err, form) {
+//          if (err) throw err;
+//          console.log(form);
+//          return res.json(form);
+//      });
+//     //  return res.redirect('/basic')
+//    })
+api.get('/getinfo',  function (req, res) {
+    var firstname = req.body.firstname;
+    var mysort = { firstname : 1 };
+    db.collection('forms').find().sort(mysort).toArray(function(err, result){
+        if (err) throw err;
+        //   console.log(result);
+          return res.json(result);
+    });
+   //  return res.redirect('/basic')
+  })
 
    api.post('/getByName',  function (req, res) {
       var query = {firstname : req.body.firstname};
@@ -96,13 +106,47 @@ api.post('/save',  function (req, res) {
           if (err) throw err;
         //   console.log(result);
           return res.json(result);
-      })
-
-    //  Model.findOne({query}, function (err, form) {
-    //      if (err) throw err;
-    //      console.log(form);
-    //      return res.json(form);
-    //  });
+      });
     })
+    // get by play name
+   api.post('/getByPlay',  function (req, res) {
+       console.log(req.body.playname);
+    var query = {playname : req.body.playname};
+
+    db.collection('forms').findOne(query, function(err, result){
+        if (err) throw err;
+      //   console.log(result);
+        return res.json(result);
+    });
+  })
+//get by play date
+//   api.post('/getByDate',  function (req, res) {
+//     console.log(req.body.playdate);
+//  var query = {playdate : {"$gte" : new Date(req.body.playdate)}};
+// //   query = {playdate:"/"+new Date(req.body.playdate)+"/"};
+// //  query = {playdate: /2018-09-15/};
+// //  query = {playdate: {$in:[new Date(req.body.playdate)]}};
+//  console.log(query);
+
+//  db.collection('forms').find(query, function(err, result){
+//      if (err) throw err;
+//    //   console.log(result);
+//      return res.json(result);
+//  });
+// })
+api.post('/getByDate',  function (req, res) {
+    console.log(req.body.playdate);
+ var query = {playdate : {"$gte" : new Date(req.body.playdate)}};
+//   query = {playdate:"/"+req.body.playdate+"/"};
+//  query = {playdate: /^"2018-09-15"/};
+  query = {playdate: {"$in":[new Date(req.body.playdate)]}};
+//  console.log(query);
+
+ db.collection('forms').find(query).toArray(function(err, result){
+     if (err) throw err;
+   //   console.log(result);
+     return res.json(result);
+ });
+})
   module.exports = api;
   
