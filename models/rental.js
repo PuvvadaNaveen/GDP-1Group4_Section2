@@ -1,46 +1,25 @@
 var mongoose = require('mongoose');
 //
 var RentalSchema = mongoose.Schema({
-	Date1: {
-        type: String 
+	StartDate: {
+        type: Date 
 	},
-	Date2: {
-		type: String
+	EndDate: {
+		type: Date
 	},
 	firstname: {
 		type: String
 	},
-	phn: {
-		type: Number
+	phone: {
+		type: String
 	},
 	mail: {
 		type: String
 	},
-	std: {
-		type: String
-	},
-	prnt: {
-		type: String
-	},
-	time: {
-		type: String
-	},
-	S: {
-		type: String
-	},
-	t: {
+	fee: {
 		type: Number
 	},
-	fee: {
-		type: String
-	},
-	amt: {
-		type: String
-	},
-	rtn: {
-		type: String
-	},
-	charges: {
+	rental_item: {
 		type: String
 	}
 	});

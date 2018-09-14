@@ -17,7 +17,7 @@ var FormSchema = mongoose.Schema({
 		type: String
 	},
 	phonenumber: {
-		type: Number
+		type: String
 	},
 	textchoice: {
 		type: String

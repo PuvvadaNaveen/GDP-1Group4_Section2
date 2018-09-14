@@ -7,36 +7,24 @@ const db = mongoose.connection;
 
 api.post('/rental1',  function (req, res) {
     console.log("ssss")
-    var Date1 = req.body.Date1;
-    var Date2 = req.body.Date2;
+    var StartDate = req.body.StartDate;
+    var EndDate = req.body.EndDate;
     var firstname = req.body.firstname;
-    var phn = req.body.phn;
+    var phone = req.body.phone;
     var mail =req.body.mail;
-    var std = req.body.std;
-    var prnt = req.body.prnt;
-    var time = req.body.time;
-    var S = req.body.S;
-    var t = req.body.t;
     var fee =req.body.fee;
-    var amt = req.body.amt;
-    var rtn = req.body.rtn;
-    var charges = req.body.charges;
+    var rental_item = req.body.rental_item;
+   
 
     var newRental = new Model({
-        Date1: Date1,
-        Date2: Date2,
+        StartDate: StartDate,
+        EndDate: EndDate,
         firstname: firstname,
-        phn: phn,
+        phone: phone,
         mail: mail,
-        std: std,
-        prnt: prnt,
-        time: time,
-        S: S,
-        t: t,
         fee: fee,
-        amt: amt,
-        rtn: rtn,
-        charges: charges,
+        rental_item: rental_item
+       
         
     });
     
