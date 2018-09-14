@@ -88,16 +88,17 @@ api.post('/save',  function (req, res) {
 //      });
 //     //  return res.redirect('/basic')
 //    })
-api.get('/getinfo',  function (req, res) {
-    var firstname = req.body.firstname;
-    var mysort = { firstname : 1 };
-    db.collection('forms').find().sort(mysort).toArray(function(err, result){
-        if (err) throw err;
-        //   console.log(result);
-          return res.json(result);
-    });
-   //  return res.redirect('/basic')
-  })
+// commented by shiva
+// api.get('/getinfo',  function (req, res) {
+//     var firstname = req.body.firstname;
+//     var mysort = { firstname : 1 };
+//     db.collection('forms').find().sort(mysort).toArray(function(err, result){
+//         if (err) throw err;
+//         //   console.log(result);
+//           return res.json(result);
+//     });
+//    //  return res.redirect('/basic')
+//   })
 
    api.post('/getByName',  function (req, res) {
       var query = {firstname : req.body.firstname};

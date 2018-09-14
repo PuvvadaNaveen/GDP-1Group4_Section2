@@ -10,9 +10,6 @@
 
   <div class="container">
     <h1>Performers Details</h1><br>
-    <form name="getInformation" method="GET" action="/FormController/getinfo">
-      <input type="submit" value="submit">
-    </form>
     <table class="table">
       <thead>
         <tr>
@@ -26,11 +23,12 @@
         </tr>
       </thead>
       <tbody>
+          <% for(let i = 0; i < listOfPerformers.length; i++) { %>
         <tr>
-          <td>Shiva</td>
-          <td>Mutukula</td>
-          <td>Sherlock Holmes</td>
-          <td>Duck</td>
+          <td><%= listOfPerformers[i].firstname %></td>
+          <td><%= listOfPerformers[i].lastname %></td>
+          <td><%= listOfPerformers[i].playname %></td>
+          <td><%= listOfPerformers[i].charactername %></td>
           <td>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Click here</button>
 <div id="myModal" class="modal fade" role="dialog">
@@ -76,7 +74,7 @@
   </div>
 </div>
           </td>
-          <td>06/28/2018</td>
+          <td><%= listOfPerformers[i].playdate %></td>
           <td>
             <button id="selectEmployee" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">Select Employee</button>
             <div id="myModal1" class="modal fade" role="dialog">
@@ -106,6 +104,7 @@
             </div>
           </td>
         </tr>
+        <% } %>
       </tbody>
     </table>
   </div>
