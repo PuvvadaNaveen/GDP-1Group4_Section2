@@ -1,11 +1,20 @@
 <% include header %>
-<table style="width:100%">
-    <tr>
-      <th>Name</th>
-      <th>Rented Item</th> 
-      <th>Rentad Date</th>
-      <th>Return Date</th>
-    </tr>
+
+    
+     
+    <link rel ="stylesheet" type="text/css" href="/css/Rentallist.css"/> 
+   
+  
+    <body>
+        
+        <table id="rent">
+          <tr>
+            <th>Name</th>
+            <th>Rented Item</th>
+            <th>Rented date</th>
+            <th>Return Date</th>
+            <th>Rental Fee</th>
+          </tr>
     <% for(let i = 0; i < list.length; i++) { %>
     <tr>
       <td><%= list[i].firstname %></td>
