@@ -11,7 +11,7 @@ var FormSchema = mongoose.Schema({
 		type:String
 	},
 	playdate:{
-		type: Date
+		type: String
 	},
 	charactername: {
 		type: String

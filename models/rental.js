@@ -2,10 +2,10 @@ var mongoose = require('mongoose');
 //
 var RentalSchema = mongoose.Schema({
 	StartDate: {
-        type: Date 
+        type: String 
 	},
 	EndDate: {
-		type: Date
+		type: String
 	},
 	firstname: {
 		type: String

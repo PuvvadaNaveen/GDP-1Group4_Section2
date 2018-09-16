@@ -17,6 +17,12 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: rgb(226, 52, 46);
+    background-color: rgb(46, 169, 226);
     color: white;
+}
+
+.x{
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 1px;
 }

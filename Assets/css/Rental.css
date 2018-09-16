@@ -1,8 +1,8 @@
 .body{
-    background-image: url("Rental.jpg");
-    background-size: 450px 450px;
+    background-image: url("download.jpg");
+    
     background-repeat: no-repeat;
-    background-position: right;
+    background-size: 100%;
      
     background-attachment: fixed;
     
