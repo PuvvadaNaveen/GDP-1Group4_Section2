@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var flash    = require('connect-flash');
 var acode =  require('../main').access_code;
 var async = require('async');
 var nodemailer = require('nodemailer');
@@ -244,5 +245,53 @@ router.post('/resetpassword', function(req, res, next) {
 	  res.redirect('/users/login');
 	});
   });
+
+	//Forgot Username
+	router.get('/forgotusername', function (req, res) {
+		res.render('username.ejs');
+	});
+
+	router.post('/forgotusername', function(req, res, next) {
+		async.waterfall([
+			
+			function(done) {
+			User.findOne({ email: req.body.email }, function(err, user) {
+				if (!user) {
+				req.flash('error', 'No account with that email address exists.');
+				return res.redirect('/users/resetpassword');
+				}
+				user.save(function(err) {
+				done(err, user);
+				});
+			});
+			},
+			function(user, done) {
+			var smtpTransport = nodemailer.createTransport({
+				service: 'Gmail', 
+				auth: {
+				user: 'Projectteamsec02group04@gmail.com',
+						pass: 'Projectteam05'
+				}
+			});
+			var mailOptions = {
+				to: user.email,
+				from: 'Projectteamsec02group04@gmail.com',
+				subject: 'Node.js Forgot Username',
+				text: 'You are receiving this because you (or someone else) have requested the username for your account.\n\n' +
+				'Your username is:  ' +
+				user.username + '\n\n' +
+				'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+			};
+			smtpTransport.sendMail(mailOptions, function(err) {
+				console.log('mail sent');
+				req.flash('success', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+				done(err, 'done');
+			});
+			}
+		], function(err) {
+			if (err) return next(err);
+			res.redirect('/users/forgotusername');
+		});
+		});
 
 module.exports = router;
