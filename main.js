@@ -28,7 +28,7 @@ var users = require('./routes/users');
 var forms = require('./Controller/FormController')
 // var find = require('./Controller/FindController')
 var rentals = require('./Controller/RentalController')
-
+var plays = require('./Controller/PlayController')
 // Init App
 var app = express();
 
@@ -94,6 +94,7 @@ app.use('/users', users);
 app.use('/FormController', forms);
 // app.use('/FindController', find);
 app.use('/RentalController', rentals);
+app.use('/PlayController', plays);
 
 
 // mail for access code

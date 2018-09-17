@@ -1,0 +1,25 @@
+<% include header %>
+<head>
+<link rel="stylesheet" type="text/css" href="/css/play.css"/> 
+</head>
+<body>
+    <form method="POST" action="/Add_play">
+        <div>
+            <button type="submit" class="btn btn-success x"> <span class="glyphicon glyphicon-plus "></span> Add </button>
+          </div>
+          <table id="rent">
+                <tr>
+                  <th>Play Name</th>
+                  <th>Play Start Date</th>
+                  <th>Play End Date</th>
+                </tr>
+          <% for(let i = 0; i < listOfPlays.length; i++) { %>
+          <tr>
+            <td><%= listOfPlays[i].playname %></td>
+            <td><%= listOfPlays[i].PlayStartDate %></td>
+            <td><%= listOfPlays[i].PlayEndDate %></td>
+          </tr>
+          <% } %>
+        </table> 
+        </form>
+          </body>

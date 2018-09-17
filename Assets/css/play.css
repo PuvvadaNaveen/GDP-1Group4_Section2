@@ -1,0 +1,26 @@
+.x{
+    float: right;
+    margin-right: 10px;
+}
+#rent {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#rent td, #rent th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#rent  tr:nth-child(even){background-color: #f2f2f2;}
+
+#rent tr:hover {background-color: #ddd;}
+
+#rent  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(46, 169, 226);
+    color: white;
+}
