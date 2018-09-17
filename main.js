@@ -28,6 +28,7 @@ var users = require('./routes/users');
 var forms = require('./Controller/FormController')
 // var find = require('./Controller/FindController')
 var rentals = require('./Controller/RentalController')
+var measures= require('./Controller/MeasureController')
 var plays = require('./Controller/PlayController')
 // Init App
 var app = express();
@@ -95,6 +96,7 @@ app.use('/users', users);
 app.use('/FormController', forms);
 // app.use('/FindController', find);
 app.use('/RentalController', rentals);
+app.use('/MeasureController', measures);
 app.use('/PlayController', plays);
 
 

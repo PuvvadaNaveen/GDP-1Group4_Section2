@@ -49,23 +49,84 @@
               </ul>
               <div class="tab-content">
                 <br>
-                  <% include upper %>
-                  <% include lower %>
-                  <div id="other" class="tab-pane fade">
-                      <form action="#" class="form-group">
-                          Dominant Hand:&nbsp;&nbsp;
-                          <input class="form-control" type="text" name="dominanthand"><br>
-                          Other over Body Padding:&nbsp;&nbsp;
-                          <input class="form-control" type="text" name="otheroverbodypadding" placeholder="Enter measurement value">
-
-                          <br><br>
-                          <div class="h">
-                          <input class="btn btn-primary" type="submit" value="submit">
-                        </div>
-                  </div>
+                <div id="upper" class="tab-pane fade in active">
+                  <form method="post" action="/MeasureController/measure1">
+                    <div class="form-group">
+                  Head Circumference:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="headcicumference" placeholder="Enter head Circumference"><br>
+                  Neck:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="neck" placeholder="Enter neck measurement value"><br>
+                  Armcycle:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="armcycle" placeholder="Enter armcycle measurement value"><br>
+                  Centre Back to Wrist:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="centrebacktowrist" placeholder="Enter measurement value"><br>
+                  Chest Relaxed:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="chestrelaxed" placeholder="Enter measurement value"><br>
+                  Chest Expanded:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="chestexpanded" placeholder="Enter measurement value"><br>
+                  Chest over compression garnment:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="chestovercompressiongarnment" placeholder="Enter measurement value"><br>
+                  Chest over Body Padding:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="chestoverbodypadding" placeholder="Enter measurement value">                      
+                  <br><br>
+                  <div class="h">
+                      <input class="btn btn-primary" type="submit" value="submit" data-toggle="tab" href="#lower">
+                    </div>
                 </div>
             </div>
+            <div id="lower" class="tab-pane fade">                        
+                  <div class="form-group">
+                  Waist Relaxed:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="waistrelaxed" placeholder="Enter measurement value"><br>
+                  Waist Expanded:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="waistexpande" placeholder="Enter measurement value"><br>
+                  Full Hip:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="fullhip" placeholder="Enter measurement value"><br>
+                  Half Girth:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="halfgirth" placeholder="Enter measurement value"><br>
+                  Full Girth:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="fullgirth" placeholder="Enter measurement value"><br>
+                  Inseam to Ankle:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="inseamtoankle" placeholder="Enter measurement value"><br>
+                  Inseam to floor:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="inseamtofloor" placeholder="Enter measurement value"><br>
+                  Waist over Compression Garment&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="waistovercompressiongarnment" placeholder="Enter measurement value"><br>
+                  Hip over Compression Garment:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="hipovercompressiongarnment" placeholder="Enter measurement value"><br>
+                  Waist over Body Padding:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="waistoverbodypadding" placeholder="Enter measurement value"><br>
+                  Hip over Body Padding:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="hipoverbodypadding" placeholder="Enter measurement value"><br>
+                  Shoes:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="shoes" placeholder="Enter shoe size">                    
+                  <br><br>
+                  <div class="h">
+                          <input class="btn btn-primary" type="submit" data-toggle="tab" href="#other">
+                        </div>
+                      </div>      
+                    </div>
+            <div id="other" class="tab-pane fade">
+            
+              <div class="form-group">
+                Dominant Hand:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="dominanthand" placeholder="Enter measurement value"><br>
+                Other over Body Padding:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="otheroverbodypadding" placeholder="Enter measurement value">
+
+                <br><br>
+                <div class="h">
+                   
+                <input class="btn btn-primary" type="submit" value="submit">
+              </div>
+            </div>
+            </div>
+            
+            </form>
+        </div>
       </div>
+  </div>
+</div>  
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
