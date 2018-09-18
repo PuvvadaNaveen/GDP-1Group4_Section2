@@ -9,7 +9,6 @@ const db = mongoose.connection;
 router.get('/', ensureAuthenticated, function(req, res){
     db.collection('forms').find().toArray(function(err, result){
         if (err) throw err;
-        console.log(result);
         res.render('Homepage.ejs',{listOfPerformers : result});
         //   return res.json(result);
     });
@@ -27,9 +26,7 @@ function ensureAuthenticated(req, res, next){
 router.get('/home', function(request, response){
     db.collection('forms').find().toArray(function(err, result){
         if (err) throw err;
-        console.log(result);
         response.render('Homepage.ejs',{listOfPerformers : result});
-        //   return res.json(result);
     });
    //  return res.redirect('/basic')
 	// res.render('Homepage.ejs');

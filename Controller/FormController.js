@@ -103,7 +103,7 @@ api.post('/save',  function (req, res) {
    api.post('/getByName',  function (req, res) {
       var query = {firstname : req.body.firstname};
 
-      db.collection('forms').findOne(query, function(err, result){
+      db.collection('forms').find(query, function(err, result){
           if (err) throw err;
         //   console.log(result);
           return res.json(result);
@@ -114,10 +114,11 @@ api.post('/save',  function (req, res) {
        console.log(req.body.playname);
     var query = {playname : req.body.playname};
 
-    db.collection('forms').findOne(query, function(err, result){
+    db.collection('forms').find(query).toArray(function(err, result){
         if (err) throw err;
-      //   console.log(result);
-        return res.json(result);
+         console.log(result);
+        //  return res.json(result);
+         res.render('Homepage.ejs',{listOfPerformers : result});
     });
   })
 //get by play date
@@ -150,4 +151,10 @@ api.post('/getByDate',  function (req, res) {
  });
 })
   module.exports = api;
+
+  
+  // db.collection('rentals').find().toArray(function(err,result){
+  //   if (err) throw err;
+  //   console.log(result);
+  //   response.render('rental_list.ejs',{list : result});
   
