@@ -28,7 +28,8 @@ var users = require('./routes/users');
 var forms = require('./Controller/FormController')
 // var find = require('./Controller/FindController')
 var rentals = require('./Controller/RentalController')
-
+var measures= require('./Controller/MeasureController')
+var plays = require('./Controller/PlayController')
 // Init App
 var app = express();
 
@@ -81,6 +82,7 @@ app.use(flash());
 // Global Vars
 app.use(function (req, res, next) {
   res.locals.success_msg = req.flash('success_msg');
+  res.locals.success = req.flash('success');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
   res.locals.user = req.user || null;
@@ -94,6 +96,8 @@ app.use('/users', users);
 app.use('/FormController', forms);
 // app.use('/FindController', find);
 app.use('/RentalController', rentals);
+app.use('/MeasureController', measures);
+app.use('/PlayController', plays);
 
 
 // mail for access code

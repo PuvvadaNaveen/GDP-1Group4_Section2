@@ -68,6 +68,16 @@ router.get('/Signup_Login', (request, response, next) => {
 router.get('/form', (request, response, next) => {
     response.render('form.ejs')
 })
+router.get('/plays', (request, response, next) => {
+    db.collection('plays').find().toArray(function(err,result){
+        if (err) throw err;
+        console.log(result);
+    response.render('plays.ejs',{listOfPlays: result});
+})
+})
+router.post('/Add_play', (request, response, next) => {
+    response.render('Add_play.ejs')
+})
 }
 
 module.exports = router;
