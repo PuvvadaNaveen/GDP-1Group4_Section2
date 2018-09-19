@@ -19,6 +19,7 @@
           <th>Measurements</th>
           <th>Date</th>
           <th>Employee Assigned</th>
+          <th>Notes</th>
         </tr>
       </thead>
       <tbody>
@@ -28,6 +29,7 @@
           <td><%= listOfPerformers[i].lastname %></td>
           <td><%= listOfPerformers[i].playname %></td>
           <td><%= listOfPerformers[i].charactername %></td>
+          
           <td>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Click here</button>
 <div id="myModal" class="modal fade" role="dialog">
@@ -172,6 +174,7 @@
               <option>Siva</option>
             </select>
           </td>
+          <td><textarea></textarea></td>
         </tr>
         <% } %>
       </tbody>
