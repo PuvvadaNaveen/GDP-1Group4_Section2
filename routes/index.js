@@ -76,6 +76,9 @@ router.get('/plays', (request, response, next) => {
 router.post('/Add_play', (request, response, next) => {
     response.render('Add_play.ejs')
 })
+router.get('/contact', (request, response, next) => {
+    response.render('contact.ejs')
+})
 }
 
 module.exports = router;

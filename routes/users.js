@@ -169,6 +169,7 @@ router.post('/resetpassword', function(req, res, next) {
 		  text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
 			'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
 			'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+			'The link expires in 1 hour. \n' +
 			'If you did not request this, please ignore this email and your password will remain unchanged.\n'
 		};
 		smtpTransport.sendMail(mailOptions, function(err) {
@@ -185,14 +186,20 @@ router.post('/resetpassword', function(req, res, next) {
 
   router.get('/reset/:token', function(req, res) {
 	console.log('akhil');
-	User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
-	  if (!user) {
+	if(User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+		if (!user) {
 		req.flash('error', 'Password reset token is invalid or has expired.');
 		return res.redirect('/users/resetpassword');
 	  }
 	  res.render('reset.ejs', {token: req.params.token});
 	//   console.log('hi');
-	});
+	})){
+		
+	}
+	else{
+		req.flash('error', 'Password reset token is invalid or has expired.');
+		return res.redirect('/users/resetpassword');
+	}
   });
 
   router.post('/reset/:token', function(req, res) {
