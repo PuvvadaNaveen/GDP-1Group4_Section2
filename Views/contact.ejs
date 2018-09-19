@@ -1,27 +1,55 @@
 <% include header %>
 <head>
-    
+     
+<script>
+// Initialize and add the map
+function initMap() {
+// The location of Uluru
+var uluru = { lat: 40.352089, lng: -94.882797 };
+// The map, centered at Uluru
+var map = new google.maps.Map(
+document.getElementById('map'), { zoom: 14, center: uluru });
+// The marker, positioned at Uluru
+var marker = new google.maps.Marker({ position: uluru, map: map });
+}
+</script> 
+ <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQGG7KYapHqWGgANwDEj7NRCwGALOAuc4&callback=initMap"> </script>
   
   <link rel ="stylesheet" 
   type="text/css" 
-  href="contact.css"  />
+  href="/css/contact.css"  />
   
   </head>
 <body>
 <div class="container">
   <h2>Contact form</h2>
 <form action="#">
+    <div id="map"></div>
+    <div class="col-25">
     First name:<br>
+    </div>
     <input type="text" name="firstname">
     <br>
+    <div class="col-25">
     Last name:<br>
+    </div>
     <input type="text" name="lastname"><br>
-    Character Name:<br>
-    <input type="text" name="charactername"><br>
+    <div class="col-25">
     Phone Number:<br>
+    </div>
     <input type="text" name="phonenumber"><br>
-    May we text you?<br>
-    <input type="radio" name="textchoice" value="yes"> Yes<br>
-    <input type="radio" name="textchoice" value="no"> No<br>
-     email Address:<br>
+    <div class="col-25">
+     Email Address:<br>
+    </div>
     <input type="text" name="email"><br>
+    <div class="col-25">
+    Question <br>
+    </div>
+    <textarea name="qs" cols="0" rows="5"></textarea>
+    
+<div class="row">
+  <input type="submit" value="Submit">
+</div>
+</form>
+</div>
+</body>
