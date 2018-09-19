@@ -30,6 +30,7 @@ var forms = require('./Controller/FormController')
 var rentals = require('./Controller/RentalController')
 var measures= require('./Controller/MeasureController')
 var plays = require('./Controller/PlayController')
+var homes = require('./Controller/HomeController')
 // Init App
 var app = express();
 
@@ -98,7 +99,7 @@ app.use('/FormController', forms);
 app.use('/RentalController', rentals);
 app.use('/MeasureController', measures);
 app.use('/PlayController', plays);
-
+app.use('/HomeController', homes);
 
 // mail for access code
 app.post("/access_mail",function(req, res){

@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var formCont = require('../Controller/FormController');
 var rentalController = require('../Controller/RentalController');
+var homeController = require('../Controller/HomeController');
 const mongoose = require('mongoose')
 const db = mongoose.connection;
 
