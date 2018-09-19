@@ -2,6 +2,7 @@ const express = require('express')
 const api = express.Router()
 const Model = require('../models/form')
 const mongoose = require('mongoose')
+const indexPage = require('../routes/index')
 const db = mongoose.connection;
 
 
@@ -103,10 +104,10 @@ api.post('/save',  function (req, res) {
    api.post('/getByName',  function (req, res) {
       var query = {firstname : req.body.firstname};
 
-      db.collection('forms').find(query, function(err, result){
+      db.collection('forms').find(query).toArray(function(err, result){
           if (err) throw err;
-        //   console.log(result);
-          return res.json(result);
+          res.render('Homepage.ejs',{listOfPerformers : result});
+          // res.redirect('Homepage.ejs',{listOfPerformers : result});
       });
     })
     // get by play name
@@ -142,7 +143,7 @@ api.post('/getByDate',  function (req, res) {
 //   query = {playdate:"/"+req.body.playdate+"/"};
 //  query = {playdate: /^"2018-09-15"/};
   query = {playdate: {"$in":[new Date(req.body.playdate)]}};
-//  console.log(query);
+  console.log(query);
 
  db.collection('forms').find(query).toArray(function(err, result){
      if (err) throw err;
@@ -151,10 +152,3 @@ api.post('/getByDate',  function (req, res) {
  });
 })
   module.exports = api;
-
-  
-  // db.collection('rentals').find().toArray(function(err,result){
-  //   if (err) throw err;
-  //   console.log(result);
-  //   response.render('rental_list.ejs',{list : result});
-  

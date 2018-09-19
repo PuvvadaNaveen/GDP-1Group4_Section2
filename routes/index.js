@@ -28,8 +28,6 @@ router.get('/home', function(request, response){
         if (err) throw err;
         response.render('Homepage.ejs',{listOfPerformers : result});
     });
-   //  return res.redirect('/basic')
-	// res.render('Homepage.ejs');
 })
 
 router.get('/find', (request, response, next) => {
