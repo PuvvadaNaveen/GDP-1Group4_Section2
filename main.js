@@ -30,7 +30,7 @@ var forms = require('./Controller/FormController')
 var rentals = require('./Controller/RentalController')
 var measures= require('./Controller/MeasureController')
 var plays = require('./Controller/PlayController')
-var homes = require('./Controller/HomeController')
+// var homes = require('./Controller/HomeController')
 // Init App
 var app = express();
 
@@ -99,7 +99,7 @@ app.use('/FormController', forms);
 app.use('/RentalController', rentals);
 app.use('/MeasureController', measures);
 app.use('/PlayController', plays);
-app.use('/HomeController', homes);
+// app.use('/HomeController', homes);
 
 // mail for access code
 app.post("/access_mail",function(req, res){
@@ -163,5 +163,5 @@ app.set('port', (process.env.PORT || 8089));
 
 app.listen(app.get('port'), function(){
   console.log('Server started on port '+app.get('port'));
-  console.log('Server is listening on port ' + app.port);
+  // console.log('Server is listening on port ' + app.port);
 });
