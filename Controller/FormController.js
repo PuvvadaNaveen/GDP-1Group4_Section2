@@ -139,16 +139,18 @@ api.post('/save',  function (req, res) {
 // })
 api.post('/getByDate',  function (req, res) {
     console.log(req.body.playdate);
- var query = {playdate : {"$gte" : new Date(req.body.playdate)}};
+    var query = {playdate : req.body.playdate};    
+//  var query = {playdate : {"$gte" : new Date(req.body.playdate)}};
 //   query = {playdate:"/"+req.body.playdate+"/"};
 //  query = {playdate: /^"2018-09-15"/};
-  query = {playdate: {"$in":[new Date(req.body.playdate)]}};
+//   query = {playdate: {"$in":[new Date(req.body.playdate)]}};
   console.log(query);
 
  db.collection('forms').find(query).toArray(function(err, result){
      if (err) throw err;
    //   console.log(result);
-     return res.json(result);
+    //  return res.json(result);
+     res.render('Homepage.ejs',{listOfPerformers : result});
  });
 })
   module.exports = api;

@@ -57,7 +57,6 @@ router.get('/rental_list', (request, response, next) => {
         if (err) throw err;
         console.log(result);
         response.render('rental_list.ejs',{list : result});
-    // response.render('rental_list.ejs')
 })
 })
 

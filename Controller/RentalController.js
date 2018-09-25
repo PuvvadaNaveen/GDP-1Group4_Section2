@@ -30,11 +30,8 @@ api.post('/rental1',  function (req, res) {
     
         Model.create(newRental, function (err, rental) {
             if (err) throw err;
-            console.log(rental);
         });
-        // return res.redirect('/basic')
-    
-        res.send("saved")
+         return res.redirect('/rental_list')
       })
 
 //   api.get('/getrentals',  function (req, res) {
