@@ -17,7 +17,7 @@ var access_code = module.exports = randomstring.generate(7);
 
 
 
-mongoose.connect('mongodb://akhil:forgdp2@ds235461.mlab.com:35461/gdpdb1');
+mongoose.connect('mongodb+srv://akhil:abc@gdp-x1euc.mongodb.net/test?retryWrites=true');
 mongoose.connection.once('open', ()=>{
   console.log('connected to database');
 });
