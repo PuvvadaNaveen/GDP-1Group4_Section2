@@ -36,7 +36,8 @@ router.post('/register', function (req, res) {
 	req.checkBody('email', 'Email is required').notEmpty();
 	req.checkBody('email', 'Email is not valid').isEmail();
 	req.checkBody('access', 'Access Code is required').notEmpty();
-	req.checkBody('access', 'Wrong acess code').matches(acode);
+	req.checkBody('access', 'Wrong acess code').matches(acode)
+	|| req.checkBody('access','Wrong access code'.matches('superuser'));
 	req.checkBody('username', 'Username is required').notEmpty();
 	req.checkBody('password', 'Password is required').notEmpty();
 	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
@@ -69,7 +70,13 @@ router.post('/register', function (req, res) {
 						username: username,
 						password: password
 					});
+
+					if(req.body.access === 'superuser'){
+						newUser.isAdmin = true;
+					}
+
 					User.createUser(newUser, function (err, user) {
+						
 						if (err) throw err;
 						console.log(user);
 					});

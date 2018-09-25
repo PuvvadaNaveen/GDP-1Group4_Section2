@@ -1,4 +1,5 @@
 <% include header %>
+
 <head>
   
  <link rel ="stylesheet" type="text/css" href="/css/Homepage.css"/> 
@@ -7,7 +8,11 @@
 
 </head>
 <body>
+    
   <div class="container">
+      <% if(user && user.isAdmin) { %>
+        <h1>You are an admin! </h1>
+        <% } %>
     <h1>Performers Details</h1><br>
     <table class="table">
       <thead>
