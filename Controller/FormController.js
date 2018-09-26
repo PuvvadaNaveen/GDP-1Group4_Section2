@@ -80,6 +80,16 @@ api.post('/save',  function (req, res) {
     //     console.log(form);
     // });  
   })
+  api.post('/edit', function(req, res){
+    var query = {firstname : "Akhil"};
+    db.collection('forms').find(query).toArray(function(err, result){
+        if (err) throw err;
+        console.log("result");
+        console.log(result);
+        res.render('form.ejs', { perf : result});
+        // res.redirect('Homepage.ejs',{listOfPerformers : result});
+    });
+  })
 // commented by shiva
 //   api.get('/getinfo',  function (req, res) {
 //      Model.find({}, function (err, form) {

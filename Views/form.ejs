@@ -13,37 +13,38 @@
     <div class="k">
 <h2>Basic information form</h2>
 <br>
-<form name ="form" method ="POST" action="/FormController/save" onsubmit="return validateMayWeTextYou()">
+<form name ="form" method ="POST" action="/FormController/save" ></form>
     <div class="form-group">
+      <% for(let i=0; i < perf.length;i++){%>        
     First name:<br>
-    <input class="form-control"  type="text" name="firstname" placeholder="Please enter your firstname" required>
+    <input class="form-control"  type="text" name="firstname" value= "<%= perf[i].firstname %>" placeholder="Please enter your firstname"  required > 
   </div>
     <div class="form-group">
     Last name:<br>
-    <input class="form-control" type="text" name="lastname" placeholder="Please enter your lastname" required>
+    <input class="form-control" type="text" name="lastname" placeholder="Please enter your lastname" required value="<%= perf[i].lastname %>">
   </div>
   <div class="form-group">
     Play name:<br>
-    <input class="form-control"  type="text" name="playname" placeholder="Please enter the play name" required>
+    <input class="form-control"  type="text" name="playname" placeholder="Please enter the play name" required value="<%= perf[i].playname %>">
   </div>
     <div class="form-group">
     Play date:<br>
-    <input class="form-control" type="date" name="playdate" placeholder="Please enter the play date" required>
+    <input class="form-control" type="date" name="playdate" placeholder="Please enter the play date" required value="<%= perf[i].playdate %>">
   </div>
   <div class="form-group">
     Character Name:<br>
-    <input class="form-control" type="text" name="charactername" placeholder="Enter your Charactername" required>
+    <input class="form-control" type="text" name="charactername" placeholder="Enter your Charactername" required value="<%= perf[i].charactername %>">
   </div>
   <div class="form-group">
     Phone Number:<br>
-    <input class="form-control" type="tel" name="phonenumber" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+    <input class="form-control" type="tel" name="phonenumber" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value="<%= perf[i].phonenumber %>">
   </div>
     May we text you?<br>
     <input id='CheckedYes' type="radio" name="textchoice" value="yes" > Yes<br>
     <input id='CheckedNo' type="radio" name="textchoice" value="no"> No<br><br>
     <div class="form-group">
     University email Address:<br>
-    <input class="form-control" type="email" name="email1" placeholder="Enter your E-MAIL" required>
+    <input class="form-control" type="email" name="email1" placeholder="Enter your E-MAIL" required value="<%= perf[i].email %>">
     </div>
     "I understand that I must check my Northwest student email DAILY as requests for fitting appointments will be sent to that email. I will respond to a fitting request as soon as possible. I understand that failing to check my university email does not excuse me from missing a fitting appointment. Missed appointments will be rescheduled at the discretion of the Costume Shop."<br>
     <input type="checkbox" name="agreement" value="iagree" required> Yes, I understand.<br><br>
@@ -52,11 +53,11 @@
     <input type="checkbox" name="dominanthand" value="left"> Left<br><br>
     <div class="form-group">
     Height:<br>
-    <input class="form-control" type="text" name="heught" placeholder="Enter height in feet" required>
+    <input class="form-control" type="text" name="heught" placeholder="Enter height in feet" required value="<%= perf[i].height %>">
     </div>
     <div class="form-group">
     Estimated Weight: <br>
-    <input class="form-control" type="number" name="estimatedweight" placeholder="Enter weight in pounds">
+    <input class="form-control" type="number" name="estimatedweight" placeholder="Enter weight in pounds" required value="<%= perf[i].estimatedweight %>">
     </div>
     Corrective Eyewear:<br>
     <input type="radio" name="eyewearchoice" value="none" > None<br>
@@ -65,9 +66,9 @@
     <input type="radio" name="eyewearchoice" value="withoutglasses"> I wear glasses but can perform without them<br><br>
     <div class="form-group">
     Hair color and length:<br>
-    <input class="form-control" type="text" name="hair" placeholder="Enter your Haircolor & Length" required><br>
+    <input class="form-control" type="text" name="hair" placeholder="Enter your Haircolor & Length" required value="<%= perf[i].hair %>"><br>
     Facial Hair: color, length, and growth time:<br>
-    <input class="form-control" type="text" name="facialhai" placeholder="Enter your Facialhair Color, Length & Growth time"required>
+    <input class="form-control" type="text" name="facialhai" placeholder="Enter your Facialhair Color, Length & Growth time"required value="<%= perf[i].facialhai %>">
     </div>
     I understand that I may not permanently change the color, length, or style of my hair between casting and performance without the express permission of both the Costume Designer and Artistic Director.<br>
     <input type="checkbox" name="hairagreement" value="iagree" required> Yes, I understand.<br><br>
@@ -76,19 +77,19 @@
     <input type="radio" name="earschoice" value="no"> No<br><br>
     <div class="form-group">
     Do you have any other piercings? How many and where?<br>
-    <input class="form-control" type="text" name="otherpiercings" placeholder="Enter details of other piercing" required><br>
+    <input class="form-control" type="text" name="otherpiercings" placeholder="Enter details of other piercing" required value="<%= perf[i].otherpiercings %>"><br>
     Do you have any tattoos?<br>
-    <input class="form-control" type="text" name="tattoos" placeholder="Enter details of tatoos" required>
+    <input class="form-control" type="text" name="tattoos" placeholder="Enter details of tatoos" required value="<%= perf[i].tattoos %>">
     </div>
     "I understand that if I have tattos I must provide my own tattoo cover makeup if asked. I understand that if I have piercings I may be asked to remove them or provide my own clear spacer during performances. I understand that I am not allowed to permanently alter my body with additional tattoos, piercings, etc. between casting and performance."<br>
     <input type="checkbox" name="tattooagreement" value="iagree" required> Yes, I understand.<br><br>
     COMMENTS ABOUT THE BODY (OR COSTUME) OF ANY PERFORMER (YOURSELF INCLUDED) WILL NOT BE TOLERATED FROM ANY PERFORMER OR MEMBER OF THE PRODUCTION STAFF.<br>
     <div class="form-group">
-    <input class="form-control" type="text" name="comments" required><br>
+    <input class="form-control" type="text" name="comments" required value="<%= perf[i].comments %>"><br>
     Shoes: <br>
-    <input class="form-control" type="text" name="shoes" required><br>
+    <input class="form-control" type="text" name="shoes" required value=<%= perf[i].shoes %>><br>
     Dance Shoes: Size and Type<br>
-    <input class="form-control" type="text" name="danceshoes" required>
+    <input class="form-control" type="text" name="danceshoes" required value=<%= perf[i].danceshoes %>>
     </div>
     Shirt <br>
     <input type="checkbox" name="shirtsize" value="xs" > XS<br>
@@ -101,11 +102,11 @@
     <input type="checkbox" name="shirtsize" value="other"> Other<br><br>
     <div class="form-group">
     Pants <br>
-    <input class="form-control" type="text" name="pants"><br> -->
+    <input class="form-control" type="text" name="pants" value="<%= perf[i].pants %>"><br>
     <!-- Bra size<br>
     <input class="form-control" type="text" name="brasize"><br> -->
     Ring<br>
-    <input class="form-control" type="text" name="ring">
+    <input class="form-control" type="text" name="ring" value="<%= perf[i].ring %>">
     </div>
     Are you allergic to any of the following?<br>
     <input type="checkbox" name="allergy" value="Fabric/fiber" > Fabric/fiber<br>
@@ -117,7 +118,7 @@
     <input type="checkbox" name="allergy" value="Other"> Other: <div class="form-group"><input class="form-control" type="text" name="other"></div>
     If you have allergies, please give specific details here.<br>
     <div class="form-group">
-    <input class="form-control" type="text" name="allergies"></div><br>
+    <input class="form-control" type="text" name="allergies" value="<%= perf[i].allergies %>"></div><br>
     <br>
     <h2>Physical Limitations</h2>
     <p>If you have any illness, injury, prosthesis, or physical limitation that might affect the comfort or fit of your costume, please discuss this privately with the costume designer. Some examples:</p>
@@ -134,8 +135,10 @@
         <li>need sweatguards</li>
         <li>specific shoe style needed</li>
     </ul>
+    <%}%>
     <p>Please only disclose as much information as you are comfortable with and is relevant to the fit and comfort of your costume. This will insure that the costume designer can make you look your best!</p>
     <div class="b"><input type="submit" value="Submit" class="btn btn-primary"></div>
      </form>
+     
     </div>
 </body>
