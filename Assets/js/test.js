@@ -20,3 +20,21 @@ function validateMayWeTextYou(){
     var checkedYes = document.getElementById()
 
 }
+function removeRow()
+{
+var inc = document.getElementById('pull');
+var table = document.getElementById('pull');
+for(var i = 1; i < table.rows.length; i++)
+{
+    table.rows[i].cells[11].onclick = function()
+    {
+        var con = confirm("Do you want to delete this performer information");
+        if(con === true)
+        {
+            inc = this.parentElement.rowIndex;
+            table.deleteRow(inc);
+        }   
+    };  
+}
+ 
+}
