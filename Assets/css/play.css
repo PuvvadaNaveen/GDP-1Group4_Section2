@@ -1,3 +1,11 @@
+.body{
+    background-image: url("download.jpg");
+    background-size:100%;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    font-family: Georgia, serif;
+    background-attachment: fixed;
+}
 .x{
     float: right;
     margin-right: 10px;

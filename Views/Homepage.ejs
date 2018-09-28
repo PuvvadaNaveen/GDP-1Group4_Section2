@@ -13,7 +13,7 @@
         <h1>You are an admin! </h1>
         <% } %>
     <h1>Performers Details</h1><br>
-    <table class="table">
+    <table class="table" id="pull">
       <thead>
         <tr>
           <th>Firstname</th>
@@ -265,6 +265,12 @@
             </select>
           </td>
           <td><textarea></textarea></td>
+          <td>
+            <form action="/FormController/edit" method="POST">
+            <button class="btn btn-primary" type="submit">Edit Form</button>
+          </form>
+          </td>
+          <td><button onclick="removeRow()">Delete</button></td>
         </tr>
         <% } %>
       </tbody>
