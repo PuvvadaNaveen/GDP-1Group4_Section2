@@ -6,7 +6,14 @@ const db = mongoose.connection;
 
 
 api.post('/measure1',  function (req, res) {
-    console.log("ssss")
+    console.log("ssss");
+    console.log(req.body.performerId);
+    // var performerId = re.body
+    var performerId = req.body.performerId;
+    var perfId = req.body.perfId;
+    console.log(req.body.perfId);
+    console.log(req.body.headcicumference);
+
     var headcicumference = req.body.headcicumference;
     var neck = req.body.neck;
     var armcycle = req.body.armcycle;
@@ -31,6 +38,8 @@ api.post('/measure1',  function (req, res) {
     var otheroverbodypadding =req.body.otheroverbodypadding;
 
     var newMeasure = new Model({
+        performerId: performerId,
+        perfId : perfId,
         headcicumference: headcicumference,
         neck: neck,
         armcycle: armcycle,

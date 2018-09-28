@@ -2,20 +2,69 @@ var express = require('express');
 var router = express.Router();
 var formCont = require('../Controller/FormController');
 var rentalController = require('../Controller/RentalController');
-
+var model = require('../models/measure')
 const mongoose = require('mongoose')
 const db = mongoose.connection;
 
 // Get Homepage
 router.get('/', ensureAuthenticated, function(req, res){
+    // MeasureSchema.statics.getSkeleton = function () {
+    //     var data = {};
+    //     Object.keys(MeasureSchema.paths).forEach(function (path) {
+    //       return path !== '_id' ? data[path] = "" : false;
+    //     });
+    //     return data;
+    //     }
+    //     console.log(getSkeleton());
+    let emptyModel = [
+        {
+            performerId: "",
+            perfId:"",
+            headcicumference: "",
+            neck: "",
+            armcycle: "",
+            centrebacktowrist: "",
+            chestrelaxed: "",
+            chestexpanded: "",
+            chestovercompressiongarnment: "",
+          chestoverbodypadding: "",
+          waistrelaxed: "",
+          waistexpande : "",
+          fullhip:"",
+            halfgirth: "",
+            fullgirth: "",
+            inseamtoankle: "",
+            inseamtofloor: "",
+            waistovercompressiongarnment: "",
+            hipovercompressiongarnment:"",
+            waistoverbodypadding: "",
+            hipoverbodypadding: "",
+            shoes:"",
+            dominanthand: "",
+            otheroverbodypadding: "",
+        }
+    ]
+    
     db.collection('forms').find().toArray(function(err, result){
         if (err) throw err;
-        res.render('Homepage.ejs',{listOfPerformers : result});
-        //   return res.json(result);
-    });
-   //  return res.redirect('/basic')
-	// res.render('Homepage.ejs');
+    
+    db.collection('measures').find().toArray(function(err, result1){
+        if (err) throw err;
+    if(result1.length ==0){
+        result1 = emptyModel;
+    }
+
+
+        console.log("result1");
+console.log(result1);
+    res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel});
+        
+        //   return res.json(result);    
 });
+});
+});
+
+// function getMeasures()
 
 function ensureAuthenticated(req, res, next){
 	if(req.isAuthenticated()){
