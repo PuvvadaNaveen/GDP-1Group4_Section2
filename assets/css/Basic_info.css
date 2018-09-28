@@ -1,11 +1,10 @@
 .body{
-    /* background-image: url("measure.jpg"); */
-    background-size:50%;
+    background-image: url("download.jpg");
+    background-size:100%;
     background-repeat: no-repeat;
-    background-position: right top; 
-    font-family: Georgia, serif;
     font-size: 16px;
-   
+    font-family: Georgia, serif;
+    background-attachment: fixed;
 }
 
 .form-group{
