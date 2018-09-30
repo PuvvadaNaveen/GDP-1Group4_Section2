@@ -8,8 +8,10 @@
 
 </head>
 <body>
-    
-  <div class="container-fluid">
+  <div class="container">
+      <% if(user && user.isAdmin) { %>
+        <h1>You are an admin! </h1>
+        <% } %>
     <h1>Performers Details</h1><br>
     <table class="table" id="pull">
       <thead>
@@ -28,12 +30,13 @@
         </tr>
       </thead>
       <tbody>
-          <% for(let i = 0; i < listOfPerformers.length; i++) { %>
+          <% for( i = 0; i < listOfPerformers.length; i++) { %>
         <tr>
           <td><%= listOfPerformers[i].firstname %></td>
           <td><%= listOfPerformers[i].lastname %></td>
           <td><%= listOfPerformers[i].playname %></td>
           <td><%= listOfPerformers[i].charactername %></td>
+          
          
 
           <td>
@@ -56,7 +59,7 @@
                           <br>
                           <br>
                           <button onclick="myFunction1()" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
-                       
+                          <%= i %>
                           
                     </div>
                   </div>
@@ -132,10 +135,19 @@
                 <div id="upper" class="tab-pane fade in active">
                   <form method="post" action="/MeasureController/measure1">
                     <div class="form-group">
+                        <% for(let j = 0; j < measures.length; j++) { %>
+                            <%if(listOfPerformers[i]._id == measures[j].perfId){%>
+                              <%Measurements[0] = measures[j]%>
+                              <%break%>
+                            <%}%>
+                        <% } %>
+                  <input  type="text" name="perfId" hidden value="<%= listOfPerformers[i]._id %>">  
                   Head Circumference:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="headcicumference" placeholder="Enter head Circumference"><br>
+                  <input class="form-control" type="text" name="headcicumference" placeholder="Enter head Circumference" value="<%=Measurements[0].headcicumference%>"><br>
+                  <!-- <input id="performerId" name="performerId"> -->
+                  
                   Neck:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="neck" placeholder="Enter neck measurement value"><br>
+                  <input class="form-control" type="text" name="neck" placeholder="Enter neck measurement value" value=""><br>
                   Armcycle:&nbsp;&nbsp;
                   <input class="form-control" type="text" name="armcycle" placeholder="Enter armcycle measurement value"><br>
                   Centre Back to Wrist:&nbsp;&nbsp;
@@ -193,7 +205,7 @@
                 <input class="form-control" type="text" name="dominanthand" placeholder="Enter measurement value"><br>
                 Other over Body Padding:&nbsp;&nbsp;
                 <input class="form-control" type="text" name="otheroverbodypadding" placeholder="Enter measurement value">
-
+                
                 <br><br>
                 <div class="h">
                    
@@ -201,7 +213,6 @@
               </div>
             </div>
             </div>
-            
             </form>
         </div>
       </div>

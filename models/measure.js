@@ -1,8 +1,14 @@
 var mongoose = require('mongoose');
 
 var MeasureSchema = mongoose.Schema({
+	performerId:{
+		type: String
+	},
+	perfId:{
+		type: String
+	},
 	headcicumference: {
-        type: Number
+    type: Number
 	},
 	neck: {
 		type: Number
