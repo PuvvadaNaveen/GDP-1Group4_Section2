@@ -10,7 +10,7 @@
     float: right;
     margin-right: 10px;
 }
-#rent {
+/* #rent {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
@@ -31,4 +31,20 @@
     text-align: left;
     background-color: rgb(46, 169, 226);
     color: white;
+} */
+table {
+    border-collapse: collapse;
+    width: 80%;
+    float: center;
 }
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {background-color:rgb(245, 239, 239);}
+    h2{
+        text-align: center;
+        
+    }

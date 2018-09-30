@@ -2,16 +2,16 @@
 
     
      
-    <link rel ="stylesheet" type="text/css" href="/css/Rentallist.css"/> 
-   
+    <link rel ="stylesheet" type="text/css" href="/css/Rentallist.css"/>
+    <!-- <link rel ="stylesheet" type="text/css"href="https://www.w3schools.com/w3css/4/w3.css"/>  -->
+  
   
     <body>
-      <div>
-          <button type = "button" class="btn btn-success  x" onclick="window.print()">
-              <span class="glyphicon glyphicon-print "></span> Print 
-           </button>
-        </div> 
-        <table id="rent">
+     <h2> Rental list</h2>
+     <br>
+     <br>
+        <div class="w3-container">
+        <table class="w3-table-all w3-card-4"id="rent"  align="center">
           <tr>
             <th>Name</th>
             <th>Rented Item</th>
@@ -29,3 +29,9 @@
     </tr>
     <% } %>
   </table>
+  <div>
+    <button type = "button" class="btn btn-success  x" onclick="window.print()">
+        <span class="glyphicon glyphicon-print "></span> Print 
+     </button>
+  </div> 
+</div>
