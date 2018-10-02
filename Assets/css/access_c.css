@@ -6,6 +6,24 @@
     font-family: Georgia, serif;
     background-attachment: fixed;
 }
+#abc{
+    margin-left:400px;
+    margin-top:100px;
+}
+#xyz{
+    margin-left:625px;
+    margin-top:25px;
+    
+}
+
+label {
+    display: block;
+  }
+  
+  input{
+    display:inline;
+    }
+
 .form-group{
     
     margin-right: 590px;
@@ -15,4 +33,16 @@
   }
   .k{
       margin-left: 80px;
+  }
+  img {
+    width:80%;
+     height: auto;
+     margin-left:100px;
+     
+   }
+   #mapy{
+    margin-left: 50px;
+  }
+  #mn{
+      margin-left:380px;
   }
