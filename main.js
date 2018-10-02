@@ -14,7 +14,7 @@ var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
 var randomstring = require('randomstring');
 var access_code = module.exports = randomstring.generate(7);
-
+global.globalString=(access_code)
 
 
 mongoose.connect('mongodb+srv://akhil:abc@gdp-x1euc.mongodb.net/test?retryWrites=true');

@@ -3,13 +3,12 @@ var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var flash    = require('connect-flash');
-var acode =  require('../main').access_code;
 var async = require('async');
 var nodemailer = require('nodemailer');
 var crypto = require('crypto');
 
 var User = require('../models/user');
-
+var acode = global.globalString
 // Register
 router.get('/register', function (req, res) {
 	res.render('register');
@@ -36,12 +35,12 @@ router.post('/register', function (req, res) {
 	req.checkBody('email', 'Email is required').notEmpty();
 	req.checkBody('email', 'Email is not valid').isEmail();
 	req.checkBody('access', 'Access Code is required').notEmpty();
-	req.checkBody('access', 'Wrong acess code').matches(acode)
-	|| req.checkBody('access','Wrong access code'.matches('superuser'));
+	req.checkBody('access', 'Wrong acess code').equals(acode);
 	req.checkBody('username', 'Username is required').notEmpty();
 	req.checkBody('password', 'Password is required').notEmpty();
 	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
-
+console.log(access);
+console.log(acode);
 	var errors = req.validationErrors();
 
 	if (errors) {
@@ -71,9 +70,6 @@ router.post('/register', function (req, res) {
 						password: password
 					});
 
-					if(req.body.access === 'superuser'){
-						newUser.isAdmin = true;
-					}
 
 					User.createUser(newUser, function (err, user) {
 						
