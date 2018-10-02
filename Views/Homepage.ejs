@@ -13,8 +13,8 @@
     <table class="table" id="pull">
       <thead>
         <tr>
-          <th>Firstname</th>
-          <th>Lastname</th>
+          <th>First Name</th>
+          <th>Last Name</th>
           <th>Play</th>
           <th>Character Name</th>
           <th>Clothing Item</th>
@@ -22,8 +22,11 @@
 
           <th>Measurements</th>
           <th>Date</th>
+          <% if(user && user.isAdmin) { %>
           <th>Employee Assigned</th>
+          <% } %>
           <th>Notes</th>
+          
         </tr>
       </thead>
       <tbody>
@@ -223,7 +226,7 @@
 </div>
           </td>
           <td><%= listOfPerformers[i].playdate %></td>
-          
+          <% if(user && user.isAdmin) { %>
           <td>
             <!-- <button id="selectEmployee" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">Select Employee</button>
             <div id="myModal1" class="modal fade" role="dialog">
@@ -260,13 +263,21 @@
               <option>Siva</option>
             </select>
           </td>
+          <% } %>
+          <% if(!user.isAdmin){ %>
+            <td><textarea readonly></textarea></td>
+            <% } %>
+          
+          <% if(user && user.isAdmin) { %>
           <td><textarea></textarea></td>
+          
           <td>
             <form action="/FormController/edit" method="POST">
-            <button class="btn btn-primary" type="submit">Edit Form</button>
+            <button class="btn btn-primary" type="submit">Basic Form</button>
           </form>
           </td>
           <td><button onclick="removeRow()">Delete</button></td>
+          <% } %>
         </tr>
         <% } %>
       </tbody>
