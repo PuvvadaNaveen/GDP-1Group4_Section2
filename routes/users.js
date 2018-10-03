@@ -129,7 +129,7 @@ router.get('/logout', function (req, res) {
 
 //Forgot Password
 router.get('/resetpassword', function (req, res) {
-	res.render('password.ejs');
+	res.render('password.handlebars');
 });
 
 
