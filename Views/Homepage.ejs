@@ -40,16 +40,17 @@
          
 
           <td>
-              <button id="selectItem" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">Choose item</button>
-              <div id="myModal2" class="modal fade" role="dialog">
+              <button id="selectItem<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2<%= listOfPerformers[i]._id %>">Choose item </button>
+              <div id="myModal2<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                   <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header">                 
+                                             
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      
+                      <h4 class="modal-title">Choose Clothing Item</h4>
                     </div>
                     <div class="modal-body">
-                        <select id="mySelect1" size="4">
+                        <select id="mySelect1<%= listOfPerformers[i]._id %>" size="4">
                             <option >Tunic</option>
                             <option  >Skirt</option>
                             <option >Suit</option>
@@ -58,9 +59,7 @@
                           </select>
                           <br>
                           <br>
-                          <button onclick="myFunction1()" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
-                        <%= i %>
-                          
+                          <button onclick="myFunction1('<%=listOfPerformers[i]._id%>')" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>   
                     </div>
                   </div>
               
@@ -276,8 +275,9 @@
             <button class="btn btn-primary" type="submit">Basic Form</button>
           </form>
           </td>
-          <td><button onclick="removeRow()">Delete</button></td>
+          <td><button onclick="removeRow()">Delete</button> <%=i%></td>
           <% } %>
+          
         </tr>
         <% } %>
       </tbody>

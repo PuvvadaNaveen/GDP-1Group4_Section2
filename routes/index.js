@@ -53,10 +53,10 @@ router.get('/', ensureAuthenticated, function(req, res){
     if(result1.length ==0){
         result1 = emptyModel;
     }
-
-
-        console.log("result1");
-console.log(result1);
+// console.log("ssssssss");
+// console.log(result);
+// console.log("ssssssss");
+// console.log(result1);
     res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel});
         
         //   return res.json(result);    

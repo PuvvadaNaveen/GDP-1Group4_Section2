@@ -3,9 +3,9 @@ function myFunction() {
     document.getElementById("selectEmployee").innerHTML = x;
 }
     // document.getElementById("myModal1")
-    function myFunction1(){
-    var y = document.getElementById("mySelect1").value;
-    document.getElementById("selectItem").innerHTML = y;
+    function myFunction1(idd){
+    var y = document.getElementById("mySelect1"+idd).value;
+    document.getElementById("selectItem"+idd).innerHTML = y;
     }
     function myFunction2(){
         
