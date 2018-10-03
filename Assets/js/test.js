@@ -7,10 +7,10 @@ function myFunction(id1) {
     var y = document.getElementById("mySelect1"+idd).value;
     document.getElementById("selectItem"+idd).innerHTML = y;
     }
-    function myFunction2(){
+    function myFunction2(id3){
         
-    var z = document.getElementById("mySelect2").value;
-    document.getElementById("selectColor").innerHTML = z;
+    var z = document.getElementById("mySelect2"+id3).value;
+    document.getElementById("selectColor"+id3).innerHTML = z;
 }
 
 function emailSent(){

@@ -68,15 +68,15 @@
             </td>
 
           <td>
-              <button id="selectColor" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">Choose color</button>
-              <div id="myModal3" class="modal fade" role="dialog">
+              <button id="selectColor<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3<%= listOfPerformers[i]._id %>">Choose color</button>
+              <div id="myModal3<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" >&times;</button>
                      </div>
                     <div class="modal-body">
-                        <select id="mySelect2" size="5">
+                        <select id="mySelect2<%= listOfPerformers[i]._id %>" size="5">
                             <option>black</option>
                             <option>white</option>
                             <option>cream</option>
@@ -100,7 +100,7 @@
                           </select>
                           <br>
                           <br>
-                          <button onclick="myFunction2()" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                          <button onclick="myFunction2('<%= listOfPerformers[i]._id %>')" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
                        
                           
                     </div>
