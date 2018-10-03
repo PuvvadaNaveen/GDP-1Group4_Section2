@@ -1,17 +1,18 @@
-function myFunction() {
-    var x = document.getElementById("mySelect").value;
-    document.getElementById("selectEmployee").innerHTML = x;
+function myFunction(id1) {
+    var x = document.getElementById("mySelect"+id1).value;
+    document.getElementById("selectEmployee"+id1).innerHTML = x;
 }
     // document.getElementById("myModal1")
     function myFunction1(idd){
     var y = document.getElementById("mySelect1"+idd).value;
     document.getElementById("selectItem"+idd).innerHTML = y;
     }
-    function myFunction2(){
+    function myFunction2(id3){
         
-    var z = document.getElementById("mySelect2").value;
-    document.getElementById("selectColor").innerHTML = z;
+    var z = document.getElementById("mySelect2"+id3).value;
+    document.getElementById("selectColor"+id3).innerHTML = z;
 }
+
 function emailSent(){
     window.alert("Email sent");
 }
