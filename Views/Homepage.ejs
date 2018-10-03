@@ -31,6 +31,7 @@
       </thead>
       <tbody>
         <% var mes = []%>
+        <% var updateVairable = ""%>
           <% for( i = 0; i < listOfPerformers.length; i++) { %>
         <tr>
           <td><%= listOfPerformers[i].firstname %></td>
@@ -167,7 +168,7 @@
                   <input class="form-control" type="text" name="chestoverbodypadding" placeholder="Enter measurement value">                      
                   <br><br>
                   <div class="h">
-                      <input class="btn btn-primary" type="submit" value="submit" data-toggle="tab" href="#lower<%= listOfPerformers[i]._id %>">
+                      <input class="btn btn-primary" type="submit" value="Next" data-toggle="tab" href="#lower<%= listOfPerformers[i]._id %>">
                     </div>
                 </div>
             </div>
@@ -199,7 +200,7 @@
                   <input class="form-control" type="text" name="shoes" placeholder="Enter shoe size">                    
                   <br><br>
                   <div class="h">
-                          <input class="btn btn-primary" type="submit" data-toggle="tab" href="#other<%= listOfPerformers[i]._id %>">
+                          <input class="btn btn-primary" type="submit" value="Next" data-toggle="tab" href="#other<%= listOfPerformers[i]._id %>">
                         </div>
                       </div>      
                     </div>
@@ -213,8 +214,12 @@
                 
                 <br><br>
                 <div class="h">
-                   
-                <input class="btn btn-primary" type="submit" value="submit">
+                  <%if(mes[i].headcicumference == null){%>
+                    <input class="btn btn-primary" type="submit" value="Submit">
+                  <%}%>
+                  <%if(mes[i].headcicumference != null){%>
+                    <input class="btn btn-primary" type="submit" value="Update">
+                  <%}%>
               </div>
             </div>
             </div>

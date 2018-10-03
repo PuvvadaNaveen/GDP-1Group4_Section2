@@ -1,3 +1,6 @@
+const mongoose = require('mongoose')
+const db = mongoose.connection;
+
 function myFunction(id1) {
     var x = document.getElementById("mySelect"+id1).value;
     document.getElementById("selectEmployee"+id1).innerHTML = x;
@@ -39,3 +42,7 @@ for(var i = 1; i < table.rows.length; i++)
 }
  
 }
+// function deletePerformer(idd){
+//     query {}
+//     db.
+// }
