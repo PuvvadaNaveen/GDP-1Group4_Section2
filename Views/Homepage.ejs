@@ -30,6 +30,7 @@
         </tr>
       </thead>
       <tbody>
+        <% var mes = []%>
           <% for( i = 0; i < listOfPerformers.length; i++) { %>
         <tr>
           <td><%= listOfPerformers[i].firstname %></td>
@@ -111,8 +112,8 @@
             </td>
            
           <td>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Click here</button>
-<div id="myModal" class="modal fade" role="dialog">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<%= listOfPerformers[i]._id %>">Click here</button>
+<div id="myModal<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -124,28 +125,34 @@
       <div class="modal-body">
           <div class="container">
               <ul class="nav nav-pills">
-                <li><a data-toggle="tab" href="#upper">Upper</a></li>
-                <li><a data-toggle="tab" href="#lower">Lower</a></li>
-                <li><a data-toggle="tab" href="#other">Other</a></li>
+                <li><a data-toggle="tab" href="#upper<%= listOfPerformers[i]._id %>">Upper</a></li>
+                <li><a data-toggle="tab" href="#lower<%= listOfPerformers[i]._id %>">Lower</a></li>
+                <li><a data-toggle="tab" href="#other<%= listOfPerformers[i]._id %>">Other</a></li>
               </ul>
               <div class="tab-content">
                 <br>
-                <div id="upper" class="tab-pane fade in active">
+                <div id="upper<%= listOfPerformers[i]._id %>" class="tab-pane fade in active">
                   <form method="post" action="/MeasureController/measure1">
                     <div class="form-group">
+                      <% if(measures.length ==0){%>
+                            mes[i] = Measurements
+                      <%}%>
                         <% for(let j = 0; j < measures.length; j++) { %>
                             <%if(listOfPerformers[i]._id == measures[j].perfId){%>
-                              <%Measurements[0] = measures[j]%>
+                              <%mes[i] = measures[j]%>
                               <%break%>
                             <%}%>
                         <% } %>
+                        <% if (mes[i] == null){%>
+                          <%mes[i] = Measurements%>
+                        <%}%>
                   <input  type="text" name="perfId" hidden value="<%= listOfPerformers[i]._id %>">  
                   Head Circumference:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="headcicumference" placeholder="Enter head Circumference" value="<%=Measurements[0].headcicumference%>"><br>
+                  <input class="form-control" type="text" name="headcicumference" placeholder="Enter head Circumference" value="<%=mes[i].headcicumference%>"><br>
                   <!-- <input id="performerId" name="performerId"> -->
                   
                   Neck:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="neck" placeholder="Enter neck measurement value" value=""><br>
+                  <input class="form-control" type="text" name="neck" placeholder="Enter neck measurement value" value="<%=mes[i].neck%>"><br>
                   Armcycle:&nbsp;&nbsp;
                   <input class="form-control" type="text" name="armcycle" placeholder="Enter armcycle measurement value"><br>
                   Centre Back to Wrist:&nbsp;&nbsp;
@@ -160,11 +167,11 @@
                   <input class="form-control" type="text" name="chestoverbodypadding" placeholder="Enter measurement value">                      
                   <br><br>
                   <div class="h">
-                      <input class="btn btn-primary" type="submit" value="submit" data-toggle="tab" href="#lower">
+                      <input class="btn btn-primary" type="submit" value="submit" data-toggle="tab" href="#lower<%= listOfPerformers[i]._id %>">
                     </div>
                 </div>
             </div>
-            <div id="lower" class="tab-pane fade">                        
+            <div id="lower<%= listOfPerformers[i]._id %>" class="tab-pane fade">                        
                   <div class="form-group">
                   Waist Relaxed:&nbsp;&nbsp;
                   <input class="form-control" type="text" name="waistrelaxed" placeholder="Enter measurement value"><br>
@@ -192,11 +199,11 @@
                   <input class="form-control" type="text" name="shoes" placeholder="Enter shoe size">                    
                   <br><br>
                   <div class="h">
-                          <input class="btn btn-primary" type="submit" data-toggle="tab" href="#other">
+                          <input class="btn btn-primary" type="submit" data-toggle="tab" href="#other<%= listOfPerformers[i]._id %>">
                         </div>
                       </div>      
                     </div>
-            <div id="other" class="tab-pane fade">
+            <div id="other<%= listOfPerformers[i]._id %>" class="tab-pane fade">
             
               <div class="form-group">
                 Dominant Hand:&nbsp;&nbsp;
