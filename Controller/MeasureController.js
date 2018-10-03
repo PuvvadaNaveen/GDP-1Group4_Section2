@@ -7,8 +7,10 @@ const db = mongoose.connection;
 
 api.post('/measure1',  function (req, res) {
     // console.log("ssss");
-    
-    db.collection('measures').update({'perfId': req.body.perfId},{$set:{'headcicumference':req.body.headcicumference}});
+    if(req.body.headcicumference != null){
+        db.collection('measures').update({'perfId': req.body.perfId},{$set:{'headcicumference':req.body.headcicumference,'neck':req.body.neck}});
+    }
+    else{
     // var performerId = re.body
     var performerId = req.body.performerId; 
     var perfId = req.body.perfId;
@@ -66,8 +68,11 @@ api.post('/measure1',  function (req, res) {
         Model.create(newMeasure, function (err, measure) {
             if (err) throw err;
         });
+    }
         return res.redirect('/')
+    
       })
+    
 
       module.exports = api;
       
