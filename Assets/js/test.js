@@ -1,6 +1,6 @@
-function myFunction() {
-    var x = document.getElementById("mySelect").value;
-    document.getElementById("selectEmployee").innerHTML = x;
+function myFunction(id1) {
+    var x = document.getElementById("mySelect"+id1).value;
+    document.getElementById("selectEmployee"+id1).innerHTML = x;
 }
     // document.getElementById("myModal1")
     function myFunction1(idd){
@@ -12,6 +12,7 @@ function myFunction() {
     var z = document.getElementById("mySelect2").value;
     document.getElementById("selectColor").innerHTML = z;
 }
+
 function emailSent(){
     window.alert("Email sent");
 }

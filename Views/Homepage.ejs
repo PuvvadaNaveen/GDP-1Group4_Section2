@@ -227,8 +227,8 @@
           <td><%= listOfPerformers[i].playdate %></td>
           <% if(user && user.isAdmin) { %>
           <td>
-            <!-- <button id="selectEmployee" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">Select Employee</button>
-            <div id="myModal1" class="modal fade" role="dialog">
+            <button id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1<%= listOfPerformers[i]._id %>">Select Employee</button>
+            <div id="myModal1<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -236,7 +236,7 @@
                     <h4 class="modal-title">Employees</h4>
                   </div>
                   <div class="modal-body">
-                      <select id="mySelect" size="5">
+                      <select id="mySelect<%= listOfPerformers[i]._id %>" size="5">
                           <option>Akhil</option>
                           <option>Meghana</option>
                           <option>Naveen</option>
@@ -245,22 +245,22 @@
                         </select>
                         <br>
                         <br>
-                        <button onclick="myFunction()" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                        <button onclick="myFunction('<%= listOfPerformers[i]._id %>')" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
                         
                         
                   </div>
                 </div>
             
               </div>
-            </div> -->
-            <select>
+            </div>
+            <!-- <select>
               <option>Select Employee</option>
               <option>Akhil</option>
               <option>Meghana</option>
               <option>Naveen</option>
               <option>Shiva</option>
               <option>Siva</option>
-            </select>
+            </select> -->
           </td>
           <% } %>
           <% if(!user.isAdmin){ %>
