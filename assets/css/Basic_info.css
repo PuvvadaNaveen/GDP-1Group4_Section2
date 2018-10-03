@@ -6,7 +6,9 @@
     font-family: Georgia, serif;
     background-attachment: fixed;
 }
-#abc{
+
+
+ #abc{
     margin-left:400px;
     margin-top:100px;
 }
@@ -45,4 +47,4 @@ label {
   }
   #mn{
       margin-left:380px;
-  }
+  }  

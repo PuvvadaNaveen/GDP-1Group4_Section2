@@ -34,7 +34,7 @@ var MeasureSchema = mongoose.Schema({
   waistrelaxed: {
 		type: Number
     },
-  waistexpande : {
+  waistexpanded: {
 		type: Number
     },
   fullhip: {
@@ -68,7 +68,7 @@ var MeasureSchema = mongoose.Schema({
 		type: Number
     },
     dominanthand: {
-		type: Number
+		type:	String
     },
     otheroverbodypadding: {
 		type: Number

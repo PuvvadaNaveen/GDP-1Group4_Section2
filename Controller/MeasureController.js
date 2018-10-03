@@ -8,7 +8,22 @@ const db = mongoose.connection;
 api.post('/measure1',  function (req, res) {
     // console.log("ssss");
     if(req.body.headcicumference != null){
-        db.collection('measures').update({'perfId': req.body.perfId},{$set:{'headcicumference':req.body.headcicumference,'neck':req.body.neck}});
+        db.collection('measures').update({'perfId': req.body.perfId},{$set:{'headcicumference':req.body.headcicumference,'neck':req.body.neck,'armcycle':req.body.armcycle,'centrebacktowrist':req.body.centrebacktowrist
+    ,'chestrelaxed':req.body.chestrelaxed,'chestexpanded':req.body.chestexpanded,'chestovercompressiongarnment':req.body.chestovercompressiongarnment
+,'chestoverbodypadding ':req.body.chestoverbodypadding,'waistrelaxed':req.body.waistrelaxed,'waistexpande':req.body.waistexpande,'fullhip':req.body.fullhip
+,'halfgirth':req.body.halfgirth,
+'fullgirth':req.body.fullgirth,
+'inseamtoankle':req.body.inseamtoankle,
+ 'inseamtofloor':req.body.inseamtofloor,
+ 'waistovercompressiongarnment':req.body.waistovercompressiongarnment,
+'hipovercompressiongarnment':req.body.hipovercompressiongarnment,
+ 'waistoverbodypadding':req.body.waistoverbodypadding,
+'hipoverbodypadding':req.body.hipoverbodypadding,
+ 'shoes':req.body.shoes,
+'dominanthand':req.body.dominanthand,
+ 'otheroverbodypadding':req.body.otheroverbodypadding,
+
+}});
     }
     else{
     // var performerId = re.body
