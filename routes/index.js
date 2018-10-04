@@ -55,10 +55,6 @@ router.get('/', ensureAuthenticated, function(req, res){
     if(result1.length ==0){
         result1 = emptyModel;
     }
-// console.log("ssssssss");
-// console.log(result);
-// console.log("ssssssss");
-// console.log(result1);
     res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel});
         
         //   return res.json(result);    
@@ -125,35 +121,7 @@ router.get('/Signup_Login', (request, response, next) => {
     response.render('SIgnup_Login.ejs')
 })
 router.get('/form', (request, response, next) => {
-    var firstname = req.body.firstname;
-    var lastname = req.body.lastname;
-    var playname = req.body.playname;
-    var playdate = req.body.playdate;
-    var charactername = req.body.charactername;
-    var phonenumber = req.body.phonenumber;
-    var textchoice =req.body.textchoice;
-    var email = req.body.email1;
-    var agreement = req.body.agreement;
-    var dominanthand = req.body.dominanthand;
-    var height = req.body.heught;
-    var estimatedweight = req.body.estimatedweight;
-    var eyewearchoice =req.body.eyewearchoice;
-    var hair = req.body.hair;
-    var facialhai = req.body.facialhai;
-    var earschoice = req.body.earschoice;
-    var otherpiercings = req.body.otherpiercings;
-    var tattoos = req.body.tattoos;
-    var tattooagreement =req.body.tattooagreement;
-    var comments = req.body.comments;
-    var shoes = req.body.shoes;
-    var danceshoes = req.body.danceshoes;
-    var shirtsize = req.body.shirtsize;
-    var pants = req.body.pants;
-    var brasize = req.body.brasize;
-    var ring = req.body.ring;
-    var allergy = req.body.allergy;
-    var other = req.body.other;
-    var allergies = req.body.allergies;
+   
     let emptyForm = [
         {
             firstname:"",
@@ -187,14 +155,10 @@ router.get('/form', (request, response, next) => {
             allergies : ""
         }
     ]
-    // db.collection('forms').find().toArray(function(err, result){
-    //     if (err) throw err;
-   
-    // if(result.length !==0){
         result = emptyForm;
-    // }
+   
     response.render('form.ejs',{perf: result})
-// })
+
 })
 router.get('/plays', (request, response, next) => {
     db.collection('plays').find().toArray(function(err,result){
