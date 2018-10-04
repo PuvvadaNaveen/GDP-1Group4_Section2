@@ -42,6 +42,9 @@ for(var i = 1; i < table.rows.length; i++)
 }
  
 }
+function goToHomePage(){
+    location.replace('/');
+}
 // function deletePerformer(idd){
 //     query {}
 //     db.

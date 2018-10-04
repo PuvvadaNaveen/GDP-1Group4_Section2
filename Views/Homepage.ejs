@@ -282,6 +282,7 @@
           
           <td>
             <form action="/FormController/edit" method="POST">
+              <input  type="text" name="perfId1" hidden value="<%= listOfPerformers[i]._id %>">  
             <button class="btn btn-primary" type="submit">Basic Form</button>
           </form>
           </td>

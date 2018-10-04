@@ -6,16 +6,16 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="../assets/js/Test.js"></script>
+<script src="/js/Test.js"></script>
 <link rel ="stylesheet" type="text/css" href="/css/Basic_info.css"  />
 </head>
 <body>
     <div class="k">
 <h2>Basic information form</h2>
 <br>
-<form name ="form" method ="POST" action="/FormController/save" ></form>
+<form name ="form" method ="POST" action="/FormController/save" >
     <div class="form-group">
-      <% for(let i=0; i < perf.length;i++){%>        
+      <% for(let i=0; i < perf.length;i++){%>   
     First name:<br>
     <input class="form-control"  type="text" name="firstname" value= "<%= perf[i].firstname %>" placeholder="Please enter your firstname"  required > 
   </div>
@@ -135,10 +135,18 @@
         <li>need sweatguards</li>
         <li>specific shoe style needed</li>
     </ul>
-    <%}%>
     <p>Please only disclose as much information as you are comfortable with and is relevant to the fit and comfort of your costume. This will insure that the costume designer can make you look your best!</p>
-    <div class="b"><input type="submit" value="Submit" class="btn btn-primary"></div>
-     </form>
+    <%if(perf[i].firstname.length == 0 ){%>
+      <div class="b"><input type="submit" value="Submit" class="btn btn-primary"></div>
+    <%}%>
+  </form>
+    <%if(perf[i].firstname.length > 0 ){%>
+      <div class="b"><button value="HomePage" class="btn btn-primary" onclick="goToHomePage()">HomePage</button></div>
+    <%}%>
+
+    <%}%>
+    
+     
      
     </div>
 </body>

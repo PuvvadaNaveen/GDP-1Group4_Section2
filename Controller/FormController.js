@@ -4,7 +4,7 @@ const Model = require('../models/form')
 const mongoose = require('mongoose')
 const indexPage = require('../routes/index')
 const db = mongoose.connection;
-
+var ObjectId = require('mongodb').ObjectID;
 
 api.post('/save',  function (req, res) {
     var firstname = req.body.firstname;
@@ -81,11 +81,9 @@ api.post('/save',  function (req, res) {
     // });  
   })
   api.post('/edit', function(req, res){
-    var query = {firstname : "Akhil"};
+    var query = {"_id" : ObjectId(req.body.perfId1)};
     db.collection('forms').find(query).toArray(function(err, result){
         if (err) throw err;
-        console.log("result");
-        console.log(result);
         res.render('form.ejs', { perf : result});
         // res.redirect('Homepage.ejs',{listOfPerformers : result});
     });

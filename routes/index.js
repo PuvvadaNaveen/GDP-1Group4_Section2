@@ -155,7 +155,76 @@ router.get('/Signup_Login', (request, response, next) => {
     response.render('SIgnup_Login.ejs')
 })
 router.get('/form', (request, response, next) => {
-    response.render('form.ejs')
+    var firstname = req.body.firstname;
+    var lastname = req.body.lastname;
+    var playname = req.body.playname;
+    var playdate = req.body.playdate;
+    var charactername = req.body.charactername;
+    var phonenumber = req.body.phonenumber;
+    var textchoice =req.body.textchoice;
+    var email = req.body.email1;
+    var agreement = req.body.agreement;
+    var dominanthand = req.body.dominanthand;
+    var height = req.body.heught;
+    var estimatedweight = req.body.estimatedweight;
+    var eyewearchoice =req.body.eyewearchoice;
+    var hair = req.body.hair;
+    var facialhai = req.body.facialhai;
+    var earschoice = req.body.earschoice;
+    var otherpiercings = req.body.otherpiercings;
+    var tattoos = req.body.tattoos;
+    var tattooagreement =req.body.tattooagreement;
+    var comments = req.body.comments;
+    var shoes = req.body.shoes;
+    var danceshoes = req.body.danceshoes;
+    var shirtsize = req.body.shirtsize;
+    var pants = req.body.pants;
+    var brasize = req.body.brasize;
+    var ring = req.body.ring;
+    var allergy = req.body.allergy;
+    var other = req.body.other;
+    var allergies = req.body.allergies;
+    let emptyForm = [
+        {
+            firstname:"",
+            lastname: "",
+            playname:"",
+            playdate:"",
+            charactername: "",
+            phonenumber: "",
+            textchoice: "",
+            email: "",
+            agreement: "",
+            dominanthand: "",
+            height: "",
+            estimatedweight: "",
+            eyewearchoice: "",
+            hair: "",
+            facialhai: "",
+            earschoice: "",
+            otherpiercings: "",
+            tattoos: "",
+            tattooagreement: "",
+            comments: "",
+            shoes: "",
+            danceshoes: "",
+            shirtsize: "",
+            pants: "",
+            brasize: "",
+            ring: "",
+            allergy :"",
+            other: "",
+            allergies : ""
+        }
+    ]
+    // db.collection('forms').find().toArray(function(err, result){
+    //     if (err) throw err;
+   
+    // if(result.length !==0){
+        result = emptyForm;
+    // }
+    response.render('form.ejs',{perf: result})
+// })
 })
 router.get('/plays', (request, response, next) => {
     db.collection('plays').find().toArray(function(err,result){
