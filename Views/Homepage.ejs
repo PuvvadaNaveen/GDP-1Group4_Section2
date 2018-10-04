@@ -5,6 +5,7 @@
  <link rel ="stylesheet" type="text/css" href="/css/Homepage.css"/> 
  <script src="/js/Test.js"></script>
  <script src="/js/Test.js"></script>
+ <script src="../main.js"></script>
 
 </head>
 <body>
@@ -286,7 +287,8 @@
             <button class="btn btn-primary" type="submit">Basic Form</button>
           </form>
           </td>
-          <td><button onclick="removeRow()">Delete</button> <%=i%></td>
+          <!-- <td><button onclick="removeRow()">Delete</button> <%=i%></td> -->
+          <td><button onclick="deletePerformer('<%= listOfPerformers[i]._id %>')">Delete</button> <%=i%></td>
           <% } %>
           
         </tr>

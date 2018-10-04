@@ -22,7 +22,7 @@ api.post('/measure1',  function (req, res) {
  'shoes':req.body.shoes,
 'dominanthand':req.body.dominanthand,
  'otheroverbodypadding':req.body.otheroverbodypadding,
-
+    
 }});
     }
     else{

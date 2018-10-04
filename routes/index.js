@@ -6,6 +6,35 @@ var model = require('../models/measure')
 const mongoose = require('mongoose')
 const db = mongoose.connection;
 
+let emptyModel = [
+    {
+        performerId: "",
+        perfId:"",
+        headcicumference: "",
+        neck: "",
+        armcycle: "",
+        centrebacktowrist: "",
+        chestrelaxed: "",
+        chestexpanded: "",
+        chestovercompressiongarnment: "",
+      chestoverbodypadding: "",
+      waistrelaxed: "",
+      waistexpande : "",
+      fullhip:"",
+        halfgirth: "",
+        fullgirth: "",
+        inseamtoankle: "",
+        inseamtofloor: "",
+        waistovercompressiongarnment: "",
+        hipovercompressiongarnment:"",
+        waistoverbodypadding: "",
+        hipoverbodypadding: "",
+        shoes:"",
+        dominanthand: "",
+        otheroverbodypadding: "",
+    }
+]
+
 // Get Homepage
 router.get('/', ensureAuthenticated, function(req, res){
     // MeasureSchema.statics.getSkeleton = function () {
@@ -16,34 +45,7 @@ router.get('/', ensureAuthenticated, function(req, res){
     //     return data;
     //     }
     //     console.log(getSkeleton());
-    let emptyModel = [
-        {
-            performerId: "",
-            perfId:"",
-            headcicumference: "",
-            neck: "",
-            armcycle: "",
-            centrebacktowrist: "",
-            chestrelaxed: "",
-            chestexpanded: "",
-            chestovercompressiongarnment: "",
-          chestoverbodypadding: "",
-          waistrelaxed: "",
-          waistexpande : "",
-          fullhip:"",
-            halfgirth: "",
-            fullgirth: "",
-            inseamtoankle: "",
-            inseamtofloor: "",
-            waistovercompressiongarnment: "",
-            hipovercompressiongarnment:"",
-            waistoverbodypadding: "",
-            hipoverbodypadding: "",
-            shoes:"",
-            dominanthand: "",
-            otheroverbodypadding: "",
-        }
-    ]
+    
     
     db.collection('forms').find().toArray(function(err, result){
         if (err) throw err;
@@ -74,34 +76,6 @@ function ensureAuthenticated(req, res, next){
 		res.redirect('/users/login');
 	}
 router.get('/home', function(request, response){
-    let emptyModel = [
-        {
-            performerId: "",
-            perfId:"",
-            headcicumference: "",
-            neck: "",
-            armcycle: "",
-            centrebacktowrist: "",
-            chestrelaxed: "",
-            chestexpanded: "",
-            chestovercompressiongarnment: "",
-          chestoverbodypadding: "",
-          waistrelaxed: "",
-          waistexpande : "",
-          fullhip:"",
-            halfgirth: "",
-            fullgirth: "",
-            inseamtoankle: "",
-            inseamtofloor: "",
-            waistovercompressiongarnment: "",
-            hipovercompressiongarnment:"",
-            waistoverbodypadding: "",
-            hipoverbodypadding: "",
-            shoes:"",
-            dominanthand: "",
-            otheroverbodypadding: "",
-        }
-    ]
     
     db.collection('forms').find().toArray(function(err, result){
         if (err) throw err;
@@ -111,10 +85,6 @@ router.get('/home', function(request, response){
     if(result1.length ==0){
         result1 = emptyModel;
     }
-// console.log("ssssssss");
-// console.log(result);
-// console.log("ssssssss");
-// console.log(result1);
     response.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel});
         
         //   return res.json(result);    

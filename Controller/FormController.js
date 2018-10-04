@@ -6,6 +6,35 @@ const indexPage = require('../routes/index')
 const db = mongoose.connection;
 var ObjectId = require('mongodb').ObjectID;
 
+let emptyModel = [
+    {
+        performerId: "",
+        perfId:"",
+        headcicumference: "",
+        neck: "",
+        armcycle: "",
+        centrebacktowrist: "",
+        chestrelaxed: "",
+        chestexpanded: "",
+        chestovercompressiongarnment: "",
+      chestoverbodypadding: "",
+      waistrelaxed: "",
+      waistexpande : "",
+      fullhip:"",
+        halfgirth: "",
+        fullgirth: "",
+        inseamtoankle: "",
+        inseamtofloor: "",
+        waistovercompressiongarnment: "",
+        hipovercompressiongarnment:"",
+        waistoverbodypadding: "",
+        hipoverbodypadding: "",
+        shoes:"",
+        dominanthand: "",
+        otheroverbodypadding: "",
+    }
+]
+
 api.post('/save',  function (req, res) {
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
@@ -114,9 +143,21 @@ api.post('/save',  function (req, res) {
 
       db.collection('forms').find(query).toArray(function(err, result){
           if (err) throw err;
-          res.render('Homepage.ejs',{listOfPerformers : result});
-          // res.redirect('Homepage.ejs',{listOfPerformers : result});
-      });
+    
+          db.collection('measures').find().toArray(function(err, result1){
+            if (err) throw err;
+        if(result1.length ==0){
+            result1 = emptyModel;
+        }
+    // console.log("ssssssss");
+    // console.log(result);
+    // console.log("ssssssss");
+    // console.log(result1);
+        res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel});
+            
+            //   return res.json(result);    
+    });
+});
     })
     // get by play name
    api.post('/getByPlay',  function (req, res) {
@@ -125,9 +166,13 @@ api.post('/save',  function (req, res) {
 
     db.collection('forms').find(query).toArray(function(err, result){
         if (err) throw err;
-         console.log(result);
-        //  return res.json(result);
-         res.render('Homepage.ejs',{listOfPerformers : result});
+        db.collection('measures').find().toArray(function(err, result1){
+            if (err) throw err;
+        if(result1.length ==0){
+            result1 = emptyModel;
+        }
+         res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel});
+        });
     });
   })
 //get by play date
@@ -146,19 +191,24 @@ api.post('/save',  function (req, res) {
 //  });
 // })
 api.post('/getByDate',  function (req, res) {
-    console.log(req.body.playdate);
     var query = {playdate : req.body.playdate};    
 //  var query = {playdate : {"$gte" : new Date(req.body.playdate)}};
 //   query = {playdate:"/"+req.body.playdate+"/"};
 //  query = {playdate: /^"2018-09-15"/};
 //   query = {playdate: {"$in":[new Date(req.body.playdate)]}};
-  console.log(query);
 
  db.collection('forms').find(query).toArray(function(err, result){
      if (err) throw err;
    //   console.log(result);
     //  return res.json(result);
-     res.render('Homepage.ejs',{listOfPerformers : result});
+    db.collection('measures').find().toArray(function(err, result1){
+        if (err) throw err;
+    if(result1.length ==0){
+        result1 = emptyModel;
+    }
+     res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel});
+    });
+    //  res.render('Homepage.ejs',{listOfPerformers : result});
  });
 })
   module.exports = api;

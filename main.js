@@ -15,7 +15,7 @@ var nodemailer = require('nodemailer');
 var randomstring = require('randomstring');
 var access_code = module.exports = randomstring.generate(7);
 global.globalString=(access_code)
-
+var ObjectId = require('mongodb').ObjectID;
 
 mongoose.connect('mongodb+srv://akhil:abc@gdp-x1euc.mongodb.net/test?retryWrites=true');
 mongoose.connection.once('open', ()=>{
@@ -165,3 +165,12 @@ app.listen(app.get('port'), function(){
   console.log('Server started on port '+app.get('port'));
   // console.log('Server is listening on port ' + app.port);
 });
+
+function deletePerformer(idd){
+  var query = {'_id' : ObjectId(idd)};
+  db.collection("forms").deleteOne(query, function(err, obj) {
+      if (err) throw err;
+      console.log("1 document deleted");
+    });
+    location.replace('/');
+}

@@ -1,5 +1,6 @@
-const mongoose = require('mongoose')
-const db = mongoose.connection;
+// const mongoose = require('mongoose')
+// const db = mongoose.connection;
+// var ObjectId = require('mongodb').ObjectID;
 
 function myFunction(id1) {
     var x = document.getElementById("mySelect"+id1).value;
@@ -46,6 +47,10 @@ function goToHomePage(){
     location.replace('/');
 }
 // function deletePerformer(idd){
-//     query {}
-//     db.
+//     var query = {'_id' : ObjectId(idd)};
+//     db.collection("forms").deleteOne(query, function(err, obj) {
+//         if (err) throw err;
+//         console.log("1 document deleted");
+//       });
+//       location.replace('/');
 // }
