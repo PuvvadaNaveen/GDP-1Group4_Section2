@@ -6,7 +6,44 @@
     font-family: Georgia, serif;
     background-attachment: fixed;
 }
-#abc{
+/* //add style for base component */
+/* mansa start */
+.anchor-element {
+    cursor: pointer;
+}
+
+.info-container {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 580px;
+    padding: 20px;
+}
+
+.center-align-container {
+    max-width: 580px;
+    margin: 0 auto;
+}
+
+.info-heading {
+    font-weight: bold;
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+.btn-submit{
+    text-align: center;
+}
+.email-input {
+    width: 92%;
+    float: right;
+}
+
+.email-container {
+    margin-bottom: 20px;
+}
+/* manasa end */
+
+ #abc{
     margin-left:400px;
     margin-top:100px;
 }
@@ -45,4 +82,4 @@ label {
   }
   #mn{
       margin-left:380px;
-  }
+  }  

@@ -87,6 +87,13 @@ router.get('/home', function(request, response){
 });
 });
 })
+router.get('/shop', (request, response, next) => {
+    db.collection('forms').find().toArray(function(err,result){
+        if (err) throw err;
+        console.log(result);
+        response.render('shop.ejs',{list : result});
+})
+})
 
 router.get('/find', (request, response, next) => {
     response.render('findperformer.ejs')
@@ -116,6 +123,7 @@ router.get('/rental_list', (request, response, next) => {
         response.render('rental_list.ejs',{list : result});
 })
 })
+
 
 router.get('/Signup_Login', (request, response, next) => {
     response.render('SIgnup_Login.ejs')

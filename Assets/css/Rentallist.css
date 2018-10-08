@@ -31,15 +31,14 @@
 table {
     border-collapse: collapse;
     width: 80%;
-    float: center;
 }
 
 th, td {
-    text-align: left;
     padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
-tr:nth-child(even) {background-color:rgb(245, 239, 239);}
 .x{
     float: center;
     margin-left: 640px;
@@ -47,5 +46,8 @@ tr:nth-child(even) {background-color:rgb(245, 239, 239);}
 }
 h2{
     text-align: center;
+    
+}
+#abc{
     
 }
