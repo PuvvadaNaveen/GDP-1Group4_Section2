@@ -21,8 +21,14 @@
             <td><%= listOfPlays[i].playname %></td>
             <td><%= listOfPlays[i].PlayStartDate %></td>
             <td><%= listOfPlays[i].PlayEndDate %></td>
+          </form>
+            <td>
+                <form  method="POST" action="/FormController/getByPlay">
+                  <input type="text" name="playname" value="<%= listOfPlays[i].playname %>" hidden>
+                  <button type="submit" class="btn btn-primary">View Performers</button>
+                </form></td>
           </tr>
           <% } %>
         </table> 
-        </form>
+        
           </body>

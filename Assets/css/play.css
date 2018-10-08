@@ -43,7 +43,7 @@ th, td {
     padding: 8px;
 }
 
-tr:nth-child(even) {background-color:rgb(245, 239, 239);}
+/* tr:nth-child(even) {background-color:rgb(245, 239, 239);} */
     h2{
         text-align: center;
         

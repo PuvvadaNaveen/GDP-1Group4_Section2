@@ -21,7 +21,6 @@ api.post('/play1',  function (req, res) {
     
         Model.create(newPlay, function (err, plays) {
             if (err) throw err;
-            console.log(plays);
         });
         return res.redirect('/plays')
       })

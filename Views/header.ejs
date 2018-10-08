@@ -20,29 +20,29 @@
       <a class="navbar-brand" href="#">NWMSU</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="home"><span class="glyphicon glyphicon-home"></span> &nbsp; Home</a></li>
+      <li><a href="/home"><span class="glyphicon glyphicon-home"></span> &nbsp; Home</a></li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Find</a>
         <ul class="dropdown-menu">
-          <li><a href="find">Performer Name</a></li>
-          <li><a href="findp">play</a></li>
-          <li><a href="fin">date</a></li>
+          <li><a href="/find">Performer Name</a></li>
+          <li><a href="/findp">play</a></li>
+          <li><a href="/fin">date</a></li>
         </ul>
       </li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Rentals</a>
         <ul class="dropdown-menu">
-          <li><a href="rental">Rental form</a></li>
-          <li><a href="rental_list">Rental list</a></li>
+          <li><a href="/rental">Rental form</a></li>
+          <li><a href="/rental_list">Rental list</a></li>
         </ul>
       </li>
       <% if(user && user.isAdmin) { %>
-      <li><a href="basic">Send Basic Info form</a></li>
+      <li><a href="/basic">Send Basic Info form</a></li>
       <!-- <li><a href="rental_list">Rental list</a></li> -->
-      <li><a href="access"> Send Access Code</a></li>
-      <li><a href="plays"> Plays</a></li>
+      <li><a href="/access"> Send Access Code</a></li>
+      <li><a href="/plays"> Plays</a></li>
       <% } %>
-      <li><a href="contact"> Contact</a></li>
+      <li><a href="/contact"> Contact</a></li>
     </ul>
     <li class="pull-right">
      <a href="/users/logout" class="btn btn-danger navbar-btn" > Logout &nbsp; &nbsp;</a>
