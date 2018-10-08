@@ -54,3 +54,8 @@ function goToHomePage(){
 //       });
 //       location.replace('/');
 // }
+function alertFunction(){
+    if(window.confirm("Are you sure want to delete?")){
+        continue;
+    }
+}

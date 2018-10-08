@@ -117,6 +117,16 @@ api.post('/save',  function (req, res) {
         // res.redirect('Homepage.ejs',{listOfPerformers : result});
     });
   })
+  api.post('/delete', function(req, res){
+    var query = {"_id" : ObjectId(req.body.perfId2)};
+    db.collection('forms').deleteOne(query,function(err, result){
+        if (err) throw err;
+        return res.redirect('/')
+        // res.render('form.ejs', { perf : result});
+        // res.redirect('Homepage.ejs',{listOfPerformers : result});
+
+    });
+  })
 // commented by shiva
 //   api.get('/getinfo',  function (req, res) {
 //      Model.find({}, function (err, form) {
@@ -149,10 +159,6 @@ api.post('/save',  function (req, res) {
         if(result1.length ==0){
             result1 = emptyModel;
         }
-    // console.log("ssssssss");
-    // console.log(result);
-    // console.log("ssssssss");
-    // console.log(result1);
         res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel});
             
             //   return res.json(result);    

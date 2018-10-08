@@ -287,8 +287,14 @@
             <button class="btn btn-primary" type="submit">Basic Form</button>
           </form>
           </td>
+          <td>
+            <form action="/FormController/delete" method="POST">
+              <input  type="text" name="perfId2" hidden value="<%= listOfPerformers[i]._id %>">  
+            <button class="btn btn-primary" type="submit">Delete</button>
+          </form>
+          </td>
           <!-- <td><button onclick="removeRow()">Delete</button> <%=i%></td> -->
-          <td><button onclick="deletePerformer('<%= listOfPerformers[i]._id %>')">Delete</button> <%=i%></td>
+          <!-- <td><button onclick="deletePerformer('<%= listOfPerformers[i]._id %>')">Delete</button> <%=i%></td> -->
           <% } %>
           
         </tr>
