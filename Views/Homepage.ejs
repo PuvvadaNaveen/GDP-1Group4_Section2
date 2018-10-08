@@ -149,9 +149,10 @@
                           <%mes[i] = Measurements%>
                         <%}%>
                   <input  type="text" name="perfId" hidden value="<%= listOfPerformers[i]._id %>">  
+                  <input  type="text" name="mesId"  hidden value="<%= mes[i]._id %>">
                   Head Circumference:&nbsp;&nbsp;
                   <input class="form-control" type="text" name="headcicumference" placeholder="Enter head Circumference" value="<%=mes[i].headcicumference%>"><br>
-                  <!-- <input id="performerId" name="performerId"> -->
+                  
                   
                   Neck:&nbsp;&nbsp;
                   <input class="form-control" type="text" name="neck" placeholder="Enter neck measurement value" value="<%=mes[i].neck%>"><br>

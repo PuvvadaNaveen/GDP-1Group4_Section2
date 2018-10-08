@@ -3,11 +3,11 @@ const api = express.Router()
 const Model = require('../models/measure')
 const mongoose = require('mongoose')
 const db = mongoose.connection;
-
+var ObjectId = require('mongodb').ObjectID;
 
 api.post('/measure1',  function (req, res) {
-    // console.log("ssss");
-    if(req.body.headcicumference != null){
+    console.log("ssss");
+    if((req.body.mesId).length > 0){
         db.collection('measures').update({'perfId': req.body.perfId},{$set:{'headcicumference':req.body.headcicumference,'neck':req.body.neck,'armcycle':req.body.armcycle,'centrebacktowrist':req.body.centrebacktowrist
     ,'chestrelaxed':req.body.chestrelaxed,'chestexpanded':req.body.chestexpanded,'chestovercompressiongarnment':req.body.chestovercompressiongarnment
 ,'chestoverbodypadding ':req.body.chestoverbodypadding,'waistrelaxed':req.body.waistrelaxed,'waistexpande':req.body.waistexpande,'fullhip':req.body.fullhip
@@ -26,8 +26,7 @@ api.post('/measure1',  function (req, res) {
 }});
     }
     else{
-    // var performerId = re.body
-    var performerId = req.body.performerId; 
+    var mesId = req.body.mesId; 
     var perfId = req.body.perfId;
     var headcicumference = req.body.headcicumference;
     var neck = req.body.neck;
@@ -53,7 +52,7 @@ api.post('/measure1',  function (req, res) {
     var otheroverbodypadding =req.body.otheroverbodypadding;
 
     var newMeasure = new Model({
-        performerId: performerId,
+        mesId: mesId,
         perfId : perfId,
         headcicumference: headcicumference,
         neck: neck,
@@ -83,8 +82,9 @@ api.post('/measure1',  function (req, res) {
         Model.create(newMeasure, function (err, measure) {
             if (err) throw err;
         });
+         return res.redirect('/') 
     }
-        return res.redirect('/')
+     return res.redirect('/')
     
       })
     
