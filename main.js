@@ -174,3 +174,4 @@ function deletePerformer(idd){
     });
     location.replace('/');
 }
+// module.exports = app

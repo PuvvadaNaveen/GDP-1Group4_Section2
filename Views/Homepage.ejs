@@ -291,7 +291,7 @@
           </form>
           </td>
           <td>
-            <form action="/FormController/delete" method="POST">
+            <form onsubmit="return confirm('Are you sure want to delete?')" action="/FormController/delete" method="POST">
               <input  type="text" name="perfId2" hidden value="<%= listOfPerformers[i]._id %>">  
             <button class="btn btn-primary" type="submit">Delete</button>
           </form>
