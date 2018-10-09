@@ -1,6 +1,10 @@
 var mongoose = require('mongoose');
 
 var SelectSchema = mongoose.Schema({
+
+	empID: {
+		type: String
+	},
     
     selectEmployee1: {
 		type: String

@@ -6,6 +6,12 @@ function myFunction(id1) {
     var x = document.getElementById("mySelect"+id1).value;
     document.getElementById("selectEmployee"+id1).innerHTML = x;
 }
+
+function myfunctionEmp(id0) {
+    var x = document.getElementById("mySelect"+id0).value;
+    document.getElementById("emp"+id0).value = x;
+}
+
     // document.getElementById("myModal1")
     function myFunction1(idd){
     var y = document.getElementById("mySelect1"+idd).value;

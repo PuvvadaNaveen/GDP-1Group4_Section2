@@ -5,7 +5,8 @@ const mongoose = require('mongoose')
 const db = mongoose.connection;
 
 
-api.post('/select01',  function (req, res) {
+
+api.post('/emp01',  function (req, res) {
     
     console.log("hi");
     var selectEmployee1 = req.body.selectEmployee1;
@@ -18,7 +19,7 @@ api.post('/select01',  function (req, res) {
         
     });
     
-        Model.create(newEmployeeOption, function (err, measure) {
+        Model.create(newEmployeeOption, function (err, employeeOption) {
             if (err) throw err;
         });
         return res.redirect('/')

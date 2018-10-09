@@ -1,6 +1,7 @@
 const express = require('express')
 const api = express.Router()
 const Model = require('../models/form')
+const Model1 = require('../models/employeeOption')
 const mongoose = require('mongoose')
 const indexPage = require('../routes/index')
 const db = mongoose.connection;
@@ -217,4 +218,26 @@ api.post('/getByDate',  function (req, res) {
     //  res.render('Homepage.ejs',{listOfPerformers : result});
  });
 })
+
+api.post('/emp01',  function (req, res) {
+    
+    console.log("hi");
+    var selectEmployee1 = req.body.selectEmployee1;
+
+    
+
+    var newEmployeeOption = new Model1({
+        
+        selectEmployee1: selectEmployee1
+        
+        
+    });
+    
+        Model1.create(newEmployeeOption, function (err, measure) {
+            if (err) throw err;
+        });
+        return res.redirect('/')
+      })
+
+
   module.exports = api;

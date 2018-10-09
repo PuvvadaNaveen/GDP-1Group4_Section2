@@ -252,17 +252,21 @@
                     <h4 class="modal-title">Employees</h4>
                   </div>
                   <div class="modal-body">
-                      <select id="mySelect<%= listOfPerformers[i]._id %>" size="5">
+                    <form method="POST" action="/FormController/emp01">
+                      <select id="mySelect<%= listOfPerformers[i]._id %>" size="5" onchange="myfunctionEmp('<%= listOfPerformers[i]._id %>')">
                           <option>Akhil</option>
                           <option>Meghana</option>
                           <option>Naveen</option>
                           <option>Shiva</option>
                           <option>Siva</option>
+                          <br>
+                          <input id="emp<%= listOfPerformers[i]._id %>" type="text" name="selectEmployee1">
+                          <input type="text" name="empID" value="<%= listOfPerformers[i]._id %>">
                         </select>
                         <br>
                         <br>
-                        <button onclick="myFunction('<%= listOfPerformers[i]._id %>')" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
-                        
+                        <button class="btn btn-primary" onclick="myFunction('<%= listOfPerformers[i]._id %>')" type="submit">Submit</button>
+                      </form>
                         
                   </div>
                 </div>
