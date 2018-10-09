@@ -2,6 +2,7 @@ const express = require('express')
 const api = express.Router()
 const Model = require('../models/form')
 const Model1 = require('../models/employeeOption')
+const Model2 = require('../models/colorOption')
 const mongoose = require('mongoose')
 const indexPage = require('../routes/index')
 const db = mongoose.connection;
@@ -221,23 +222,41 @@ api.post('/getByDate',  function (req, res) {
 
 api.post('/emp01',  function (req, res) {
     
-    console.log("hi");
     var selectEmployee1 = req.body.selectEmployee1;
-
-    
+    var empID = req.body.empID;
 
     var newEmployeeOption = new Model1({
         
-        selectEmployee1: selectEmployee1
+        selectEmployee1: selectEmployee1,
+        empID: empID
         
         
     });
     
-        Model1.create(newEmployeeOption, function (err, measure) {
+        Model1.create(newEmployeeOption, function (err, employeeOption) {
             if (err) throw err;
         });
         return res.redirect('/')
       })
 
+      api.post('/clr01',  function (req, res) {
+    
+        var selectColor01 = req.body.selectColor01;
+        var colorID = req.body.colorID;
+    
+        var newEmployeeOption = new Model2({
+            
+            selectColor01: selectColor01,
+            colorID: colorID
+            
+            
+        });
+        
+            Model2.create(newEmployeeOption, function (err, measure) {
+                if (err) throw err;
+            });
+            return res.redirect('/')
+          })
+    
 
   module.exports = api;

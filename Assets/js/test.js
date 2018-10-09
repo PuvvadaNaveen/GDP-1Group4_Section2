@@ -23,6 +23,11 @@ function myfunctionEmp(id0) {
     document.getElementById("selectColor"+id3).innerHTML = z;
 }
 
+function selColor(colID){
+    var x = document.getElementById("mySelect2"+colID).value;
+    document.getElementById("clr"+colID).value = x;
+}
+
 function emailSent(){
     window.alert("Email sent");
 }

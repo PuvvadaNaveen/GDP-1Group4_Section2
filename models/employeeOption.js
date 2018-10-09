@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var SelectSchema = mongoose.Schema({
+var EmployeeSchema = mongoose.Schema({
 
 	empID: {
 		type: String
@@ -11,4 +11,4 @@ var SelectSchema = mongoose.Schema({
 	}
 	});
 
-var employeeOption = module.exports = mongoose.model('employeeOption', SelectSchema);
+var employeeOption = module.exports = mongoose.model('employeeOption', EmployeeSchema);
