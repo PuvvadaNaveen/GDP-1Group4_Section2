@@ -125,9 +125,7 @@ router.get('/rental_list', (request, response, next) => {
 })
 
 
-router.get('/Signup_Login', (request, response, next) => {
-    response.render('SIgnup_Login.ejs')
-})
+
 router.get('/form', (request, response, next) => {
    
     let emptyForm = [

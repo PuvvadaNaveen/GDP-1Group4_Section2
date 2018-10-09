@@ -194,7 +194,7 @@ router.post('/resetpassword', function(req, res, next) {
 		req.flash('error', 'Password reset token is invalid or has expired.');
 		return res.redirect('/users/resetpassword');
 	  }
-	  res.render('reset.ejs', {token: req.params.token});
+	  res.render('reset.handlebars', {token: req.params.token});
 	//   console.log('hi');
 	})){
 		
@@ -258,7 +258,7 @@ router.post('/resetpassword', function(req, res, next) {
 
 	//Forgot Username
 	router.get('/forgotusername', function (req, res) {
-		res.render('username.ejs');
+		res.render('username.handlebars');
 	});
 
 	router.post('/forgotusername', function(req, res, next) {
