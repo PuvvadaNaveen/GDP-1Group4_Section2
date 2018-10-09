@@ -36,7 +36,7 @@ table {
 th, td {
     padding: 8px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+  
 }
 
 .x{
@@ -49,5 +49,5 @@ h2{
     
 }
 #abc{
-    
+    margin-bottom:1100px;
 }

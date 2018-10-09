@@ -1,0 +1,60 @@
+<% include header %>
+
+    
+     
+    <link rel ="stylesheet" type="text/css" href="/css/Rentallist.css"/>
+    <!-- <link rel ="stylesheet" type="text/css"href="https://www.w3schools.com/w3css/4/w3.css"/>  -->
+  
+  
+    <body>
+     <h2>Shop Pull list</h2>
+     <br>
+     <br>
+        <div class="w3-container">
+        <table class="w3-table-all w3-card-4"id="rent"  align="center">
+          <tr>
+          <th>Pulled</th>
+           <th>First Name</th>
+          <th>Last Name</th>
+          <th>Play</th>
+          <th>Character Name</th>
+          <th>Size</th>
+          <th>Clothing Item</th>
+          <th>Color</th>
+          
+         
+                
+          </tr>
+    <% for(let i = 0; i < list.length; i++) { %>
+    <tr>
+      <td>  <input type="checkbox" name="check" value="done"></td>
+      <td><%= list[i].firstname %></td>
+      <td><%= list[i].lastname %></td>
+      <td><%= list[i].playname %></td>
+      <td><%= list[i].charactername %></td>
+      <td>
+             <select>
+              <option>Choose size</option>
+              <option>xs</option>
+              <option>s</option>
+              <option>m</option>
+              <option>l</option>
+              <option>xl</option>
+              <option>xxl</option>
+              <option>xxxl</option>
+              <option>Other</option>
+            </select>
+      </td>
+      <td></td>
+      <td>
+          
+      </td>
+    </tr>
+    <% } %>
+  </table>
+  <div>
+    <button type = "button" class="btn btn-success  x" onclick="window.print()">
+        <span class="glyphicon glyphicon-print "></span> Print 
+     </button>
+  </div> 
+</div>
