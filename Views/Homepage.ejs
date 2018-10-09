@@ -283,13 +283,21 @@
           
           <% if(user && user.isAdmin) { %>
           <td><textarea></textarea></td>
-          
+          <% } %>
+
+          <% if(!user.isAdmin) { %>
+            <td><textarea readonly></textarea></td>
+            <%}%>
+
+          <% if(user && (user.isAdmin || user.isManager)) { %>
           <td>
             <form action="/FormController/edit" method="POST">
               <input  type="text" name="perfId1" hidden value="<%= listOfPerformers[i]._id %>">  
             <button class="btn btn-primary" type="submit">Basic Form</button>
           </form>
           </td>
+          <% } %>
+          <% if(user && user.isAdmin){ %>}
           <td>
             <form action="/FormController/delete" method="POST">
               <input  type="text" name="perfId2" hidden value="<%= listOfPerformers[i]._id %>">  

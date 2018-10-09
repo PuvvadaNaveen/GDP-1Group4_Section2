@@ -29,6 +29,7 @@
           <li><a href="/fin">date</a></li>
         </ul>
       </li>
+      <% if(user && (user.isAdmin || user.isManager)) { %>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Rentals</a>
         <ul class="dropdown-menu">
@@ -36,7 +37,6 @@
           <li><a href="/rental_list">Rental list</a></li>
         </ul>
       </li>
-      <% if(user && user.isAdmin) { %>
       <li><a href="/basic">Send Basic Info form</a></li>
       <!-- <li><a href="rental_list">Rental list</a></li> -->
       <li><a href="/access"> Send Access Code</a></li>
