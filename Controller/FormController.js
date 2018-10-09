@@ -3,6 +3,7 @@ const api = express.Router()
 const Model = require('../models/form')
 const Model1 = require('../models/employeeOption')
 const Model2 = require('../models/colorOption')
+const Model3 = require('../models/clothOptions')
 const mongoose = require('mongoose')
 const indexPage = require('../routes/index')
 const db = mongoose.connection;
@@ -244,7 +245,7 @@ api.post('/emp01',  function (req, res) {
         var selectColor01 = req.body.selectColor01;
         var colorID = req.body.colorID;
     
-        var newEmployeeOption = new Model2({
+        var newColorOption = new Model2({
             
             selectColor01: selectColor01,
             colorID: colorID
@@ -252,11 +253,29 @@ api.post('/emp01',  function (req, res) {
             
         });
         
-            Model2.create(newEmployeeOption, function (err, measure) {
+            Model2.create(newColorOption, function (err, ColorOption) {
                 if (err) throw err;
             });
             return res.redirect('/')
           })
     
+          api.post('/cloth01',  function (req, res) {
+    
+            var selectCloth = req.body.selectCloth;
+            var clothID = req.body.clothID;
+        
+            var newClothOption = new Model3({
+                
+                selectCloth: selectCloth,
+                clothID: clothID
+                
+                
+            });
+            
+                Model3.create(newClothOption, function (err, ClothOption) {
+                    if (err) throw err;
+                });
+                return res.redirect('/')
+              })
 
   module.exports = api;

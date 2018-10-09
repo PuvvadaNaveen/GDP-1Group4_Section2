@@ -9,7 +9,7 @@ api.post('/clr01',  function (req, res) {
     var selectColor01 = req.body.selectColor01;
     var colorID = req.body.colorID;
 
-    var newEmployeeOption = new Model2({
+    var newColorOption = new Model({
         
         selectColor01: selectColor01,
         colorID: colorID
@@ -17,7 +17,7 @@ api.post('/clr01',  function (req, res) {
         
     });
     
-        Model.create(newEmployeeOption, function (err, measure) {
+        Model.create(newColorOption, function (err, ColorOption) {
             if (err) throw err;
         });
         return res.redirect('/')

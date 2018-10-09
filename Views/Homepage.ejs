@@ -55,16 +55,19 @@
                       <h4 class="modal-title">Choose Clothing Item</h4>
                     </div>
                     <div class="modal-body">
-                        <select id="mySelect1<%= listOfPerformers[i]._id %>" size="4">
-                            <option >Tunic</option>
-                            <option  >Skirt</option>
-                            <option >Suit</option>
-                            <option >Trousers</option>
-                            
+                      <form method="POST" action="/FormController/cloth01">>
+                        <select id="mySelect1<%= listOfPerformers[i]._id %>" size="4" onchange="selectItem('<%= listOfPerformers[i]._id %>')">
+                            <option>Tunic</option>
+                            <option>Skirt</option>
+                            <option>Suit</option>
+                            <option>Trousers</option>
+                            <input id="cloth<%= listOfPerformers[i]._id %>" type="text" name="selectCloth" hidden>
+                            <input type="text" name="clothID" value="<%= listOfPerformers[i]._id %>" hidden>
                           </select>
                           <br>
                           <br>
-                          <button onclick="myFunction1('<%=listOfPerformers[i]._id%>')" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>   
+                          <button onclick="myFunction1('<%=listOfPerformers[i]._id%>')" type="submit" class="btn btn-primary">Submit</button>   
+                        </form>
                     </div>
                   </div>
               
@@ -102,8 +105,8 @@
                             <option>pale</option>
                             <option>distressed</option>
                             <option>old</option>
-                            <input id="clr<%= listOfPerformers[i]._id %>" type="text" name="selectColor01">
-                            <input type="text" name="colorID" value="<%= listOfPerformers[i]._id %>">
+                            <input id="clr<%= listOfPerformers[i]._id %>" type="text" name="selectColor01" hidden>
+                            <input type="text" name="colorID" value="<%= listOfPerformers[i]._id %>" hidden>
                           </select>
                           <br>
                           <br>
@@ -262,8 +265,8 @@
                           <option>Shiva</option>
                           <option>Siva</option>
                           <br>
-                          <input id="emp<%= listOfPerformers[i]._id %>" type="text" name="selectEmployee1">
-                          <input type="text" name="empID" value="<%= listOfPerformers[i]._id %>">
+                          <input id="emp<%= listOfPerformers[i]._id %>" type="text" name="selectEmployee1" hidden>
+                          <input type="text" name="empID" value="<%= listOfPerformers[i]._id %>" hidden>
                         </select>
                         <br>
                         <br>
