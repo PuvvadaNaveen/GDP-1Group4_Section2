@@ -12,7 +12,7 @@ var ObjectId = require('mongodb').ObjectID;
 let emptyModel = [
     {
         performerId: "",
-        perfId:"",
+        perfId: "",
         headcicumference: "",
         neck: "",
         armcycle: "",
@@ -20,19 +20,19 @@ let emptyModel = [
         chestrelaxed: "",
         chestexpanded: "",
         chestovercompressiongarnment: "",
-      chestoverbodypadding: "",
-      waistrelaxed: "",
-      waistexpande : "",
-      fullhip:"",
+        chestoverbodypadding: "",
+        waistrelaxed: "",
+        waistexpande: "",
+        fullhip: "",
         halfgirth: "",
         fullgirth: "",
         inseamtoankle: "",
         inseamtofloor: "",
         waistovercompressiongarnment: "",
-        hipovercompressiongarnment:"",
+        hipovercompressiongarnment: "",
         waistoverbodypadding: "",
         hipoverbodypadding: "",
-        shoes:"",
+        shoes: "",
         dominanthand: "",
         otheroverbodypadding: "",
     }
@@ -40,29 +40,39 @@ let emptyModel = [
 
 let emptyCloth = [
     {
-    clothselect:""
+        clothselect: ""
     }
 ]
-api.post('/save',  function (req, res) {
+let emptyItem = [
+    {
+        itemId: ""
+    }
+]
+ let emptyEmployee = [
+     {
+        employeeId: ""
+     }
+ ]
+api.post('/save', function (req, res) {
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
     var playname = req.body.playname;
     var playdate = req.body.playdate;
     var charactername = req.body.charactername;
     var phonenumber = req.body.phonenumber;
-    var textchoice =req.body.textchoice;
+    var textchoice = req.body.textchoice;
     var email = req.body.email1;
     var agreement = req.body.agreement;
     var dominanthand = req.body.dominanthand;
     var height = req.body.heught;
     var estimatedweight = req.body.estimatedweight;
-    var eyewearchoice =req.body.eyewearchoice;
+    var eyewearchoice = req.body.eyewearchoice;
     var hair = req.body.hair;
     var facialhai = req.body.facialhai;
     var earschoice = req.body.earschoice;
     var otherpiercings = req.body.otherpiercings;
     var tattoos = req.body.tattoos;
-    var tattooagreement =req.body.tattooagreement;
+    var tattooagreement = req.body.tattooagreement;
     var comments = req.body.comments;
     var shoes = req.body.shoes;
     var danceshoes = req.body.danceshoes;
@@ -76,10 +86,10 @@ api.post('/save',  function (req, res) {
 
 
     var newForm = new Model({
-        firstname:firstname,
+        firstname: firstname,
         lastname: lastname,
-        playname:playname,
-        playdate:playdate,
+        playname: playname,
+        playdate: playdate,
         charactername: charactername,
         phonenumber: phonenumber,
         textchoice: textchoice,
@@ -102,13 +112,13 @@ api.post('/save',  function (req, res) {
         pants: pants,
         brasize: brasize,
         ring: ring,
-        allergy :allergy,
+        allergy: allergy,
         other: other,
-        allergies : allergies
+        allergies: allergies
 
     });
     db.collection('forms').save(newForm, (err, result) => {
-        if(err) return console.log('error')
+        if (err) return console.log('error')
         console.log("saved");
         return res.redirect('/basic')
     })
@@ -116,25 +126,25 @@ api.post('/save',  function (req, res) {
     //     if (err) throw err;
     //     console.log(form);
     // });  
-  })
-  api.post('/edit', function(req, res){
-    var query = {"_id" : ObjectId(req.body.perfId1)};
-    db.collection('forms').find(query).toArray(function(err, result){
+})
+api.post('/edit', function (req, res) {
+    var query = { "_id": ObjectId(req.body.perfId1) };
+    db.collection('forms').find(query).toArray(function (err, result) {
         if (err) throw err;
-        res.render('form.ejs', { perf : result});
+        res.render('form.ejs', { perf: result });
         // res.redirect('Homepage.ejs',{listOfPerformers : result});
     });
-  })
-  api.post('/delete', function(req, res){
-    var query = {"_id" : ObjectId(req.body.perfId2)};
-    db.collection('forms').deleteOne(query,function(err, result){
+})
+api.post('/delete', function (req, res) {
+    var query = { "_id": ObjectId(req.body.perfId2) };
+    db.collection('forms').deleteOne(query, function (err, result) {
         if (err) throw err;
         return res.redirect('/')
         // res.render('form.ejs', { perf : result});
         // res.redirect('Homepage.ejs',{listOfPerformers : result});
 
     });
-  })
+})
 // commented by shiva
 //   api.get('/getinfo',  function (req, res) {
 //      Model.find({}, function (err, form) {
@@ -156,56 +166,74 @@ api.post('/save',  function (req, res) {
 //    //  return res.redirect('/basic')
 //   })
 
-   api.post('/getByName',  function (req, res) {
-      var query = {firstname : req.body.firstname};
+api.post('/getByName', function (req, res) {
+    var query = { firstname: req.body.firstname };
 
-      db.collection('forms').find(query).toArray(function(err, result){
-          if (err) throw err;
-    
-          db.collection('measures').find().toArray(function(err, result1){
-            if (err) throw err;
-        if(result1.length ==0){
-            result1 = emptyModel;
-        }
-        db.collection('clothoptions').find().toArray(function(err, result2){
-            if (err) throw err;
-            if(result2.length ==0){
-                result2 = emptyCloth;
-            }
-           
-        res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel,cloth:result2, cloth1:emptyCloth});
-               
-        })
-            
-            //   return res.json(result);    
-    });
-});
-    })
-    // get by play name
-   api.post('/getByPlay',  function (req, res) {
-       console.log(req.body.playname);
-    var query = {playname : req.body.playname};
-
-    db.collection('forms').find(query).toArray(function(err, result){
+    db.collection('forms').find(query).toArray(function (err, result) {
         if (err) throw err;
-        db.collection('measures').find().toArray(function(err, result1){
-            if (err) throw err;
-        if(result1.length ==0){
-            result1 = emptyModel;
-        }
-        db.collection('clothoptions').find().toArray(function(err, result2){
-            if (err) throw err;
-            if(result2.length ==0){
-                result2 = emptyCloth;
-            }
-           
-        res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel,cloth:result2, cloth1:emptyCloth});
-               
-        })
 
+        db.collection('measures').find().toArray(function (err, result1) {
+            if (err) throw err;
+            if (result1.length == 0) {
+                result1 = emptyModel;
+            }
+            db.collection('clothoptions').find().toArray(function (err, result2) {
+                if (err) throw err;
+                if (result2.length == 0) {
+                    result2 = emptyCloth;
+                }
+                db.collection('coloroptions').find().toArray(function (err, result3) {
+                    if (err) throw err;
+                    if (result3.length == 0) {
+                        result3 = emptyItem;
+                    }
+                    db.collection('employeeoptions').find().toArray(function (err, result4) {
+                        if (err) throw err;
+                        if (result4.length == 0) {
+                            result4 = emptyEmployee;
+                        }
+                        res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl:result4, empl1: emptyEmployee });
+                    })
+                })
+            });
         });
     });
-  })
+})
+// get by play name
+api.post('/getByPlay', function (req, res) {
+    console.log(req.body.playname);
+    var query = { playname: req.body.playname };
+
+    db.collection('forms').find(query).toArray(function (err, result) {
+        if (err) throw err;
+
+        db.collection('measures').find().toArray(function (err, result1) {
+            if (err) throw err;
+            if (result1.length == 0) {
+                result1 = emptyModel;
+            }
+            db.collection('clothoptions').find().toArray(function (err, result2) {
+                if (err) throw err;
+                if (result2.length == 0) {
+                    result2 = emptyCloth;
+                }
+                db.collection('coloroptions').find().toArray(function (err, result3) {
+                    if (err) throw err;
+                    if (result3.length == 0) {
+                        result3 = emptyItem;
+                    }
+                    db.collection('employeeoptions').find().toArray(function (err, result4) {
+                        if (err) throw err;
+                        if (result4.length == 0) {
+                            result4 = emptyEmployee;
+                        }
+                        res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl:result4, empl1: emptyEmployee });
+                    })
+                })
+            });
+        });
+    });
+})
 //get by play date
 //   api.post('/getByDate',  function (req, res) {
 //     console.log(req.body.playdate);
@@ -221,134 +249,285 @@ api.post('/save',  function (req, res) {
 //      return res.json(result);
 //  });
 // })
-api.post('/getByDate',  function (req, res) {
-    var query = {playdate : req.body.playdate};    
-//  var query = {playdate : {"$gte" : new Date(req.body.playdate)}};
-//   query = {playdate:"/"+req.body.playdate+"/"};
-//  query = {playdate: /^"2018-09-15"/};
-//   query = {playdate: {"$in":[new Date(req.body.playdate)]}};
+api.post('/getByDate', function (req, res) {
+    var query = { playdate: req.body.playdate };
+    //  var query = {playdate : {"$gte" : new Date(req.body.playdate)}};
+    //   query = {playdate:"/"+req.body.playdate+"/"};
+    //  query = {playdate: /^"2018-09-15"/};
+    //   query = {playdate: {"$in":[new Date(req.body.playdate)]}};
 
- db.collection('forms').find(query).toArray(function(err, result){
-     if (err) throw err;
-   //   console.log(result);
-    //  return res.json(result);
-    db.collection('measures').find().toArray(function(err, result1){
+    db.collection('forms').find(query).toArray(function (err, result) {
         if (err) throw err;
-    if(result1.length ==0){
-        result1 = emptyModel;
-    }
-    db.collection('clothoptions').find().toArray(function(err, result2){
-        if (err) throw err;
-        if(result2.length ==0){
-            result2 = emptyCloth;
-        }
-       
-    res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel,cloth:result2, cloth1:emptyCloth});
-           
-    })
 
+        db.collection('measures').find().toArray(function (err, result1) {
+            if (err) throw err;
+            if (result1.length == 0) {
+                result1 = emptyModel;
+            }
+            db.collection('clothoptions').find().toArray(function (err, result2) {
+                if (err) throw err;
+                if (result2.length == 0) {
+                    result2 = emptyCloth;
+                }
+                db.collection('coloroptions').find().toArray(function (err, result3) {
+                    if (err) throw err;
+                    if (result3.length == 0) {
+                        result3 = emptyItem;
+                    }
+                    db.collection('employeeoptions').find().toArray(function (err, result4) {
+                        if (err) throw err;
+                        if (result4.length == 0) {
+                            result4 = emptyEmployee;
+                        }
+                        res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl:result4, empl1: emptyEmployee });
+                    })
+                })
+            });
+        });
     });
-    //  res.render('Homepage.ejs',{listOfPerformers : result});
- });
 })
 
-api.post('/emp01',  function (req, res) {
-    
+api.post('/emp01', function (req, res) {
+    if ((req.body.employeeId).length > 0) {
+        db.collection('employeeoptions').update({ 'empID': req.body.empID }, { $set: { 'selectEmployee1': req.body.selectEmployee1 } });
+        console.log(req.body.selectEmployee1);
+    }else{
     var selectEmployee1 = req.body.selectEmployee1;
     var empID = req.body.empID;
 
     var newEmployeeOption = new Model1({
-        
+
         selectEmployee1: selectEmployee1,
         empID: empID
-        
-        
-    });
-    
-        Model1.create(newEmployeeOption, function (err, employeeOption) {
-            if (err) throw err;
-        });
-        return res.redirect('/')
-      })
 
-      api.post('/clr01',  function (req, res) {
-    
-        var selectColor01 = req.body.selectColor01;
-        var colorID = req.body.colorID;
-    
-        var newColorOption = new Model2({
-            
-            selectColor01: selectColor01,
-            colorID: colorID
-            
-            
-        });
-        
-            Model2.create(newColorOption, function (err, ColorOption) {
+
+    });
+
+    Model1.create(newEmployeeOption, function (err, employeeOption) {
+        if (err) throw err;
+    });
+    db.collection('forms').find().toArray(function (err, result) {
+        if (err) throw err;
+
+        db.collection('measures').find().toArray(function (err, result1) {
+            if (err) throw err;
+            if (result1.length == 0) {
+                result1 = emptyModel;
+            }
+            db.collection('clothoptions').find().toArray(function (err, result2) {
                 if (err) throw err;
-            });
-            return res.redirect('/')
-          })
-    
-          api.post('/cloth01',  function (req, res) {
-            if((req.body.clothselect).length > 0 ){ 
-                db.collection('clothoptions').update({'clothID': req.body.clothID},{$set:{'selectCloth':req.body.selectCloth}});
-                
-            }else {
-            var selectCloth = req.body.selectCloth;
-            var clothID = req.body.clothID;
-            var clothselect = req.body.clothselect;
-            
-            var newClothOption = new Model3({
-                
-                selectCloth: selectCloth,
-                clothID: clothID
-                
-                
-            });
-            
-                Model3.create(newClothOption, function (err, ClothOption) {
-                    if (err) throw err;
-                });
-                db.collection('forms').find().toArray(function(err, result){
-                    if (err) throw err;
-                
-                db.collection('measures').find().toArray(function(err, result1){
-                    if (err) throw err;
-                if(result1.length ==0){
-                    result1 = emptyModel;
+                if (result2.length == 0) {
+                    result2 = emptyCloth;
                 }
-                db.collection('clothoptions').find().toArray(function(err, result2){
+                db.collection('coloroptions').find().toArray(function (err, result3) {
                     if (err) throw err;
-                    if(result2.length ==0){
-                        result2 = emptyCloth;
+                    if (result3.length == 0) {
+                        result3 = emptyItem;
                     }
-                    
-                res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel,cloth:result2, cloth1:emptyCloth});
-                      
+                    db.collection('employeeoptions').find().toArray(function (err, result4) {
+                        if (err) throw err;
+                        if (result4.length == 0) {
+                            result4 = emptyEmployee;
+                        }
+                        res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl:result4, empl1: emptyEmployee });
+                    })
                 })
             });
-            });
-        }
-        
-        db.collection('forms').find().toArray(function(err, result){
-            if (err) throw err;
-        
-        db.collection('measures').find().toArray(function(err, result1){
-            if (err) throw err;
-        if(result1.length ==0){
+        });
+    });
+}
+db.collection('forms').find().toArray(function (err, result) {
+    if (err) throw err;
+
+    db.collection('measures').find().toArray(function (err, result1) {
+        if (err) throw err;
+        if (result1.length == 0) {
             result1 = emptyModel;
         }
-        db.collection('clothoptions').find().toArray(function(err, result2){
+        db.collection('clothoptions').find().toArray(function (err, result2) {
             if (err) throw err;
-            if(result2.length ==0){
+            if (result2.length == 0) {
                 result2 = emptyCloth;
             }
-            // console.log(result2);
-        res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel,cloth:result2, cloth1:emptyCloth});
-    })
+            db.collection('coloroptions').find().toArray(function (err, result3) {
+                if (err) throw err;
+                if (result3.length == 0) {
+                    result3 = emptyItem;
+                }
+                db.collection('employeeoptions').find().toArray(function (err, result4) {
+                    if (err) throw err;
+                    if (result4.length == 0) {
+                        result4 = emptyEmployee;
+                    }
+                    res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl:result4, empl1: emptyEmployee });
+                })
+            })
+        });
+    });
 });
-});         
-    })
+})
 
-  module.exports = api;
+api.post('/clr01', function (req, res) {
+    if ((req.body.itemId).length > 0) {
+        db.collection('coloroptions').update({ 'colorID': req.body.colorID }, { $set: { 'selectColor01': req.body.selectColor01 } });
+        console.log(req.body.colorID);
+    } else {
+        var selectColor01 = req.body.selectColor01;
+        var colorID = req.body.colorID;
+
+        var newColorOption = new Model2({
+
+            selectColor01: selectColor01,
+            colorID: colorID
+
+
+        });
+
+        Model2.create(newColorOption, function (err, ColorOption) {
+            if (err) throw err;
+        });
+        db.collection('forms').find().toArray(function (err, result) {
+            if (err) throw err;
+    
+            db.collection('measures').find().toArray(function (err, result1) {
+                if (err) throw err;
+                if (result1.length == 0) {
+                    result1 = emptyModel;
+                }
+                db.collection('clothoptions').find().toArray(function (err, result2) {
+                    if (err) throw err;
+                    if (result2.length == 0) {
+                        result2 = emptyCloth;
+                    }
+                    db.collection('coloroptions').find().toArray(function (err, result3) {
+                        if (err) throw err;
+                        if (result3.length == 0) {
+                            result3 = emptyItem;
+                        }
+                        db.collection('employeeoptions').find().toArray(function (err, result4) {
+                            if (err) throw err;
+                            if (result4.length == 0) {
+                                result4 = emptyEmployee;
+                            }
+                            res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl:result4, empl1: emptyEmployee });
+                        })
+                    })
+                });
+            });
+        });
+    }
+    db.collection('forms').find().toArray(function (err, result) {
+        if (err) throw err;
+
+        db.collection('measures').find().toArray(function (err, result1) {
+            if (err) throw err;
+            if (result1.length == 0) {
+                result1 = emptyModel;
+            }
+            db.collection('clothoptions').find().toArray(function (err, result2) {
+                if (err) throw err;
+                if (result2.length == 0) {
+                    result2 = emptyCloth;
+                }
+                db.collection('coloroptions').find().toArray(function (err, result3) {
+                    if (err) throw err;
+                    if (result3.length == 0) {
+                        result3 = emptyItem;
+                    }
+                    db.collection('employeeoptions').find().toArray(function (err, result4) {
+                        if (err) throw err;
+                        if (result4.length == 0) {
+                            result4 = emptyEmployee;
+                        }
+                        res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl:result4, empl1: emptyEmployee });
+                    })
+                })
+            });
+        });
+    });
+})
+
+
+api.post('/cloth01', function (req, res) {
+    if ((req.body.clothselect).length > 0) {
+        db.collection('clothoptions').update({ 'clothID': req.body.clothID }, { $set: { 'selectCloth': req.body.selectCloth } });
+
+    } else {
+        var selectCloth = req.body.selectCloth;
+        var clothID = req.body.clothID;
+        var clothselect = req.body.clothselect;
+
+        var newClothOption = new Model3({
+
+            selectCloth: selectCloth,
+            clothID: clothID
+
+
+        });
+
+        Model3.create(newClothOption, function (err, ClothOption) {
+            if (err) throw err;
+        });
+        db.collection('forms').find().toArray(function (err, result) {
+            if (err) throw err;
+    
+            db.collection('measures').find().toArray(function (err, result1) {
+                if (err) throw err;
+                if (result1.length == 0) {
+                    result1 = emptyModel;
+                }
+                db.collection('clothoptions').find().toArray(function (err, result2) {
+                    if (err) throw err;
+                    if (result2.length == 0) {
+                        result2 = emptyCloth;
+                    }
+                    db.collection('coloroptions').find().toArray(function (err, result3) {
+                        if (err) throw err;
+                        if (result3.length == 0) {
+                            result3 = emptyItem;
+                        }
+                        db.collection('employeeoptions').find().toArray(function (err, result4) {
+                            if (err) throw err;
+                            if (result4.length == 0) {
+                                result4 = emptyEmployee;
+                            }
+                            res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl:result4, empl1: emptyEmployee });
+                        })
+                    })
+                });
+            });
+        });
+    }
+
+    db.collection('forms').find().toArray(function (err, result) {
+        if (err) throw err;
+
+        db.collection('measures').find().toArray(function (err, result1) {
+            if (err) throw err;
+            if (result1.length == 0) {
+                result1 = emptyModel;
+            }
+            db.collection('clothoptions').find().toArray(function (err, result2) {
+                if (err) throw err;
+                if (result2.length == 0) {
+                    result2 = emptyCloth;
+                }
+                db.collection('coloroptions').find().toArray(function (err, result3) {
+                    if (err) throw err;
+                    if (result3.length == 0) {
+                        result3 = emptyItem;
+                    }
+                    db.collection('employeeoptions').find().toArray(function (err, result4) {
+                        if (err) throw err;
+                        if (result4.length == 0) {
+                            result4 = emptyEmployee;
+                        }
+                        res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl:result4, empl1: emptyEmployee });
+                    })
+                })
+            });
+        });
+    });
+})
+
+module.exports = api;

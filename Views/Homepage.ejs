@@ -1,19 +1,20 @@
 <% include header %>
 
 <head>
-  
- <link rel ="stylesheet" type="text/css" href="/css/Homepage.css"/> 
- <script src="/js/Test.js"></script>
- <script src="/js/Test.js"></script>
- <script src="../main.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="/css/Homepage.css" />
+  <script src="/js/Test.js"></script>
+  <script src="/js/Test.js"></script>
+  <script src="../main.js"></script>
 
 </head>
+
 <body>
   <div class="container-fluid">
-      
-      
-      <h1>Performers Details</h1>
-      <br>
+
+
+    <h1>Performers Details</h1>
+    <br>
     <table class="table" id="pull">
       <thead>
         <tr>
@@ -30,261 +31,304 @@
           <th>Employee Assigned</th>
           <% } %>
           <th>Notes</th>
-          
+
         </tr>
       </thead>
       <tbody>
         <% var mes = []%>
         <% var updateVairable = ""%>
-          <% for( i = 0; i < listOfPerformers.length; i++) { %>
+        <% for( i = 0; i < listOfPerformers.length; i++) { %>
         <tr>
-          <td><%= listOfPerformers[i].firstname %></td>
-          <td><%= listOfPerformers[i].lastname %></td>
-          <td><%= listOfPerformers[i].playname %></td>
-          <td><%= listOfPerformers[i].charactername %></td>
-          
-         
-
           <td>
-              <button id="selectItem<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2<%= listOfPerformers[i]._id %>">Choose item </button>
-              <div id="myModal2<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">                 
-                                             
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Choose Clothing Item</h4>
-                    </div>
-                    <div class="modal-body">
-                      <form method="POST" action="/FormController/cloth01">
-                        <select id="mySelect1<%= listOfPerformers[i]._id %>" size="4" onclick="selectItem('<%= listOfPerformers[i]._id %>')">
-                            <option>Tunic</option>
-                            <option>Skirt</option>
-                            <option>Suit</option>
-                            <option>Trousers</option>
-                            <% if (cloth[i] == null){%>
-                              <%cloth[i] = cloth1%>
-                            <%}%>
-                            <input type="text" name="clothselect" value="<%=cloth[i]._id%>" >
-                            <input id="cloth<%= listOfPerformers[i]._id %>" type="text" name="selectCloth" >
-                            <input type="text" name="clothID" value="<%= listOfPerformers[i]._id %>" >
-                          </select>
-                          <br>
-                          <br>
-                          <button onclick="myFunction1('<%=listOfPerformers[i]._id%>')" type="submit" class="btn btn-primary">Submit</button>   
-                        </form>
-                    </div>
-                  </div>
-              
-                </div>
-              </div>
-            </td>
-
-          <td>
-              
-              <button id="selectColor<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3<%= listOfPerformers[i]._id %>">Choose color</button>
-              <div id="myModal3<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" >&times;</button>
-                     </div>
-                    <div class="modal-body">
-                      <form method="POST" action="/FormController/clr01">
-                        <select id="mySelect2<%= listOfPerformers[i]._id %>" size="5" onchange="selColor('<%= listOfPerformers[i]._id %>')">
-                            <option>black</option>
-                            <option>white</option>
-                            <option>cream</option>
-                            <option>tan</option>
-                            <option>brown</option>
-                            <option>grey</option>
-                            <option>red</option>
-                            <option>orange</option>
-                            <option>yellow</option>
-                            <option>green</option>
-                            <option>blue</option>
-                            <option>purple</option>
-                            <option>pink</option>
-                            <option>lavender</option>
-                            <option>dark</option>
-                            <option>light</option>
-                            <option>pale</option>
-                            <option>distressed</option>
-                            <option>old</option>
-                            <input id="clr<%= listOfPerformers[i]._id %>" type="text" name="selectColor01" hidden>
-                            <input type="text" name="colorID" value="<%= listOfPerformers[i]._id %>" hidden>
-                          </select>
-                          <br>
-                          <br>
-                          <button onclick="myFunction2('<%= listOfPerformers[i]._id %>')" type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                          
-                    </div>
-                  </div>
-              
-                </div>
-              </div>
-            </td>
-           
-          <td>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<%= listOfPerformers[i]._id %>">Click here</button>
-<div id="myModal<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Measurements</h4>
-      </div>
-      <div class="modal-body">
-          <div class="container">
-              <ul class="nav nav-pills">
-                <li><a data-toggle="tab" href="#upper<%= listOfPerformers[i]._id %>">Upper</a></li>
-                <li><a data-toggle="tab" href="#lower<%= listOfPerformers[i]._id %>">Lower</a></li>
-                <li><a data-toggle="tab" href="#other<%= listOfPerformers[i]._id %>">Other</a></li>
-              </ul>
-              <div class="tab-content">
-                <br>
-                <div id="upper<%= listOfPerformers[i]._id %>" class="tab-pane fade in active">
-                  <form method="post" action="/MeasureController/measure1">
-                    <div class="form-group">
-                      <% if(measures.length ==0){%>
-                            mes[i] = Measurements
-                      <%}%>
-                        <% for(let j = 0; j < measures.length; j++) { %>
-                            <%if(listOfPerformers[i]._id == measures[j].perfId){%>
-                              <%mes[i] = measures[j]%>
-                              <%break%>
-                            <%}%>
-                        <% } %>
-                        <% if (mes[i] == null){%>
-                          <%mes[i] = Measurements%>
-                        <%}%>
-                  <input  type="text" name="perfId" hidden value="<%= listOfPerformers[i]._id %>">  
-                  <input  type="text" name="mesId"  hidden value="<%= mes[i]._id %>">
-                  Head Circumference:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="headcicumference" placeholder="Enter head Circumference" value="<%=mes[i].headcicumference%>"><br>
-                  
-                  
-                  Neck:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="neck" placeholder="Enter neck measurement value" value="<%=mes[i].neck%>"><br>
-                  Armcycle:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="armcycle" placeholder="Enter armcycle measurement value" value="<%=mes[i].armcycle%>"><br>
-                  Centre Back to Wrist:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="centrebacktowrist" placeholder="Enter measurement value" value="<%=mes[i].centrebacktowrist%>"><br>
-                  Chest Relaxed:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="chestrelaxed" placeholder="Enter measurement value" value="<%=mes[i].chestrelaxed%>"><br>
-                  Chest Expanded:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="chestexpanded" placeholder="Enter measurement value" value="<%=mes[i].chestexpanded%>"><br>
-                  Chest over compression garnment:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="chestovercompressiongarnment" placeholder="Enter measurement value" value="<%=mes[i].chestovercompressiongarnment%>"><br>
-                  Chest over Body Padding:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="chestoverbodypadding" placeholder="Enter measurement value" value="<%=mes[i].chestoverbodypadding%>">                      
-                  <br><br>
-                  <div class="h">
-                      <input class="btn btn-primary" type="submit" value="Next" data-toggle="tab" href="#lower<%= listOfPerformers[i]._id %>">
-                    </div>
-                </div>
-            </div>
-            <div id="lower<%= listOfPerformers[i]._id %>" class="tab-pane fade">                        
-                  <div class="form-group">
-                  Waist Relaxed:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="waistrelaxed" placeholder="Enter measurement value" value="<%=mes[i].waistrelaxed%>" ><br>
-                  Waist Expanded:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="waistexpande" placeholder="Enter measurement value" value="<%=mes[i].waistexpande%>"><br>
-                  Full Hip:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="fullhip" placeholder="Enter measurement value" value="<%=mes[i].fullhip%>"><br>
-                  Half Girth:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="halfgirth" placeholder="Enter measurement value" value="<%=mes[i].halfgirth%>"><br>
-                  Full Girth:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="fullgirth" placeholder="Enter measurement value" value="<%=mes[i].fullgirth%>"><br>
-                  Inseam to Ankle:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="inseamtoankle" placeholder="Enter measurement value" value="<%=mes[i].inseamtoankle%>"><br>
-                  Inseam to floor:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="inseamtofloor" placeholder="Enter measurement value" value="<%=mes[i].inseamtofloor%>"><br>
-                  Waist over Compression Garment&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="waistovercompressiongarnment" placeholder="Enter measurement value" value="<%=mes[i].waistovercompressiongarment%>"><br>
-                  Hip over Compression Garment:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="hipovercompressiongarnment" placeholder="Enter measurement value" value="<%=mes[i].hipovercompressiongarment%>"><br>
-                  Waist over Body Padding:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="waistoverbodypadding" placeholder="Enter measurement value" value="<%=mes[i].waistoverbodypadding%>"><br>
-                  Hip over Body Padding:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="hipoverbodypadding" placeholder="Enter measurement value" value="<%=mes[i].hipoverbodypadding%>"><br>
-                  Shoes:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="shoes" placeholder="Enter shoe size" value="<%=mes[i].shoes%>">                    
-                  <br><br>
-                  <div class="h">
-                          <input class="btn btn-primary" type="submit" value="Next" data-toggle="tab" href="#other<%= listOfPerformers[i]._id %>">
-                        </div>
-                      </div>      
-                    </div>
-            <div id="other<%= listOfPerformers[i]._id %>" class="tab-pane fade">
-            
-              <div class="form-group">
-                Dominant Hand:&nbsp;&nbsp;
-                <input class="form-control" type="text" name="dominanthand" placeholder="Enter measurement value" value="<%=mes[i].dominanthand%>"><br>
-                Other over Body Padding:&nbsp;&nbsp;
-                <input class="form-control" type="text" name="otheroverbodypadding" placeholder="Enter measurement value" value="<%=mes[i].otheroverbodypadding%>">
-                
-                <br><br>
-                <div class="h">
-                  <%if(mes[i].headcicumference == null){%>
-                    <input class="btn btn-primary" type="submit" value="Submit">
-                  <%}%>
-                  <%if(mes[i].headcicumference != null){%>
-                    <input class="btn btn-primary" type="submit" value="Update">
-                  <%}%>
-              </div>
-            </div>
-            </div>
-            </form>
-        </div>
-      </div>
-  </div>
-</div>  
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
+            <%= listOfPerformers[i].firstname %>
           </td>
-          <td><%= listOfPerformers[i].playdate %></td>
-          <% if(user && user.isAdmin) { %>
           <td>
-            <button id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1<%= listOfPerformers[i]._id %>">Select Employee</button>
-            <div id="myModal1<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
+            <%= listOfPerformers[i].lastname %>
+          </td>
+          <td>
+            <%= listOfPerformers[i].playname %>
+          </td>
+          <td>
+            <%= listOfPerformers[i].charactername %>
+          </td>
+
+
+
+          <td>
+            <button id="selectItem<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
+              data-target="#myModal2<%= listOfPerformers[i]._id %>">Choose item </button>
+            <div id="myModal2<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Choose Clothing Item</h4>
+                  </div>
+                  <div class="modal-body">
+                    <form method="POST" action="/FormController/cloth01">
+                      <select id="mySelect1<%= listOfPerformers[i]._id %>" size="4" onclick="selectItem('<%= listOfPerformers[i]._id %>')">
+                        <option>Tunic</option>
+                        <option>Skirt</option>
+                        <option>Suit</option>
+                        <option>Trousers</option>
+                        <% if (cloth[i] == null){%>
+                        <%cloth[i] = cloth1%>
+                        <%}%>
+                        <input type="text" name="clothselect" value="<%=cloth[i]._id%>" hidden>
+                        <input id="cloth<%= listOfPerformers[i]._id %>" type="text" name="selectCloth" hidden>
+                        <input type="text" name="clothID" value="<%= listOfPerformers[i]._id %>" hidden>
+                      </select>
+                      <br>
+                      <br>
+                      <button onclick="myFunction1('<%=listOfPerformers[i]._id%>')" type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </td>
+
+          <td>
+
+            <button id="selectColor<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
+              data-target="#myModal3<%= listOfPerformers[i]._id %>">Choose color</button>
+            <div id="myModal3<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Employees</h4>
                   </div>
                   <div class="modal-body">
-                    <form method="POST" action="/FormController/emp01">
-                      <select id="mySelect<%= listOfPerformers[i]._id %>" size="5" onchange="myfunctionEmp('<%= listOfPerformers[i]._id %>')">
-                          <option>Akhil</option>
-                          <option>Meghana</option>
-                          <option>Naveen</option>
-                          <option>Shiva</option>
-                          <option>Siva</option>
-                          <br>
-                          <input id="emp<%= listOfPerformers[i]._id %>" type="text" name="selectEmployee1" hidden>
-                          <input type="text" name="empID" value="<%= listOfPerformers[i]._id %>" hidden>
-                        </select>
-                        <br>
-                        <br>
-                        <button class="btn btn-primary" onclick="myFunction('<%= listOfPerformers[i]._id %>')" type="submit">Submit</button>
-                      </form>
-                        
+                    <form method="POST" action="/FormController/clr01">
+                      <select id="mySelect2<%= listOfPerformers[i]._id %>" size="5" onchange="selColor('<%= listOfPerformers[i]._id %>')">
+                        <option>black</option>
+                        <option>white</option>
+                        <option>cream</option>
+                        <option>tan</option>
+                        <option>brown</option>
+                        <option>grey</option>
+                        <option>red</option>
+                        <option>orange</option>
+                        <option>yellow</option>
+                        <option>green</option>
+                        <option>blue</option>
+                        <option>purple</option>
+                        <option>pink</option>
+                        <option>lavender</option>
+                        <option>dark</option>
+                        <option>light</option>
+                        <option>pale</option>
+                        <option>distressed</option>
+                        <option>old</option>
+                        <% if (item[i] == null){%>
+                        <%item[i] = item1%>
+                        <%}%>
+                        <input type="text" name="itemId" value="<%=item[i]._id%>" hidden>
+                        <input id="clr<%= listOfPerformers[i]._id %>" type="text" name="selectColor01" hidden>
+                        <input type="text" name="colorID" value="<%= listOfPerformers[i]._id %>" hidden>
+                      </select>
+                      <br>
+                      <br>
+                      <button onclick="myFunction2('<%= listOfPerformers[i]._id %>')" type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+
                   </div>
                 </div>
-            
+
               </div>
             </div>
-            <!-- <select>
+          </td>
+
+          <td>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<%= listOfPerformers[i]._id %>">Click
+              here</button>
+            <div id="myModal<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Measurements</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="container">
+                      <ul class="nav nav-pills">
+                        <li><a data-toggle="tab" href="#upper<%= listOfPerformers[i]._id %>">Upper</a></li>
+                        <li><a data-toggle="tab" href="#lower<%= listOfPerformers[i]._id %>">Lower</a></li>
+                        <li><a data-toggle="tab" href="#other<%= listOfPerformers[i]._id %>">Other</a></li>
+                      </ul>
+                      <div class="tab-content">
+                        <br>
+                        <div id="upper<%= listOfPerformers[i]._id %>" class="tab-pane fade in active">
+                          <form method="post" action="/MeasureController/measure1">
+                            <div class="form-group">
+                              <% if(measures.length ==0){%>
+                              mes[i] = Measurements
+                              <%}%>
+                              <% for(let j = 0; j < measures.length; j++) { %>
+                              <%if(listOfPerformers[i]._id == measures[j].perfId){%>
+                              <%mes[i] = measures[j]%>
+                              <%break%>
+                              <%}%>
+                              <% } %>
+                              <% if (mes[i] == null){%>
+                              <%mes[i] = Measurements%>
+                              <%}%>
+                              <input type="text" name="perfId" hidden value="<%= listOfPerformers[i]._id %>">
+                              <input type="text" name="mesId" hidden value="<%= mes[i]._id %>">
+                              Head Circumference:&nbsp;&nbsp;
+                              <input class="form-control" type="text" name="headcicumference" placeholder="Enter head Circumference"
+                                value="<%=mes[i].headcicumference%>"><br>
+
+
+                              Neck:&nbsp;&nbsp;
+                              <input class="form-control" type="text" name="neck" placeholder="Enter neck measurement value"
+                                value="<%=mes[i].neck%>"><br>
+                              Armcycle:&nbsp;&nbsp;
+                              <input class="form-control" type="text" name="armcycle" placeholder="Enter armcycle measurement value"
+                                value="<%=mes[i].armcycle%>"><br>
+                              Centre Back to Wrist:&nbsp;&nbsp;
+                              <input class="form-control" type="text" name="centrebacktowrist" placeholder="Enter measurement value"
+                                value="<%=mes[i].centrebacktowrist%>"><br>
+                              Chest Relaxed:&nbsp;&nbsp;
+                              <input class="form-control" type="text" name="chestrelaxed" placeholder="Enter measurement value"
+                                value="<%=mes[i].chestrelaxed%>"><br>
+                              Chest Expanded:&nbsp;&nbsp;
+                              <input class="form-control" type="text" name="chestexpanded" placeholder="Enter measurement value"
+                                value="<%=mes[i].chestexpanded%>"><br>
+                              Chest over compression garnment:&nbsp;&nbsp;
+                              <input class="form-control" type="text" name="chestovercompressiongarnment" placeholder="Enter measurement value"
+                                value="<%=mes[i].chestovercompressiongarnment%>"><br>
+                              Chest over Body Padding:&nbsp;&nbsp;
+                              <input class="form-control" type="text" name="chestoverbodypadding" placeholder="Enter measurement value"
+                                value="<%=mes[i].chestoverbodypadding%>">
+                              <br><br>
+                              <div class="h">
+                                <input class="btn btn-primary" type="submit" value="Next" data-toggle="tab" href="#lower<%= listOfPerformers[i]._id %>">
+                              </div>
+                            </div>
+                        </div>
+                        <div id="lower<%= listOfPerformers[i]._id %>" class="tab-pane fade">
+                          <div class="form-group">
+                            Waist Relaxed:&nbsp;&nbsp;
+                            <input class="form-control" type="text" name="waistrelaxed" placeholder="Enter measurement value"
+                              value="<%=mes[i].waistrelaxed%>"><br>
+                            Waist Expanded:&nbsp;&nbsp;
+                            <input class="form-control" type="text" name="waistexpande" placeholder="Enter measurement value"
+                              value="<%=mes[i].waistexpande%>"><br>
+                            Full Hip:&nbsp;&nbsp;
+                            <input class="form-control" type="text" name="fullhip" placeholder="Enter measurement value"
+                              value="<%=mes[i].fullhip%>"><br>
+                            Half Girth:&nbsp;&nbsp;
+                            <input class="form-control" type="text" name="halfgirth" placeholder="Enter measurement value"
+                              value="<%=mes[i].halfgirth%>"><br>
+                            Full Girth:&nbsp;&nbsp;
+                            <input class="form-control" type="text" name="fullgirth" placeholder="Enter measurement value"
+                              value="<%=mes[i].fullgirth%>"><br>
+                            Inseam to Ankle:&nbsp;&nbsp;
+                            <input class="form-control" type="text" name="inseamtoankle" placeholder="Enter measurement value"
+                              value="<%=mes[i].inseamtoankle%>"><br>
+                            Inseam to floor:&nbsp;&nbsp;
+                            <input class="form-control" type="text" name="inseamtofloor" placeholder="Enter measurement value"
+                              value="<%=mes[i].inseamtofloor%>"><br>
+                            Waist over Compression Garment&nbsp;&nbsp;
+                            <input class="form-control" type="text" name="waistovercompressiongarnment" placeholder="Enter measurement value"
+                              value="<%=mes[i].waistovercompressiongarment%>"><br>
+                            Hip over Compression Garment:&nbsp;&nbsp;
+                            <input class="form-control" type="text" name="hipovercompressiongarnment" placeholder="Enter measurement value"
+                              value="<%=mes[i].hipovercompressiongarment%>"><br>
+                            Waist over Body Padding:&nbsp;&nbsp;
+                            <input class="form-control" type="text" name="waistoverbodypadding" placeholder="Enter measurement value"
+                              value="<%=mes[i].waistoverbodypadding%>"><br>
+                            Hip over Body Padding:&nbsp;&nbsp;
+                            <input class="form-control" type="text" name="hipoverbodypadding" placeholder="Enter measurement value"
+                              value="<%=mes[i].hipoverbodypadding%>"><br>
+                            Shoes:&nbsp;&nbsp;
+                            <input class="form-control" type="text" name="shoes" placeholder="Enter shoe size" value="<%=mes[i].shoes%>">
+                            <br><br>
+                            <div class="h">
+                              <input class="btn btn-primary" type="submit" value="Next" data-toggle="tab" href="#other<%= listOfPerformers[i]._id %>">
+                            </div>
+                          </div>
+                        </div>
+                        <div id="other<%= listOfPerformers[i]._id %>" class="tab-pane fade">
+
+                          <div class="form-group">
+                            Dominant Hand:&nbsp;&nbsp;
+                            <input class="form-control" type="text" name="dominanthand" placeholder="Enter measurement value"
+                              value="<%=mes[i].dominanthand%>"><br>
+                            Other over Body Padding:&nbsp;&nbsp;
+                            <input class="form-control" type="text" name="otheroverbodypadding" placeholder="Enter measurement value"
+                              value="<%=mes[i].otheroverbodypadding%>">
+
+                            <br><br>
+                            <div class="h">
+                              <%if(mes[i].headcicumference == null){%>
+                              <input class="btn btn-primary" type="submit" value="Submit">
+                              <%}%>
+                              <%if(mes[i].headcicumference != null){%>
+                              <input class="btn btn-primary" type="submit" value="Update">
+                              <%}%>
+                            </div>
+                          </div>
+                        </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+  </div>
+  </td>
+  <td>
+    <%= listOfPerformers[i].playdate %>
+  </td>
+  <% if(user && user.isAdmin) { %>
+  <td>
+    <button id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
+      data-target="#myModal1<%= listOfPerformers[i]._id %>">Select Employee</button>
+    <div id="myModal1<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Employees</h4>
+          </div>
+          <div class="modal-body">
+            <form method="POST" action="/FormController/emp01">
+              <select id="mySelect<%= listOfPerformers[i]._id %>" size="5" onchange="myfunctionEmp('<%= listOfPerformers[i]._id %>')">
+                <option>Akhil</option>
+                <option>Meghana</option>
+                <option>Naveen</option>
+                <option>Shiva</option>
+                <option>Siva</option>
+                <br>
+                <% if (empl[i] == null){%>
+                  <%empl[i] = empl1%>
+                  <%}%>
+                  <input type="text" name="employeeId" value="<%=empl[i]._id%>" hidden>
+                <input id="emp<%= listOfPerformers[i]._id %>" type="text" name="selectEmployee1" hidden>
+                <input type="text" name="empID" value="<%= listOfPerformers[i]._id %>" hidden>
+              </select>
+              <br>
+              <br>
+              <button class="btn btn-primary" onclick="myFunction('<%= listOfPerformers[i]._id %>')" type="submit">Submit</button>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- <select>
               <option>Select Employee</option>
               <option>Akhil</option>
               <option>Meghana</option>
@@ -292,48 +336,51 @@
               <option>Shiva</option>
               <option>Siva</option>
             </select> -->
-          </td>
-          <% } %>
-          
-          
-          <% if(user && user.isAdmin) { %>
-          <td><textarea></textarea></td>
-          <% } %>
+  </td>
+  <% } %>
 
-          
+  <% if(!user.isAdmin) { %>
+    <td><textarea readonly></textarea></td>
+    <% } %>
 
-          <% if(user && (user.isAdmin || user.isManager)) { %>
-          <td>
-            <form action="/FormController/edit" method="POST">
-              <input  type="text" name="perfId1" hidden value="<%= listOfPerformers[i]._id %>">  
-            <button class="btn btn-primary" type="submit">Basic Form</button>
-          </form>
-          </td>
-          <% } %>
-          <% if(user && user.isAdmin){ %>
-          <td>
-            <form onsubmit="return confirm('Are you sure want to delete?')" action="/FormController/delete" method="POST">
-              <input  type="text" name="perfId2" hidden value="<%= listOfPerformers[i]._id %>">  
-            <button class="btn btn-danger" type="submit">Delete</button>
-          </form>
-          </td>
-          <!-- <td><button onclick="removeRow()">Delete</button> <%=i%></td> -->
-          <!-- <td><button onclick="deletePerformer('<%= listOfPerformers[i]._id %>')">Delete</button> <%=i%></td> -->
-          <% } %>
-          
-        </tr>
-        <% } %>
-      </tbody>
-    </table>
+  <% if(user && user.isAdmin) { %>
+  <td><textarea></textarea></td>
+  <% } %>
+
+
+
+  <% if(user && (user.isAdmin || user.isManager)) { %>
+  <td>
+    <form action="/FormController/edit" method="POST">
+      <input type="text" name="perfId1" hidden value="<%= listOfPerformers[i]._id %>">
+      <button class="btn btn-primary" type="submit">Basic Form</button>
+    </form>
+  </td>
+  <% } %>
+  <% if(user && user.isAdmin){ %>
+  <td>
+    <form onsubmit="return confirm('Are you sure want to delete?')" action="/FormController/delete" method="POST">
+      <input type="text" name="perfId2" hidden value="<%= listOfPerformers[i]._id %>">
+      <button class="btn btn-danger" type="submit">Delete</button>
+    </form>
+  </td>
+  <!-- <td><button onclick="removeRow()">Delete</button> <%=i%></td> -->
+  <!-- <td><button onclick="deletePerformer('<%= listOfPerformers[i]._id %>')">Delete</button> <%=i%></td> -->
+  <% } %>
+
+  </tr>
+  <% } %>
+  </tbody>
+  </table>
   </div>
   <form action="/shop" method="get">
-    
-      
-      <button class="button" type="submit" formaction="/shop">Generate shop pull list</button>
-    </form>
-  
-  </body>
-    
 
-  
+
+    <button class="button" type="submit" formaction="/shop">Generate shop pull list</button>
+  </form>
+
+</body>
+
+
+
 </html>
