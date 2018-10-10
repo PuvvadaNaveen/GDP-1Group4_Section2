@@ -1,7 +1,7 @@
 var http = require('http');
 var assert = require('assert');
 
-var server = require('./main.js');
+var server = require('./main');
 
 describe('Server Test', function() {
 	before(function() {

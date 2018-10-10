@@ -123,7 +123,7 @@ app.post("/access_mail",function(req, res){
     } else {
       console.log('Email sent: ' + info.response);
       console.log(access_code);
-      res.send('Mail Sent Successfully');
+      res.send('Mail sent successfully');
     }
   });
 });
@@ -174,3 +174,4 @@ function deletePerformer(idd){
     });
     location.replace('/');
 }
+// module.exports = app

@@ -6,15 +6,34 @@ function myFunction(id1) {
     var x = document.getElementById("mySelect"+id1).value;
     document.getElementById("selectEmployee"+id1).innerHTML = x;
 }
+
+function myfunctionEmp(id0) {
+    var x = document.getElementById("mySelect"+id0).value;
+    document.getElementById("emp"+id0).value = x;
+}
+
     // document.getElementById("myModal1")
     function myFunction1(idd){
     var y = document.getElementById("mySelect1"+idd).value;
     document.getElementById("selectItem"+idd).innerHTML = y;
     }
+
+    function selectItem(clID){
+        var y = document.getElementById("mySelect1"+clID).value;
+        document.getElementById("cloth"+clID).value = y;
+        document.getElementById("selectItem"+idd).innerHTML = y;
+    }
+
+
     function myFunction2(id3){
         
     var z = document.getElementById("mySelect2"+id3).value;
     document.getElementById("selectColor"+id3).innerHTML = z;
+}
+
+function selColor(colID){
+    var x = document.getElementById("mySelect2"+colID).value;
+    document.getElementById("clr"+colID).value = x;
 }
 
 function emailSent(){
