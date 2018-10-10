@@ -136,10 +136,21 @@ function ensureAuthenticated(req, res, next) {
     router.get('/shop', (request, response, next) => {
         db.collection('forms').find().toArray(function (err, result) {
             if (err) throw err;
-            response.render('shop.ejs', { list: result });
+            db.collection('clothoptions').find().toArray(function (err, result2) {
+                if (err) throw err;
+                if (result2.length == 0) {
+                    result2 = emptyCloth;
+                }
+                db.collection('coloroptions').find().toArray(function (err, result3) {
+                    if (err) throw err;
+                    if (result3.length == 0) {
+                        result3 = emptyItem;
+                    }
+            response.render('shop.ejs', { list: result, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3 });
         })
     })
-
+        })
+    })
     router.get('/find', (request, response, next) => {
         response.render('findperformer.ejs')
     })

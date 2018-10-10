@@ -21,9 +21,7 @@
           <th>Size</th>
           <th>Clothing Item</th>
           <th>Color</th>
-          
-         
-                
+           
           </tr>
     <% for(let i = 0; i < list.length; i++) { %>
     <tr>
@@ -45,9 +43,11 @@
               <option>Other</option>
             </select>
       </td>
-      <td></td>
+      <td>   
+        <%= cloth[i].selectCloth %>
+      </td>
       <td>
-          
+        <%= item[i].selectColor01 %>
       </td>
     </tr>
     <% } %>
