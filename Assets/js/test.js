@@ -21,6 +21,7 @@ function myfunctionEmp(id0) {
     function selectItem(clID){
         var y = document.getElementById("mySelect1"+clID).value;
         document.getElementById("cloth"+clID).value = y;
+        document.getElementById("selectItem"+idd).innerHTML = y;
     }
 
 

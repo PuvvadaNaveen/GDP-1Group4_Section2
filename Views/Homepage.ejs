@@ -12,7 +12,8 @@
   <div class="container-fluid">
       
       
-      <h1>Performers Details</h1><br>
+      <h1>Performers Details</h1>
+      <br>
     <table class="table" id="pull">
       <thead>
         <tr>
@@ -55,14 +56,18 @@
                       <h4 class="modal-title">Choose Clothing Item</h4>
                     </div>
                     <div class="modal-body">
-                      <form method="POST" action="/FormController/cloth01">>
-                        <select id="mySelect1<%= listOfPerformers[i]._id %>" size="4" onchange="selectItem('<%= listOfPerformers[i]._id %>')">
+                      <form method="POST" action="/FormController/cloth01">
+                        <select id="mySelect1<%= listOfPerformers[i]._id %>" size="4" onclick="selectItem('<%= listOfPerformers[i]._id %>')">
                             <option>Tunic</option>
                             <option>Skirt</option>
                             <option>Suit</option>
                             <option>Trousers</option>
-                            <input id="cloth<%= listOfPerformers[i]._id %>" type="text" name="selectCloth" hidden>
-                            <input type="text" name="clothID" value="<%= listOfPerformers[i]._id %>" hidden>
+                            <% if (cloth[i] == null){%>
+                              <%cloth[i] = cloth1%>
+                            <%}%>
+                            <input type="text" name="clothselect" value="<%=cloth[i]._id%>" >
+                            <input id="cloth<%= listOfPerformers[i]._id %>" type="text" name="selectCloth" >
+                            <input type="text" name="clothID" value="<%= listOfPerformers[i]._id %>" >
                           </select>
                           <br>
                           <br>
@@ -76,6 +81,7 @@
             </td>
 
           <td>
+              
               <button id="selectColor<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3<%= listOfPerformers[i]._id %>">Choose color</button>
               <div id="myModal3<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
                 <div class="modal-dialog">
@@ -294,9 +300,7 @@
           <td><textarea></textarea></td>
           <% } %>
 
-          <% if(!user.isAdmin) { %>
-            <td><textarea readonly></textarea></td>
-            <%}%>
+          
 
           <% if(user && (user.isAdmin || user.isManager)) { %>
           <td>
@@ -306,11 +310,11 @@
           </form>
           </td>
           <% } %>
-          <% if(user && user.isAdmin){ %>}
+          <% if(user && user.isAdmin){ %>
           <td>
             <form onsubmit="return confirm('Are you sure want to delete?')" action="/FormController/delete" method="POST">
               <input  type="text" name="perfId2" hidden value="<%= listOfPerformers[i]._id %>">  
-            <button class="btn btn-primary" type="submit">Delete</button>
+            <button class="btn btn-danger" type="submit">Delete</button>
           </form>
           </td>
           <!-- <td><button onclick="removeRow()">Delete</button> <%=i%></td> -->

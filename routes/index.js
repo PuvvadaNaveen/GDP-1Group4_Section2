@@ -35,6 +35,11 @@ let emptyModel = [
     }
 ]
 
+let emptyCloth = [
+    {
+    clothselect:""
+    }
+]
 // Get Homepage
 router.get('/', ensureAuthenticated, function(req, res){
     // MeasureSchema.statics.getSkeleton = function () {
@@ -55,20 +60,25 @@ router.get('/', ensureAuthenticated, function(req, res){
     if(result1.length ==0){
         result1 = emptyModel;
     }
-    res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel});
+    db.collection('clothoptions').find().toArray(function(err, result2){
+        if (err) throw err;
+        if(result2.length ==0){
+            result2 = emptyCloth;
+        }
         
-        //   return res.json(result);    
+    res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel,cloth:result2, cloth1:emptyCloth});
+            
+    })
 });
 });
 });
 
-// function getMeasures()
 
 function ensureAuthenticated(req, res, next){
 	if(req.isAuthenticated()){
 		return next();
 	} else {
-		//req.flash('error_msg','You are not logged in');
+		req.flash('error_msg','You are not logged in');
 		res.redirect('/users/login');
 	}
 router.get('/home', function(request, response){
@@ -81,16 +91,22 @@ router.get('/home', function(request, response){
     if(result1.length ==0){
         result1 = emptyModel;
     }
-    response.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel});
-        
-        //   return res.json(result);    
+    db.collection('clothoptions').find().toArray(function(err, result2){
+        if (err) throw err;
+        if(result2.length ==0){
+            result2 = emptyCloth;
+        }
+       
+    response.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel,cloth:result2, cloth1:emptyCloth});
+           
+    })
+           
 });
 });
 })
 router.get('/shop', (request, response, next) => {
     db.collection('forms').find().toArray(function(err,result){
         if (err) throw err;
-        console.log(result);
         response.render('shop.ejs',{list : result});
 })
 })
@@ -119,7 +135,6 @@ router.get('/rental', (request, response, next) => {
 router.get('/rental_list', (request, response, next) => {
     db.collection('rentals').find().toArray(function(err,result){
         if (err) throw err;
-        console.log(result);
         response.render('rental_list.ejs',{list : result});
 })
 })
@@ -169,7 +184,6 @@ router.get('/form', (request, response, next) => {
 router.get('/plays', (request, response, next) => {
     db.collection('plays').find().toArray(function(err,result){
         if (err) throw err;
-        console.log(result);
     response.render('plays.ejs',{listOfPlays: result});
 })
 })

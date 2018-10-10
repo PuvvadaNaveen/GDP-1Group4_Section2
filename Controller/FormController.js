@@ -38,6 +38,11 @@ let emptyModel = [
     }
 ]
 
+let emptyCloth = [
+    {
+    clothselect:""
+    }
+]
 api.post('/save',  function (req, res) {
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
@@ -162,7 +167,15 @@ api.post('/save',  function (req, res) {
         if(result1.length ==0){
             result1 = emptyModel;
         }
-        res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel});
+        db.collection('clothoptions').find().toArray(function(err, result2){
+            if (err) throw err;
+            if(result2.length ==0){
+                result2 = emptyCloth;
+            }
+           
+        res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel,cloth:result2, cloth1:emptyCloth});
+               
+        })
             
             //   return res.json(result);    
     });
@@ -180,7 +193,16 @@ api.post('/save',  function (req, res) {
         if(result1.length ==0){
             result1 = emptyModel;
         }
-         res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel});
+        db.collection('clothoptions').find().toArray(function(err, result2){
+            if (err) throw err;
+            if(result2.length ==0){
+                result2 = emptyCloth;
+            }
+           
+        res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel,cloth:result2, cloth1:emptyCloth});
+               
+        })
+
         });
     });
   })
@@ -215,7 +237,16 @@ api.post('/getByDate',  function (req, res) {
     if(result1.length ==0){
         result1 = emptyModel;
     }
-     res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel});
+    db.collection('clothoptions').find().toArray(function(err, result2){
+        if (err) throw err;
+        if(result2.length ==0){
+            result2 = emptyCloth;
+        }
+       
+    res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel,cloth:result2, cloth1:emptyCloth});
+           
+    })
+
     });
     //  res.render('Homepage.ejs',{listOfPerformers : result});
  });
@@ -260,10 +291,14 @@ api.post('/emp01',  function (req, res) {
           })
     
           api.post('/cloth01',  function (req, res) {
-    
+            if((req.body.clothselect).length > 0 ){ 
+                db.collection('clothoptions').update({'clothID': req.body.clothID},{$set:{'selectCloth':req.body.selectCloth}});
+                
+            }else {
             var selectCloth = req.body.selectCloth;
             var clothID = req.body.clothID;
-        
+            var clothselect = req.body.clothselect;
+            
             var newClothOption = new Model3({
                 
                 selectCloth: selectCloth,
@@ -275,7 +310,45 @@ api.post('/emp01',  function (req, res) {
                 Model3.create(newClothOption, function (err, ClothOption) {
                     if (err) throw err;
                 });
-                return res.redirect('/')
-              })
+                db.collection('forms').find().toArray(function(err, result){
+                    if (err) throw err;
+                
+                db.collection('measures').find().toArray(function(err, result1){
+                    if (err) throw err;
+                if(result1.length ==0){
+                    result1 = emptyModel;
+                }
+                db.collection('clothoptions').find().toArray(function(err, result2){
+                    if (err) throw err;
+                    if(result2.length ==0){
+                        result2 = emptyCloth;
+                    }
+                    
+                res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel,cloth:result2, cloth1:emptyCloth});
+                      
+                })
+            });
+            });
+        }
+        
+        db.collection('forms').find().toArray(function(err, result){
+            if (err) throw err;
+        
+        db.collection('measures').find().toArray(function(err, result1){
+            if (err) throw err;
+        if(result1.length ==0){
+            result1 = emptyModel;
+        }
+        db.collection('clothoptions').find().toArray(function(err, result2){
+            if (err) throw err;
+            if(result2.length ==0){
+                result2 = emptyCloth;
+            }
+            // console.log(result2);
+        res.render('Homepage.ejs',{listOfPerformers : result,measures : result1,Measurements:emptyModel,cloth:result2, cloth1:emptyCloth});
+    })
+});
+});         
+    })
 
   module.exports = api;
