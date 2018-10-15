@@ -55,8 +55,14 @@
 
 
           <td>
+              <% if (cloth[i] == null){%>
+              <button id="selectItem<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
+                  data-target="#myModal2<%= listOfPerformers[i]._id %>">Choose Item</button>
+                  <%}%>
+                  <% if (cloth[i] != null){%>
             <button id="selectItem<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
-              data-target="#myModal2<%= listOfPerformers[i]._id %>">Choose item </button>
+              data-target="#myModal2<%= listOfPerformers[i]._id %>"><%=cloth[i].selectCloth%></button>
+              <%}%>
             <div id="myModal2<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -91,9 +97,14 @@
           </td>
 
           <td>
-
+              <% if (item[i] == null){%>
+              <button id="selectColor<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
+                  data-target="#myModal3<%= listOfPerformers[i]._id %>">Choose Color</button>
+                  <%}%>
+                  <% if (item[i] != null){%>
             <button id="selectColor<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
-              data-target="#myModal3<%= listOfPerformers[i]._id %>">Choose color</button>
+              data-target="#myModal3<%= listOfPerformers[i]._id %>"><%=item[i].selectColor01%></button>
+              <%}%>
             <div id="myModal3<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -293,8 +304,14 @@
   </td>
   <% if(user && user.isAdmin) { %>
   <td>
+      <% if (empl[i] == null){%>
+      <button id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
+          data-target="#myModal1<%= listOfPerformers[i]._id %>">Select Employee</button>
+          <%}%>
+          <% if (empl[i] != null){%>
     <button id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
-      data-target="#myModal1<%= listOfPerformers[i]._id %>">Select Employee</button>
+      data-target="#myModal1<%= listOfPerformers[i]._id %>"><%=empl[i].selectEmployee1%></button>
+      <%}%>
     <div id="myModal1<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
