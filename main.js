@@ -16,6 +16,7 @@ var randomstring = require('randomstring');
 var access_code = module.exports = randomstring.generate(7);
 global.globalString=(access_code)
 var ObjectId = require('mongodb').ObjectID;
+var exports = module.exports = {};
 
 mongoose.connect('mongodb+srv://akhil:abc@gdp-x1euc.mongodb.net/test?retryWrites=true');
 mongoose.connection.once('open', ()=>{
@@ -161,7 +162,7 @@ app.use(function (request, response) {
 // Set Port
 app.set('port', (process.env.PORT || 8089));
 
-app.listen(app.get('port'), function(){
+var server = app.listen(app.get('port'), function(){
   console.log('Server started on port '+app.get('port'));
   // console.log('Server is listening on port ' + app.port);
 });
@@ -174,4 +175,7 @@ function deletePerformer(idd){
     });
     location.replace('/');
 }
-// module.exports = app
+exports.closeServer = function(){
+  server.close();
+};
+module.exports = app

@@ -29,6 +29,7 @@
     "passport-http": "*",
     "passport-local": "*",
     "randomstring": "^1.1.5",
+    "request": "^2.88.0",
     "serve-favicon": "^2.4.5"
   },
   "devDependencies": {
