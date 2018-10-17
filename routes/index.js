@@ -46,11 +46,11 @@ let emptyItem = [
         itemId: ""
     }
 ]
- let emptyEmployee = [
-     {
+let emptyEmployee = [
+    {
         employeeId: ""
-     }
- ]
+    }
+]
 // Get Homepage
 router.get('/', ensureAuthenticated, function (req, res) {
     // MeasureSchema.statics.getSkeleton = function () {
@@ -86,7 +86,7 @@ router.get('/', ensureAuthenticated, function (req, res) {
                         if (result4.length == 0) {
                             result4 = emptyEmployee;
                         }
-                        res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl:result4, empl1: emptyEmployee });
+                        res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee });
                     })
                 })
             });
@@ -105,7 +105,7 @@ function ensureAuthenticated(req, res, next) {
 
         db.collection('forms').find().toArray(function (err, result) {
             if (err) throw err;
-    
+
             db.collection('measures').find().toArray(function (err, result1) {
                 if (err) throw err;
                 if (result1.length == 0) {
@@ -126,7 +126,7 @@ function ensureAuthenticated(req, res, next) {
                             if (result4.length == 0) {
                                 result4 = emptyEmployee;
                             }
-                            response.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl:result4, empl1: emptyEmployee });
+                            response.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee });
                         })
                     })
                 });
@@ -146,11 +146,18 @@ function ensureAuthenticated(req, res, next) {
                     if (result3.length == 0) {
                         result3 = emptyItem;
                     }
-            response.render('shop.ejs', { list: result, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3 });
+                    db.collection('employeeoptions').find().toArray(function (err, result4) {
+                        if (err) throw err;
+                        if (result4.length == 0) {
+                            result4 = emptyEmployee;
+                        }
+                        response.render('shop.ejs', { list: result, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee });
+                    })
+                })
+            })
         })
     })
-        })
-    })
+
     router.get('/find', (request, response, next) => {
         response.render('findperformer.ejs')
     })
