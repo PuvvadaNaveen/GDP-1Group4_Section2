@@ -3,6 +3,7 @@ const api = express.Router()
 const Model = require('../models/rental')
 const mongoose = require('mongoose')
 const db = mongoose.connection;
+var ObjectId = require('mongodb').ObjectID;
 
 
 api.post('/rental1',  function (req, res) {
@@ -33,6 +34,16 @@ api.post('/rental1',  function (req, res) {
         });
          return res.redirect('/rental_list')
       })
+      api.post('/delete', function (req, res) {
+        var query = { "_id": ObjectId(req.body.perfId2) };
+        db.collection('rentals').deleteOne(query, function (err, result) {
+            if (err) throw err;
+            return res.redirect('/rental_list')
+            // res.render('form.ejs', { perf : result});
+            // res.redirect('Homepage.ejs',{listOfPerformers : result});
+    
+        });
+    })
 
 //   api.get('/getrentals',  function (req, res) {
 //      db.collection('rentals').find().toArray(function(err,result){

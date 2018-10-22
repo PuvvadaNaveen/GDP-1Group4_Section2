@@ -26,6 +26,12 @@
       <td><%= list[i].StartDate %></td>
       <td><%= list[i].EndDate %></td>
       <td><%= list[i].fee %></td>
+      <td>
+        <form onsubmit="return confirm('Are you sure want to delete?')" action="/RentalController/delete" method="POST">
+          <input type="text" name="perfId2" hidden value="<%= list[i]._id %>">
+          <button class="btn btn-danger" type="submit">Delete</button>
+        </form>
+      </td>
     </tr>
     <% } %>
   </table>
