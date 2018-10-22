@@ -169,11 +169,11 @@ function ensureAuthenticated(req, res, next) {
     })
 
     router.get('/basic', (request, response, next) => {
-        response.render('Basic_info.ejs')
+        response.render('Basic_info.handlebars')
     })
 
     router.get('/access', (request, response, next) => {
-        response.render('access_code.ejs')
+        response.render('access_code.handlebars')
     })
 
     router.get('/rental', (request, response, next) => {
