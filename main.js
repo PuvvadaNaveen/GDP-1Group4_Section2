@@ -14,12 +14,12 @@ var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
 var randomstring = require('randomstring');
 var access_code = module.exports = randomstring.generate(7);
-global.globalString=(access_code)
+global.globalString = (access_code)
 var ObjectId = require('mongodb').ObjectID;
 var exports = module.exports = {};
 
 mongoose.connect('mongodb+srv://akhil:abc@gdp-x1euc.mongodb.net/test?retryWrites=true');
-mongoose.connection.once('open', ()=>{
+mongoose.connection.once('open', () => {
   console.log('connected to database');
 });
 var db = mongoose.connection;
@@ -29,7 +29,7 @@ var users = require('./routes/users');
 var forms = require('./Controller/FormController')
 // var find = require('./Controller/FindController')
 var rentals = require('./Controller/RentalController')
-var measures= require('./Controller/MeasureController')
+var measures = require('./Controller/MeasureController')
 var plays = require('./Controller/PlayController')
 // var homes = require('./Controller/HomeController')
 // Init App
@@ -37,7 +37,7 @@ var app = express();
 
 // View Engine
 app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars', exphbs({defaultLayout:'layout'}));
+app.engine('handlebars', exphbs({ defaultLayout: 'layout' }));
 app.set('view engine', 'handlebars');
 
 // BodyParser Middleware
@@ -47,13 +47,13 @@ app.use(cookieParser());
 
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'Assets')));
-app.use(favicon(path.join(__dirname,'Images','favicon-16x16.png')));
+app.use(favicon(path.join(__dirname, 'Images', 'favicon-16x16.png')));
 
 // Express Session
 app.use(session({
-    secret: 'secret',
-    saveUninitialized: true,
-    resave: true
+  secret: 'secret',
+  saveUninitialized: true,
+  resave: true
 }));
 
 // Passport init
@@ -62,18 +62,18 @@ app.use(passport.session());
 
 // Express Validator
 app.use(expressValidator({
-  errorFormatter: function(param, msg, value) {
-      var namespace = param.split('.')
-      , root    = namespace.shift()
+  errorFormatter: function (param, msg, value) {
+    var namespace = param.split('.')
+      , root = namespace.shift()
       , formParam = root;
 
-    while(namespace.length) {
+    while (namespace.length) {
       formParam += '[' + namespace.shift() + ']';
     }
     return {
-      param : formParam,
-      msg   : msg,
-      value : value
+      param: formParam,
+      msg: msg,
+      value: value
     };
   }
 }));
@@ -103,7 +103,7 @@ app.use('/PlayController', plays);
 // app.use('/HomeController', homes);
 
 // mail for access code
-app.post("/access_mail",function(req, res){
+app.post("/access_mail", function (req, res) {
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -114,23 +114,24 @@ app.post("/access_mail",function(req, res){
   var mailOptions = {
     from: 'Projectteamsec02group04@gmail.com',
     to: req.body.email1,
-    subject: 'Access code for registration', 
+    subject: 'Access code for registration',
     html: 'The access code for Registration is  ' + access_code,
   };
-  
-  transporter.sendMail(mailOptions, function(error, info){
+
+  transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log(error);
     } else {
       console.log('Email sent: ' + info.response);
       console.log(access_code);
-      res.send('Mail sent successfully');
+      req.flash('success', 'Email sent successfully.');
+      res.redirect('/access');
     }
   });
 });
 
 //mail
-app.post("/mail",function(req, res){
+app.post("/mail", function (req, res) {
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -142,15 +143,16 @@ app.post("/mail",function(req, res){
     from: 'Projectteamsec02group04@gmail.com',
     to: req.body.email1,
     subject: 'Collecting performers details',
-    html: '<p>Hello,</p><p>Please fill the basic information form.</p><p>Here is the link for form :<a href="http://localhost:8089/form"> Click here</a></p></br><p>Regards</p>',  
+    html: '<p>Hello,</p><p>Please fill the basic information form.</p><p>Here is the link for form :<a href="http://localhost:8089/form"> Click here</a></p></br><p>Regards</p>',
   };
-  
-  transporter.sendMail(mailOptions, function(error, info){
+
+  transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log(error);
     } else {
       console.log('Email sent: ' + info.response);
-      res.send('Mail Sent Successfully');
+      req.flash('success', 'Email sent successfully.');
+      res.redirect('/basic');
     }
   });
 });
@@ -162,20 +164,20 @@ app.use(function (request, response) {
 // Set Port
 app.set('port', (process.env.PORT || 8089));
 
-var server = app.listen(app.get('port'), function(){
-  console.log('Server started on port '+app.get('port'));
+var server = app.listen(app.get('port'), function () {
+  console.log('Server started on port ' + app.get('port'));
   // console.log('Server is listening on port ' + app.port);
 });
 
-function deletePerformer(idd){
-  var query = {'_id' : ObjectId(idd)};
-  db.collection("forms").deleteOne(query, function(err, obj) {
-      if (err) throw err;
-      console.log("1 document deleted");
-    });
-    location.replace('/');
+function deletePerformer(idd) {
+  var query = { '_id': ObjectId(idd) };
+  db.collection("forms").deleteOne(query, function (err, obj) {
+    if (err) throw err;
+    console.log("1 document deleted");
+  });
+  location.replace('/');
 }
-exports.closeServer = function(){
+exports.closeServer = function () {
   server.close();
 };
 module.exports = app

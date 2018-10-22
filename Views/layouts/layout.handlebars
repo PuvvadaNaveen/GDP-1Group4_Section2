@@ -1,44 +1,79 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Stephi_Designer_App</title>
-	<link rel="stylesheet" href="/css/bootstrap.css" />
-	<link rel="stylesheet" href="/css/style.css" />
+  <title>Stephi_Designer_App</title>
+  <link rel="stylesheet" href="/css/bootstrap.css" />
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
+
 <body>
-	
-        <nav>
-          <ul class="navbar navbar-inverse">
-            <div class="pull-right">
-            {{#if user}}
-              <li role="presentation"><a href="/">Dashboard</a></li>
-              <li role="presentation"><a href="/users/logout">Logout</a></li>
-            {{else}}
-              <a href="/users/login" class="btn btn-danger navbar-btn">Login</a></li>
-              <a href="/users/register" class="btn btn-primary navbar-btn">Register</a></li>
-            {{/if}}
-            </div>
-          </ul>          
-        </nav>
 
 
-      <div class="row">
-        <div class="col-lg-12">
-          {{#if success_msg}}
-            <div class="alert alert-success">{{success_msg}}</div>
-          {{/if}}
-
-          {{#if error_msg}}
-            <div class="alert alert-danger">{{error_msg}}</div>
-          {{/if}}
-
-          {{#if error}}
-            <div class="alert alert-danger">{{error}}</div>
-          {{/if}}
-          
-          {{{body}}}
-        </div>
+  {{#if user}}
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">NWMSU</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="/home"><span class="glyphicon glyphicon-home"></span> &nbsp; Home</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Find</a>
+        <ul class="dropdown-menu">
+          <li><a href="/find">Performer Name</a></li>
+          <li><a href="/findp">play</a></li>
+          <li><a href="/fin">date</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Rentals</a>
+        <ul class="dropdown-menu">
+          <li><a href="/rental">Rental form</a></li>
+          <li><a href="/rental_list">Rental list</a></li>
+        </ul>
+      </li>
+      <li><a href="/basic">Send Basic Info form</a></li>
+      <!-- <li><a href="rental_list">Rental list</a></li> -->
+      <li><a href="/access"> Send Access Code</a></li>
+      <li><a href="/plays"> Plays</a></li>
+      <li><a href="/contact"> Contact</a></li>
+    </ul>
+    <li class="pull-right">
+     <a href="/users/logout" class="btn btn-danger navbar-btn" > Logout &nbsp; &nbsp;</a>
+    </li>
+  </div>
+ </nav>
+  {{else}}
+  <nav>
+    <ul class="navbar navbar-inverse">
+      <div class="pull-right">
+        <a href="/users/login" class="btn btn-danger navbar-btn">Login</a></li>
+        <a href="/users/register" class="btn btn-primary navbar-btn">Register</a></li>
+        {{/if}}
       </div>
+    </ul>
+  </nav>
+
+
+  <div class="row">
+    <div class="col-lg-12">
+      {{#if success_msg}}
+      <div class="alert alert-success">{{success_msg}}</div>
+      {{/if}}
+
+      {{#if error_msg}}
+      <div class="alert alert-danger">{{error_msg}}</div>
+      {{/if}}
+
+      {{#if error}}
+      <div class="alert alert-danger">{{error}}</div>
+      {{/if}}
+
+      {{{body}}}
+    </div>
+  </div>
 
 </body>
+
 </html>
