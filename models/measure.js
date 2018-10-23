@@ -72,7 +72,10 @@ var MeasureSchema = mongoose.Schema({
     },
     otheroverbodypadding: {
 		type: Number
-	}
+		},
+		measurementsTakenOn:{
+			type: String
+		},
 	});
 
 var Measure = module.exports = mongoose.model('Measure', MeasureSchema);

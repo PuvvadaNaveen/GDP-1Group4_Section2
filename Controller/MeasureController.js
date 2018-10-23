@@ -5,7 +5,9 @@ const mongoose = require('mongoose')
 const db = mongoose.connection;
 var ObjectId = require('mongodb').ObjectID;
 
+
 api.post('/measure1',  function (req, res) {
+    var d = new Date();
     console.log("ssss");
     if((req.body.mesId).length > 0){
         db.collection('measures').update({'perfId': req.body.perfId},{$set:{'headcicumference':req.body.headcicumference,'neck':req.body.neck,'armcycle':req.body.armcycle,'centrebacktowrist':req.body.centrebacktowrist
@@ -22,6 +24,7 @@ api.post('/measure1',  function (req, res) {
  'shoes':req.body.shoes,
 'dominanthand':req.body.dominanthand,
  'otheroverbodypadding':req.body.otheroverbodypadding,
+ 'measurementsTakenOn' : d.toLocaleDateString,
     
 }});
     }
@@ -50,6 +53,7 @@ api.post('/measure1',  function (req, res) {
     var shoes =req.body.shoes;
     var dominanthand =req.body.dominanthand;
     var otheroverbodypadding =req.body.otheroverbodypadding;
+    var measurementsTakenOn = d.toLocaleDateString();
 
     var newMeasure = new Model({
         mesId: mesId,
@@ -75,7 +79,8 @@ api.post('/measure1',  function (req, res) {
         hipoverbodypadding : hipoverbodypadding,
         shoes : shoes,
         dominanthand : dominanthand,
-        otheroverbodypadding : otheroverbodypadding
+        otheroverbodypadding : otheroverbodypadding,
+        measurementsTakenOn : measurementsTakenOn
         
     });
     
