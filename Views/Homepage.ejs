@@ -19,8 +19,17 @@
     <table class="table" id="pull">
       <thead>
         <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
+            <form action="/FormController/sort" method="POST">
+              <!-- <input type="text" name="firstname" hidden value="firstname"> -->
+              <input type="text" name="firstname" hidden value="firstname">
+               <th><button class="btn btn-primary" type="submit">First Name</button></th>
+            </form>
+            <form action="/FormController/sort" method="POST">
+              <!-- <input type="text" name="firstname" hidden value="firstname"> -->
+              <!-- <input type="text" name="lastname" value="lastname"> -->
+              <input type="text" name="lastname" hidden value="lastname">
+               <th><button class="btn btn-primary" type="submit">Last Name</button></th>
+            </form>
           <th>Play</th>
           <th>Character Name</th>
           <th>Clothing Item</th>

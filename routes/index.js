@@ -61,9 +61,17 @@ router.get('/', ensureAuthenticated, function (req, res) {
     //     return data;
     //     }
     //     console.log(getSkeleton());
+    // var str = req.query.valid;
+    // console.log(req.query.valid);
+    var sort = {};
+    sort[req.query.valid] = 1;
+    // var first = "firstname";
+    // if(str == null){
+    //     console.log(req.query.valid);
+    // }
 
 
-    db.collection('forms').find().toArray(function (err, result) {
+    db.collection('forms').find().sort(sort).toArray(function (err, result) {
         if (err) throw err;
 
         db.collection('measures').find().toArray(function (err, result1) {

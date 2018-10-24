@@ -54,9 +54,9 @@ let emptyItem = [
      }
  ]
 api.post('/save', function (req, res) {
-    var firstname = req.body.firstname;
-    var lastname = req.body.lastname;
-    var playname = req.body.playname;
+    var firstname = req.body.firstname.charAt(0).toUpperCase()+req.body.firstname.slice(1).toLowerCase();
+    var lastname = req.body.lastname.charAt(0).toUpperCase()+req.body.lastname.slice(1).toLowerCase();
+    var playname = req.body.playname.charAt(0).toUpperCase()+req.body.playname.slice(1).toLowerCase();req.body.playname;
     var playdate = req.body.playdate;
     var charactername = req.body.charactername;
     var phonenumber = req.body.phonenumber;
@@ -145,6 +145,21 @@ api.post('/delete', function (req, res) {
 
     });
 })
+api.post('/sort', function (req, res) {
+    var sortby;
+    console.log("console.log(req.body.lastname);");
+    console.log(req.body.lastname);
+    console.log(req.body.firstname);
+    if(req.body.firstname !=null && req.body.firstname!=""){
+        sortby = req.body.firstname;
+    }
+    else if(req.body.lastname != null && req.body.lastname!=""){
+        sortby = req.body.lastname;
+    }
+    console.log(sortby);
+    var str = encodeURIComponent(sortby);
+        res.redirect('/?valid=' + str);
+});
 // commented by shiva
 //   api.get('/getinfo',  function (req, res) {
 //      Model.find({}, function (err, form) {
