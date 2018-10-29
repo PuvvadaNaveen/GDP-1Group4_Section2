@@ -1,3 +1,4 @@
+var passportLocalMongoose = require("passport-local-mongoose");
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 
@@ -31,6 +32,8 @@ var UserSchema = mongoose.Schema({
 		default: false
 	}
 });
+
+UserSchema.plugin(passportLocalMongoose)
 
 var User = module.exports = mongoose.model('User', UserSchema);
 
