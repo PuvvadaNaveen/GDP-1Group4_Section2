@@ -4,6 +4,7 @@ const Model = require('../models/form')
 const Model1 = require('../models/employeeOption')
 const Model2 = require('../models/colorOption')
 const Model3 = require('../models/clothOptions')
+const Model4 = require('../models/shoplist')
 const mongoose = require('mongoose')
 const indexPage = require('../routes/index')
 const db = mongoose.connection;
@@ -53,6 +54,16 @@ let emptyItem = [
         employeeId: ""
      }
  ]
+
+let emptyShoplist = [
+    {
+        shopID: ""
+    },
+    {
+        duedate: "mm-dd-yyyy"
+    }
+]
+
 api.post('/save', function (req, res) {
     var firstname = req.body.firstname.charAt(0).toUpperCase()+req.body.firstname.slice(1).toLowerCase();
     var lastname = req.body.lastname.charAt(0).toUpperCase()+req.body.lastname.slice(1).toLowerCase();
@@ -544,5 +555,51 @@ api.post('/cloth01', function (req, res) {
         });
     });
 })
+
+
+api.post('/shop1', function (req, res) {
+// console.log("shop pull list");
+// if ((req.body.shopID).length > 0) {
+//             db.collection('shoplist').update({ 'shopID': req.body.shopID }, { $set: { 'duedate': req.body.duedate } });
+//             console.log(req.body.duedate);
+//             return res.redirect('/shop')
+//         }else{
+var size = req.body.size;
+var duedate = req.body.duedate;
+var shopID = req.body.shopID;
+     
+     var newShopOption = new Model4({
+        
+        size: size,
+        duedate: duedate,
+        shopID: shopID
+        
+    });
+    
+        Model4.create(newShopOption, function (err, shoplist) {
+            if (err) throw err;
+        });
+//         db.collection('shoplist').find().toArray(function (err, result5) {
+//             if (err) throw err;
+//             if (result5.length == 0) {
+//                 result5 = emptyShoplist;
+//             }
+//         return res.redirect('/shop',{ shp: result5, shp1: emptyShoplist})
+//     });
+        
+//     }
+
+//     db.collection('shoplist').find().toArray(function (err, result5) {
+//         if (err) throw err;
+//         if (result5.length == 0) {
+//             result5 = emptyShoplist;
+//         }
+//     return res.redirect('/shop',{ shp: result5, shp1: emptyShoplist})
+// });
+    
+        return res.redirect('/shop')
+    // }
+      })
+    
 
 module.exports = api;
