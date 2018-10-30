@@ -22,6 +22,7 @@
           <th>Due Date</th>
           <th>Clothing Item</th>
           <th>Color</th>
+          <th></th>
            
           </tr>
     <% for(let i = 0; i < list.length; i++) { %>
@@ -31,8 +32,9 @@
       <td><%= list[i].lastname %></td>
       <td><%= list[i].playname %></td>
       <td><%= list[i].charactername %></td>
+      <form method="POST" action="/FormController/shop1">
       <td>
-             <select>
+             <select name="size">
               <option>Choose size</option>
               <option>xs</option>
               <option>s</option>
@@ -43,14 +45,25 @@
               <option>xxxl</option>
               <option>Other</option>
             </select>
+            
       </td>
-      <td></td>
+      <td>
+        <div>
+         
+        <input type="date" name="duedate">
+        <input type="text" name="shopID" value="<%= list[i]._id %>" hidden>
+      </div>
+      </td>
       <td>   
         <%= cloth[i].selectCloth %>
       </td>
       <td>
         <%= item[i].selectColor01 %>
       </td>
+      <td>
+        <input class="btn btn-update" type="submit" value="update">
+      </td>
+    </form>
     </tr>
     <% } %>
   </table>
