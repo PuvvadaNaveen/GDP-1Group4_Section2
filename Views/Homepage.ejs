@@ -83,11 +83,112 @@
                   </div>
                   <div class="modal-body">
                     <form id="clothIdddd" method="POST" action="/FormController/cloth01">
-                      <select id="mySelect1<%= listOfPerformers[i]._id %>" size="4" onclick="selectItem('<%= listOfPerformers[i]._id %>')">
-                        <option>Tunic</option>
-                        <option>Skirt</option>
-                        <option>Suit</option>
-                        <option>Trousers</option>
+                      <select id="mySelect1<%= listOfPerformers[i]._id %>" size="100" onclick="selectItem('<%= listOfPerformers[i]._id %>')">
+                        <option>Top: Dress shirt-Male fit</option>
+                        <option>Top: Blouse-Female fit</option>
+                        <option>Top: Blazer-men's fit</option>
+                        <option>Top: Blazer-women's fit</option>
+                        <option>Top: Winter coat</option>
+                        <option>Top: Trench coat</option>
+                        <option>Top: Tunic</option>
+                        <option>Top: Vest-men's fit</option>
+                        <option>Top: Vest-women's fit</option>
+                        <option>Top: Sweater-crew neck</option>
+                        <option>Top: Sweater-vneck</option>
+                        <option>Top: Sweater-cardigan</option>
+                        <option>Top: Tshirt-Plain</option>
+                        <option>Top: Tshirt-screen print</option>
+                        <option>Top: Knit top-short sleeve</option>
+                        <option>Top: Tank top</option>
+                        <option>Top: Knit top-long sleeve</option>
+                        <option>Top: Knit top-casual</option>
+                        <option>Top: Knit top-dressy</option>
+                        <option>Top: Thermal shirt</option>
+                        <option>Top: Western shirt</option>
+                        <option>Top: Flannel shirt</option>
+                        <option>Top: Smoking jacket</option>
+<option></option>
+                        <option>Bottom: Jeans-Female fit</option>
+                        <option>Bottom: Jeans-Male fit</option>
+                        <option>Bottom: Khakis-Female fit</option>
+                        <option>Bottom: Khakis-Male fit</option>
+                        <option>Bottom: Dress Slacks-Female fit</option>
+                        <option>Bottom: Dress Slacks-Male fit</option>
+                        <option>Bottom: Skirt: short</option>
+                        <option>Bottom: Skirt: knee-length</option>
+                        <option>Bottom: Skirt: long</option>
+                        <option>Bottom: Skirtt</option>
+                        <option>Bottom: Shorts: men's fit</option>
+                        <option>Bottom: Shorts: women's fit</option>
+                        <option>Bottom: Leggings</option>
+                        <option>Bottom: Track Pants</option>
+                        <option>Bottom: Stretch Pants</option>
+                        <option></option>
+                        <option>Set: Tuxedo jacket</option>
+                        <option>Set: Tuxedo shirt</option>
+                        <option>Set: Tuxedo pants</option>
+                        <option>Set: Dress: long</option>
+                        <option>Set: Dress: mid-length</option>
+                        <option>Set: Dress: short</option>
+                        <option>Set: Nightgown</option>
+                        <option>Set: Suit: 2 piece</option>
+                        <option>Set: Suit: 3 piece</option>
+                        <option>Set: Suit: skirt suit</option>
+                        <option></option>
+                        <option>Under: Undershirt: Vneck Tshirt</option>
+                        <option>Under: Undershirt: Tank top</option>
+                        <option>Under: Tights</option>
+                        <option>Under: Pantyhose</option>
+                        <option>Under: Leotard</option>
+                        <option>Under: Unitard</option>
+                        <option>Under: Socks: dress socks</option>
+                        <option>Under: Socks: athletic socks</option>
+                        <option>Under: Socks: short socks</option>
+                        <option>Under: Socks: tall socks</option>
+                        <option>Under: Socks: patterned socks</option>
+                        <option>Under: Undergarment: Full slip</option>
+                        <option>Under: Undergarment: half slip</option>
+                        <option>Under: Socks: knee socks</option>
+                        <option>Under: Socks: trouser socks</option>
+                        <option></option>
+                        <option>Shoes: Shoes: dress shoes men's fit</option>
+                        <option>Shoes: Shoes: dress shoes women's fit</option>
+                        <option>Shoes: Shoes: athletic shoes men's fit</option>
+                        <option>Shoes: Shoes: athletic shoes women's fit</option>
+                        <option>Shoes: Shoes: flats</option>
+                        <option>Shoes: Shoes: heels</option>
+                        <option>Shoes: Shoes: dress boots</option>
+                        <option>Shoes: Shoes: western boots</option>
+                        <option>Shoes: Shoes: work boots</option>
+                        <option>Shoes: Shoes: casual men's fit</option>
+                        <option>Shoes: Shoes: casual women's fit</option>
+                        <option>Shoes: Slippers: men's fit</option>
+                        <option>Shoes: Slippers: women's fit</option>
+                        <option>Shoes: Dance shoes: character shoes women's fit</option>
+                        <option>Shoes: Dance shoes: character shoes men's fit</option>
+                        <option>Shoes: Dance shoes: jazz slippers</option>
+                        <option>Shoes: Dance shoes: ballet slippers</option>
+                        <option>Shoes: Dance shoes: tap shoes men's fit</option>
+                        <option>Shoes: Dance shoes: tap shoes women's fit</option>
+                        <option>Shoes: Dance shoes: dance sandals</option>
+                        <option>Shoes: Shoes: china flats</option>
+                        <option>Shoes: Shoes: sandals</option>
+                        <option></option>
+                        <option>Hat: winter</option>
+                        <option>Hat: dress</option>
+                        <option>Hat: baseball cap</option>
+                        <option>Hat: newsboy</option>
+                        <option>Hat: other</option>
+                        <option>Tie: bow tie</option>
+                        <option>Tie: straight tie</option>
+                        <option>Bathrobe</option>
+                        <option>Cape: long</option>
+                        <option>Cape: short</option>
+                        <option>Gloves: winter</option>
+                        <option>Gloves: work</option>
+                        <option>Gloves: dress</option>
+                        <option>Other: Other item</option>
+                                        
                         <% if (cloth[i] == null){%>
                         <%cloth[i] = cloth1%>
                         <%}%>
