@@ -1,36 +1,53 @@
 <% include header %>
-<head>
-<link rel="stylesheet" type="text/css" href="/css/play.css"/> 
-</head>
-<body>
+
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/play.css" />
+  </head>
+
+  <body>
     <h2> Play details</h2>
     <br>
     <br>
     <form method="POST" action="/Add_play">
-      <% if(user.isAdmin){ %>}
+      <% if(user.isAdmin){ %>
         <div>
-            <button type="submit" class="btn btn-success x"> <span class="glyphicon glyphicon-plus "></span> Add </button>
+          <button type="submit" class="btn btn-success x">
+            <span class="glyphicon glyphicon-plus "></span> Add </button>
+        </div>
+    </form>
+    <%}%>
+      <% for(let i = 0; i < listOfPlays.length; i++) { %>
+        <div class="grid-container">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <h4>Play Name</h4>
+                <span class="big">
+                  <%= listOfPlays[i].playname %>
+                </span>
+                <br>
+                <br>
+                <img src="/css/fashion1.jpg" class="img-responsive" alt="Cinque Terre" width="200" height="50">
+              </div>
+              <div class="flip-card-back">
+                <br>
+                <br>
+                <h4>Play Start Date</h4>
+                <span class="big">
+                  <%= listOfPlays[i].PlayStartDate %>
+                </span>
+                <h4>Play End Date</h4>
+                <span class="big">
+                  <%= listOfPlays[i].PlayEndDate %>
+                </span>
+              </div>
+            </div>
           </div>
-        <%}%>
-          <table id="rent" align="center">
-                <tr>
-                  <th>Play Name</th>
-                  <th>Play Start Date</th>
-                  <th>Play End Date</th>
-                </tr>
-          <% for(let i = 0; i < listOfPlays.length; i++) { %>
-          <tr>
-            <td><%= listOfPlays[i].playname %></td>
-            <td><%= listOfPlays[i].PlayStartDate %></td>
-            <td><%= listOfPlays[i].PlayEndDate %></td>
+          <form class="move" method="POST" action="/FormController/getByPlay">
+            <input type="text" name="playname" value="<%= listOfPlays[i].playname %>" hidden>
+            <button class="large" type="submit" class="btn btn-primary">View Performers</button>
           </form>
-            <td>
-                <form  method="POST" action="/FormController/getByPlay">
-                  <input type="text" name="playname" value="<%= listOfPlays[i].playname %>" hidden>
-                  <button type="submit" class="btn btn-primary">View Performers</button>
-                </form></td>
-          </tr>
-          <% } %>
-        </table> 
-        
-          </body>
+        </div>
+        <br>        
+        <% } %>
+  </body>
