@@ -67,9 +67,9 @@ let emptyShoplist = [
 api.post('/save', function (req, res) {
     var firstname = req.body.firstname.charAt(0).toUpperCase()+req.body.firstname.slice(1).toLowerCase();
     var lastname = req.body.lastname.charAt(0).toUpperCase()+req.body.lastname.slice(1).toLowerCase();
-    var playname = req.body.playname.charAt(0).toUpperCase()+req.body.playname.slice(1).toLowerCase();req.body.playname;
+    var playname = req.body.playname.charAt(0).toUpperCase()+req.body.playname.slice(1).toLowerCase();
     var playdate = req.body.playdate;
-    var charactername = req.body.charactername;
+    var charactername = req.body.charactername.charAt(0).toUpperCase()+req.body.charactername.slice(1).toLowerCase();req.body.playname;;
     var phonenumber = req.body.phonenumber;
     var textchoice = req.body.textchoice;
     var email = req.body.email1;

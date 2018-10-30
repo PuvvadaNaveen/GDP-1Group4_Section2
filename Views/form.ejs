@@ -49,8 +49,19 @@
     "I understand that I must check my Northwest student email DAILY as requests for fitting appointments will be sent to that email. I will respond to a fitting request as soon as possible. I understand that failing to check my university email does not excuse me from missing a fitting appointment. Missed appointments will be rescheduled at the discretion of the Costume Shop."<br>
     <input type="checkbox" name="agreement" value="iagree" required> Yes, I understand.<br><br>
     Dominant Hand: <br>
-    <input type="checkbox" name="dominanthand" value="right" > Right<br>
-    <input type="checkbox" name="dominanthand" value="left"> Left<br><br>
+    <%if(perf[i].dominanthand.length == 0){%>
+      <select name="dominanthand" class="form-control">
+          <option value="">--Please select--</option>
+          <option value="Right">Right</option>
+          <option value="Left">Left</option>
+        </select>
+        <%}%>
+    <%if(perf[i].dominanthand.length != 0){%>
+    <input class="form-control" type="text" name="dominanthand" required value=<%= perf[i].dominanthand %>><br>
+    <%}%>
+
+    <!-- <input type="checkbox" name="dominanthand" value="right" > Right<br>
+    <input type="checkbox" name="dominanthand" value="left"> Left<br><br> -->
     <div class="form-group">
     Height:<br>
     <input class="form-control" type="text" name="heught" placeholder="Enter height in feet" required value="<%= perf[i].height %>">
@@ -87,7 +98,34 @@
     <div class="form-group">
     <input class="form-control" type="text" name="comments" required value="<%= perf[i].comments %>"><br>
     Shoes: <br>
+    <%if(perf[i].shoes.length == 0){%>
+      <select name="shoes" class="form-control">
+          <option value="">--Please select--</option>
+          <option value="5.5">5.5</option>
+          <option value="6.0">6.0</option>
+          <option value="6.5">6.5</option>
+          <option value="7.0">7.0</option>
+          <option value="7.5">7.5</option>
+          <option value="8.0">8.0</option>
+          <option value="8.5">8.5</option>
+          <option value="9.0">9.0</option>
+          <option value="10.0">10.0</option>
+          <option value="10.5">10.5</option>
+          <option value="11.0">11.0</option>
+          <option value="11.5">11.5</option>
+          <option value="12.0">12.0</option>
+          <option value="12.5">12.5</option>
+          <option value="13.0">13.0</option>
+          <option value="13.5">13.5</option>
+          <option value="14.0">14.0</option>
+          <option value="14.5">14.5</option>
+          <option value="15.0">15.0</option>
+        
+        </select><br>
+        <%}%>
+    <%if(perf[i].shoes.length != 0){%>
     <input class="form-control" type="text" name="shoes" required value=<%= perf[i].shoes %>><br>
+    <%}%>
     Dance Shoes: Size and Type<br>
     <input class="form-control" type="text" name="danceshoes" required value=<%= perf[i].danceshoes %>>
     </div>
