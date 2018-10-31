@@ -36,7 +36,6 @@
           <th>Color</th>
 
           <th>Measurements</th>
-          <th>Date</th>
           <% if(user && user.isAdmin) { %>
           <th>Employee Assigned</th>
           <% } %>
@@ -266,9 +265,6 @@
           <td>
             <% include measurements %>
   </td>
-  <td>
-    <%= listOfPerformers[i].playdate %>
-  </td>
   <% if(user && user.isAdmin) { %>
   <td>
       <% if (empl[i] == null){%>
@@ -308,8 +304,22 @@
             </form>
           </td>
           <% } %>
+          <% if(!user.isAdmin) { %>
+            <td><textarea readonly></textarea></td>
+            <% } %>
+           <% if(user && user.isAdmin) { %>
+          <td><textarea></textarea></td>
+          <% } %>
+          <% if(user && (user.isAdmin || user.isManager)) { %>
+            <td>
+              <form action="/FormController/edit" method="POST">
+                <input type="text" name="perfId1" hidden value="<%= listOfPerformers[i]._id %>">
+                <button class="btn btn-primary" type="submit">Basic Form</button>
+              </form>
+            </td>
+            <% } %>
           <% if(user && user.isAdmin){ %>
-          <td>
+            <td>
             <form onsubmit="return confirm('Are you sure want to delete?')" action="/FormController/delete" method="POST">
               <input type="text" name="perfId2" hidden value="<%= listOfPerformers[i]._id %>"hidden>
               <input type="text" name="employeeId1" value="<%=empl[i]._id%>" hidden>
