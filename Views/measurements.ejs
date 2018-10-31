@@ -19,7 +19,7 @@
           <div class="tab-content">
             <br>
             <div id="upper<%= listOfPerformers[i]._id %>" class="tab-pane fade in active">
-              <form method="post" action="/MeasureController/measure1">
+              <form onsubmit="return confirm('Only admin and manager can edit the measurements. Do you want to continue?')" method="post" action="/MeasureController/measure1">
                 <div class="form-group">
                   <% if(measures.length ==0){%>
                   mes[i] = Measurements
@@ -35,31 +35,85 @@
                   <%}%>
                   <input type="text" name="perfId" hidden value="<%= listOfPerformers[i]._id %>">
                   <input type="text" name="mesId" hidden value="<%= mes[i]._id %>">
+                  <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                  Head Circumference:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="headcicumference" placeholder="Enter head Circumference"
+                    value="<%=mes[i].headcicumference%>" readonly><br>
+                  <%}%>
+                  <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                   Head Circumference:&nbsp;&nbsp;
                   <input class="form-control" type="text" name="headcicumference" placeholder="Enter head Circumference"
                     value="<%=mes[i].headcicumference%>"><br>
-
-
+                  <%}%>
+                  <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                  Neck:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="neck" placeholder="Enter neck measurement value" value="<%=mes[i].neck%>"
+                    readonly><br>
+                  <%}%>
+                  <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                   Neck:&nbsp;&nbsp;
                   <input class="form-control" type="text" name="neck" placeholder="Enter neck measurement value" value="<%=mes[i].neck%>"><br>
+                  <%}%>
+                  <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                  Armcycle:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="armcycle" placeholder="Enter armcycle measurement value"
+                    value="<%=mes[i].armcycle%>" readonly><br>
+                  <%}%>
+                  <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                   Armcycle:&nbsp;&nbsp;
                   <input class="form-control" type="text" name="armcycle" placeholder="Enter armcycle measurement value"
                     value="<%=mes[i].armcycle%>"><br>
+                  <%}%>
+                  <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                  Centre Back to Wrist:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="centrebacktowrist" placeholder="Enter measurement value"
+                    value="<%=mes[i].centrebacktowrist%>" readonly><br>
+                  <%}%>
+                  <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                   Centre Back to Wrist:&nbsp;&nbsp;
                   <input class="form-control" type="text" name="centrebacktowrist" placeholder="Enter measurement value"
                     value="<%=mes[i].centrebacktowrist%>"><br>
+                  <%}%>
+                  <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                  Chest Relaxed:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="chestrelaxed" placeholder="Enter measurement value"
+                    value="<%=mes[i].chestrelaxed%>" readonly><br>
+                  <%}%>
+                  <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                   Chest Relaxed:&nbsp;&nbsp;
                   <input class="form-control" type="text" name="chestrelaxed" placeholder="Enter measurement value"
                     value="<%=mes[i].chestrelaxed%>"><br>
+                  <%}%>
+                  <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                  Chest Expanded:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="chestexpanded" placeholder="Enter measurement value"
+                    value="<%=mes[i].chestexpanded%>" readonly><br>
+                  <%}%>
+                  <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                   Chest Expanded:&nbsp;&nbsp;
                   <input class="form-control" type="text" name="chestexpanded" placeholder="Enter measurement value"
                     value="<%=mes[i].chestexpanded%>"><br>
+                  <%}%>
+                  <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                  Chest over compression garnment:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="chestovercompressiongarnment" placeholder="Enter measurement value"
+                    value="<%=mes[i].chestovercompressiongarnment%>" readonly><br>
+                  <%}%>
+                  <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                   Chest over compression garnment:&nbsp;&nbsp;
                   <input class="form-control" type="text" name="chestovercompressiongarnment" placeholder="Enter measurement value"
                     value="<%=mes[i].chestovercompressiongarnment%>"><br>
+                  <%}%>
+                  <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                  Chest over Body Padding:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="chestoverbodypadding" placeholder="Enter measurement value"
+                    value="<%=mes[i].chestoverbodypadding%>" readonly>
+                  <%}%>
+                  <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                   Chest over Body Padding:&nbsp;&nbsp;
                   <input class="form-control" type="text" name="chestoverbodypadding" placeholder="Enter measurement value"
                     value="<%=mes[i].chestoverbodypadding%>">
+                  <%}%>
                   <br><br>
                   <div class="h">
                     <input class="btn btn-primary" type="submit" value="Next" data-toggle="tab" href="#lower<%= listOfPerformers[i]._id %>">
@@ -68,36 +122,120 @@
             </div>
             <div id="lower<%= listOfPerformers[i]._id %>" class="tab-pane fade">
               <div class="form-group">
+                <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                Waist Relaxed:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="waistrelaxed" placeholder="Enter measurement value" value="<%=mes[i].waistrelaxed%>"
+                  readonly><br>
+                <%}%>
+                <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                 Waist Relaxed:&nbsp;&nbsp;
                 <input class="form-control" type="text" name="waistrelaxed" placeholder="Enter measurement value" value="<%=mes[i].waistrelaxed%>"><br>
+                <%}%>
+                <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                Waist Expanded:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="waistexpande" placeholder="Enter measurement value" value="<%=mes[i].waistexpande%>"
+                  readonly><br>
+                <%}%>
+                <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                 Waist Expanded:&nbsp;&nbsp;
                 <input class="form-control" type="text" name="waistexpande" placeholder="Enter measurement value" value="<%=mes[i].waistexpande%>"><br>
+                <%}%>
+                <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                Full Hip:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="fullhip" placeholder="Enter measurement value" value="<%=mes[i].fullhip%>"
+                  readonly><br>
+                <%}%>
+                <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                 Full Hip:&nbsp;&nbsp;
                 <input class="form-control" type="text" name="fullhip" placeholder="Enter measurement value" value="<%=mes[i].fullhip%>"><br>
+                <%}%>
+                <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                Half Girth:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="halfgirth" placeholder="Enter measurement value" value="<%=mes[i].halfgirth%>"
+                  readonly><br>
+                <%}%>
+                <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                 Half Girth:&nbsp;&nbsp;
                 <input class="form-control" type="text" name="halfgirth" placeholder="Enter measurement value" value="<%=mes[i].halfgirth%>"><br>
+                <%}%>
+                <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                Full Girth:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="fullgirth" placeholder="Enter measurement value" value="<%=mes[i].fullgirth%>"
+                  readonly><br>
+                <%}%>
+                <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                 Full Girth:&nbsp;&nbsp;
                 <input class="form-control" type="text" name="fullgirth" placeholder="Enter measurement value" value="<%=mes[i].fullgirth%>"><br>
+                <%}%>
+                <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                Inseam to Ankle:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="inseamtoankle" placeholder="Enter measurement value"
+                  value="<%=mes[i].inseamtoankle%>" readonly><br>
+                <%}%>
+                <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                 Inseam to Ankle:&nbsp;&nbsp;
                 <input class="form-control" type="text" name="inseamtoankle" placeholder="Enter measurement value"
                   value="<%=mes[i].inseamtoankle%>"><br>
+                <%}%>
+                <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                Inseam to floor:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="inseamtofloor" placeholder="Enter measurement value"
+                  value="<%=mes[i].inseamtofloor%>" readonly><br>
+                <%}%>
+                <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                 Inseam to floor:&nbsp;&nbsp;
                 <input class="form-control" type="text" name="inseamtofloor" placeholder="Enter measurement value"
                   value="<%=mes[i].inseamtofloor%>"><br>
+                <%}%>
+                <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                Waist over Compression Garment&nbsp;&nbsp;
+                <input class="form-control" type="text" name="waistovercompressiongarnment" placeholder="Enter measurement value"
+                  value="<%=mes[i].waistovercompressiongarment%>" readonly><br>
+                <%}%>
+                <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                 Waist over Compression Garment&nbsp;&nbsp;
                 <input class="form-control" type="text" name="waistovercompressiongarnment" placeholder="Enter measurement value"
                   value="<%=mes[i].waistovercompressiongarment%>"><br>
+                <%}%>
+                <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                Hip over Compression Garment:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="hipovercompressiongarnment" placeholder="Enter measurement value"
+                  value="<%=mes[i].hipovercompressiongarment%>" readonly><br>
+                <%}%>
+                <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                 Hip over Compression Garment:&nbsp;&nbsp;
                 <input class="form-control" type="text" name="hipovercompressiongarnment" placeholder="Enter measurement value"
                   value="<%=mes[i].hipovercompressiongarment%>"><br>
+                <%}%>
+                <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                Waist over Body Padding:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="waistoverbodypadding" placeholder="Enter measurement value"
+                  value="<%=mes[i].waistoverbodypadding%>" readonly><br>
+                <%}%>
+                <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                 Waist over Body Padding:&nbsp;&nbsp;
                 <input class="form-control" type="text" name="waistoverbodypadding" placeholder="Enter measurement value"
                   value="<%=mes[i].waistoverbodypadding%>"><br>
+                <%}%>
+                <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                Hip over Body Padding:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="hipoverbodypadding" placeholder="Enter measurement value"
+                  value="<%=mes[i].hipoverbodypadding%>" readonly><br>
+                <%}%>
+                <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                 Hip over Body Padding:&nbsp;&nbsp;
                 <input class="form-control" type="text" name="hipoverbodypadding" placeholder="Enter measurement value"
                   value="<%=mes[i].hipoverbodypadding%>"><br>
+                <%}%>
+                <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                Shoes:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="shoes" placeholder="Enter shoe size" value="<%=mes[i].shoes%>"
+                  readonly>
+                <%}%>
+                <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                 Shoes:&nbsp;&nbsp;
                 <input class="form-control" type="text" name="shoes" placeholder="Enter shoe size" value="<%=mes[i].shoes%>">
+                <%}%>
                 <br><br>
                 <div class="h">
                   <input class="btn btn-primary" type="submit" value="Next" data-toggle="tab" href="#other<%= listOfPerformers[i]._id %>">
@@ -107,22 +245,46 @@
             <div id="other<%= listOfPerformers[i]._id %>" class="tab-pane fade">
 
               <div class="form-group">
+                <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                Dominant Hand:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="dominanthand" placeholder="Enter measurement value" value="<%=mes[i].dominanthand%>"
+                  readonly><br>
+                <%}%>
+                <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                 Dominant Hand:&nbsp;&nbsp;
                 <input class="form-control" type="text" name="dominanthand" placeholder="Enter measurement value" value="<%=mes[i].dominanthand%>"><br>
+                <%}%>
+                <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                Other over Body Padding:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="otheroverbodypadding" placeholder="Enter measurement value"
+                  value="<%=mes[i].otheroverbodypadding%>" readonly>
+                <%}%>
+                <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                 Other over Body Padding:&nbsp;&nbsp;
                 <input class="form-control" type="text" name="otheroverbodypadding" placeholder="Enter measurement value"
                   value="<%=mes[i].otheroverbodypadding%>">
+                <%}%>
+                <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
+                Measurements taken on:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="measurementsTakenOn" placeholder="Measurements took on"
+                  value="<%=mes[i].measurementsTakenOn%>" readonly>
+                <%}%>
+                <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                 Measurements taken on:&nbsp;&nbsp;
                 <input class="form-control" type="text" name="measurementsTakenOn" placeholder="Measurements took on"
                   value="<%=mes[i].measurementsTakenOn%>">
+                <%}%>
                 <br><br>
                 <div class="h">
                   <%if(mes[i].measurementsTakenOn == null){%>
                   <input class="btn btn-primary" type="submit" value="Submit">
                   <%}%>
                   <%if(mes[i].measurementsTakenOn != null){%>
-                  <% if(user && (user.isAdmin || user.isManager)) { %>
+                  <% if(user.isAdmin || user.isManager) { %>
                   <input class="btn btn-primary" type="submit" value="Update">
+                  <%}%>
+                  <% if(user && (!user.isAdmin && !user.isManager)) { %>
+                  <input class="btn btn-primary" type="submit" value="Update" disabled>
                   <%}%>
                   <%}%>
                 </div>
