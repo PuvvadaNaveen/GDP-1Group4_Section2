@@ -71,7 +71,7 @@
             <%}%>
             <% if (cloth[i] != null){%>
             <button id="selectItem<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
-              data-target="#myModal2<%= listOfPerformers[i]._id %>">
+              data-target="#myModal2<%= listOfPerformers[i]._id %>" style="width:350px">
               <%=cloth[i].selectCloth%></button>
             <%}%>
             <div id="myModal2<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
@@ -215,7 +215,7 @@
             <%}%>
             <% if (item[i] != null){%>
             <button id="selectColor<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
-              data-target="#myModal3<%= listOfPerformers[i]._id %>">
+              data-target="#myModal3<%= listOfPerformers[i]._id %>" style="width:90px">
               <%=item[i].selectColor01%></button>
             <%}%>
             <div id="myModal3<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
@@ -279,7 +279,7 @@
             <%}%>
             <% if (empl[i] != null){%>
             <button id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
-              data-target="#myModal1<%= listOfPerformers[i]._id %>">
+              data-target="#myModal1<%= listOfPerformers[i]._id %>" style="width:90px">
               <%=empl[i].selectEmployee1%></button>
             <%}%>
             <div id="myModal1<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
@@ -315,14 +315,6 @@
 
               </div>
             </div>
-            <!-- <select>
-              <option>Select Employee</option>
-              <option>Akhil</option>
-              <option>Meghana</option>
-              <option>Naveen</option>
-              <option>Shiva</option>
-              <option>Siva</option>
-            </select> -->
           </td>
           <% } %>
 
@@ -354,8 +346,6 @@
               <button class="btn btn-danger" type="submit">Delete</button>
             </form>
           </td>
-          <!-- <td><button onclick="removeRow()">Delete</button> <%=i%></td> -->
-          <!-- <td><button onclick="deletePerformer('<%= listOfPerformers[i]._id %>')">Delete</button> <%=i%></td> -->
           <% } %>
 
         </tr>
