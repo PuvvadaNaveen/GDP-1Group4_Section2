@@ -19,17 +19,17 @@
     <table class="table" id="pull">
       <thead>
         <tr>
-            <form action="/FormController/sort" method="POST">
-              <!-- <input type="text" name="firstname" hidden value="firstname"> -->
-              <input type="text" name="firstname" hidden value="firstname">
-               <th><button class="btn btn-primary" type="submit">First Name</button></th>
-            </form>
-            <form action="/FormController/sort" method="POST">
-              <!-- <input type="text" name="firstname" hidden value="firstname"> -->
-              <!-- <input type="text" name="lastname" value="lastname"> -->
-              <input type="text" name="lastname" hidden value="lastname">
-               <th><button class="btn btn-primary" type="submit">Last Name</button></th>
-            </form>
+          <form action="/FormController/sort" method="POST">
+            <!-- <input type="text" name="firstname" hidden value="firstname"> -->
+            <input type="text" name="firstname" hidden value="firstname">
+            <th><button class="btn btn-primary" type="submit">First Name</button></th>
+          </form>
+          <form action="/FormController/sort" method="POST">
+            <!-- <input type="text" name="firstname" hidden value="firstname"> -->
+            <!-- <input type="text" name="lastname" value="lastname"> -->
+            <input type="text" name="lastname" hidden value="lastname">
+            <th><button class="btn btn-primary" type="submit">Last Name</button></th>
+          </form>
           <th>Play</th>
           <th>Character Name</th>
           <th>Clothing Item</th>
@@ -65,14 +65,15 @@
 
 
           <td>
-              <% if (cloth[i] == null){%>
-              <button id="selectItem<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
-                  data-target="#myModal2<%= listOfPerformers[i]._id %>">Choose Item</button>
-                  <%}%>
-                  <% if (cloth[i] != null){%>
+            <% if (cloth[i] == null){%>
             <button id="selectItem<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
-              data-target="#myModal2<%= listOfPerformers[i]._id %>"><%=cloth[i].selectCloth%></button>
-              <%}%>
+              data-target="#myModal2<%= listOfPerformers[i]._id %>">Choose Item</button>
+            <%}%>
+            <% if (cloth[i] != null){%>
+            <button id="selectItem<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
+              data-target="#myModal2<%= listOfPerformers[i]._id %>">
+              <%=cloth[i].selectCloth%></button>
+            <%}%>
             <div id="myModal2<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -107,7 +108,7 @@
                         <option>Top: Western shirt</option>
                         <option>Top: Flannel shirt</option>
                         <option>Top: Smoking jacket</option>
-<option></option>
+                        <option></option>
                         <option>Bottom: Jeans-Female fit</option>
                         <option>Bottom: Jeans-Male fit</option>
                         <option>Bottom: Khakis-Female fit</option>
@@ -188,7 +189,7 @@
                         <option>Gloves: work</option>
                         <option>Gloves: dress</option>
                         <option>Other: Other item</option>
-                                        
+
                         <% if (cloth[i] == null){%>
                         <%cloth[i] = cloth1%>
                         <%}%>
@@ -208,14 +209,15 @@
           </td>
 
           <td>
-              <% if (item[i] == null){%>
-              <button id="selectColor<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
-                  data-target="#myModal3<%= listOfPerformers[i]._id %>">Choose Color</button>
-                  <%}%>
-                  <% if (item[i] != null){%>
+            <% if (item[i] == null){%>
             <button id="selectColor<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
-              data-target="#myModal3<%= listOfPerformers[i]._id %>"><%=item[i].selectColor01%></button>
-              <%}%>
+              data-target="#myModal3<%= listOfPerformers[i]._id %>">Choose Color</button>
+            <%}%>
+            <% if (item[i] != null){%>
+            <button id="selectColor<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
+              data-target="#myModal3<%= listOfPerformers[i]._id %>">
+              <%=item[i].selectColor01%></button>
+            <%}%>
             <div id="myModal3<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -265,54 +267,55 @@
 
           <td>
             <% include measurements %>
-  </td>
-  <td>
-    <%= listOfPerformers[i].playdate %>
-  </td>
-  <% if(user && user.isAdmin) { %>
-  <td>
-      <% if (empl[i] == null){%>
-      <button id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
-          data-target="#myModal1<%= listOfPerformers[i]._id %>">Select Employee</button>
-          <%}%>
-          <% if (empl[i] != null){%>
-    <button id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
-      data-target="#myModal1<%= listOfPerformers[i]._id %>"><%=empl[i].selectEmployee1%></button>
-      <%}%>
-    <div id="myModal1<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Employees</h4>
-          </div>
-          <div class="modal-body">
-            <form method="POST" action="/FormController/emp01">
-              <select id="mySelect<%= listOfPerformers[i]._id %>" size="5" onchange="myfunctionEmp('<%= listOfPerformers[i]._id %>')">
-                <option>Akhil</option>
-                <option>Meghana</option>
-                <option>Naveen</option>
-                <option>Shiva</option>
-                <option>Siva</option>
-                <br>
-                <% if (empl[i] == null){%>
-                  <%empl[i] = empl1%>
-                  <%}%>
-                  <input type="text" name="employeeId" value="<%=empl[i]._id%>" hidden>
-                <input id="emp<%= listOfPerformers[i]._id %>" type="text" name="selectEmployee1" hidden>
-                <input type="text" name="empID" value="<%= listOfPerformers[i]._id %>" hidden>
-              </select>
-              <br>
-              <br>
-              <button class="btn btn-primary" onclick="myFunction('<%= listOfPerformers[i]._id %>')" type="submit">Submit</button>
-            </form>
+          </td>
+          <td>
+            <%= listOfPerformers[i].playdate %>
+          </td>
+          <% if(user && user.isAdmin) { %>
+          <td>
+            <% if (empl[i] == null){%>
+            <button id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
+              data-target="#myModal1<%= listOfPerformers[i]._id %>">Select Employee</button>
+            <%}%>
+            <% if (empl[i] != null){%>
+            <button id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
+              data-target="#myModal1<%= listOfPerformers[i]._id %>">
+              <%=empl[i].selectEmployee1%></button>
+            <%}%>
+            <div id="myModal1<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Employees</h4>
+                  </div>
+                  <div class="modal-body">
+                    <form method="POST" action="/FormController/emp01">
+                      <select id="mySelect<%= listOfPerformers[i]._id %>" size="5" onchange="myfunctionEmp('<%= listOfPerformers[i]._id %>')">
+                        <option>Akhil</option>
+                        <option>Meghana</option>
+                        <option>Naveen</option>
+                        <option>Shiva</option>
+                        <option>Siva</option>
+                        <br>
+                        <% if (empl[i] == null){%>
+                        <%empl[i] = empl1%>
+                        <%}%>
+                        <input type="text" name="employeeId" value="<%=empl[i]._id%>" hidden>
+                        <input id="emp<%= listOfPerformers[i]._id %>" type="text" name="selectEmployee1" hidden>
+                        <input type="text" name="empID" value="<%= listOfPerformers[i]._id %>" hidden>
+                      </select>
+                      <br>
+                      <br>
+                      <button class="btn btn-primary" onclick="myFunction('<%= listOfPerformers[i]._id %>')" type="submit">Submit</button>
+                    </form>
 
-          </div>
-        </div>
+                  </div>
+                </div>
 
-      </div>
-    </div>
-    <!-- <select>
+              </div>
+            </div>
+            <!-- <select>
               <option>Select Employee</option>
               <option>Akhil</option>
               <option>Meghana</option>
@@ -320,42 +323,45 @@
               <option>Shiva</option>
               <option>Siva</option>
             </select> -->
-  </td>
-  <% } %>
+          </td>
+          <% } %>
 
-  <% if(!user.isAdmin) { %>
-    <td><textarea readonly></textarea></td>
-    <% } %>
+          <% if(!user.isAdmin) { %>
+          <td><textarea readonly></textarea></td>
+          <% } %>
 
-  <% if(user && user.isAdmin) { %>
-  <td><textarea></textarea></td>
-  <% } %>
+          <% if(user && user.isAdmin) { %>
+          <td><textarea></textarea></td>
+          <% } %>
 
 
 
-  <% if(user && (user.isAdmin || user.isManager)) { %>
-  <td>
-    <form action="/FormController/edit" method="POST">
-      <input type="text" name="perfId1" hidden value="<%= listOfPerformers[i]._id %>">
-      <button class="btn btn-primary" type="submit">Basic Form</button>
-    </form>
-  </td>
-  <% } %>
-  <% if(user && user.isAdmin){ %>
-  <td>
-    <form onsubmit="return confirm('Are you sure want to delete?')" action="/FormController/delete" method="POST">
-      <input type="text" name="perfId2" hidden value="<%= listOfPerformers[i]._id %>">
-      <button class="btn btn-danger" type="submit">Delete</button>
-    </form>
-  </td>
-  <!-- <td><button onclick="removeRow()">Delete</button> <%=i%></td> -->
-  <!-- <td><button onclick="deletePerformer('<%= listOfPerformers[i]._id %>')">Delete</button> <%=i%></td> -->
-  <% } %>
+          <% if(user && (user.isAdmin || user.isManager)) { %>
+          <td>
+            <form action="/FormController/edit" method="POST">
+              <input type="text" name="perfId1" hidden value="<%= listOfPerformers[i]._id %>">
+              <button class="btn btn-primary" type="submit">Basic Form</button>
+            </form>
+          </td>
+          <% } %>
+          <% if(user && user.isAdmin){ %>
+          <td>
+            <form onsubmit="return confirm('Are you sure want to delete?')" action="/FormController/delete" method="POST">
+              <input type="text" name="perfId2" hidden value="<%= listOfPerformers[i]._id %>"hidden>
+              <input type="text" name="employeeId1" value="<%=empl[i]._id%>" hidden>
+              <input type="text" name="itemId1" value="<%=item[i]._id%>" hidden>
+              <input type="text" name="clothselect1" value="<%=cloth[i]._id%>" hidden>
+              <button class="btn btn-danger" type="submit">Delete</button>
+            </form>
+          </td>
+          <!-- <td><button onclick="removeRow()">Delete</button> <%=i%></td> -->
+          <!-- <td><button onclick="deletePerformer('<%= listOfPerformers[i]._id %>')">Delete</button> <%=i%></td> -->
+          <% } %>
 
-  </tr>
-  <% } %>
-  </tbody>
-  </table>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
   </div>
   <form action="/shop" method="get">
 

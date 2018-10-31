@@ -148,17 +148,25 @@ api.post('/edit', function (req, res) {
 })
 api.post('/delete', function (req, res) {
     var query = { "_id": ObjectId(req.body.perfId2) };
+    var query1 = { "_id": ObjectId(req.body.employeeId1) };
+    var query2= { "_id": ObjectId(req.body.itemId1) };
+    var query3 = { "_id": ObjectId(req.body.clothselect1) };
     db.collection('forms').deleteOne(query, function (err, result) {
         if (err) throw err;
+        db.collection('clothoptions').deleteOne(query3, function (err, result) {
+            if (err) throw err;
+            db.collection('coloroptions').deleteOne(query2, function (err, result) {
+                if (err) throw err;
+                db.collection('employeeoptions').deleteOne(query1, function (err, result) {
+                    if (err) throw err;
         return res.redirect('/')
-        // res.render('form.ejs', { perf : result});
-        // res.redirect('Homepage.ejs',{listOfPerformers : result});
-
+                })
+            })
+        })
     });
 })
 api.post('/sort', function (req, res) {
     var sortby;
-    console.log("console.log(req.body.lastname);");
     console.log(req.body.lastname);
     console.log(req.body.firstname);
     if(req.body.firstname !=null && req.body.firstname!=""){

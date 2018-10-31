@@ -1,43 +1,53 @@
 <% include header %>
 
-    
-     
-    <link rel ="stylesheet" type="text/css" href="/css/Rentallist.css"/>
-    <!-- <link rel ="stylesheet" type="text/css"href="https://www.w3schools.com/w3css/4/w3.css"/>  -->
-  
-  
-    <body>
-     <h2> Rental list</h2>
-     <br>
-     <br>
-        <div class="w3-container">
-        <table class="w3-table-all w3-card-4"id="rent"  align="center">
-          <tr>
-            <th>Name</th>
-            <th>Rented Item</th>
-            <th>Rented date</th>
-            <th>Return Date</th>
-            <th>Rental Fee</th>
-          </tr>
-    <% for(let i = 0; i < list.length; i++) { %>
-    <tr>
-      <td><%= list[i].firstname %></td>
-      <td><%= list[i].rental_item %></td>
-      <td><%= list[i].StartDate %></td>
-      <td><%= list[i].EndDate %></td>
-      <td><%= list[i].fee %></td>
-      <td>
-        <form onsubmit="return confirm('Are you sure want to delete?')" action="/RentalController/delete" method="POST">
-          <input type="text" name="perfId2" hidden value="<%= list[i]._id %>">
-          <button class="btn btn-danger" type="submit">Delete</button>
-        </form>
-      </td>
-    </tr>
-    <% } %>
-  </table>
-  <div>
-    <button type = "button" class="btn btn-success  x" onclick="window.print()">
-        <span class="glyphicon glyphicon-print "></span> Print 
-     </button>
-  </div> 
-</div>
+
+
+<link rel="stylesheet" type="text/css" href="/css/Rentallist.css" />
+<!-- <link rel ="stylesheet" type="text/css"href="https://www.w3schools.com/w3css/4/w3.css"/>  -->
+
+
+<body>
+  <h2> Rental list</h2>
+  <br>
+  <br>
+  <div class="w3-container">
+    <table class="w3-table-all w3-card-4" id="rent" align="center">
+      <tr>
+        <th>Name</th>
+        <th>Rented Item</th>
+        <th>Rented date</th>
+        <th>Return Date</th>
+        <th>Rental Fee</th>
+      </tr>
+      <% for(let i = 0; i < list.length; i++) { %>
+      <tr>
+        <td>
+          <%= list[i].firstname %>
+        </td>
+        <td>
+          <%= list[i].rental_item %>
+        </td>
+        <td>
+          <%= list[i].StartDate %>
+        </td>
+        <td>
+          <%= list[i].EndDate %>
+        </td>
+        <td>
+          <%= list[i].fee %>
+        </td>
+        <td>
+          <form onsubmit="return confirm('Are you sure want to delete?')" action="/RentalController/delete" method="POST">
+            <input type="text" name="perfId2" hidden value="<%= list[i]._id %>">
+            <button class="btn btn-danger" type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+      <% } %>
+    </table>
+    <div>
+      <button type="button" class="btn btn-success  x" onclick="window.print()">
+        <span class="glyphicon glyphicon-print "></span> Print
+      </button>
+    </div>
+  </div>

@@ -1,149 +1,142 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<%= listOfPerformers[i]._id %>">Click
-    here</button>
-  <div id="myModal<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+  here</button>
+<div id="myModal<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Measurements</h4>
-        </div>
-        <div class="modal-body">
-          <div class="container">
-            <ul class="nav nav-pills">
-              <li><a data-toggle="tab" href="#upper<%= listOfPerformers[i]._id %>">Upper</a></li>
-              <li><a data-toggle="tab" href="#lower<%= listOfPerformers[i]._id %>">Lower</a></li>
-              <li><a data-toggle="tab" href="#other<%= listOfPerformers[i]._id %>">Other</a></li>
-            </ul>
-            <div class="tab-content">
-              <br>
-              <div id="upper<%= listOfPerformers[i]._id %>" class="tab-pane fade in active">
-                <form method="post" action="/MeasureController/measure1">
-                  <div class="form-group">
-                    <% if(measures.length ==0){%>
-                    mes[i] = Measurements
-                    <%}%>
-                    <% for(let j = 0; j < measures.length; j++) { %>
-                    <%if(listOfPerformers[i]._id == measures[j].perfId){%>
-                    <%mes[i] = measures[j]%>
-                    <%break%>
-                    <%}%>
-                    <% } %>
-                    <% if (mes[i] == null){%>
-                    <%mes[i] = Measurements%>
-                    <%}%>
-                    <input type="text" name="perfId" hidden value="<%= listOfPerformers[i]._id %>">
-                    <input type="text" name="mesId" hidden value="<%= mes[i]._id %>">
-                    Head Circumference:&nbsp;&nbsp;
-                    <input class="form-control" type="text" name="headcicumference" placeholder="Enter head Circumference"
-                      value="<%=mes[i].headcicumference%>"><br>
-
-
-                    Neck:&nbsp;&nbsp;
-                    <input class="form-control" type="text" name="neck" placeholder="Enter neck measurement value"
-                      value="<%=mes[i].neck%>"><br>
-                    Armcycle:&nbsp;&nbsp;
-                    <input class="form-control" type="text" name="armcycle" placeholder="Enter armcycle measurement value"
-                      value="<%=mes[i].armcycle%>"><br>
-                    Centre Back to Wrist:&nbsp;&nbsp;
-                    <input class="form-control" type="text" name="centrebacktowrist" placeholder="Enter measurement value"
-                      value="<%=mes[i].centrebacktowrist%>"><br>
-                    Chest Relaxed:&nbsp;&nbsp;
-                    <input class="form-control" type="text" name="chestrelaxed" placeholder="Enter measurement value"
-                      value="<%=mes[i].chestrelaxed%>"><br>
-                    Chest Expanded:&nbsp;&nbsp;
-                    <input class="form-control" type="text" name="chestexpanded" placeholder="Enter measurement value"
-                      value="<%=mes[i].chestexpanded%>"><br>
-                    Chest over compression garnment:&nbsp;&nbsp;
-                    <input class="form-control" type="text" name="chestovercompressiongarnment" placeholder="Enter measurement value"
-                      value="<%=mes[i].chestovercompressiongarnment%>"><br>
-                    Chest over Body Padding:&nbsp;&nbsp;
-                    <input class="form-control" type="text" name="chestoverbodypadding" placeholder="Enter measurement value"
-                      value="<%=mes[i].chestoverbodypadding%>">
-                    <br><br>
-                    <div class="h">
-                      <input class="btn btn-primary" type="submit" value="Next" data-toggle="tab" href="#lower<%= listOfPerformers[i]._id %>">
-                    </div>
-                  </div>
-              </div>
-              <div id="lower<%= listOfPerformers[i]._id %>" class="tab-pane fade">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Measurements</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <ul class="nav nav-pills">
+            <li><a data-toggle="tab" href="#upper<%= listOfPerformers[i]._id %>">Upper</a></li>
+            <li><a data-toggle="tab" href="#lower<%= listOfPerformers[i]._id %>">Lower</a></li>
+            <li><a data-toggle="tab" href="#other<%= listOfPerformers[i]._id %>">Other</a></li>
+          </ul>
+          <div class="tab-content">
+            <br>
+            <div id="upper<%= listOfPerformers[i]._id %>" class="tab-pane fade in active">
+              <form method="post" action="/MeasureController/measure1">
                 <div class="form-group">
-                  Waist Relaxed:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="waistrelaxed" placeholder="Enter measurement value"
-                    value="<%=mes[i].waistrelaxed%>"><br>
-                  Waist Expanded:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="waistexpande" placeholder="Enter measurement value"
-                    value="<%=mes[i].waistexpande%>"><br>
-                  Full Hip:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="fullhip" placeholder="Enter measurement value"
-                    value="<%=mes[i].fullhip%>"><br>
-                  Half Girth:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="halfgirth" placeholder="Enter measurement value"
-                    value="<%=mes[i].halfgirth%>"><br>
-                  Full Girth:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="fullgirth" placeholder="Enter measurement value"
-                    value="<%=mes[i].fullgirth%>"><br>
-                  Inseam to Ankle:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="inseamtoankle" placeholder="Enter measurement value"
-                    value="<%=mes[i].inseamtoankle%>"><br>
-                  Inseam to floor:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="inseamtofloor" placeholder="Enter measurement value"
-                    value="<%=mes[i].inseamtofloor%>"><br>
-                  Waist over Compression Garment&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="waistovercompressiongarnment" placeholder="Enter measurement value"
-                    value="<%=mes[i].waistovercompressiongarment%>"><br>
-                  Hip over Compression Garment:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="hipovercompressiongarnment" placeholder="Enter measurement value"
-                    value="<%=mes[i].hipovercompressiongarment%>"><br>
-                  Waist over Body Padding:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="waistoverbodypadding" placeholder="Enter measurement value"
-                    value="<%=mes[i].waistoverbodypadding%>"><br>
-                  Hip over Body Padding:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="hipoverbodypadding" placeholder="Enter measurement value"
-                    value="<%=mes[i].hipoverbodypadding%>"><br>
-                  Shoes:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="shoes" placeholder="Enter shoe size" value="<%=mes[i].shoes%>">
+                  <% if(measures.length ==0){%>
+                  mes[i] = Measurements
+                  <%}%>
+                  <% for(let j = 0; j < measures.length; j++) { %>
+                  <%if(listOfPerformers[i]._id == measures[j].perfId){%>
+                  <%mes[i] = measures[j]%>
+                  <%break%>
+                  <%}%>
+                  <% } %>
+                  <% if (mes[i] == null){%>
+                  <%mes[i] = Measurements%>
+                  <%}%>
+                  <input type="text" name="perfId" hidden value="<%= listOfPerformers[i]._id %>">
+                  <input type="text" name="mesId" hidden value="<%= mes[i]._id %>">
+                  Head Circumference:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="headcicumference" placeholder="Enter head Circumference"
+                    value="<%=mes[i].headcicumference%>"><br>
+
+
+                  Neck:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="neck" placeholder="Enter neck measurement value" value="<%=mes[i].neck%>"><br>
+                  Armcycle:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="armcycle" placeholder="Enter armcycle measurement value"
+                    value="<%=mes[i].armcycle%>"><br>
+                  Centre Back to Wrist:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="centrebacktowrist" placeholder="Enter measurement value"
+                    value="<%=mes[i].centrebacktowrist%>"><br>
+                  Chest Relaxed:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="chestrelaxed" placeholder="Enter measurement value"
+                    value="<%=mes[i].chestrelaxed%>"><br>
+                  Chest Expanded:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="chestexpanded" placeholder="Enter measurement value"
+                    value="<%=mes[i].chestexpanded%>"><br>
+                  Chest over compression garnment:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="chestovercompressiongarnment" placeholder="Enter measurement value"
+                    value="<%=mes[i].chestovercompressiongarnment%>"><br>
+                  Chest over Body Padding:&nbsp;&nbsp;
+                  <input class="form-control" type="text" name="chestoverbodypadding" placeholder="Enter measurement value"
+                    value="<%=mes[i].chestoverbodypadding%>">
                   <br><br>
                   <div class="h">
-                    <input class="btn btn-primary" type="submit" value="Next" data-toggle="tab" href="#other<%= listOfPerformers[i]._id %>">
+                    <input class="btn btn-primary" type="submit" value="Next" data-toggle="tab" href="#lower<%= listOfPerformers[i]._id %>">
                   </div>
                 </div>
-              </div>
-              <div id="other<%= listOfPerformers[i]._id %>" class="tab-pane fade">
-
-                <div class="form-group">
-                  Dominant Hand:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="dominanthand" placeholder="Enter measurement value"
-                    value="<%=mes[i].dominanthand%>"><br>
-                  Other over Body Padding:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="otheroverbodypadding" placeholder="Enter measurement value"
-                    value="<%=mes[i].otheroverbodypadding%>">
-                  Measurements taken on:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="measurementsTakenOn" placeholder="Measurements took on"
-                    value="<%=mes[i].measurementsTakenOn%>">
-                  <br><br>
-                  <div class="h">
-                    <%if(mes[i].measurementsTakenOn == null){%>
-                    <input class="btn btn-primary" type="submit" value="Submit">
-                    <%}%>
-                    <%if(mes[i].measurementsTakenOn != null){%>
-                        <% if(user && (user.isAdmin || user.isManager)) { %>
-                            <input class="btn btn-primary" type="submit" value="Update">
-                        <%}%>
-                    <%}%>
-                  </div>
-                </div>
-              </div>
-              </form>
             </div>
+            <div id="lower<%= listOfPerformers[i]._id %>" class="tab-pane fade">
+              <div class="form-group">
+                Waist Relaxed:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="waistrelaxed" placeholder="Enter measurement value" value="<%=mes[i].waistrelaxed%>"><br>
+                Waist Expanded:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="waistexpande" placeholder="Enter measurement value" value="<%=mes[i].waistexpande%>"><br>
+                Full Hip:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="fullhip" placeholder="Enter measurement value" value="<%=mes[i].fullhip%>"><br>
+                Half Girth:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="halfgirth" placeholder="Enter measurement value" value="<%=mes[i].halfgirth%>"><br>
+                Full Girth:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="fullgirth" placeholder="Enter measurement value" value="<%=mes[i].fullgirth%>"><br>
+                Inseam to Ankle:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="inseamtoankle" placeholder="Enter measurement value"
+                  value="<%=mes[i].inseamtoankle%>"><br>
+                Inseam to floor:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="inseamtofloor" placeholder="Enter measurement value"
+                  value="<%=mes[i].inseamtofloor%>"><br>
+                Waist over Compression Garment&nbsp;&nbsp;
+                <input class="form-control" type="text" name="waistovercompressiongarnment" placeholder="Enter measurement value"
+                  value="<%=mes[i].waistovercompressiongarment%>"><br>
+                Hip over Compression Garment:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="hipovercompressiongarnment" placeholder="Enter measurement value"
+                  value="<%=mes[i].hipovercompressiongarment%>"><br>
+                Waist over Body Padding:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="waistoverbodypadding" placeholder="Enter measurement value"
+                  value="<%=mes[i].waistoverbodypadding%>"><br>
+                Hip over Body Padding:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="hipoverbodypadding" placeholder="Enter measurement value"
+                  value="<%=mes[i].hipoverbodypadding%>"><br>
+                Shoes:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="shoes" placeholder="Enter shoe size" value="<%=mes[i].shoes%>">
+                <br><br>
+                <div class="h">
+                  <input class="btn btn-primary" type="submit" value="Next" data-toggle="tab" href="#other<%= listOfPerformers[i]._id %>">
+                </div>
+              </div>
+            </div>
+            <div id="other<%= listOfPerformers[i]._id %>" class="tab-pane fade">
+
+              <div class="form-group">
+                Dominant Hand:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="dominanthand" placeholder="Enter measurement value" value="<%=mes[i].dominanthand%>"><br>
+                Other over Body Padding:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="otheroverbodypadding" placeholder="Enter measurement value"
+                  value="<%=mes[i].otheroverbodypadding%>">
+                Measurements taken on:&nbsp;&nbsp;
+                <input class="form-control" type="text" name="measurementsTakenOn" placeholder="Measurements took on"
+                  value="<%=mes[i].measurementsTakenOn%>">
+                <br><br>
+                <div class="h">
+                  <%if(mes[i].measurementsTakenOn == null){%>
+                  <input class="btn btn-primary" type="submit" value="Submit">
+                  <%}%>
+                  <%if(mes[i].measurementsTakenOn != null){%>
+                  <% if(user && (user.isAdmin || user.isManager)) { %>
+                  <input class="btn btn-primary" type="submit" value="Update">
+                  <%}%>
+                  <%}%>
+                </div>
+              </div>
+            </div>
+            </form>
           </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      </div>
     </div>
-
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    </div>
   </div>
+
+</div>
 </div>
