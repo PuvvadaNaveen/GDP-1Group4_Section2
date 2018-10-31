@@ -1,78 +1,78 @@
 <% include header %>
-<head>
-  
 
-<link rel ="stylesheet" 
-type="text/css" 
-href="/css/Rental.css"  />
+  <head>
 
-</head>
-<body>    
-        <br>         
-       <h2>Costume Rental Form</h2>
-                      
-<div class="container">
-    <form method="post" action="/RentalController/rental1">
-  <div class="row">
-    <div class="col-25">
-      <label for="name">Name</label>
+
+    <link rel="stylesheet" type="text/css" href="/css/Rental.css" />
+
+  </head>
+
+  <body>
+    <br>
+    <h2>Costume Rental Form</h2>
+
+    <div class="container">
+      <form method="post" action="/RentalController/rental1">
+        <div class="row">
+          <div class="col-25">
+            <label for="name">Name</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="D" name="firstname" placeholder="Enter name..">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="Phone Number">Phone Number</label>
+          </div>
+          <div class="col-75">
+            <input type="tel" id="D" name="phone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="Email id">Email id</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="D" name="mail" placeholder="Enter email id..">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="name">Rental Item</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="D" name="rental_item" placeholder="Enter the item rented">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-25">
+            <label for="Rental Start Date">Rental Start Date</label>
+          </div>
+          <div class="col-75">
+            <input type="date" id="D" placeholder="Enter Start Date" name="StartDate">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="Rental Due Date">Rental Due Date</label>
+          </div>
+          <div class="col-75">
+            <input type="date" id="D" placeholder="Enter Due Date" name="EndDate">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="Rental fee">Rental fee</label>
+          </div>
+          <div class="col-75">
+            <input type="Number" id="D" name="fee" placeholder="Enter Rental fee..">
+          </div>
+        </div> <br>
+        <div class="row">
+          <input type="submit" value="Submit">
+        </div>
+      </form>
     </div>
-    <div class="col-75">
-      <input type="text" id="D" name="firstname" placeholder="Enter name..">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-25">
-      <label for="Phone Number">Phone Number</label>
-    </div>
-    <div class="col-75">
-      <input type="tel" id="D" name="phone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-25">
-         <label for="Email id">Email id</label>
-    </div>
-    <div class="col-75">
-      <input type="text" id="D" name="mail" placeholder="Enter email id..">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-25">
-      <label for="name">Rental Item</label>
-    </div>
-    <div class="col-75">
-      <input type="text" id="D" name="rental_item" placeholder="Enter the item rented">
-    </div>
-    </div>
-                                                             
-  <div class="row">
-    <div class="col-25">
-      <label for="Rental Start Date">Rental Start Date</label>
-     </div>
-    <div class="col-75">
-      <input type="date" id="D" placeholder="Enter Start Date" name="StartDate">
-    </div>
-  </div>
-  <div class="row">
-     <div class="col-25">
-        <label for="Rental Due Date">Rental Due Date</label>
-      </div>
-      <div class="col-75">
-        <input type="date" id="D" placeholder="Enter Due Date" name="EndDate">
-      </div>
-  </div>
-  <div class="row">
-    <div class="col-25">
-      <label for="Rental fee">Rental fee</label>
-     </div>
-    <div class="col-75">
-      <input type="Number" id="D" name="fee" placeholder="Enter Rental fee..">
-    </div>
-  </div>                                        <br>
-  <div class="row">
-    <input type="submit" value="Submit">
-  </div>
-</form>
-  </div>
-</body>
+  </body>

@@ -1,33 +1,35 @@
 <% include header %>
-<head>
-<link rel ="stylesheet" type="text/css" href="/css/findperformer.css"  />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
-  
-    <div class="col-md-10">
-        <div class="col-md-3">
-      <div class="container">
-                  <p>Find by performer name</p>
-                 
-<div id="move">
-                  <form class="example" name="getPerformer" method="POST" action="/FormController/getByName" style="margin:auto;max-width:300px">
-                    <input type="text" placeholder="Search.." name="firstname">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                    <br>
-                    <br>
-                
-                  </form>
-                  </div>
 
-                </div>
+<head>
+  <link rel="stylesheet" type="text/css" href="/css/findperformer.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+  <div class="col-md-10">
+    <div class="col-md-3">
+      <div class="container">
+        <p>Find by performer name</p>
+
+        <div id="move">
+          <form class="example" name="getPerformer" method="POST" action="/FormController/getByName" style="margin:auto;max-width:300px">
+            <input type="text" placeholder="Search.." name="firstname">
+            <button type="submit"><i class="fa fa-search"></i></button>
+            <br>
+            <br>
+
+          </form>
+        </div>
+
       </div>
-    
-                  <div class="col-md-3">
- 
-                 
-                  <img src="/css/findd.png" alt="Jane"height="300px" width="500px" >
-             </div>
-             
     </div>
+
+    <div class="col-md-3">
+
+
+      <img src="/css/findd.png" alt="Jane" height="300px" width="500px">
+    </div>
+
+  </div>
 </body>
