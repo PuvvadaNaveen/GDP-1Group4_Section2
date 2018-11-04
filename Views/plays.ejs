@@ -8,17 +8,18 @@
     <h2> Play details</h2>
     <br>
     <br>
-    <form method="POST" action="/Add_play">
+     <form method="POST" action="/Add_play">
       <% if(user.isAdmin){ %>
         <div>
           <button type="submit" class="btn btn-success x">
         <span class="glyphicon glyphicon-plus "></span> Add </button>
         </div>
-    </form>
-    <%}%>
+    </form> 
+     <%}%> 
+   <div class="flip-card-container">
       <% for(let i = 0; i < listOfPlays.length; i++) { %>
-        <div class="grid-container">
-          <div class="flip-card">
+            <div class="flip-card">
+           
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <h4>Play Name</h4>
@@ -40,14 +41,19 @@
                 <span class="big">
             <%= listOfPlays[i].PlayEndDate %>
           </span>
+        </div>
               </div>
-            </div>
-          </div>
-          <form class="move" method="POST" action="/FormController/getByPlay">
+       
+           <form class="move" method="POST" action="/FormController/getByPlay">
             <input type="text" name="playname" value="<%= listOfPlays[i].playname %>" hidden>
             <button class="large" type="submit" class="btn btn-primary">View Performers</button>
-          </form>
+          </form> 
         </div>
-        <br>
+        
+        <!-- </div> -->
+      
+        <!-- <br> -->
+      <!-- </div> -->
         <% } %>
+      </div>
   </body>

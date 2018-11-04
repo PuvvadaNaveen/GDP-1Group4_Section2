@@ -7,6 +7,11 @@ driver.get('http://localhost:8089/users/login');
 driver.findElement(By.name("username")).sendKeys("a");
 driver.findElement(By.name("password")).sendKeys("abc");
 driver.findElement(By.xpath("//button[@type='submit']")).click(); 
+driver.get('http://localhost:8089/rental');
+driver.findElement(By.xpath("//a[contains(text(),'Rentals')]']")).click(); 
+driver.findElement(By.xpath("//a[contains(text(),'Rental form')]")).click(); 
+
+
 // driver.findElement(By.xpath("//a[contains(text(),'Rentals')]")).click();
 // driver.findElement(By.xpath("//a[contains(text(),'Rental form')]")).click();
 // driver.findElement(By.name("firstname")).sendKeys("Puvvada Naveen");
