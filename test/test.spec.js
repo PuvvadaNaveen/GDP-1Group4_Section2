@@ -6,13 +6,13 @@ var request = require('request');
 var server = require('../main');
 
 // describe('Server Test', function() {
-// 	// before(function() {
-// 	// 	server.listen(8089);
-// 	// });
+// 	before(function() {
+// 		server.listen(8089);
+// 	});
 
-// 	// after(function() {
-// 	// 	server.close();
-// 	// });
+// 	after(function() {
+// 		server.close();
+// 	});
 
 // 	describe('/', function() {
 // 		it('should be test mocha', function(done) {
