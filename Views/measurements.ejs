@@ -19,7 +19,8 @@
           <div class="tab-content">
             <br>
             <div id="upper<%= listOfPerformers[i]._id %>" class="tab-pane fade in active">
-              <form onsubmit="return confirm('Only admin and manager can edit the measurements. Do you want to continue?')" method="post" action="/MeasureController/measure1">
+              <form onsubmit="return confirm('Only admin and manager can edit the measurements. Do you want to continue?')"
+                method="post" action="/MeasureController/measure1">
                 <div class="form-group">
                   <% if(measures.length ==0){%>
                   mes[i] = Measurements

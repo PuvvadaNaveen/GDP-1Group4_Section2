@@ -2,47 +2,48 @@
 
 
 
-  <link rel="stylesheet" type="text/css" href="/css/Rentallist.css" />
-  <!-- <link rel ="stylesheet" type="text/css"href="https://www.w3schools.com/w3css/4/w3.css"/>  -->
+<link rel="stylesheet" type="text/css" href="/css/Rentallist.css" />
+<!-- <link rel ="stylesheet" type="text/css"href="https://www.w3schools.com/w3css/4/w3.css"/>  -->
 
 
-  <body>
-    <h2>Shop Pull list</h2>
-    <br>
-    <br>
-    <div class="w3-container">
-      <table class="w3-table-all w3-card-4" id="rent" align="center">
-        <tr>
-          <th>Pulled</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Play</th>
-          <th>Character Name</th>
-          <th>Size</th>
-          <th>Due Date</th>
-          <th>Clothing Item</th>
-          <th>Color</th>
-          <th></th>
+<body>
+  <h2>Shop Pull list</h2>
+  <br>
+  <br>
+  <div class="w3-container">
+    <table class="w3-table-all w3-card-4" id="rent" align="center">
+      <tr>
+        <th>Pulled</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Play</th>
+        <th>Character Name</th>
+        <th>Size</th>
+        <th>Due Date</th>
+        <th>Clothing Item</th>
+        <th>Color</th>
+        <th></th>
 
-        </tr>
-        <% for(let i = 0; i < list.length; i++) { %>
-          <tr>
-            <td> <input type="checkbox" name="check" value="done"></td>
-            <td>
-              <%= list[i].firstname %>
-            </td>
-            <td>
-              <%= list[i].lastname %>
-            </td>
-            <td>
-              <%= list[i].playname %>
-            </td>
-            <td>
-              <%= list[i].charactername %>
-            </td>
-            <form method="POST" action="/FormController/shop1">
-              <td>
-                <select name="size">
+      </tr>
+      <% for(let i = 0; i < list.length; i++) { %>
+      <tr>
+        <td> <input type="checkbox" name="check" value="done"></td>
+        <td>
+          <%= list[i].firstname %>
+        </td>
+        <td>
+          <%= list[i].lastname %>
+        </td>
+        <td>
+          <%= list[i].playname %>
+        </td>
+        <td>
+          <%= list[i].charactername %>
+        </td>
+        <form method="POST" action="/FormController/shop1">
+          <td>
+            <%if(shp[i] == null){%>
+            <select name="size">
               <option>Choose size</option>
               <option>xs</option>
               <option>s</option>
@@ -53,31 +54,53 @@
               <option>xxxl</option>
               <option>Other</option>
             </select>
+            <%}%>
+            <%if(shp[i] != null){%>
+            <select name="size">
+              <option>
+                <%= shp[i].size%>
+              </option>
+              <option>Choose size</option>
+              <option>xs</option>
+              <option>s</option>
+              <option>m</option>
+              <option>l</option>
+              <option>xl</option>
+              <option>xxl</option>
+              <option>xxxl</option>
+              <option>Other</option>
+            </select>
+            <%}%>
 
-              </td>
-              <td>
-                <div>
-
-                  <input type="date" name="duedate">
-                  <input type="text" name="shopID" value="<%= list[i]._id %>" hidden>
-                </div>
-              </td>
-              <td>
-                <%= cloth[i].selectCloth %>
-              </td>
-              <td>
-                <%= item[i].selectColor01 %>
-              </td>
-              <td>
-                <input class="btn btn-update" type="submit" value="update">
-              </td>
-            </form>
-          </tr>
-          <% } %>
-      </table>
-      <div>
-        <button type="button" class="btn btn-success  x" onclick="window.print()">
+          </td>
+          <td>
+            <div>
+              <%if(shp[i] != null){ %>
+              <input type="date" name="duedate" value="<%= shp[i].duedate %>">
+              <%}%>
+              <%if(shp[i] == null){ %>
+              <input type="date" name="duedate">
+              <%}%>
+              <input type="text" name="shopID" value="<%= list[i]._id %>" hidden>
+              <input type="text" name="sID" value="<%= shp[i]._id %>" hidden>
+            </div>
+          </td>
+          <td>
+            <%= cloth[i].selectCloth %>
+          </td>
+          <td>
+            <%= item[i].selectColor01 %>
+          </td>
+          <td>
+            <input class="btn btn-update" type="submit" value="update">
+          </td>
+        </form>
+      </tr>
+      <% } %>
+    </table>
+    <div>
+      <button type="button" class="btn btn-success  x" onclick="window.print()">
         <span class="glyphicon glyphicon-print "></span> Print
       </button>
-      </div>
     </div>
+  </div>
