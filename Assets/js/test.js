@@ -3,66 +3,62 @@
 // var ObjectId = require('mongodb').ObjectID;
 
 function myFunction(id1) {
-    var x = document.getElementById("mySelect"+id1).value;
-    document.getElementById("selectEmployee"+id1).innerHTML = x;
+    var x = document.getElementById("mySelect" + id1).value;
+    document.getElementById("selectEmployee" + id1).innerHTML = x;
 }
 
 function myfunctionEmp(id0) {
-    var x = document.getElementById("mySelect"+id0).value;
-    document.getElementById("emp"+id0).value = x;
+    var x = document.getElementById("mySelect" + id0).value;
+    document.getElementById("emp" + id0).value = x;
 }
 
-    // document.getElementById("myModal1")
-    function myFunction1(idd){
-    var y = document.getElementById("mySelect1"+idd).value;
-    document.getElementById("selectItem"+idd).innerHTML = y;
-    }
-
-    function selectItem(clID){
-        var y = document.getElementById("mySelect1"+clID).value;
-        document.getElementById("cloth"+clID).value = y;
-        document.getElementById("selectItem"+idd).innerHTML = y;
-    }
-
-
-    function myFunction2(id3){
-        
-    var z = document.getElementById("mySelect2"+id3).value;
-    document.getElementById("selectColor"+id3).innerHTML = z;
+// document.getElementById("myModal1")
+function myFunction1(idd) {
+    var y = document.getElementById("mySelect1" + idd).value;
+    document.getElementById("selectItem" + idd).innerHTML = y;
 }
 
-function selColor(colID){
-    var x = document.getElementById("mySelect2"+colID).value;
-    document.getElementById("clr"+colID).value = x;
+function selectItem(clID) {
+    var y = document.getElementById("mySelect1" + clID).value;
+    document.getElementById("cloth" + clID).value = y;
+    document.getElementById("selectItem" + idd).innerHTML = y;
 }
 
-function emailSent(){
+
+function myFunction2(id3) {
+
+    var z = document.getElementById("mySelect2" + id3).value;
+    document.getElementById("selectColor" + id3).innerHTML = z;
+}
+
+function selColor(colID) {
+    var x = document.getElementById("mySelect2" + colID).value;
+    document.getElementById("clr" + colID).value = x;
+}
+
+function emailSent() {
     window.alert("Email sent");
 }
 
-function validateMayWeTextYou(){
+function validateMayWeTextYou() {
     var checkedYes = document.getElementById()
 
 }
-function removeRow()
-{
-var inc = document.getElementById('pull');
-var table = document.getElementById('pull');
-for(var i = 1; i < table.rows.length; i++)
-{
-    table.rows[i].cells[11].onclick = function()
-    {
-        var con = confirm("Do you want to delete this performer information");
-        if(con === true)
-        {
-            inc = this.parentElement.rowIndex;
-            table.deleteRow(inc);
-        }   
-    };  
+function removeRow() {
+    var inc = document.getElementById('pull');
+    var table = document.getElementById('pull');
+    for (var i = 1; i < table.rows.length; i++) {
+        table.rows[i].cells[11].onclick = function () {
+            var con = confirm("Do you want to delete this performer information");
+            if (con === true) {
+                inc = this.parentElement.rowIndex;
+                table.deleteRow(inc);
+            }
+        };
+    }
+
 }
- 
-}
-function goToHomePage(){
+function goToHomePage() {
     location.replace('/');
 }
 // function deletePerformer(idd){
@@ -73,8 +69,8 @@ function goToHomePage(){
 //       });
 //       location.replace('/');
 // }
-function alertFunction(){
-    if(window.confirm("Are you sure want to delete?")){
+function alertFunction() {
+    if (window.confirm("Are you sure want to delete?")) {
         continue;
     }
 }

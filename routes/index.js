@@ -51,6 +51,14 @@ let emptyEmployee = [
         employeeId: ""
     }
 ]
+let emptyShoplist = [
+    {
+        shopID: ""
+    },
+    {
+        duedate: "mm-dd-yyyy"
+    }
+]
 // Get Homepage
 router.get('/', ensureAuthenticated, function (req, res) {
     // MeasureSchema.statics.getSkeleton = function () {
@@ -106,7 +114,7 @@ function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     } else {
-        req.flash('error_msg', 'You are not logged in');
+        req.flash('success_msg', 'Please log in to continue');
         res.redirect('/users/login');
     }
     router.get('/home', function (request, response) {
@@ -142,6 +150,7 @@ function ensureAuthenticated(req, res, next) {
         });
     })
     router.get('/shop', (request, response, next) => {
+
         db.collection('forms').find().toArray(function (err, result) {
             if (err) throw err;
             db.collection('clothoptions').find().toArray(function (err, result2) {
@@ -154,17 +163,18 @@ function ensureAuthenticated(req, res, next) {
                     if (result3.length == 0) {
                         result3 = emptyItem;
                     }
-                    db.collection('employeeoptions').find().toArray(function (err, result4) {
+                    db.collection('shopoptions').find().toArray(function (err, result5) {
                         if (err) throw err;
-                        if (result4.length == 0) {
-                            result4 = emptyEmployee;
+                        if (result5.length == 0) {
+                            result5 = emptyShoplist;
                         }
-                        response.render('shop.ejs', { list: result, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee });
-                    })
+                        return response.render('shop.ejs', { list: result, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, shp: result5, shp1: emptyShoplist })
+                    });
                 })
             })
         })
     })
+
 
     router.get('/find', (request, response, next) => {
         response.render('findperformer.ejs')
