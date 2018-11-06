@@ -6,6 +6,8 @@ var model = require('../models/measure')
 const mongoose = require('mongoose')
 const db = mongoose.connection;
 
+// Empty measurements form
+
 let emptyModel = [
     {
         performerId: "",
@@ -35,6 +37,8 @@ let emptyModel = [
     }
 ]
 
+// Empty form for cloth items
+
 let emptyCloth = [
     {
         clothselect: "",
@@ -42,18 +46,26 @@ let emptyCloth = [
     }
 ]
 
+// Empty form for color items
+
 let emptyItem = [
     {
         itemId: "",
         colorID: ""
     }
 ]
+
+// Empty form for employee items
+
 let emptyEmployee = [
     {
         employeeId: "",
         empID: ""
     }
 ]
+
+// Empty form for shop pull list
+
 let emptyShoplist = [
     {
         shopID: ""
@@ -62,29 +74,16 @@ let emptyShoplist = [
         duedate: "mm-dd-yyyy"
     }
 ]
-// Get Homepage
+
+// Routing for geting Homepage
+
 router.get('/', ensureAuthenticated, function (req, res) {
-    // MeasureSchema.statics.getSkeleton = function () {
-    //     var data = {};
-    //     Object.keys(MeasureSchema.paths).forEach(function (path) {
-    //       return path !== '_id' ? data[path] = "" : false;
-    //     });
-    //     return data;
-    //     }
-    //     console.log(getSkeleton());
-    // var str = req.query.valid;
-    // console.log(req.query.valid);
+
     var sort = {};
     sort[req.query.valid] = 1;
-    // var first = "firstname";
-    // if(str == null){
-    //     console.log(req.query.valid);
-    // }
-
 
     db.collection('forms').find().sort(sort).toArray(function (err, result) {
         if (err) throw err;
-
         db.collection('measures').find().toArray(function (err, result1) {
             if (err) throw err;
             if (result1.length == 0) {
@@ -113,6 +112,8 @@ router.get('/', ensureAuthenticated, function (req, res) {
     });
 });
 
+// Passport function to make sure that pages are displayed only when they are logged in
+
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
@@ -120,6 +121,9 @@ function ensureAuthenticated(req, res, next) {
         req.flash('success_msg', 'Please log in to continue');
         res.redirect('/users/login');
     }
+
+    // Routing for disigner pull list
+
     router.get('/home', function (request, response) {
 
         db.collection('forms').find().toArray(function (err, result) {
@@ -153,6 +157,8 @@ function ensureAuthenticated(req, res, next) {
         });
     })
 
+    // Routing for shop pull list
+
     router.get('/shop', (request, response, next) => {
 
         db.collection('forms').find().toArray(function (err, result) {
@@ -179,30 +185,43 @@ function ensureAuthenticated(req, res, next) {
         })
     })
 
+    // Routing for find a performer by name
 
     router.get('/find', (request, response, next) => {
         response.render('findperformer.ejs')
     })
 
+    // Routing for find a performer by play name
+
     router.get('/findp', (request, response, next) => {
         response.render('findplay.ejs')
     })
+
+    // Routing for find a performer by date
 
     router.get('/fin', (request, response, next) => {
         response.render('finddate.ejs')
     })
 
+    // Routing for sending basic information form
+
     router.get('/basic', (request, response, next) => {
         response.render('Basic_info.handlebars')
     })
+
+    // Routing for sending accesscode
 
     router.get('/access', (request, response, next) => {
         response.render('access_code.handlebars')
     })
 
+    // Routing for rentals page
+
     router.get('/rental', (request, response, next) => {
         response.render('Rental Form.ejs')
     })
+
+    // Routing for rental list
 
     router.get('/rental_list', (request, response, next) => {
         db.collection('rentals').find().toArray(function (err, result) {
@@ -211,7 +230,7 @@ function ensureAuthenticated(req, res, next) {
         })
     })
 
-
+    // Routing for displaying basic information form
 
     router.get('/form', (request, response, next) => {
 
@@ -253,15 +272,24 @@ function ensureAuthenticated(req, res, next) {
         response.render('form.ejs', { perf: result })
 
     })
+
+    // Routing for displaying plays information
+
     router.get('/plays', (request, response, next) => {
         db.collection('plays').find().toArray(function (err, result) {
             if (err) throw err;
             response.render('plays.ejs', { listOfPlays: result });
         })
     })
+
+    // Routing for adding new play
+
     router.post('/Add_play', (request, response, next) => {
         response.render('Add_play.ejs')
     })
+
+    // Routing for contact page
+
     router.get('/contact', (request, response, next) => {
         response.render('contact.ejs')
     })

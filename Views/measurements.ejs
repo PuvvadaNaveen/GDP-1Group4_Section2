@@ -34,7 +34,7 @@
                   <% if (mes[i] == null){%>
                   <%mes[i] = Measurements%>
                   <%}%>
-                  <input type="text" name="perfId"  value="<%= listOfPerformers[i]._id %>">
+                  <input type="text" name="perfId"  value="<%= listOfPerformers[i]._id %>" hidden>
                   <input type="text" name="mesId" hidden value="<%= mes[i]._id %>">
                   <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
                   Head Circumference:&nbsp;&nbsp;

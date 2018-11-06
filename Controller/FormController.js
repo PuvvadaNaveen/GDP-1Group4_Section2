@@ -10,6 +10,8 @@ const indexPage = require('../routes/index')
 const db = mongoose.connection;
 var ObjectId = require('mongodb').ObjectID;
 
+// Empty measurements form
+
 let emptyModel = [
     {
         performerId: "",
@@ -39,12 +41,16 @@ let emptyModel = [
     }
 ]
 
+// Empty form for cloth items
+
 let emptyCloth = [
     {
         clothselect: "",
         clothID: ""
     }
 ]
+
+// Empty form for color items
 
 let emptyItem = [
     {
@@ -53,12 +59,16 @@ let emptyItem = [
     }
 ]
 
+// Empty form for employee items
+
 let emptyEmployee = [
     {
         employeeId: "",
         empID: ""
     }
 ]
+
+// Empty form for shop pull list
 
 let emptyShoplist = [
     {
@@ -68,6 +78,8 @@ let emptyShoplist = [
         duedate: "mm-dd-yyyy"
     }
 ]
+
+// Method for saving form details
 
 api.post('/save', function (req, res) {
     var firstname = req.body.firstname.charAt(0).toUpperCase() + req.body.firstname.slice(1).toLowerCase();
@@ -140,6 +152,8 @@ api.post('/save', function (req, res) {
     })
 })
 
+// Method to display basic information form details in homepage
+
 api.post('/edit', function (req, res) {
     var query = { "_id": ObjectId(req.body.perfId1) };
     db.collection('forms').find(query).toArray(function (err, result) {
@@ -148,6 +162,8 @@ api.post('/edit', function (req, res) {
         // res.redirect('Homepage.ejs',{listOfPerformers : result});
     });
 })
+
+// Method for deleting the performer details from designer pull list
 
 api.post('/delete', function (req, res) {
     var query = { "_id": ObjectId(req.body.perfId2) };
@@ -168,6 +184,9 @@ api.post('/delete', function (req, res) {
         })
     });
 })
+
+// Method for sorting performer details in home page
+
 api.post('/sort', function (req, res) {
     var sortby;
     console.log(req.body.lastname);
@@ -182,26 +201,8 @@ api.post('/sort', function (req, res) {
     var str = encodeURIComponent(sortby);
     res.redirect('/?valid=' + str);
 });
-// commented by shiva
-//   api.get('/getinfo',  function (req, res) {
-//      Model.find({}, function (err, form) {
-//          if (err) throw err;
-//          console.log(form);
-//          return res.json(form);
-//      });
-//     //  return res.redirect('/basic')
-//    })
-// commented by shiva
-// api.get('/getinfo',  function (req, res) {
-//     var firstname = req.body.firstname;
-//     var mysort = { firstname : 1 };
-//     db.collection('forms').find().sort(mysort).toArray(function(err, result){
-//         if (err) throw err;
-//         //   console.log(result);
-//           return res.json(result);
-//     });
-//    //  return res.redirect('/basic')
-//   })
+
+// Method for finding performer using performer name
 
 api.post('/getByName', function (req, res) {
     var query = { firstname: req.body.firstname };
@@ -236,7 +237,9 @@ api.post('/getByName', function (req, res) {
         });
     });
 })
-// get by play name
+
+// Method for finding performer using play name
+
 api.post('/getByPlay', function (req, res) {
     console.log(req.body.playname);
     var query = { playname: req.body.playname };
@@ -271,27 +274,11 @@ api.post('/getByPlay', function (req, res) {
         });
     });
 })
-//get by play date
-//   api.post('/getByDate',  function (req, res) {
-//     console.log(req.body.playdate);
-//  var query = {playdate : {"$gte" : new Date(req.body.playdate)}};
-// //   query = {playdate:"/"+new Date(req.body.playdate)+"/"};
-// //  query = {playdate: /2018-09-15/};
-// //  query = {playdate: {$in:[new Date(req.body.playdate)]}};
-//  console.log(query);
 
-//  db.collection('forms').find(query, function(err, result){
-//      if (err) throw err;
-//    //   console.log(result);
-//      return res.json(result);
-//  });
-// })
+// Method for finding performer using play date
+
 api.post('/getByDate', function (req, res) {
     var query = { playdate: req.body.playdate };
-    //  var query = {playdate : {"$gte" : new Date(req.body.playdate)}};
-    //   query = {playdate:"/"+req.body.playdate+"/"};
-    //  query = {playdate: /^"2018-09-15"/};
-    //   query = {playdate: {"$in":[new Date(req.body.playdate)]}};
 
     db.collection('forms').find(query).toArray(function (err, result) {
         if (err) throw err;
@@ -324,6 +311,8 @@ api.post('/getByDate', function (req, res) {
     });
 })
 
+// Method for selecting employee who is going to work for a performer
+
 api.post('/emp01', function (req, res) {
     if ((req.body.employeeId).length > 0) {
         db.collection('employeeoptions').update({ 'empID': req.body.empID }, { $set: { 'selectEmployee1': req.body.selectEmployee1 } });
@@ -342,35 +331,6 @@ api.post('/emp01', function (req, res) {
 
         Model1.create(newEmployeeOption, function (err, employeeOption) {
             if (err) throw err;
-        });
-        db.collection('forms').find().toArray(function (err, result) {
-            if (err) throw err;
-
-            db.collection('measures').find().toArray(function (err, result1) {
-                if (err) throw err;
-                if (result1.length == 0) {
-                    result1 = emptyModel;
-                }
-                db.collection('clothoptions').find().toArray(function (err, result2) {
-                    if (err) throw err;
-                    if (result2.length == 0) {
-                        result2 = emptyCloth;
-                    }
-                    db.collection('coloroptions').find().toArray(function (err, result3) {
-                        if (err) throw err;
-                        if (result3.length == 0) {
-                            result3 = emptyItem;
-                        }
-                        db.collection('employeeoptions').find().toArray(function (err, result4) {
-                            if (err) throw err;
-                            if (result4.length == 0) {
-                                result4 = emptyEmployee;
-                            }
-                            res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee });
-                        })
-                    })
-                });
-            });
         });
     }
     db.collection('forms').find().toArray(function (err, result) {
@@ -403,6 +363,8 @@ api.post('/emp01', function (req, res) {
         });
     });
 })
+
+// Method for selecting color of cloth for a particular performer
 
 api.post('/clr01', function (req, res) {
     if ((req.body.itemId).length > 0) {
@@ -423,35 +385,7 @@ api.post('/clr01', function (req, res) {
         Model2.create(newColorOption, function (err, ColorOption) {
             if (err) throw err;
         });
-        db.collection('forms').find().toArray(function (err, result) {
-            if (err) throw err;
 
-            db.collection('measures').find().toArray(function (err, result1) {
-                if (err) throw err;
-                if (result1.length == 0) {
-                    result1 = emptyModel;
-                }
-                db.collection('clothoptions').find().toArray(function (err, result2) {
-                    if (err) throw err;
-                    if (result2.length == 0) {
-                        result2 = emptyCloth;
-                    }
-                    db.collection('coloroptions').find().toArray(function (err, result3) {
-                        if (err) throw err;
-                        if (result3.length == 0) {
-                            result3 = emptyItem;
-                        }
-                        db.collection('employeeoptions').find().toArray(function (err, result4) {
-                            if (err) throw err;
-                            if (result4.length == 0) {
-                                result4 = emptyEmployee;
-                            }
-                            res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee });
-                        })
-                    })
-                });
-            });
-        });
     }
     db.collection('forms').find().toArray(function (err, result) {
         if (err) throw err;
@@ -484,6 +418,7 @@ api.post('/clr01', function (req, res) {
     });
 })
 
+// Method for selecting cloth for a particular performer
 
 api.post('/cloth01', function (req, res) {
     if ((req.body.clothselect).length > 0) {
@@ -505,35 +440,7 @@ api.post('/cloth01', function (req, res) {
         Model3.create(newClothOption, function (err, ClothOption) {
             if (err) throw err;
         });
-        db.collection('forms').find().toArray(function (err, result) {
-            if (err) throw err;
 
-            db.collection('measures').find().toArray(function (err, result1) {
-                if (err) throw err;
-                if (result1.length == 0) {
-                    result1 = emptyModel;
-                }
-                db.collection('clothoptions').find().toArray(function (err, result2) {
-                    if (err) throw err;
-                    if (result2.length == 0) {
-                        result2 = emptyCloth;
-                    }
-                    db.collection('coloroptions').find().toArray(function (err, result3) {
-                        if (err) throw err;
-                        if (result3.length == 0) {
-                            result3 = emptyItem;
-                        }
-                        db.collection('employeeoptions').find().toArray(function (err, result4) {
-                            if (err) throw err;
-                            if (result4.length == 0) {
-                                result4 = emptyEmployee;
-                            }
-                            res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee });
-                        })
-                    })
-                });
-            });
-        });
     }
 
     db.collection('forms').find().toArray(function (err, result) {
@@ -567,9 +474,9 @@ api.post('/cloth01', function (req, res) {
     });
 })
 
+// Method for generating shop pull list information 
 
 api.post('/shop1', function (req, res) {
-    // console.log("shop pull list");
     if ((req.body.sID).length > 0) {
         db.collection('shopoptions').update({ 'shopID': req.body.shopID }, { $set: { 'duedate': req.body.duedate } }, { 'size': req.body.size });
         return res.redirect('/shop')

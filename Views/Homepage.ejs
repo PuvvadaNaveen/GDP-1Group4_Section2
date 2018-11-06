@@ -20,13 +20,10 @@
       <thead>
         <tr>
           <form action="/FormController/sort" method="POST">
-            <!-- <input type="text" name="firstname" hidden value="firstname"> -->
             <input type="text" name="firstname" hidden value="firstname">
             <th><button class="btn btn-primary" type="submit">First Name</button></th>
           </form>
           <form action="/FormController/sort" method="POST">
-            <!-- <input type="text" name="firstname" hidden value="firstname"> -->
-            <!-- <input type="text" name="lastname" value="lastname"> -->
             <input type="text" name="lastname" hidden value="lastname">
             <th><button class="btn btn-primary" type="submit">Last Name</button></th>
           </form>
@@ -63,9 +60,6 @@
           <td>
             <%= listOfPerformers[i].charactername %>
           </td>
-          <input type="text" value="<%= listOfPerformers[i]._id %>">
-
-
           <td>
             <% if(cloth.length ==0){%>
             clo[i] = cloth1
@@ -208,7 +202,7 @@
 
                         <input type="text" name="clothselect" value="<%=cloth[i]._id%>" hidden>
                         <input id="cloth<%= listOfPerformers[i]._id %>" type="text" name="selectCloth" hidden>
-                        <input type="text" name="clothID" value="<%= listOfPerformers[i]._id %>">
+                        <input type="text" name="clothID" value="<%= listOfPerformers[i]._id %>" hidden>
                       </select>
                       <br>
                       <br>
