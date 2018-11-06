@@ -177,6 +177,7 @@ function deletePerformer(idd) {
   });
   location.replace('/');
 }
+
 exports.closeServer = function () {
   server.close();
 };
