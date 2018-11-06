@@ -37,18 +37,21 @@ let emptyModel = [
 
 let emptyCloth = [
     {
-        clothselect: ""
+        clothselect: "",
+        clothID: ""
     }
 ]
 
 let emptyItem = [
     {
-        itemId: ""
+        itemId: "",
+        colorID: ""
     }
 ]
 let emptyEmployee = [
     {
-        employeeId: ""
+        employeeId: "",
+        empID: ""
     }
 ]
 let emptyShoplist = [
@@ -149,6 +152,7 @@ function ensureAuthenticated(req, res, next) {
             });
         });
     })
+
     router.get('/shop', (request, response, next) => {
 
         db.collection('forms').find().toArray(function (err, result) {
@@ -179,9 +183,11 @@ function ensureAuthenticated(req, res, next) {
     router.get('/find', (request, response, next) => {
         response.render('findperformer.ejs')
     })
+
     router.get('/findp', (request, response, next) => {
         response.render('findplay.ejs')
     })
+
     router.get('/fin', (request, response, next) => {
         response.render('finddate.ejs')
     })
@@ -197,6 +203,7 @@ function ensureAuthenticated(req, res, next) {
     router.get('/rental', (request, response, next) => {
         response.render('Rental Form.ejs')
     })
+
     router.get('/rental_list', (request, response, next) => {
         db.collection('rentals').find().toArray(function (err, result) {
             if (err) throw err;

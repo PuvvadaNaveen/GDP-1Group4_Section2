@@ -41,17 +41,22 @@ let emptyModel = [
 
 let emptyCloth = [
     {
-        clothselect: ""
+        clothselect: "",
+        clothID: ""
     }
 ]
+
 let emptyItem = [
     {
-        itemId: ""
+        itemId: "",
+        colorID: ""
     }
 ]
+
 let emptyEmployee = [
     {
-        employeeId: ""
+        employeeId: "",
+        empID: ""
     }
 ]
 
@@ -133,11 +138,8 @@ api.post('/save', function (req, res) {
         console.log("saved");
         return res.redirect('/basic')
     })
-    // Model.create(newForm, function (err, form) {
-    //     if (err) throw err;
-    //     console.log(form);
-    // });  
 })
+
 api.post('/edit', function (req, res) {
     var query = { "_id": ObjectId(req.body.perfId1) };
     db.collection('forms').find(query).toArray(function (err, result) {
@@ -146,6 +148,7 @@ api.post('/edit', function (req, res) {
         // res.redirect('Homepage.ejs',{listOfPerformers : result});
     });
 })
+
 api.post('/delete', function (req, res) {
     var query = { "_id": ObjectId(req.body.perfId2) };
     var query1 = { "_id": ObjectId(req.body.employeeId1) };

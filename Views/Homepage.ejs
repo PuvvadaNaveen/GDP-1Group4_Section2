@@ -45,6 +45,9 @@
       </thead>
       <tbody>
         <% var mes = []%>
+        <% var clo = []%>
+        <% var col = []%>
+        <% var em = []%>
         <% var updateVairable = ""%>
         <% for( i = 0; i < listOfPerformers.length; i++) { %>
         <tr>
@@ -60,18 +63,32 @@
           <td>
             <%= listOfPerformers[i].charactername %>
           </td>
+          <input type="text" value="<%= listOfPerformers[i]._id %>">
 
- 
 
           <td>
-              <% if (cloth[i] == null){%>
-              <button style="width:200px;overflow:hidden;" id="selectItem<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
-                  data-target="#myModal2<%= listOfPerformers[i]._id %>">Choose Item</button>
-                  <%}%>
-                  <% if (cloth[i] != null){%>
-            <button style="width:200px;overflow: hidden" id="selectItem<%= listOfPerformers[i]._id %>" type="button" width="2000px" class="btn btn-primary" data-toggle="modal"
-              data-target="#myModal2<%= listOfPerformers[i]._id %>"><%=cloth[i].selectCloth%></button>
-              <%}%>
+            <% if(cloth.length ==0){%>
+            clo[i] = cloth1
+            <%}%>
+            <% for(let j = 0; j < cloth.length; j++) { %>
+            <%if(listOfPerformers[i]._id == cloth[j].clothID){%>
+            <%clo[i] = cloth[j]%>
+            <%break%>
+            <%}%>
+            <% } %>
+            <% if (clo[i] == null){%>
+            <%clo[i] = cloth1%>
+            <%}%>
+            <% if (cloth[i] == null){%>
+            <button style="width:200px;overflow:hidden;" id="selectItem<%= listOfPerformers[i]._id %>" type="button"
+              class="btn btn-primary" data-toggle="modal" data-target="#myModal2<%= listOfPerformers[i]._id %>">Choose
+              Item</button>
+            <%}%>
+            <% if (cloth[i] != null && clo[i].clothID == listOfPerformers[i]._id){%>
+            <button style="width:200px;overflow: hidden" id="selectItem<%= listOfPerformers[i]._id %>" type="button"
+              width="2000px" class="btn btn-primary" data-toggle="modal" data-target="#myModal2<%= listOfPerformers[i]._id %>">
+              <%=clo[i].selectCloth%></button>
+            <%}%>
             <div id="myModal2<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -188,12 +205,10 @@
                         <option>Gloves: dress</option>
                         <option>Other: Other item</option>
 
-                        <% if (cloth[i] == null){%>
-                        <%cloth[i] = cloth1%>
-                        <%}%>
+
                         <input type="text" name="clothselect" value="<%=cloth[i]._id%>" hidden>
                         <input id="cloth<%= listOfPerformers[i]._id %>" type="text" name="selectCloth" hidden>
-                        <input type="text" name="clothID" value="<%= listOfPerformers[i]._id %>" hidden>
+                        <input type="text" name="clothID" value="<%= listOfPerformers[i]._id %>">
                       </select>
                       <br>
                       <br>
@@ -207,14 +222,27 @@
           </td>
 
           <td>
-              <% if (item[i] == null){%>
-              <button style="width:100px" id="selectColor<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
-                  data-target="#myModal3<%= listOfPerformers[i]._id %>">Choose Color</button>
-                  <%}%>
-                  <% if (item[i] != null){%>
-            <button style="width:100px" id="selectColor<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
-              data-target="#myModal3<%= listOfPerformers[i]._id %>"><%=item[i].selectColor01%></button>
-              <%}%>
+            <% if(item.length ==0){%>
+            col[i] = item1
+            <%}%>
+            <% for(let j = 0; j < item.length; j++) { %>
+            <%if(listOfPerformers[i]._id == item[j].colorID){%>
+            <%col[i] = item[j]%>
+            <%break%>
+            <%}%>
+            <% } %>
+            <% if (col[i] == null){%>
+            <%col[i] = item1%>
+            <%}%>
+            <% if (item[i] == null){%>
+            <button style="width:100px" id="selectColor<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary"
+              data-toggle="modal" data-target="#myModal3<%= listOfPerformers[i]._id %>">Choose Color</button>
+            <%}%>
+            <% if (item[i] != null){%>
+            <button style="width:100px" id="selectColor<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary"
+              data-toggle="modal" data-target="#myModal3<%= listOfPerformers[i]._id %>">
+              <%=col[i].selectColor01%></button>
+            <%}%>
             <div id="myModal3<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -243,9 +271,7 @@
                         <option>pale</option>
                         <option>distressed</option>
                         <option>old</option>
-                        <% if (item[i] == null){%>
-                        <%item[i] = item1%>
-                        <%}%>
+
                         <input type="text" name="itemId" value="<%=item[i]._id%>" hidden>
                         <input id="clr<%= listOfPerformers[i]._id %>" type="text" name="selectColor01" hidden>
                         <input type="text" name="colorID" value="<%= listOfPerformers[i]._id %>" hidden>
@@ -264,64 +290,75 @@
 
           <td>
             <% include measurements %>
-  </td>
-  <% if(user && user.isAdmin) { %>
-  <td>
-      <% if (empl[i] == null){%>
-      <button style="width:100px" id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
-          data-target="#myModal1<%= listOfPerformers[i]._id %>">Select Employee</button>
-          <%}%>
-          <% if (empl[i] != null){%>
-    <button style="width:100px" id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary" data-toggle="modal"
-      data-target="#myModal1<%= listOfPerformers[i]._id %>"><%=empl[i].selectEmployee1%></button>
-      <%}%>
-    <div id="myModal1<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Employees</h4>
-          </div>
-          <div class="modal-body">
-            <form method="POST" action="/FormController/emp01">
-              <select id="mySelect<%= listOfPerformers[i]._id %>" size="5" onchange="myfunctionEmp('<%= listOfPerformers[i]._id %>')">
-                <option>Akhil</option>
-                <option>Meghana</option>
-                <option>Naveen</option>
-                <option>Shiva</option>
-                <option>Siva</option>
-                <br>
-                <% if (empl[i] == null){%>
-                  <%empl[i] = empl1%>
-                  <%}%>
-                  <input type="text" name="employeeId" value="<%=empl[i]._id%>" hidden>
-                <input id="emp<%= listOfPerformers[i]._id %>" type="text" name="selectEmployee1" hidden>
-                <input type="text" name="empID" value="<%= listOfPerformers[i]._id %>" hidden>
-              </select>
-              <br>
-              <br>
-              <button class="btn btn-primary" onclick="myFunction('<%= listOfPerformers[i]._id %>')" type="submit">Submit</button>
-            </form>
+          </td>
+          <% if(user && user.isAdmin) { %>
+          <td>
+            <% if(empl.length ==0){%>
+            em[i] = empl1
+            <%}%>
+            <% for(let j = 0; j < empl.length; j++) { %>
+            <%if(listOfPerformers[i]._id == empl[j].empID){%>
+            <%em[i] = empl[j]%>
+            <%break%>
+            <%}%>
+            <% } %>
+            <% if (em[i] == null){%>
+            <%em[i] = empl1%>
+            <%}%>
+            <% if (empl[i] == null){%>
+            <button style="width:100px" id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary"
+              data-toggle="modal" data-target="#myModal1<%= listOfPerformers[i]._id %>">Select Employee</button>
+            <%}%>
+            <% if (empl[i] != null){%>
+            <button style="width:100px" id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary"
+              data-toggle="modal" data-target="#myModal1<%= listOfPerformers[i]._id %>">
+              <%=em[i].selectEmployee1%></button>
+            <%}%>
+            <div id="myModal1<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Employees</h4>
+                  </div>
+                  <div class="modal-body">
+                    <form method="POST" action="/FormController/emp01">
+                      <select id="mySelect<%= listOfPerformers[i]._id %>" size="5" onchange="myfunctionEmp('<%= listOfPerformers[i]._id %>')">
+                        <option>Akhil</option>
+                        <option>Meghana</option>
+                        <option>Naveen</option>
+                        <option>Shiva</option>
+                        <option>Siva</option>
+                        <br>
+
+                        <input type="text" name="employeeId" value="<%=empl[i]._id%>" hidden>
+                        <input id="emp<%= listOfPerformers[i]._id %>" type="text" name="selectEmployee1" hidden>
+                        <input type="text" name="empID" value="<%= listOfPerformers[i]._id %>" hidden>
+                      </select>
+                      <br>
+                      <br>
+                      <button class="btn btn-primary" onclick="myFunction('<%= listOfPerformers[i]._id %>')" type="submit">Submit</button>
+                    </form>
           </td>
           <% } %>
           <% if(!user.isAdmin) { %>
-            <td><textarea readonly></textarea></td>
-            <% } %>
-           <% if(user && user.isAdmin) { %>
+          <td><textarea readonly></textarea></td>
+          <% } %>
+          <% if(user && user.isAdmin) { %>
           <td><textarea></textarea></td>
           <% } %>
           <% if(user && (user.isAdmin || user.isManager)) { %>
-            <td>
-              <form action="/FormController/edit" method="POST">
-                <input type="text" name="perfId1" hidden value="<%= listOfPerformers[i]._id %>">
-                <button class="btn btn-primary" type="submit">Basic Form</button>
-              </form>
-            </td>
-            <% } %>
+          <td>
+            <form action="/FormController/edit" method="POST">
+              <input type="text" name="perfId1" hidden value="<%= listOfPerformers[i]._id %>">
+              <button class="btn btn-primary" type="submit">Basic Form</button>
+            </form>
+          </td>
+          <% } %>
           <% if(user && user.isAdmin){ %>
-            <td>
+          <td>
             <form onsubmit="return confirm('Are you sure want to delete?')" action="/FormController/delete" method="POST">
-              <input type="text" name="perfId2" hidden value="<%= listOfPerformers[i]._id %>"hidden>
+              <input type="text" name="perfId2" hidden value="<%= listOfPerformers[i]._id %>" hidden>
               <input type="text" name="employeeId1" value="<%=empl[i]._id%>" hidden>
               <input type="text" name="itemId1" value="<%=item[i]._id%>" hidden>
               <input type="text" name="clothselect1" value="<%=cloth[i]._id%>" hidden>
