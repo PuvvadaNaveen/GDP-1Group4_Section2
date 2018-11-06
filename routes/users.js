@@ -36,11 +36,11 @@ router.post('/register', function (req, res) {
 	req.checkBody('email', 'Email is required').notEmpty();
 	req.checkBody('email', 'Email is not valid').isEmail();
 	req.checkBody('access', 'Access Code is required').notEmpty();
-	if (acode === access){
+	if (acode === access) {
 		req.checkBody('access', 'Wrong acess code').equals(acode);
 	}
-	else{
-	req.checkBody('access', 'Wrong acess code').isIn(ac);
+	else {
+		req.checkBody('access', 'Wrong acess code').isIn(ac);
 	}
 	req.checkBody('username', 'Username is required').notEmpty();
 	req.checkBody('password', 'Password is required').notEmpty();
@@ -80,26 +80,26 @@ router.post('/register', function (req, res) {
 						password: password
 					});
 
-					if(req.body.access === acode){
+					if (req.body.access === acode) {
 						newUser.isAdmin = false;
 						newUser.isManager = false;
 						acode = null;
 					}
 
-					else if(req.body.access === 'admin'){
+					else if (req.body.access === 'admin') {
 						newUser.isAdmin = true;
 						newUser.isManager = false;
 						acode = null;
 					}
 
-					else if(req.body.access === 'manager'){
+					else if (req.body.access === 'manager') {
 						newUser.isAdmin = false;
 						newUser.isManager = true;
 						acode = null;
 					}
 
-					else{
-						req.flash('error','Wrong access code');
+					else {
+						req.flash('error', 'Wrong access code');
 						res.redirect('/register');
 					}
 
@@ -221,7 +221,6 @@ router.post('/resetpassword', function (req, res, next) {
 });
 
 router.get('/reset/:token', function (req, res) {
-	console.log('akhil');
 	if (User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function (err, user) {
 		if (!user) {
 			req.flash('error', 'Password reset token is invalid or has expired.');
@@ -243,17 +242,14 @@ router.post('/reset/:token', function (req, res) {
 	async.waterfall([
 		function (done) {
 			User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function (err, user) {
-				if (user) {
+				if (!user) {
 					req.flash('error', 'Password reset token is invalid or has expired.');
 					return res.redirect('back');
 				}
 				if (req.body.password === req.body.confirm) {
-					console.log(req.body.password);
-					console.log(req.body.confirm);
 					user.setPassword(req.body.password, function (err) {
 						user.resetPasswordToken = undefined;
 						user.resetPasswordExpires = undefined;
-
 						user.save(function (err) {
 							req.logIn(user, function (err) {
 								done(err, user);
