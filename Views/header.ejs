@@ -14,8 +14,8 @@
 
 <body class="body">
 
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
+  <nav  class="navbar navbar-inverse">
+    <div id= "main" class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">NWMSU</a>
       </div>
@@ -42,7 +42,7 @@
         <% if(user && user.isAdmin){ %>
         <li><a href="/access"> Send Access Code</a></li>
         <% } %>
-        <li><a href="/plays"> Plays</a></li>
+        <li><a id = "play" href="/plays"> Plays</a></li>
         <li><a href="/contact"> Contact</a></li>
       </ul>
       <li class="pull-right">
