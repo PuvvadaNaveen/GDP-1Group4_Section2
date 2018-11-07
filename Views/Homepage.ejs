@@ -20,15 +20,14 @@
       <thead>
         <tr>
           <form action="/FormController/sort" method="POST">
-            <!-- <input type="text" name="firstname" hidden value="firstname"> -->
-            <input type="text" name="firstname" hidden value="firstname">
-            <th><button class="btn btn-primary" type="submit">First Name</button></th>
+          <th><input type="text" name="firstname" hidden value="firstname">First Name
+            <!-- <th></th><button class="btn btn-primary" type="submit">First Name</button></th> -->
+            <input type="image" src="/css/sorts.jpg" alt="Submit" width="20" height="20"></th>
           </form>
           <form action="/FormController/sort" method="POST">
-            <!-- <input type="text" name="firstname" hidden value="firstname"> -->
-            <!-- <input type="text" name="lastname" value="lastname"> -->
-            <input type="text" name="lastname" hidden value="lastname">
-            <th><button class="btn btn-primary" type="submit">Last Name</button></th>
+            <th><input type="text" name="lastname" hidden value="lastname">Last &nbsp  &nbsp Name
+            <!-- <th><button class="btn btn-primary" type="submit">Last Name</button></th> -->
+            <input type="image" src="/css/sorts.jpg" alt="Submit" width="20" height="20"></th>
           </form>
           <th>Play</th>
           <th>Character Name</th>
@@ -46,6 +45,9 @@
       </thead>
       <tbody>
         <% var mes = []%>
+        <% var clo = []%>
+        <% var col = []%>
+        <% var em = []%>
         <% var updateVairable = ""%>
         <% for( i = 0; i < listOfPerformers.length; i++) { %>
         <tr>
@@ -402,15 +404,28 @@
 
 
           <td>
+          <td>
+            <% if(cloth.length ==0){%>
+            clo[i] = cloth1
+            <%}%>
+            <% for(let j = 0; j < cloth.length; j++) { %>
+            <%if(listOfPerformers[i]._id == cloth[j].clothID){%>
+            <%clo[i] = cloth[j]%>
+            <%break%>
+            <%}%>
+            <% } %>
+            <% if (clo[i] == null){%>
+            <%clo[i] = cloth1%>
+            <%}%>
             <% if (cloth[i] == null){%>
             <button style="width:200px;overflow:hidden;" id="selectItem<%= listOfPerformers[i]._id %>" type="button"
               class="btn btn-primary" data-toggle="modal" data-target="#myModal2<%= listOfPerformers[i]._id %>">Choose
               Item</button>
             <%}%>
-            <% if (cloth[i] != null){%>
+            <% if (cloth[i] != null && clo[i].clothID == listOfPerformers[i]._id){%>
             <button style="width:200px;overflow: hidden" id="selectItem<%= listOfPerformers[i]._id %>" type="button"
               width="2000px" class="btn btn-primary" data-toggle="modal" data-target="#myModal2<%= listOfPerformers[i]._id %>">
-              <%=cloth[i].selectCloth%></button>
+              <%=clo[i].selectCloth%></button>
             <%}%>
             <div id="myModal2<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
               <div class="modal-dialog">
@@ -528,9 +543,7 @@
                         <option>Gloves: dress</option>
                         <option>Other: Other item</option>
 
-                        <% if (cloth[i] == null){%>
-                        <%cloth[i] = cloth1%>
-                        <%}%>
+
                         <input type="text" name="clothselect" value="<%=cloth[i]._id%>" hidden>
                         <input id="cloth<%= listOfPerformers[i]._id %>" type="text" name="selectCloth" hidden>
                         <input type="text" name="clothID" value="<%= listOfPerformers[i]._id %>" hidden>
@@ -547,6 +560,18 @@
           </td>
 
           <td>
+            <% if(item.length ==0){%>
+            col[i] = item1
+            <%}%>
+            <% for(let j = 0; j < item.length; j++) { %>
+            <%if(listOfPerformers[i]._id == item[j].colorID){%>
+            <%col[i] = item[j]%>
+            <%break%>
+            <%}%>
+            <% } %>
+            <% if (col[i] == null){%>
+            <%col[i] = item1%>
+            <%}%>
             <% if (item[i] == null){%>
             <button style="width:100px" id="selectColor<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary"
               data-toggle="modal" data-target="#myModal3<%= listOfPerformers[i]._id %>">Choose Color</button>
@@ -555,6 +580,7 @@
             <button style="width:100px" id="selectColor<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary"
               data-toggle="modal" data-target="#myModal3<%= listOfPerformers[i]._id %>">
               <%=item[i].selectColor01%></button>
+              <%=col[i].selectColor01%></button>
             <%}%>
             <div id="myModal3<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
               <div class="modal-dialog">
@@ -584,9 +610,7 @@
                         <option>pale</option>
                         <option>distressed</option>
                         <option>old</option>
-                        <% if (item[i] == null){%>
-                        <%item[i] = item1%>
-                        <%}%>
+
                         <input type="text" name="itemId" value="<%=item[i]._id%>" hidden>
                         <input id="clr<%= listOfPerformers[i]._id %>" type="text" name="selectColor01" hidden>
                         <input type="text" name="colorID" value="<%= listOfPerformers[i]._id %>" hidden>
@@ -608,6 +632,18 @@
           </td>
           <% if(user && user.isAdmin) { %>
           <td>
+            <% if(empl.length ==0){%>
+            em[i] = empl1
+            <%}%>
+            <% for(let j = 0; j < empl.length; j++) { %>
+            <%if(listOfPerformers[i]._id == empl[j].empID){%>
+            <%em[i] = empl[j]%>
+            <%break%>
+            <%}%>
+            <% } %>
+            <% if (em[i] == null){%>
+            <%em[i] = empl1%>
+            <%}%>
             <% if (empl[i] == null){%>
             <button style="width:100px" id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary"
               data-toggle="modal" data-target="#myModal1<%= listOfPerformers[i]._id %>">Select Employee</button>
@@ -616,6 +652,7 @@
             <button style="width:100px" id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary"
               data-toggle="modal" data-target="#myModal1<%= listOfPerformers[i]._id %>">
               <%=empl[i].selectEmployee1%></button>
+              <%=em[i].selectEmployee1%></button>
             <%}%>
             <div id="myModal1<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
               <div class="modal-dialog">
@@ -636,6 +673,7 @@
                         <% if (empl[i] == null){%>
                         <%empl[i] = empl1%>
                         <%}%>
+
                         <input type="text" name="employeeId" value="<%=empl[i]._id%>" hidden>
                         <input id="emp<%= listOfPerformers[i]._id %>" type="text" name="selectEmployee1" hidden>
                         <input type="text" name="empID" value="<%= listOfPerformers[i]._id %>" hidden>
@@ -657,6 +695,7 @@
             <form action="/FormController/edit" method="POST">
               <input type="text" name="perfId1" hidden value="<%= listOfPerformers[i]._id %>">
               <button class="btn btn-primary" type="submit">Basic Form</button>
+              <input type="image" src="/css/form.png" alt="Submit" width="41" height="43">
             </form>
           </td>
           <% } %>
@@ -667,7 +706,9 @@
               <input type="text" name="employeeId1" value="<%=empl[i]._id%>" hidden>
               <input type="text" name="itemId1" value="<%=item[i]._id%>" hidden>
               <input type="text" name="clothselect1" value="<%=cloth[i]._id%>" hidden>
-              <button class="btn btn-danger" type="submit">Delete</button>
+              <input type="image" src="/css/remove.png" alt="Submit" width="42" height="40">
+              <!-- <button class="btn btn-danger" type="submit">Delete</button>
+              <img src="/css/findd.png" alt="Jane" height="300px" width="500px"> -->
             </form>
           </td>
           <% } %>

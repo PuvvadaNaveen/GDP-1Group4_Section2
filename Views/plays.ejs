@@ -47,7 +47,20 @@
            <form class="move" method="POST" action="/FormController/getByPlay">
             <input type="text" name="playname" value="<%= listOfPlays[i].playname %>" hidden>
             <button class="large" type="submit" class="btn btn-primary">View Performers</button>
+         
           </form> 
+          <!-- <% if(user && user.isAdmin){ %>
+           
+            <form onsubmit="return confirm('Are you sure want to delete?')" action="/PlayController/delete" method="POST">
+              <input type="text" name="play" hidden value="<%= listOfPlays[i]._id %>"hidden>
+              <input type="text" name="playname"  value="<%= listOfPlays[i].playname %>"hidden>
+              <input type="text" name="PlayStartDate" value="<%= listOfPlays[i].PlayStartDate %>" hidden>
+              <input type="text" name="PlayEndDate" value="<%= listOfPlays[i].PlayEndDate %>" hidden>
+           
+              <button class="btn btn-danger" type="submit">Delete</button>
+            </form>
+        
+          <% } %> -->
         </div>
         
         <!-- </div> -->
