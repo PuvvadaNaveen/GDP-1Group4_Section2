@@ -89,15 +89,43 @@
         transform: rotateY(180deg);
         z-index: 1;
       }
-       .move{
-        margin-left:0px;
+       /* .move{
+        margin-left:1px;
+        margin-top:10px;
         
-      } 
-      .large{
-          width:200px;
-         background:black;
-         color:white;
-         margin-left:px;
-      }
+      }  */
+      /* .large{
+         /* margin-bottom:30px; */
+         /* margin-left:100px; */
+         /* margin-top:0px; */
+      
+    .move{
+        margin-left:15px;
+        margin-top:10px;
+        display:inline-block;
+        
+        }
+        .large{
+   
+         margin-left:70px;
+          margin-top:10px; 
+          display:inline-block;
+        }
+        /* * {
+            box-sizing: border-box;
+        }
+         */
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 2px;
+        }
+        
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            /* display: table; */
+        }
      
       

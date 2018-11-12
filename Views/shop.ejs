@@ -4,6 +4,7 @@
 
 <link rel="stylesheet" type="text/css" href="/css/Rentallist.css" />
 <!-- <link rel ="stylesheet" type="text/css"href="https://www.w3schools.com/w3css/4/w3.css"/>  -->
+<script src="/js/Test.js"></script>
 
 
 <body>
@@ -42,36 +43,34 @@
         </td>
         <form method="POST" action="/FormController/shop1">
           <td>
-            <%if(shp[i] == null){%>
-            <select name="size">
-              <option>Choose size</option>
-              <option>xs</option>
-              <option>s</option>
-              <option>m</option>
-              <option>l</option>
-              <option>xl</option>
-              <option>xxl</option>
-              <option>xxxl</option>
-              <option>Other</option>
+            <select id="size<%= list[i]._id %>" name="siz" onchange="chooseSize('<%= list[i]._id %>')">
+              <%if(shp[i] == null){%>
+              <option value="Choose Size">Choose size</option>
+              <option value="xs">xs</option>
+              <option value="s">s</option>
+              <option value="m">m</option>
+              <option value="l">l</option>
+              <option value="xl">xl</option>
+              <option value="xxl">xxl</option>
+              <option value="xxxl">xxxl</option>
+              <option value="Other">Other</option>
+              <%}%>
+              <%if(shp[i] != null){%>
+                <option value="<%= shp[i].size%>">
+                  <%= shp[i].size%>
+                </option>
+                <option value="Choose size">Choose size</option>
+                <option value="xs">xs</option>
+                <option value="s">s</option>
+                <option value="m">m</option>
+                <option value="l">l</option>
+                <option value="xl">xl</option>
+                <option value="xxl">xxl</option>
+                <option value="xxxl">xxxl</option>
+                <option value="Other">Other</option>
+                <%}%>
+              <input id="si<%= list[i]._id%>" type="text" name="size">
             </select>
-            <%}%>
-            <%if(shp[i] != null){%>
-            <select name="size">
-              <option>
-                <%= shp[i].size%>
-              </option>
-              <option>Choose size</option>
-              <option>xs</option>
-              <option>s</option>
-              <option>m</option>
-              <option>l</option>
-              <option>xl</option>
-              <option>xxl</option>
-              <option>xxxl</option>
-              <option>Other</option>
-            </select>
-            <%}%>
-
           </td>
           <td>
             <div>

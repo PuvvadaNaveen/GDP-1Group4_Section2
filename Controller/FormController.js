@@ -478,7 +478,9 @@ api.post('/cloth01', function (req, res) {
 
 api.post('/shop1', function (req, res) {
     if ((req.body.sID).length > 0) {
-        db.collection('shopoptions').update({ 'shopID': req.body.shopID }, { $set: { 'duedate': req.body.duedate } }, { 'size': req.body.size });
+        console.log(req.body.size);
+        console.log(req.body.shopID);
+        db.collection('shopoptions').update({ 'shopID': req.body.shopID }, { $set: { 'duedate': req.body.duedate , 'size': req.body.size } } );
         return res.redirect('/shop')
     } else {
         var size = req.body.size;
