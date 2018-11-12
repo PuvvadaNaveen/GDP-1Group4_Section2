@@ -46,27 +46,27 @@
        
            <form class="move" method="POST" action="/FormController/getByPlay">
             <input type="text" name="playname" value="<%= listOfPlays[i].playname %>" hidden>
-            <button class="large" type="submit" class="btn btn-primary">View Performers</button>
-         
+            <!-- <button class="large" type="submit" class="btn btn-primary">View Performers</button> -->
+            <div class="row">
+              <div class="column">
+            <input class="move" type="image" src="/css/perf.png" alt="Submit" width="58" height="54">
+         </div>
           </form> 
-          <!-- <% if(user && user.isAdmin){ %>
+          <% if(user && user.isAdmin){ %>
            
-            <form onsubmit="return confirm('Are you sure want to delete?')" action="/PlayController/delete" method="POST">
-              <input type="text" name="play" hidden value="<%= listOfPlays[i]._id %>"hidden>
-              <input type="text" name="playname"  value="<%= listOfPlays[i].playname %>"hidden>
-              <input type="text" name="PlayStartDate" value="<%= listOfPlays[i].PlayStartDate %>" hidden>
-              <input type="text" name="PlayEndDate" value="<%= listOfPlays[i].PlayEndDate %>" hidden>
-           
-              <button class="btn btn-danger" type="submit">Delete</button>
+            <form  onsubmit="return confirm('Are you sure want to delete?')" action="/PlayController/delete" method="POST">
+             <input type="text" name="perfId2" hidden value="<%= listOfPlays[i]._id %>">
+             <!-- <button class="large" class="btn btn-danger" type="submit">Delete</button> -->
+             <div class="column">
+             <input class="large" type="image" src="/css/deleteplay.png" alt="Submit" width="62" height="58">
+            </div>
+          </div>
             </form>
-        
-          <% } %> -->
+         
+          <% } %> 
         </div>
         
-        <!-- </div> -->
       
-        <!-- <br> -->
-      <!-- </div> -->
         <% } %>
       </div>
   </body>
