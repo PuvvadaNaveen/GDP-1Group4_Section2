@@ -12,6 +12,11 @@ function myfunctionEmp(id0) {
     document.getElementById("emp" + id0).value = x;
 }
 
+function chooseSize(id0) {
+    var x = document.getElementById("size" + id0).value;
+    document.getElementById("si" + id0).value = x;
+}
+
 // document.getElementById("myModal1")
 function myFunction1(idd) {
     var y = document.getElementById("mySelect1" + idd).value;

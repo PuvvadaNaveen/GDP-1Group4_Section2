@@ -11,6 +11,7 @@
     "async": "^2.6.1",
     "bcryptjs": "*",
     "body-parser": "latest",
+    "chai": "^4.2.0",
     "connect-flash": "*",
     "cookie-parser": "^1.4.1",
     "dropdown-select": "^3.1.0",
