@@ -74,7 +74,7 @@
                     <h4 class="modal-title">Clothing Item</h4>
                   </div>
                   <div class="modal-body">
-                    <form id="clothIdddd" method="POST" action="/FormController/cloth01">
+                    <!-- <form id="clothIdddd" method="POST" action="/FormController/cloth01"> -->
                       Top&nbsp;&nbsp;&nbsp;&emsp;&emsp;
                       <select style="width: 200px" id="top<%= listOfPerformers[i]._id %>" onclick="selectItem('<%= listOfPerformers[i]._id %>')">
                         <option value="">--Select--</option>
@@ -102,38 +102,6 @@
                         <option value="Flannel shirt">Flannel shirt</option>
                         <option value="Smoking jacket">Smoking jacket</option>
                       </select>
-                      <!-- 
-                          <option>Set: Tuxedo jacket</option>
-                          <option>Set: Tuxedo shirt</option>
-                          <option>Set: Tuxedo pants</option>
-                          <option>Set: Dress: long</option>
-                          <option>Set: Dress: mid-length</option>
-                          <option>Set: Dress: short</option>
-                          <option>Set: Nightgown</option>
-                          <option>Set: Suit: 2 piece</option>
-                          <option>Set: Suit: 3 piece</option>
-                          <option>Set: Suit: skirt suit</option>
-                          <option>Hat: winter</option>
-                          <option>Hat: dress</option>
-                          <option>Hat: baseball cap</option>
-                          <option>Hat: newsboy</option>
-                          <option>Hat: other</option>
-                          <option>Tie: bow tie</option>
-                          <option>Tie: straight tie</option>
-                          <option>Bathrobe</option>
-                          <option>Cape: long</option>
-                          <option>Cape: short</option>
-                          <option>Gloves: winter</option>
-                          <option>Gloves: work</option>
-                          <option>Gloves: dress</option>
-                          <option>Other: Other item</option> -->
-
-                      <!-- <% if (cloth[i] == null){%>
-                          <%cloth[i] = cloth1%>
-                          <%}%>
-                          <input type="text" name="clothselect" value="<%=cloth[i]._id%>" hidden>
-                          <input id="cloth<%= listOfPerformers[i]._id %>" type="text" name="selectCloth" hidden>
-                          <input type="text" name="clothID" value="<%= listOfPerformers[i]._id %>" hidden> -->
                       </select>&emsp;&emsp;&emsp;&emsp;
                       Color&nbsp;
                       <select style="width: 100px" id="topColor<%= listOfPerformers[i]._id %>" onchange="selColor('<%= listOfPerformers[i]._id %>')">
@@ -157,9 +125,7 @@
                         <option value="pale">pale</option>
                         <option value="distressed">distressed</option>
                         <option value="old">old</option>
-                        <% if (item[i] == null){%>
-                        <%item[i] = item1%>
-                        <%}%>
+                        
                         <input type="text" name="itemId" value="<%=item[i]._id%>" hidden>
                         <input id="clr<%= listOfPerformers[i]._id %>" type="text" name="selectColor01" hidden>
                         <input type="text" name="colorID" value="<%= listOfPerformers[i]._id %>" hidden>
@@ -187,7 +153,7 @@
                       </select>
                       &emsp;&emsp;&emsp;&emsp;
                       Color&nbsp;
-                      <select style="width: 100px" id="topColor<%= listOfPerformers[i]._id %>" onchange="selColor('<%= listOfPerformers[i]._id %>')">
+                      <select style="width: 100px" id="bottomColor<%= listOfPerformers[i]._id %>" onchange="selColor('<%= listOfPerformers[i]._id %>')">
                         <option value="">--Select--</option>
                         <option value="black">black</option>
                         <option value="white">white</option>
@@ -208,9 +174,7 @@
                         <option value="pale">pale</option>
                         <option value="distressed">distressed</option>
                         <option value="old">old</option>
-                        <% if (item[i] == null){%>
-                        <%item[i] = item1%>
-                        <%}%>
+                        
                         <input type="text" name="itemId" value="<%=item[i]._id%>" hidden>
                         <input id="clr<%= listOfPerformers[i]._id %>" type="text" name="selectColor01" hidden>
                         <input type="text" name="colorID" value="<%= listOfPerformers[i]._id %>" hidden>
@@ -238,7 +202,7 @@
                       </select>
                       &emsp;&emsp;&emsp;&emsp;
                       Color&nbsp;
-                      <select style="width: 100px" id="topColor<%= listOfPerformers[i]._id %>" onchange="selColor('<%= listOfPerformers[i]._id %>')">
+                      <select style="width: 100px" id="underColor<%= listOfPerformers[i]._id %>" onchange="selColor('<%= listOfPerformers[i]._id %>')">
                         <option value="">--Select--</option>
                         <option value="black">black</option>
                         <option value="white">white</option>
@@ -259,15 +223,13 @@
                         <option value="pale">pale</option>
                         <option value="distressed">distressed</option>
                         <option value="old">old</option>
-                        <% if (item[i] == null){%>
-                        <%item[i] = item1%>
-                        <%}%>
+                        
                         <input type="text" name="itemId" value="<%=item[i]._id%>" hidden>
                         <input id="clr<%= listOfPerformers[i]._id %>" type="text" name="selectColor01" hidden>
                         <input type="text" name="colorID" value="<%= listOfPerformers[i]._id %>" hidden>
                       </select><br><br>
                       Shoes&nbsp;&nbsp;&nbsp;&emsp;
-                      <select style="width: 200px" id="under<%= listOfPerformers[i]._id %>" onclick="selectItem('<%= listOfPerformers[i]._id %>')">
+                      <select style="width: 200px" id="shoes<%= listOfPerformers[i]._id %>" onclick="selectItem('<%= listOfPerformers[i]._id %>')">
                         <option value="">--Select--</option>
                         <option value="Shoes: dress shoes men's fit">Shoes: dress shoes men's fit</option>
                         <option value="Shoes: dress shoes women's fit">Shoes: dress shoes women's fit</option>
@@ -296,7 +258,7 @@
                       </select>
                       &emsp;&emsp;&emsp;&emsp;
                       Color&nbsp;
-                      <select style="width: 100px" id="topColor<%= listOfPerformers[i]._id %>" onchange="selColor('<%= listOfPerformers[i]._id %>')">
+                      <select style="width: 100px" id="shoesColor<%= listOfPerformers[i]._id %>" onchange="selColor('<%= listOfPerformers[i]._id %>')">
                         <option value="">--Select--</option>
                         <option value="black">black</option>
                         <option value="white">white</option>
@@ -317,15 +279,13 @@
                         <option value="pale">pale</option>
                         <option value="distressed">distressed</option>
                         <option value="old">old</option>
-                        <% if (item[i] == null){%>
-                        <%item[i] = item1%>
-                        <%}%>
+                        
                         <input type="text" name="itemId" value="<%=item[i]._id%>" hidden>
                         <input id="clr<%= listOfPerformers[i]._id %>" type="text" name="selectColor01" hidden>
                         <input type="text" name="colorID" value="<%= listOfPerformers[i]._id %>" hidden>
                       </select><br><br>
                       Other&nbsp;&nbsp;&nbsp;&emsp;
-                      <select style="width: 200px" id="under<%= listOfPerformers[i]._id %>" onclick="selectItem('<%= listOfPerformers[i]._id %>')">
+                      <select style="width: 200px" id="other<%= listOfPerformers[i]._id %>" onclick="selectItem('<%= listOfPerformers[i]._id %>')">
                         <option value="">--Select--</option>
                         <option value="Set: Tuxedo jacket">Set: Tuxedo jacket</option>
                         <option value="Set: Tuxedo shirt">Set: Tuxedo shirt</option>
@@ -352,16 +312,14 @@
                         <option value="Gloves: dress">Gloves: dress</option>
                         <option value="Other: Other item">Other: Other item</option>
 
-                        <% if (cloth[i] == null){%>
-                        <%cloth[i] = cloth1%>
-                        <%}%>
+                        
                         <input type="text" name="clothselect" value="<%=cloth[i]._id%>" hidden>
                         <input id="cloth<%= listOfPerformers[i]._id %>" type="text" name="selectCloth" hidden>
                         <input type="text" name="clothID" value="<%= listOfPerformers[i]._id %>" hidden>
                       </select>
                       &emsp;&emsp;&emsp;&emsp;
                       Color&nbsp;
-                      <select style="width: 100px" id="topColor<%= listOfPerformers[i]._id %>" onchange="selColor('<%= listOfPerformers[i]._id %>')">
+                      <select style="width: 100px" id="otherColor<%= listOfPerformers[i]._id %>" onchange="selColor('<%= listOfPerformers[i]._id %>')">
                         <option value="">--Select--</option>
                         <option value="black">black</option>
                         <option value="white">white</option>
@@ -382,16 +340,14 @@
                         <option value="pale">pale</option>
                         <option value="distressed">distressed</option>
                         <option value="old">old</option>
-                        <% if (item[i] == null){%>
-                        <%item[i] = item1%>
-                        <%}%>
+                        
                         <input type="text" name="itemId" value="<%=item[i]._id%>" hidden>
                         <input id="clr<%= listOfPerformers[i]._id %>" type="text" name="selectColor01" hidden>
                         <input type="text" name="colorID" value="<%= listOfPerformers[i]._id %>" hidden>
                       </select><br><br>
 
                       <button style="text-align:center" onclick="myFunction1('<%=listOfPerformers[i]._id%>')" type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                    <!-- </form> -->
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -400,10 +356,6 @@
               </div>
             </div>
           </td>
-
-
-
-          <td>
           <td>
             <% if(cloth.length ==0){%>
             clo[i] = cloth1
@@ -576,10 +528,9 @@
             <button style="width:100px" id="selectColor<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary"
               data-toggle="modal" data-target="#myModal3<%= listOfPerformers[i]._id %>">Choose Color</button>
             <%}%>
-            <% if (item[i] != null){%>
+            <% if (item[i] != null && col[i].colorID == listOfPerformers[i]._id){%>
             <button style="width:100px" id="selectColor<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary"
               data-toggle="modal" data-target="#myModal3<%= listOfPerformers[i]._id %>">
-              <%=item[i].selectColor01%></button>
               <%=col[i].selectColor01%></button>
             <%}%>
             <div id="myModal3<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
@@ -644,14 +595,13 @@
             <% if (em[i] == null){%>
             <%em[i] = empl1%>
             <%}%>
-            <% if (empl[i] == null){%>
+            <% if (empl[i] == null && em[i].empID == listOfPerformers[i]._id){%>
             <button style="width:100px" id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary"
               data-toggle="modal" data-target="#myModal1<%= listOfPerformers[i]._id %>">Select Employee</button>
             <%}%>
-            <% if (empl[i] != null){%>
+            <% if (empl[i] != null ){%>
             <button style="width:100px" id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary"
               data-toggle="modal" data-target="#myModal1<%= listOfPerformers[i]._id %>">
-              <%=empl[i].selectEmployee1%></button>
               <%=em[i].selectEmployee1%></button>
             <%}%>
             <div id="myModal1<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
@@ -670,11 +620,7 @@
                         <option>Shiva</option>
                         <option>Siva</option>
                         <br>
-                        <% if (empl[i] == null){%>
-                        <%empl[i] = empl1%>
-                        <%}%>
-
-                        <input type="text" name="employeeId" value="<%=empl[i]._id%>" hidden>
+                                                <input type="text" name="employeeId" value="<%=empl[i]._id%>" hidden>
                         <input id="emp<%= listOfPerformers[i]._id %>" type="text" name="selectEmployee1" hidden>
                         <input type="text" name="empID" value="<%= listOfPerformers[i]._id %>" hidden>
                       </select>
