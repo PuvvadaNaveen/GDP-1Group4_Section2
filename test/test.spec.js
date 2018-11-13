@@ -68,10 +68,21 @@ describe("Running server on port", function() {
 			describe("GET Basic information page/", function() {
 				it("returns status code 200", function(done) {
 				request.get('http://127.0.0.1:8089/basic', function(error, response, body) {
+					console.lo
 					assert.equal(200, response.statusCode);
 				done();
 				});
 				});
 			});
 			});
+			describe("Testing", function() {
+				describe("GET Basic information page/", function() {
+					it("returns status code 200", function(done) {
+					request.get('http://127.0.0.1:8089/basic', function(error, response, body) {
+						assert.equal(200, response.statusCode);
+					done();
+					});
+					});
+				});
+				});
 

@@ -14,7 +14,8 @@
           <ul class="nav nav-pills">
             <li><a data-toggle="tab" href="#upper<%= listOfPerformers[i]._id %>">Upper</a></li>
             <li><a data-toggle="tab" href="#lower<%= listOfPerformers[i]._id %>">Lower</a></li>
-            <li><a data-toggle="tab" href="#other<%= listOfPerformers[i]._id %>">Other</a></li>
+            <li><a data-toggle="tab" href="#other<%= listOfPerformers[i]._id%> %>">Other</a></li>
+            
           </ul>
           <div class="tab-content">
             <br>
@@ -38,12 +39,12 @@
                   <input type="text" name="mesId" hidden value="<%= mes[i]._id %>">
                   <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
                   Head Circumference:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="headcicumference" placeholder="Enter head Circumference"
+                  <input class="form-control" type="number" step="any" name="headcicumference" placeholder="Enter head Circumference"
                     value="<%=mes[i].headcicumference%>" readonly><br>
                   <%}%>
                   <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                   Head Circumference:&nbsp;&nbsp;
-                  <input class="form-control" type="text" name="headcicumference" placeholder="Enter head Circumference"
+                  <input class="form-control" type="number" step="any" name="headcicumference" placeholder="Enter head Circumference"
                     value="<%=mes[i].headcicumference%>"><br>
                   <%}%>
                   <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
@@ -239,11 +240,11 @@
                 <%}%>
                 <br><br>
                 <div class="h">
-                  <input class="btn btn-primary" type="submit" value="Next" data-toggle="tab" href="#other<%= listOfPerformers[i]._id %>">
+                  <input class="btn btn-primary" type="submit" value="Next" data-toggle="tab" href="#other<%= listOfPerformers[i]._id%> %>">
                 </div>
               </div>
             </div>
-            <div id="other<%= listOfPerformers[i]._id %>" class="tab-pane fade">
+            <div id="other<%= listOfPerformers[i]._id%>" class="tab-pane fade">
 
               <div class="form-group">
                 <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
