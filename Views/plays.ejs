@@ -8,11 +8,12 @@
     <h2> Play details</h2>
     <br>
     <br>
+    <% if(user.isAdmin){ %>
      <form method="POST" action="/Add_play">
-      <% if(user.isAdmin){ %>
+      
         <div>
-          <button type="submit" class="btn btn-success x">
-        <span class="glyphicon glyphicon-plus "></span> Add </button>
+          <button title="Create new play" type="submit" class="btn btn-success x">
+        <span class="glyphicon glyphicon-plus "></span> Add Play</button>
         </div>
     </form> 
      <%}%> 
@@ -43,30 +44,50 @@
           </span>
         </div>
               </div>
-       
+            
+
+            
+
+              <% if(user.isAdmin){ %>
            <form class="move" method="POST" action="/FormController/getByPlay">
             <input type="text" name="playname" value="<%= listOfPlays[i].playname %>" hidden>
             <!-- <button class="large" type="submit" class="btn btn-primary">View Performers</button> -->
             <div class="row">
               <div class="column">
-            <input class="move" type="image" src="/css/perf.png" alt="Submit" width="58" height="54">
+            <input class="move" title="View performers" type="image" src="/css/perf.png" alt="Submit" width="58" height="54">
          </div>
           </form> 
-          <% if(user && user.isAdmin){ %>
+          <% } %> 
+
+          <% if(user.isAdmin){ %>
            
             <form  onsubmit="return confirm('Are you sure want to delete?')" action="/PlayController/delete" method="POST">
              <input type="text" name="perfId2" hidden value="<%= listOfPlays[i]._id %>">
              <!-- <button class="large" class="btn btn-danger" type="submit">Delete</button> -->
              <div class="column">
-             <input class="large" type="image" src="/css/deleteplay.png" alt="Submit" width="62" height="58">
+             <input class="large" title="Delete play" type="image" src="/css/deleteplay.png" alt="Submit" width="62" height="58">
             </div>
           </div>
+        
+      
             </form>
          
           <% } %> 
+          <% if(!user.isAdmin){ %>
+            <form class="movee" method="POST" action="/FormController/getByPlay">
+              <input type="text" name="playname" value="<%= listOfPlays[i].playname %>" hidden>
+              <button class="largee" type="submit" class="btn btn-primary">View Performers</button>
+              <!-- <div class="row">
+                <div class="column">
+              <input class="move" title="View performers" type="image" src="/css/perf.png" alt="Submit" width="58" height="54">
+           </div> -->
+            </form>
+            <% } %> 
         </div>
         
       
         <% } %>
       </div>
+      </div>
+      
   </body>
