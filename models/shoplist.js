@@ -12,6 +12,10 @@ var ShopSchema = mongoose.Schema({
 
     duedate: {
         type: String
+    },
+
+    notes: {
+        type: String
     }
 });
 

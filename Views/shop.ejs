@@ -23,6 +23,7 @@
         <th>Due Date</th>
         <th>Clothing Item</th>
         <th>Color</th>
+        <th>Notes</th>
         <th></th>
 
       </tr>
@@ -43,8 +44,8 @@
         </td>
         <form method="POST" action="/FormController/shop1">
           <td>
-            <select id="size<%= list[i]._id %>" name="siz" onchange="chooseSize('<%= list[i]._id %>')">
-              <%if(shp[i] == null){%>
+            <select id="size<%= list[i]._id %>" name="size">
+              <%if(shp[i].shopID.length == 0){%>
               <option value="Choose Size">Choose size</option>
               <option value="xs">xs</option>
               <option value="s">s</option>
@@ -55,7 +56,7 @@
               <option value="xxxl">xxxl</option>
               <option value="Other">Other</option>
               <%}%>
-              <%if(shp[i] != null){%>
+              <%if(shp[i].shopID.length != 0){%>
                 <option value="<%= shp[i].size%>">
                   <%= shp[i].size%>
                 </option>
@@ -69,15 +70,14 @@
                 <option value="xxxl">xxxl</option>
                 <option value="Other">Other</option>
                 <%}%>
-              <input id="si<%= list[i]._id%>" type="text" name="size">
             </select>
           </td>
           <td>
             <div>
-              <%if(shp[i] != null){ %>
+              <%if(shp[i].shopID.length != 0){%>
               <input type="date" name="duedate" value="<%= shp[i].duedate %>">
               <%}%>
-              <%if(shp[i] == null){ %>
+              <%if(shp[i].shopID.length == 0){%>
               <input type="date" name="duedate">
               <%}%>
               <input type="text" name="shopID" value="<%= list[i]._id %>" hidden>
@@ -89,6 +89,19 @@
           </td>
           <td>
             <%= item[i].selectColor01 %>
+          </td>
+          <td>
+            <% if(!user.isAdmin) { %>
+              <textarea name="notes" readonly></textarea>
+              <% } %>
+              <% if(user && user.isAdmin) { %>
+                <%if(shp[i].notes == null){%>
+                  <textarea name="notes" placeholder="Enter some notes here"></textarea>
+                <%}%>
+                <%if(shp[i].notes != null){%>
+                  <textarea name="notes"><%=shp[i].notes%></textarea>
+                  <%}%>
+              <% } %>
           </td>
           <td>
             <input class="btn btn-update" type="submit" value="update">

@@ -76,6 +76,9 @@ let emptyShoplist = [
     },
     {
         duedate: "mm-dd-yyyy"
+    },
+    {
+        size: ""
     }
 ]
 
@@ -509,20 +512,20 @@ api.post('/cloth01', function (req, res) {
 
 api.post('/shop1', function (req, res) {
     if ((req.body.sID).length > 0) {
-        console.log(req.body.size);
-        console.log(req.body.shopID);
-        db.collection('shopoptions').update({ 'shopID': req.body.shopID }, { $set: { 'duedate': req.body.duedate , 'size': req.body.size } } );
+        db.collection('shopoptions').update({ 'shopID': req.body.shopID }, { $set: { 'duedate': req.body.duedate , 'size': req.body.size , 'notes': req.body.notes } } );
         return res.redirect('/shop')
     } else {
         var size = req.body.size;
         var duedate = req.body.duedate;
         var shopID = req.body.shopID;
+        var notes = req.body.notes;
 
         var newShopOption = new Model4({
 
             size: size,
             duedate: duedate,
-            shopID: shopID
+            shopID: shopID,
+            notes: notes
 
         });
 
@@ -548,7 +551,7 @@ api.post('/shop1', function (req, res) {
                     if (result5.length == 0) {
                         result5 = emptyShoplist;
                     }
-                    return res.render('shop.ejs', { list: result, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, shp: result5, shp1: emptyShoplist })
+                    return res.render('shop.ejs', { list: result, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, shp: result5 })
                 });
             })
         })

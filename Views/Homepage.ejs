@@ -40,7 +40,6 @@
           <% if(user && user.isAdmin) { %>
           <th>Employee Assigned</th>
           <% } %>
-          <th>Notes</th>
 
         </tr>
       </thead>
@@ -630,12 +629,6 @@
                       <button class="btn btn-primary" onclick="myFunction('<%= listOfPerformers[i]._id %>')" type="submit">Submit</button>
                     </form>
           </td>
-          <% } %>
-          <% if(!user.isAdmin) { %>
-          <td><textarea readonly></textarea></td>
-          <% } %>
-          <% if(user && user.isAdmin) { %>
-          <td><textarea></textarea></td>
           <% } %>
           <% if(user && (user.isAdmin || user.isManager)) { %>
           <td>
