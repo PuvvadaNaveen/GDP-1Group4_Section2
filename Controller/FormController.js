@@ -208,6 +208,14 @@ api.post('/getByName', function (req, res) {
     var query = { firstname: req.body.firstname };
 
     db.collection('forms').find(query).toArray(function (err, result) {
+        var queryresname = false;
+        for(let i = 0; i < result.length; i++){
+            if(query.firstname === result[i].firstname){
+                queryresname = true;
+                console.log(queryresname)
+            }
+        }
+        // console.log(result[0].firstname)
         if (err) throw err;
 
         db.collection('measures').find().toArray(function (err, result1) {
@@ -230,7 +238,10 @@ api.post('/getByName', function (req, res) {
                         if (result4.length == 0) {
                             result4 = emptyEmployee;
                         }
+                        if(Boolean(queryresname))
                         res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee });
+                        else
+                        res.send('No records found')
                     })
                 })
             });
@@ -245,6 +256,13 @@ api.post('/getByPlay', function (req, res) {
     var query = { playname: req.body.playname };
 
     db.collection('forms').find(query).toArray(function (err, result) {
+        var queryresplay = false;
+        for(let i = 0; i < result.length; i++){
+            if(query.playname === result[i].playname){
+                queryresplay = true;
+                console.log(queryresplay)
+            }
+        }
         if (err) throw err;
 
         db.collection('measures').find().toArray(function (err, result1) {
@@ -267,7 +285,10 @@ api.post('/getByPlay', function (req, res) {
                         if (result4.length == 0) {
                             result4 = emptyEmployee;
                         }
+                        if(Boolean(queryresplay))
                         res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee });
+                        else
+                        res.send('No records found')
                     })
                 })
             });
@@ -281,6 +302,13 @@ api.post('/getByDate', function (req, res) {
     var query = { playdate: req.body.playdate };
 
     db.collection('forms').find(query).toArray(function (err, result) {
+        var queryresdate = false;
+        for(let i = 0; i < result.length; i++){
+            if(query.playdate === result[i].playdate){
+                queryresdate = true;
+                console.log(queryresdate)
+            }
+        }
         if (err) throw err;
 
         db.collection('measures').find().toArray(function (err, result1) {
@@ -303,7 +331,10 @@ api.post('/getByDate', function (req, res) {
                         if (result4.length == 0) {
                             result4 = emptyEmployee;
                         }
+                        if(Boolean(queryresdate))
                         res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee });
+                        else
+                        res.send('No records found')
                     })
                 })
             });
