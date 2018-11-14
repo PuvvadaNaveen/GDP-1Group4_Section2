@@ -1,4 +1,4 @@
-.body{
+body{
     background-image: url("download.jpg");
     background-size:100%;
     background-repeat: no-repeat;
@@ -8,7 +8,7 @@
     overflow-x: hidden;
 }
 /* //add style for base component */
-/* mansa start */
+/* start */
 .anchor-element {
     cursor: pointer;
 }
@@ -42,9 +42,9 @@
 .email-container {
     margin-bottom: 20px;
 }
-/* manasa end */
+/* end */
 
- #abc{
+ /* #abc{
     margin-left:400px;
     margin-top:100px;
 }
@@ -52,7 +52,7 @@
     margin-left:625px;
     margin-top:25px;
     
-}
+} */
 
 label {
     display: block;
@@ -62,11 +62,11 @@ label {
     display:inline;
     }
 
-.form-group{
+/* .form-group{
     
     margin-right: 590px;
-  }
-  .b{
+  } */
+  /* .b{
       margin-left: 470px;
   }
   .k{
@@ -77,10 +77,10 @@ label {
      height: auto;
      margin-left:100px;
      
-   }
-   #mapy{
+   } */
+   /* #mapy{
     margin-left: 50px;
   }
   #mn{
       margin-left:380px;
-  }  
+  }   */

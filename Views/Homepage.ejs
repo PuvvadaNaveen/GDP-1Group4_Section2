@@ -18,6 +18,7 @@
 
 
     <h1>Performers Details</h1>
+    <p id="findbyname"></p>
     <br>
     <table class="table" id="pull">
       <thead>
@@ -25,12 +26,12 @@
           <form action="/FormController/sort" method="POST">
           <th><input type="text" name="firstname" hidden value="firstname">First Name
             <!-- <th></th><button class="btn btn-primary" type="submit">First Name</button></th> -->
-            <input type="image" src="/css/sorts.jpg" alt="Submit" width="20" height="20"></th>
+            <input type="image" title="Sort by first name" src="/css/sorts.jpg" alt="Submit" width="20" height="20"></th>
           </form>
           <form action="/FormController/sort" method="POST">
             <th><input type="text" name="lastname" hidden value="lastname">Last &nbsp  &nbsp Name
             <!-- <th><button class="btn btn-primary" type="submit">Last Name</button></th> -->
-            <input type="image" src="/css/sorts.jpg" alt="Submit" width="20" height="20"></th>
+            <input type="image" title="Sort by last name" src="/css/sorts.jpg" alt="Submit" width="20" height="20"></th>
           </form>
           <th>Play</th>
           <th>Character Name</th>
@@ -643,8 +644,8 @@
           <td>
             <form action="/FormController/edit" method="POST">
               <input type="text" name="perfId1" hidden value="<%= listOfPerformers[i]._id %>">
-              <button class="btn btn-primary" type="submit">Basic Form</button>
-              <input type="image" src="/css/form.png" alt="Submit" width="41" height="43">
+              <!-- <button class="btn btn-primary" type="submit">Basic Form</button> -->
+              <input type="image" title="View basic information form" src="/css/form.png" alt="Submit" width="41" height="43">
             </form>
           </td>
           <% } %>
@@ -655,7 +656,7 @@
               <input type="text" name="employeeId1" value="<%=empl[i]._id%>" hidden>
               <input type="text" name="itemId1" value="<%=item[i]._id%>" hidden>
               <input type="text" name="clothselect1" value="<%=cloth[i]._id%>" hidden>
-              <input type="image" src="/css/remove.png" alt="Submit" width="42" height="40">
+              <input type="image" title="Delete performer"src="/css/remove.png" alt="Submit" width="42" height="40">
               <!-- <button class="btn btn-danger" type="submit">Delete</button>
               <img src="/css/findd.png" alt="Jane" height="300px" width="500px"> -->
             </form>
