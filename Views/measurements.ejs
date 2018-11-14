@@ -39,31 +39,31 @@
                   <input type="text" name="mesId" hidden value="<%= mes[i]._id %>">
                   <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
                   Head Circumference:&nbsp;&nbsp;
-                  <input class="form-control" type="number" step="any" name="headcicumference" placeholder="Enter head Circumference"
+                  <input class="form-control" type="number" step="any" name="headcicumference" placeholder="Enter measurement value"
                     value="<%=mes[i].headcicumference%>" readonly><br>
                   <%}%>
                   <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                   Head Circumference:&nbsp;&nbsp;
-                  <input class="form-control" type="number" step="any" name="headcicumference" placeholder="Enter head Circumference"
+                  <input class="form-control" type="number" step="any" name="headcicumference" placeholder="Enter measurement value"
                     value="<%=mes[i].headcicumference%>"><br>
                   <%}%>
                   <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
                   Neck:&nbsp;&nbsp;
-                  <input class="form-control" type="number" step="any" name="neck" placeholder="Enter neck measurement value" value="<%=mes[i].neck%>"
+                  <input class="form-control" type="number" step="any" name="neck" placeholder="Enter measurement value" value="<%=mes[i].neck%>"
                     readonly><br>
                   <%}%>
                   <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                   Neck:&nbsp;&nbsp;
-                  <input class="form-control" type="number" step="any" name="neck" placeholder="Enter neck measurement value" value="<%=mes[i].neck%>"><br>
+                  <input class="form-control" type="number" step="any" name="neck" placeholder="Enter measurement value" value="<%=mes[i].neck%>"><br>
                   <%}%>
                   <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
                   Armcycle:&nbsp;&nbsp;
-                  <input class="form-control" type="number" step="any" name="armcycle" placeholder="Enter armcycle measurement value"
+                  <input class="form-control" type="number" step="any" name="armcycle" placeholder="Enter measurement value"
                     value="<%=mes[i].armcycle%>" readonly><br>
                   <%}%>
                   <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                   Armcycle:&nbsp;&nbsp;
-                  <input class="form-control" type="number" step="any" name="armcycle" placeholder="Enter armcycle measurement value"
+                  <input class="form-control" type="number" step="any" name="armcycle" placeholder="Enter measurement value"
                     value="<%=mes[i].armcycle%>"><br>
                   <%}%>
                   <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
@@ -231,12 +231,12 @@
                 <%}%>
                 <%if((mes[i].measurementsTakenOn != null) && (!user.isAdmin && !user.isManager)){%>
                 Shoes:&nbsp;&nbsp;
-                <input class="form-control" type="number" step="any" name="shoes" placeholder="Enter shoe size" value="<%=mes[i].shoes%>"
+                <input class="form-control" type="number" step="any" name="shoes" placeholder="Enter measurement value" value="<%=mes[i].shoes%>"
                   readonly>
                 <%}%>
                 <%if(((mes[i].measurementsTakenOn == null && (!user.isAdmin && !user.isManager)) || (mes[i].measurementsTakenOn != null && (user.isAdmin || user.isManager)) || (mes[i].measurementsTakenOn == null && (user.isAdmin || user.isManager)))){%>
                 Shoes:&nbsp;&nbsp;
-                <input class="form-control" type="text" name="shoes" placeholder="Enter shoe size" value="<%=mes[i].shoes%>">
+                <input class="form-control" type="number" step="any" name="shoes" placeholder="Enter measurement value" value="<%=mes[i].shoes%>">
                 <%}%>
                 <br><br>
                 <div class="h">
