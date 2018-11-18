@@ -74,6 +74,38 @@ let emptyShoplist = [
         duedate: "mm-dd-yyyy"
     }
 ]
+let clothAndColorEmpty = [
+    {
+        topItem: ""
+    },
+    {
+        topColor: ""
+    },
+    {
+        bottomItem: ""
+    },
+    {
+        bottomColor: ""
+    },
+    {
+        underItem: ""
+    },
+    {
+        underColor: ""
+    },
+    {
+        shoeItem: ""
+    },
+    {
+        shoeColor: ""
+    },
+    {
+        otherItem :""
+    },
+    {
+        otherColor:""
+    }
+]
 
 // Routing for geting Homepage
 
@@ -104,9 +136,15 @@ router.get('/', ensureAuthenticated, function (req, res) {
                         if (result4.length == 0) {
                             result4 = emptyEmployee;
                         }
-                        res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee });
-                    })
-                })
+                        db.collection('ClothAndColor').find().toArray(function (err, result5) {
+                            if (err) throw err;
+                            if (result5.length == 0) {
+                                result5 = clothAndColorEmpty;
+                            }
+                            res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee,clothAndColorResults:result5});
+                        });
+                    });
+                });
             });
         });
     });

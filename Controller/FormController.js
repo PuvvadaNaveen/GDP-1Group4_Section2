@@ -5,6 +5,7 @@ const Model1 = require('../models/employeeOption')
 const Model2 = require('../models/colorOption')
 const Model3 = require('../models/clothOptions')
 const Model4 = require('../models/shoplist')
+const Model5 = require('../models/ClothAndColor')
 const mongoose = require('mongoose')
 const indexPage = require('../routes/index')
 const db = mongoose.connection;
@@ -71,6 +72,17 @@ let emptyEmployee = [
 // Empty form for shop pull list
 
 let emptyShoplist = [
+    {
+        shopID: ""
+    },
+    {
+        duedate: "mm-dd-yyyy"
+    },
+    {
+        size: ""
+    }
+]
+let clothAndColorEmpty = [
     {
         shopID: ""
     },
@@ -151,7 +163,7 @@ api.post('/save', function (req, res) {
     db.collection('forms').save(newForm, (err, result) => {
         if (err) return console.log('error')
         console.log("saved");
-        return res.redirect('/basic')
+        return res.send("Details submitted successfully");
     })
 })
 
@@ -558,8 +570,40 @@ api.post('/shop1', function (req, res) {
     })
 
 })
+api.post('/clothAndColor', function(req,res){
+    console.log(req.body.topItem)
+    console.log("ssss")
+    var performerId = req.body.clothAndColorId;
+    var topItem = req.body.topItem;
+    var topColor = req.body.topColor;
+    var bottomItem = req.body.bottomItem;
+    var bottomColor = req.body.bottomColor;
+    var underItem =req.body.underItem;
+    var underColor =req.body.underColor;
+    var shoeItem = req.body.shoeItem;
+    var shoeColor = req.body.shoeColor;
+    var otherItem = req.body.otherItem;
+    var otherColor = req.body.otherColor;
 
-
+    var newClothAndColor = new Model5({
+        performerId:performerId,
+        topItem: topItem,
+        topColor: topColor,
+        bottomItem: bottomItem,
+        bottomColor: bottomColor,
+        underItem: underItem,
+        underColor:underColor,
+        shoeItem: shoeItem,
+        shoeColor: shoeColor,
+        otherItem: otherItem,
+        otherColor: otherColor
+    });
+    
+    db.collection('ClothAndColor').save(newClothAndColor, (err, result5) => {
+        if (err) return console.log('error')
+        // console.log("saved");
+        return res.redirect('/home')    })
+    })
 module.exports = api;
 
 

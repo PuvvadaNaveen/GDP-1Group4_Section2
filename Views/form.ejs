@@ -193,11 +193,12 @@
       </ul>
       <p>Please only disclose as much information as you are comfortable with and is relevant to the fit and comfort of
         your costume. This will insure that the costume designer can make you look your best!</p>
-      <%if(perf[i].firstname == null ){%>
+      <%if(perf[i].firstname.length == 0 ){%>
       <div class="b"><input type="submit" value="Submit" class="btn btn-primary"></div>
       <%}%>
     </form>
-    <%if(perf[i].firstname != null ){%>
+    <p><%=perf[i].firstname%></p>
+    <%if(perf[i].firstname.length != 0 ){%>
     <div class="b"><button value="HomePage" class="btn btn-primary" onclick="goToHomePage()">HomePage</button></div>
     <%}%>
 
