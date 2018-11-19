@@ -59,8 +59,7 @@ let emptyItem = [
 
 let emptyEmployee = [
     {
-        employeeId: "",
-        empID: ""
+        employeeId: ""
     }
 ]
 
@@ -100,10 +99,10 @@ let clothAndColorEmpty = [
         shoeColor: ""
     },
     {
-        otherItem :""
+        otherItem: ""
     },
     {
-        otherColor:""
+        otherColor: ""
     }
 ]
 
@@ -133,6 +132,7 @@ router.get('/', ensureAuthenticated, function (req, res) {
                     }
                     db.collection('employeeoptions').find().toArray(function (err, result4) {
                         if (err) throw err;
+                        console.log(result4)
                         if (result4.length == 0) {
                             result4 = emptyEmployee;
                         }
@@ -141,7 +141,7 @@ router.get('/', ensureAuthenticated, function (req, res) {
                             if (result5.length == 0) {
                                 result5 = clothAndColorEmpty;
                             }
-                            res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee,clothAndColorResults:result5});
+                            res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee, clothAndColorResults: result5 });
                         });
                     });
                 });
@@ -187,7 +187,13 @@ function ensureAuthenticated(req, res, next) {
                             if (result4.length == 0) {
                                 result4 = emptyEmployee;
                             }
-                            response.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee });
+                            db.collection('ClothAndColor').find().toArray(function (err, result5) {
+                                if (err) throw err;
+                                if (result5.length == 0) {
+                                    result5 = clothAndColorEmpty;
+                                }
+                                response.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee, clothAndColorResults: result5 });
+                            })
                         })
                     })
                 });

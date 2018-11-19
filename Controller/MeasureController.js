@@ -8,7 +8,6 @@ var ObjectId = require('mongodb').ObjectID;
 
 api.post('/measure1', function (req, res) {
     var d = new Date();
-    console.log("ssss");
     console.log(req.body.headcicumference);
     if ((req.body.mesId).length > 0) {
         db.collection('measures').update({ 'perfId': req.body.perfId }, {

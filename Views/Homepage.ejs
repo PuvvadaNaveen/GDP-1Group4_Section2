@@ -4,7 +4,7 @@
 
   <link rel="stylesheet" type="text/css" href="/css/Homepage.css" />
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
   <script src="/js/Test.js"></script>
   <script src="/js/Test.js"></script>
   <script src="../main.js"></script>
@@ -13,7 +13,7 @@
 
 
 <body>
-    <div class="se-pre-con"></div>
+  <div class="se-pre-con"></div>
   <div class="container-fluid">
 
 
@@ -24,14 +24,14 @@
       <thead>
         <tr>
           <form action="/FormController/sort" method="POST">
-          <th><input type="text" name="firstname" hidden value="firstname">First Name
-            <!-- <th></th><button class="btn btn-primary" type="submit">First Name</button></th> -->
-            <input type="image" title="Sort by first name" src="/css/sorts.jpg" alt="Submit" width="20" height="20"></th>
+            <th><input type="text" name="firstname" hidden value="firstname">First Name
+              <!-- <th></th><button class="btn btn-primary" type="submit">First Name</button></th> -->
+              <input type="image" title="Sort by first name" src="/css/sorts.jpg" alt="Submit" width="20" height="20"></th>
           </form>
           <form action="/FormController/sort" method="POST">
-            <th><input type="text" name="lastname" hidden value="lastname">Last &nbsp  &nbsp Name
-            <!-- <th><button class="btn btn-primary" type="submit">Last Name</button></th> -->
-            <input type="image" title="Sort by last name" src="/css/sorts.jpg" alt="Submit" width="20" height="20"></th>
+            <th><input type="text" name="lastname" hidden value="lastname">Last &nbsp &nbsp Name
+              <!-- <th><button class="btn btn-primary" type="submit">Last Name</button></th> -->
+              <input type="image" title="Sort by last name" src="/css/sorts.jpg" alt="Submit" width="20" height="20"></th>
           </form>
           <th>Play</th>
           <th>Character Name</th>
@@ -66,17 +66,17 @@
           </td>
           <td>
             <% var clthAndClr = []%>
-              <% for(let i = 0; i < clothAndColorResults.length; i++) { %>
-                <%if(listOfPerformers[i]._id == clothAndColorResults[i].performerId){%>
-                <%clthAndClr[i] = clothAndColorResults[i]%>
-                <%break%>
-                <%}%>
-                <% } %>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myClothingModal<%= listOfPerformers[i]._id %>">Click
-                here</button>
-                <form id="clothAndColor" method="POST" action="/FormController/clothAndColor">
-                  <input name="clothAndColorId" type="text" value="<%=listOfPerformers[i]._id%>">
-                  
+            <% for(let i = 0; i < clothAndColorResults.length; i++) { %>
+            <%if(listOfPerformers[i]._id == clothAndColorResults[i].performerId){%>
+            <%clthAndClr[i] = clothAndColorResults[i]%>
+            <%break%>
+            <%}%>
+            <% } %>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myClothingModal<%= listOfPerformers[i]._id %>">Click
+              here</button>
+            <form id="clothAndColor" method="POST" action="/FormController/clothAndColor">
+              <input name="clothAndColorId" type="text" value="<%=listOfPerformers[i]._id%>" hidden>
+
               <div id="myClothingModal<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -85,342 +85,348 @@
                       <h4 class="modal-title">Clothing Item</h4>
                     </div>
                     <div class="modal-body">
-                        Top&nbsp;&nbsp;&nbsp;&emsp;&emsp;
-                        <select style="width: 200px" name="topItem" id="top<%= listOfPerformers[i]._id %>" onclick="selectItem('<%= listOfPerformers[i]._id %>')">
-                          <option value="">--Select--</option>
-                          <option value="Dress shirt-Male fit">Dress shirt-Male fit </option>
-                          <option value="Blouse-Female fit">Blouse-Female fit</option>
-                          <option value="Blazer-men's fit">Blazer-men's fit</option>
-                          <option value="Blazer-women's fit">Blazer-women's fit</option>
-                          <option value="Winter coat">Winter coat</option>
-                          <option value="Trench coat">Trench coat</option>
-                          <option value="Tunic">Tunic</option>
-                          <option value="Vest-men's fit">Vest-men's fit</option>
-                          <option value="Vest-women's fit">Vest-women's fit</option>
-                          <option value="Sweater-crew neck">Sweater-crew neck</option>
-                          <option value="Sweater-vneck">Sweater-vneck</option>
-                          <option value="Sweater-cardigan">Sweater-cardigan</option>
-                          <option value="Tshirt-Plain">Tshirt-Plain</option>
-                          <option value="Tshirt-screen print">Tshirt-screen print</option>
-                          <option value="Knit top-short sleeve">Knit top-short sleeve</option>
-                          <option value="Tank top">Tank top</option>
-                          <option value="Knit top-long sleeve">Knit top-long sleeve</option>
-                          <option value="Knit top-casual">Knit top-casual</option>
-                          <option value="Knit top-dressy">Knit top-dressy</option>
-                          <option value="Thermal shirt">Thermal shirt</option>
-                          <option value="Western shirt">Western shirt</option>
-                          <option value="Flannel shirt">Flannel shirt</option>
-                          <option value="Smoking jacket">Smoking jacket</option>
-                        </select>
-                        </select>&emsp;&emsp;&emsp;&emsp;
-                        Color&nbsp;
-                        <select style="width: 100px" name="topColor" id="topColor<%= listOfPerformers[i]._id %>" onchange="selColor('<%= listOfPerformers[i]._id %>')">
-                          <option value="">--Select--</option>
-                          <option value="black">black</option>
-                          <option value="white">white</option>
-                          <option value="cream">cream</option>
-                          <option value="tan">tan</option>
-                          <option value="brown">brown</option>
-                          <option value="grey">grey</option>
-                          <option value="red">red</option>
-                          <option value="orange">orange</option>
-                          <option value="yellow">yellow</option>
-                          <option value="green">green</option>
-                          <option value="blue">blue</option>
-                          <option value="purple">purple</option>
-                          <option value="pink">pink</option>
-                          <option value="lavender">lavender</option>
-                          <option value="dark">dark</option>
-                          <option value="light">light</option>
-                          <option value="pale">pale</option>
-                          <option value="distressed">distressed</option>
-                          <option value="old">old</option>
-                          
-                        </select>
-                        <br>
-                        <br>
-                        Bottom&emsp;
-                        <select style="width: 200px" name="bottomItem" id="bottom<%= listOfPerformers[i]._id %>" onclick="selectItem('<%= listOfPerformers[i]._id %>')">
-                          <option value="">--Select--</option>
-                          <option value="Jeans-Female fit">Jeans-Female fit</option>
-                          <option value="Jeans-Male fit">Jeans-Male fit</option>
-                          <option value="Khakis-Female fit">Khakis-Female fit</option>
-                          <option value="Khakis-Male fit">Khakis-Male fit</option>
-                          <option value="Dress Slacks-Female fit">Dress Slacks-Female fit</option>
-                          <option value="Dress Slacks-Male fit">Dress Slacks-Male fit</option>
-                          <option value="Skirt: short">Skirt: short</option>
-                          <option value="Skirt: knee-length">knee-length</option>
-                          <option value="Skirt: long">Skirt: long</option>
-                          <option value="Skirt">Skirtt</option>
-                          <option value="Shorts: men's fit">Shorts: men's fit</option>
-                          <option value="Shorts: women's fit">Shorts: women's fit</option>
-                          <option value="Leggings">Leggings</option>
-                          <option value="Track Pants">Track Pants</option>
-                          <option value="Stretch Pants">Stretch Pants</option>
-                        </select>
-                        &emsp;&emsp;&emsp;&emsp;
-                        Color&nbsp;
-                        <select style="width: 100px" name="bottomColor" id="bottomColor<%= listOfPerformers[i]._id %>" onchange="selColor('<%= listOfPerformers[i]._id %>')">
-                          <option value="">--Select--</option>
-                          <option value="black">black</option>
-                          <option value="white">white</option>
-                          <option value="cream">cream</option>
-                          <option value="tan">tan</option>
-                          <option value="brown">brown</option>
-                          <option value="grey">grey</option>
-                          <option value="red">red</option>
-                          <option value="orange">orange</option>
-                          <option value="yellow">yellow</option>
-                          <option value="green">green</option>
-                          <option value="blue">blue</option>
-                          <option value="purple">purple</option>
-                          <option value="pink">pink</option>
-                          <option value="lavender">lavender</option>
-                          <option value="dark">dark</option>
-                          <option value="light">light</option>
-                          <option value="pale">pale</option>
-                          <option value="distressed">distressed</option>
-                          <option value="old">old</option>
-                          
-                        </select>
-                        <br>
-                        <br>
-                        Under&nbsp;&nbsp;&emsp;
-                        <select style="width: 200px" name="underItem" id="under<%= listOfPerformers[i]._id %>" onclick="selectItem('<%= listOfPerformers[i]._id %>')">
-                          <option value="">--Select--</option>
-                          <option value="Undershirt: Vneck Tshirt">Undershirt: Vneck Tshirt</option>
-                          <option value="Undershirt: Tank top">Undershirt: Tank top</option>
-                          <option value="Tights">Tights</option>
-                          <option value="Pantyhose">Pantyhose</option>
-                          <option value="Leotard">Leotard</option>
-                          <option value="Unitard">Unitard</option>
-                          <option value="Socks: dress socks">Socks: dress socks</option>
-                          <option value="Socks: athletic socks">Socks: athletic socks</option>
-                          <option value="Socks: short socks">Socks: short socks</option>
-                          <option value="Socks: tall socks">Socks: tall socks</option>
-                          <option value="Socks: patterned socks">Socks: patterned socks</option>
-                          <option value="Undergarment: Full slip">Undergarment: Full slip</option>
-                          <option value="Undergarment: half slip">Undergarment: half slip</option>
-                          <option value="Socks: knee socks">Socks: knee socks</option>
-                          <option value="Socks: trouser socks">Socks: trouser socks</option>
-                        </select>
-                        &emsp;&emsp;&emsp;&emsp;
-                        Color&nbsp;
-                        <select style="width: 100px" name="underColor" id="underColor<%= listOfPerformers[i]._id %>" onchange="selColor('<%= listOfPerformers[i]._id %>')">
-                          <option value="">--Select--</option>
-                          <option value="black">black</option>
-                          <option value="white">white</option>
-                          <option value="cream">cream</option>
-                          <option value="tan">tan</option>
-                          <option value="brown">brown</option>
-                          <option value="grey">grey</option>
-                          <option value="red">red</option>
-                          <option value="orange">orange</option>
-                          <option value="yellow">yellow</option>
-                          <option value="green">green</option>
-                          <option value="blue">blue</option>
-                          <option value="purple">purple</option>
-                          <option value="pink">pink</option>
-                          <option value="lavender">lavender</option>
-                          <option value="dark">dark</option>
-                          <option value="light">light</option>
-                          <option value="pale">pale</option>
-                          <option value="distressed">distressed</option>
-                          <option value="old">old</option>
-                          
-                          
-                        </select><br><br>
-                        Shoes&nbsp;&nbsp;&nbsp;&emsp;
-                        <select style="width: 200px" name="shoeItem" id="shoes<%= listOfPerformers[i]._id %>" onclick="selectItem('<%= listOfPerformers[i]._id %>')">
-                          <option value="">--Select--</option>
-                          <option value="Shoes: dress shoes men's fit">Shoes: dress shoes men's fit</option>
-                          <option value="Shoes: dress shoes women's fit">Shoes: dress shoes women's fit</option>
-                          <option value="Shoes: athletic shoes men's fit">Shoes: athletic shoes men's fit</option>
-                          <option value="Shoes: athletic shoes women's fit">Shoes: athletic shoes women's fit</option>
-                          <option value="Shoes: flats">Shoes: flats</option>
-                          <option value="Shoes: heels">Shoes: heels</option>
-                          <option value="Shoes: dress boots">Shoes: dress boots</option>
-                          <option value="Shoes: western boots">Shoes: western boots</option>
-                          <option value="Shoes: work boots">Shoes: work boots</option>
-                          <option value="Shoes: casual men's fit">Shoes: casual men's fit</option>
-                          <option value="Shoes: casual women's fit">Shoes: casual women's fit</option>
-                          <option value="Shoes: china flats">Shoes: china flats</option>
-                          <option value="Shoes: sandals">Shoes: sandals</option>
-                          <option value="Slippers: men's fit">Slippers: men's fit</option>
-                          <option value="Slippers: women's fit">Slippers: women's fit</option>
-                          <option value="Dance shoes: character shoes women's fit">Dance shoes: character shoes women's
-                            fit</option>
-                          <option value="Dance shoes: character shoes men's fit">Dance shoes: character shoes men's fit</option>
-                          <option value="Dance shoes: jazz slippers">Dance shoes: jazz slippers</option>
-                          <option value="Dance shoes: ballet slippers">Dance shoes: ballet slippers</option>
-                          <option value="Dance shoes: tap shoes men's fit">Dance shoes: tap shoes men's fit</option>
-                          <option value="Dance shoes: tap shoes women's fit">Dance shoes: tap shoes women's fit</option>
-                          <option value="Dance shoes: dance sandals">Dance shoes: dance sandals</option>
-  
-                        </select>
-                        &emsp;&emsp;&emsp;&emsp;
-                        Color&nbsp;
-                        <select style="width: 100px" name="shoeColor" id="shoesColor<%= listOfPerformers[i]._id %>" onchange="selColor('<%= listOfPerformers[i]._id %>')">
-                          <option value="">--Select--</option>
-                          <option value="black">black</option>
-                          <option value="white">white</option>
-                          <option value="cream">cream</option>
-                          <option value="tan">tan</option>
-                          <option value="brown">brown</option>
-                          <option value="grey">grey</option>
-                          <option value="red">red</option>
-                          <option value="orange">orange</option>
-                          <option value="yellow">yellow</option>
-                          <option value="green">green</option>
-                          <option value="blue">blue</option>
-                          <option value="purple">purple</option>
-                          <option value="pink">pink</option>
-                          <option value="lavender">lavender</option>
-                          <option value="dark">dark</option>
-                          <option value="light">light</option>
-                          <option value="pale">pale</option>
-                          <option value="distressed">distressed</option>
-                          <option value="old">old</option>
-                          
-                        </select><br><br>
-                        Other&nbsp;&nbsp;&nbsp;&emsp;
-                        <select style="width: 200px" name="otherItem" id="other<%= listOfPerformers[i]._id %>" onclick="selectItem('<%= listOfPerformers[i]._id %>')">
-                          <option value="">--Select--</option>
-                          <option value="Set: Tuxedo jacket">Set: Tuxedo jacket</option>
-                          <option value="Set: Tuxedo shirt">Set: Tuxedo shirt</option>
-                          <option value="Set: Tuxedo pants">Set: Tuxedo pants</option>
-                          <option value="Set: Dress: long">Set: Dress: long</option>
-                          <option value="Set: Dress: mid-length">Set: Dress: mid-length</option>
-                          <option value="Set: Dress: short">Set: Dress: short</option>
-                          <option value="Set: Nightgown">Set: Nightgown</option>
-                          <option value="Set: Suit: 2 piece">Set: Suit: 2 piece</option>
-                          <option value="Set: Suit: 3 piece">Set: Suit: 3 piece</option>
-                          <option value="Set: Suit: skirt suit">Set: Suit: skirt suit</option>
-                          <option value="Hat: winter">Hat: winter</option>
-                          <option value="Hat: dress<">Hat: dress</option>
-                          <option value="Hat: baseball cap">Hat: baseball cap</option>
-                          <option value="Hat: newsboy">Hat: newsboy</option>
-                          <option value="Hat: other">Hat: other</option>
-                          <option value="Tie: bow tie">Tie: bow tie</option>
-                          <option value="Tie: straight tie">Tie: straight tie</option>
-                          <option value="Bathrobe">Bathrobe</option>
-                          <option value="Cape: long">Cape: long</option>
-                          <option value="Cape: short">Cape: short</option>
-                          <option value="Gloves: winter">Gloves: winter</option>
-                          <option value="Gloves: work">Gloves: work</option>
-                          <option value="Gloves: dress">Gloves: dress</option>
-                          <option value="Other: Other item">Other: Other item</option>
-                        </select>
-                        &emsp;&emsp;&emsp;&emsp;
-                        Color&nbsp;
-                        <select style="width: 100px" name="otherColor" id="otherColor<%= listOfPerformers[i]._id %>" onchange="selColor('<%= listOfPerformers[i]._id %>')">
-                          <option value="">--Select--</option>
-                          <option value="black">black</option>
-                          <option value="white">white</option>
-                          <option value="cream">cream</option>
-                          <option value="tan">tan</option>
-                          <option value="brown">brown</option>
-                          <option value="grey">grey</option>
-                          <option value="red">red</option>
-                          <option value="orange">orange</option>
-                          <option value="yellow">yellow</option>
-                          <option value="green">green</option>
-                          <option value="blue">blue</option>
-                          <option value="purple">purple</option>
-                          <option value="pink">pink</option>
-                          <option value="lavender">lavender</option>
-                          <option value="dark">dark</option>
-                          <option value="light">light</option>
-                          <option value="pale">pale</option>
-                          <option value="distressed">distressed</option>
-                          <option value="old">old</option>
-                        </select><br><br>
-  
-                        <button style="text-align:center" onclick="myFunction1('<%=listOfPerformers[i]._id%>')" type="submit" class="btn btn-primary">Submit</button>
-                      <!-- </form> -->
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </td>
-          <td>
-            <% include measurements %>
-          </td>
-          <% if(user && user.isAdmin) { %>
-          <td>
-            <% if(empl.length ==0){%>
-            em[i] = empl1
-            <%}%>
-            <% for(let j = 0; j < empl.length; j++) { %>
-            <%if(listOfPerformers[i]._id == empl[j].empID){%>
-            <%em[i] = empl[j]%>
-            <%break%>
-            <%}%>
-            <% } %>
-            <% if (em[i] == null){%>
-            <%em[i] = empl1%>
-            <%}%>
-            <% if (empl[i] == null && em[i].empID == listOfPerformers[i]._id){%>
-            <button style="width:100px" id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary"
-              data-toggle="modal" data-target="#myModal1<%= listOfPerformers[i]._id %>">Select Employee</button>
-            <%}%>
-            <% if (empl[i] != null ){%>
-            <button style="width:100px" id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary"
-              data-toggle="modal" data-target="#myModal1<%= listOfPerformers[i]._id %>">
-              <%=em[i].selectEmployee1%></button>
-            <%}%>
-            <div id="myModal1<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Employees</h4>
-                  </div>
-                  <div class="modal-body">
-                    <form method="POST" action="/FormController/emp01">
-                      <select id="mySelect<%= listOfPerformers[i]._id %>" size="5" onchange="myfunctionEmp('<%= listOfPerformers[i]._id %>')">
-                        <option>Akhil</option>
-                        <option>Meghana</option>
-                        <option>Naveen</option>
-                        <option>Shiva</option>
-                        <option>Siva</option>
-                        <br>
-                        
-                        <input id="emp<%= listOfPerformers[i]._id %>" type="text" name="selectEmployee1" hidden>
-                        <input type="text" name="empID" value="<%= listOfPerformers[i]._id %>" hidden>
+                      Top&nbsp;&nbsp;&nbsp;&emsp;&emsp;
+                      <select style="width: 200px" name="topItem" id="top<%= listOfPerformers[i]._id %>">
+
+                        <option value="">--Select--</option>
+                        <option value="Dress shirt-Male fit">Dress shirt-Male fit </option>
+                        <option value="Blouse-Female fit">Blouse-Female fit</option>
+                        <option value="Blazer-men's fit">Blazer-men's fit</option>
+                        <option value="Blazer-women's fit">Blazer-women's fit</option>
+                        <option value="Winter coat">Winter coat</option>
+                        <option value="Trench coat">Trench coat</option>
+                        <option value="Tunic">Tunic</option>
+                        <option value="Vest-men's fit">Vest-men's fit</option>
+                        <option value="Vest-women's fit">Vest-women's fit</option>
+                        <option value="Sweater-crew neck">Sweater-crew neck</option>
+                        <option value="Sweater-vneck">Sweater-vneck</option>
+                        <option value="Sweater-cardigan">Sweater-cardigan</option>
+                        <option value="Tshirt-Plain">Tshirt-Plain</option>
+                        <option value="Tshirt-screen print">Tshirt-screen print</option>
+                        <option value="Knit top-short sleeve">Knit top-short sleeve</option>
+                        <option value="Tank top">Tank top</option>
+                        <option value="Knit top-long sleeve">Knit top-long sleeve</option>
+                        <option value="Knit top-casual">Knit top-casual</option>
+                        <option value="Knit top-dressy">Knit top-dressy</option>
+                        <option value="Thermal shirt">Thermal shirt</option>
+                        <option value="Western shirt">Western shirt</option>
+                        <option value="Flannel shirt">Flannel shirt</option>
+                        <option value="Smoking jacket">Smoking jacket</option>
+                      </select>
+                      </select>&emsp;&emsp;&emsp;&emsp;
+                      Color&nbsp;
+                      <select style="width: 100px" name="topColor" id="topColor<%= listOfPerformers[i]._id %>">
+                        <option value="">--Select--</option>
+                        <option value="black">black</option>
+                        <option value="white">white</option>
+                        <option value="cream">cream</option>
+                        <option value="tan">tan</option>
+                        <option value="brown">brown</option>
+                        <option value="grey">grey</option>
+                        <option value="red">red</option>
+                        <option value="orange">orange</option>
+                        <option value="yellow">yellow</option>
+                        <option value="green">green</option>
+                        <option value="blue">blue</option>
+                        <option value="purple">purple</option>
+                        <option value="pink">pink</option>
+                        <option value="lavender">lavender</option>
+                        <option value="dark">dark</option>
+                        <option value="light">light</option>
+                        <option value="pale">pale</option>
+                        <option value="distressed">distressed</option>
+                        <option value="old">old</option>
+
                       </select>
                       <br>
                       <br>
-                      <button class="btn btn-primary" onclick="myFunction('<%= listOfPerformers[i]._id %>')" type="submit">Submit</button>
-                    </form>
-          </td>
-          <% } %>
-          <% if(user && (user.isAdmin || user.isManager)) { %>
-          <td>
-            <form action="/FormController/edit" method="POST">
-              <input type="text" name="perfId1" hidden value="<%= listOfPerformers[i]._id %>">
-              <!-- <button class="btn btn-primary" type="submit">Basic Form</button> -->
-              <input type="image" title="View basic information form" src="/css/form.png" alt="Submit" width="41" height="43">
-            </form>
-          </td>
-          <% } %>
-          <% if(user && user.isAdmin){ %>
-          <td>
-            <form onsubmit="return confirm('Are you sure want to delete?')" action="/FormController/delete" method="POST">
-              <input type="text" name="perfId2" hidden value="<%= listOfPerformers[i]._id %>" hidden>
-              <input type="image" title="Delete performer"src="/css/remove.png" alt="Submit" width="42" height="40">
- 
-            </form>
-          </td>
-          <% } %>
+                      Bottom&emsp;
+                      <select style="width: 200px" name="bottomItem" id="bottom<%= listOfPerformers[i]._id %>">
+                        <option value="">--Select--</option>
+                        <option value="Jeans-Female fit">Jeans-Female fit</option>
+                        <option value="Jeans-Male fit">Jeans-Male fit</option>
+                        <option value="Khakis-Female fit">Khakis-Female fit</option>
+                        <option value="Khakis-Male fit">Khakis-Male fit</option>
+                        <option value="Dress Slacks-Female fit">Dress Slacks-Female fit</option>
+                        <option value="Dress Slacks-Male fit">Dress Slacks-Male fit</option>
+                        <option value="Skirt: short">Skirt: short</option>
+                        <option value="Skirt: knee-length">knee-length</option>
+                        <option value="Skirt: long">Skirt: long</option>
+                        <option value="Skirt">Skirtt</option>
+                        <option value="Shorts: men's fit">Shorts: men's fit</option>
+                        <option value="Shorts: women's fit">Shorts: women's fit</option>
+                        <option value="Leggings">Leggings</option>
+                        <option value="Track Pants">Track Pants</option>
+                        <option value="Stretch Pants">Stretch Pants</option>
+                      </select>
+                      &emsp;&emsp;&emsp;&emsp;
+                      Color&nbsp;
+                      <select style="width: 100px" name="bottomColor" id="bottomColor<%= listOfPerformers[i]._id %>">
+                        <option value="">--Select--</option>
+                        <option value="black">black</option>
+                        <option value="white">white</option>
+                        <option value="cream">cream</option>
+                        <option value="tan">tan</option>
+                        <option value="brown">brown</option>
+                        <option value="grey">grey</option>
+                        <option value="red">red</option>
+                        <option value="orange">orange</option>
+                        <option value="yellow">yellow</option>
+                        <option value="green">green</option>
+                        <option value="blue">blue</option>
+                        <option value="purple">purple</option>
+                        <option value="pink">pink</option>
+                        <option value="lavender">lavender</option>
+                        <option value="dark">dark</option>
+                        <option value="light">light</option>
+                        <option value="pale">pale</option>
+                        <option value="distressed">distressed</option>
+                        <option value="old">old</option>
 
-        </tr>
-        <% } %>
-      </tbody>
-    </table>
+                      </select>
+                      <br>
+                      <br>
+                      Under&nbsp;&nbsp;&emsp;
+                      <select style="width: 200px" name="underItem" id="under<%= listOfPerformers[i]._id %>">
+                        <option value="">--Select--</option>
+                        <option value="Undershirt: Vneck Tshirt">Undershirt: Vneck Tshirt</option>
+                        <option value="Undershirt: Tank top">Undershirt: Tank top</option>
+                        <option value="Tights">Tights</option>
+                        <option value="Pantyhose">Pantyhose</option>
+                        <option value="Leotard">Leotard</option>
+                        <option value="Unitard">Unitard</option>
+                        <option value="Socks: dress socks">Socks: dress socks</option>
+                        <option value="Socks: athletic socks">Socks: athletic socks</option>
+                        <option value="Socks: short socks">Socks: short socks</option>
+                        <option value="Socks: tall socks">Socks: tall socks</option>
+                        <option value="Socks: patterned socks">Socks: patterned socks</option>
+                        <option value="Undergarment: Full slip">Undergarment: Full slip</option>
+                        <option value="Undergarment: half slip">Undergarment: half slip</option>
+                        <option value="Socks: knee socks">Socks: knee socks</option>
+                        <option value="Socks: trouser socks">Socks: trouser socks</option>
+                      </select>
+                      &emsp;&emsp;&emsp;&emsp;
+                      Color&nbsp;
+                      <select style="width: 100px" name="underColor" id="underColor<%= listOfPerformers[i]._id %>"
+                        onchange="selColor('<%= listOfPerformers[i]._id %>')">
+                        <option value="">--Select--</option>
+                        <option value="black">black</option>
+                        <option value="white">white</option>
+                        <option value="cream">cream</option>
+                        <option value="tan">tan</option>
+                        <option value="brown">brown</option>
+                        <option value="grey">grey</option>
+                        <option value="red">red</option>
+                        <option value="orange">orange</option>
+                        <option value="yellow">yellow</option>
+                        <option value="green">green</option>
+                        <option value="blue">blue</option>
+                        <option value="purple">purple</option>
+                        <option value="pink">pink</option>
+                        <option value="lavender">lavender</option>
+                        <option value="dark">dark</option>
+                        <option value="light">light</option>
+                        <option value="pale">pale</option>
+                        <option value="distressed">distressed</option>
+                        <option value="old">old</option>
+
+
+                      </select><br><br>
+                      Shoes&nbsp;&nbsp;&nbsp;&emsp;
+                      <select style="width: 200px" name="shoeItem" id="shoes<%= listOfPerformers[i]._id %>" onclick="selectItem('<%= listOfPerformers[i]._id %>')">
+                        <option value="">--Select--</option>
+                        <option value="Shoes: dress shoes men's fit">Shoes: dress shoes men's fit</option>
+                        <option value="Shoes: dress shoes women's fit">Shoes: dress shoes women's fit</option>
+                        <option value="Shoes: athletic shoes men's fit">Shoes: athletic shoes men's fit</option>
+                        <option value="Shoes: athletic shoes women's fit">Shoes: athletic shoes women's fit</option>
+                        <option value="Shoes: flats">Shoes: flats</option>
+                        <option value="Shoes: heels">Shoes: heels</option>
+                        <option value="Shoes: dress boots">Shoes: dress boots</option>
+                        <option value="Shoes: western boots">Shoes: western boots</option>
+                        <option value="Shoes: work boots">Shoes: work boots</option>
+                        <option value="Shoes: casual men's fit">Shoes: casual men's fit</option>
+                        <option value="Shoes: casual women's fit">Shoes: casual women's fit</option>
+                        <option value="Shoes: china flats">Shoes: china flats</option>
+                        <option value="Shoes: sandals">Shoes: sandals</option>
+                        <option value="Slippers: men's fit">Slippers: men's fit</option>
+                        <option value="Slippers: women's fit">Slippers: women's fit</option>
+                        <option value="Dance shoes: character shoes women's fit">Dance shoes: character shoes women's
+                          fit</option>
+                        <option value="Dance shoes: character shoes men's fit">Dance shoes: character shoes men's fit</option>
+                        <option value="Dance shoes: jazz slippers">Dance shoes: jazz slippers</option>
+                        <option value="Dance shoes: ballet slippers">Dance shoes: ballet slippers</option>
+                        <option value="Dance shoes: tap shoes men's fit">Dance shoes: tap shoes men's fit</option>
+                        <option value="Dance shoes: tap shoes women's fit">Dance shoes: tap shoes women's fit</option>
+                        <option value="Dance shoes: dance sandals">Dance shoes: dance sandals</option>
+
+                      </select>
+                      &emsp;&emsp;&emsp;&emsp;
+                      Color&nbsp;
+                      <select style="width: 100px" name="shoeColor" id="shoesColor<%= listOfPerformers[i]._id %>"
+                        onchange="selColor('<%= listOfPerformers[i]._id %>')">
+                        <option value="">--Select--</option>
+                        <option value="black">black</option>
+                        <option value="white">white</option>
+                        <option value="cream">cream</option>
+                        <option value="tan">tan</option>
+                        <option value="brown">brown</option>
+                        <option value="grey">grey</option>
+                        <option value="red">red</option>
+                        <option value="orange">orange</option>
+                        <option value="yellow">yellow</option>
+                        <option value="green">green</option>
+                        <option value="blue">blue</option>
+                        <option value="purple">purple</option>
+                        <option value="pink">pink</option>
+                        <option value="lavender">lavender</option>
+                        <option value="dark">dark</option>
+                        <option value="light">light</option>
+                        <option value="pale">pale</option>
+                        <option value="distressed">distressed</option>
+                        <option value="old">old</option>
+
+                      </select><br><br>
+                      Other&nbsp;&nbsp;&nbsp;&emsp;
+                      <select style="width: 200px" name="otherItem" id="other<%= listOfPerformers[i]._id %>" onclick="selectItem('<%= listOfPerformers[i]._id %>')">
+                        <option value="">--Select--</option>
+                        <option value="Set: Tuxedo jacket">Set: Tuxedo jacket</option>
+                        <option value="Set: Tuxedo shirt">Set: Tuxedo shirt</option>
+                        <option value="Set: Tuxedo pants">Set: Tuxedo pants</option>
+                        <option value="Set: Dress: long">Set: Dress: long</option>
+                        <option value="Set: Dress: mid-length">Set: Dress: mid-length</option>
+                        <option value="Set: Dress: short">Set: Dress: short</option>
+                        <option value="Set: Nightgown">Set: Nightgown</option>
+                        <option value="Set: Suit: 2 piece">Set: Suit: 2 piece</option>
+                        <option value="Set: Suit: 3 piece">Set: Suit: 3 piece</option>
+                        <option value="Set: Suit: skirt suit">Set: Suit: skirt suit</option>
+                        <option value="Hat: winter">Hat: winter</option>
+                        <option value="Hat: dress<">Hat: dress</option>
+                        <option value="Hat: baseball cap">Hat: baseball cap</option>
+                        <option value="Hat: newsboy">Hat: newsboy</option>
+                        <option value="Hat: other">Hat: other</option>
+                        <option value="Tie: bow tie">Tie: bow tie</option>
+                        <option value="Tie: straight tie">Tie: straight tie</option>
+                        <option value="Bathrobe">Bathrobe</option>
+                        <option value="Cape: long">Cape: long</option>
+                        <option value="Cape: short">Cape: short</option>
+                        <option value="Gloves: winter">Gloves: winter</option>
+                        <option value="Gloves: work">Gloves: work</option>
+                        <option value="Gloves: dress">Gloves: dress</option>
+                        <option value="Other: Other item">Other: Other item</option>
+                      </select>
+                      &emsp;&emsp;&emsp;&emsp;
+                      Color&nbsp;
+                      <select style="width: 100px" name="otherColor" id="otherColor<%= listOfPerformers[i]._id %>"
+                        onchange="selColor('<%= listOfPerformers[i]._id %>')">
+                        <option value="">--Select--</option>
+                        <option value="black">black</option>
+                        <option value="white">white</option>
+                        <option value="cream">cream</option>
+                        <option value="tan">tan</option>
+                        <option value="brown">brown</option>
+                        <option value="grey">grey</option>
+                        <option value="red">red</option>
+                        <option value="orange">orange</option>
+                        <option value="yellow">yellow</option>
+                        <option value="green">green</option>
+                        <option value="blue">blue</option>
+                        <option value="purple">purple</option>
+                        <option value="pink">pink</option>
+                        <option value="lavender">lavender</option>
+                        <option value="dark">dark</option>
+                        <option value="light">light</option>
+                        <option value="pale">pale</option>
+                        <option value="distressed">distressed</option>
+                        <option value="old">old</option>
+                      </select><br><br>
+
+                      <button style="text-align:center" onclick="myFunction1('<%=listOfPerformers[i]._id%>')" type="submit"
+                        class="btn btn-primary">Submit</button>
+            </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  </div>
+  </div>
+  </div>
+  </div>
+  </td>
+  <td>
+    <% include measurements %>
+  </td>
+  <% if(user && user.isAdmin) { %>
+  <td>
+    <% if(empl.length ==0){%>
+    em[i] = empl1
+    <%}%>
+    <% for(let j = 0; j < empl.length; j++) { %>
+    <%if(listOfPerformers[i]._id == empl[j].empID){%>
+    <%em[i] = empl[j]%>
+    <%break%>
+    <%}%>
+    <% } %>
+    <% if(em[i] == null){%>
+    <% em[i] = empl1 %>
+    <%}%>
+    <% if (empl[i] == null){%>
+    <button style="width:100px" id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary"
+      data-toggle="modal" data-target="#myModal1<%= listOfPerformers[i]._id %>">Select Employee</button>
+    <%}%>
+    <% if (empl[i] != null ){%>
+    <button style="width:100px" id="selectEmployee<%= listOfPerformers[i]._id %>" type="button" class="btn btn-primary"
+      data-toggle="modal" data-target="#myModal1<%= listOfPerformers[i]._id %>">
+      <%=em[i].selectEmployee1%></button>
+    <%}%>
+    <div id="myModal1<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Employees</h4>
+          </div>
+          <div class="modal-body">
+            <form method="POST" action="/FormController/emp01">
+              <select id="mySelect<%= listOfPerformers[i]._id %>" size="5" onchange="myfunctionEmp('<%= listOfPerformers[i]._id %>')">
+                <option>Akhil</option>
+                <option>Meghana</option>
+                <option>Naveen</option>
+                <option>Shiva</option>
+                <option>Siva</option>
+                <br>
+                <input type="text" name="employeeId" value="<%= em[i]._id %>" hidden>
+                <input id="emp<%= listOfPerformers[i]._id %>" type="text" name="selectEmployee1" hidden>
+                <input type="text" name="empID" value="<%= listOfPerformers[i]._id %>" hidden>
+              </select>
+              <br>
+              <br>
+              <button class="btn btn-primary" onclick="myFunction('<%= listOfPerformers[i]._id %>')" type="submit">Submit</button>
+            </form>
+  </td>
+  <% } %>
+  <% if(user && (user.isAdmin || user.isManager)) { %>
+  <td>
+    <form action="/FormController/edit" method="POST">
+      <input type="text" name="perfId1" hidden value="<%= listOfPerformers[i]._id %>">
+      <!-- <button class="btn btn-primary" type="submit">Basic Form</button> -->
+      <input type="image" title="View basic information form" src="/css/form.png" alt="Submit" width="41" height="43">
+    </form>
+  </td>
+  <% } %>
+  <% if(user && user.isAdmin){ %>
+  <td>
+    <form onsubmit="return confirm('Are you sure want to delete?')" action="/FormController/delete" method="POST">
+      <input type="text" name="perfId2" hidden value="<%= listOfPerformers[i]._id %>" hidden>
+      <input type="text" name="empdel" value="<%= em[i]._id %>" hidden>
+      <input type="image" title="Delete performer" src="/css/remove.png" alt="Submit" width="42" height="40">
+
+    </form>
+  </td>
+  <% } %>
+
+  </tr>
+  <% } %>
+  </tbody>
+  </table>
   </div>
   <form action="/shop" method="get">
 
