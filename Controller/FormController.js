@@ -83,13 +83,17 @@ let emptyShoplist = [
 ]
 let clothAndColorEmpty = [
     {
-        shopID: ""
-    },
-    {
-        duedate: "mm-dd-yyyy"
-    },
-    {
-        size: ""
+        performerId:"",
+        topItem: "",
+        topColor: "",
+        bottomItem: "",
+        bottomColor: "",
+        underItem: "",
+        underColor: "",
+        shoeItem: "",
+        shoeColor: "",
+        otherItem: "",
+        otherColor: "",
     }
 ]
 
@@ -258,7 +262,7 @@ api.post('/getByName', function (req, res) {
                                 result5 = clothAndColorEmpty;
                             }
                             if (Boolean(queryresname))
-                                res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee, clothAndColorResults: result5 });
+                                res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee, clothAndColorResults: result5, emptyClothAndColor: clothAndColorEmpty[0] });
                             else
                                 res.send('No records found')
                         })
@@ -311,7 +315,7 @@ api.post('/getByPlay', function (req, res) {
                                 result5 = clothAndColorEmpty;
                             }
                             if (Boolean(queryresplay))
-                                res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee, clothAndColorResults: result5 });
+                                res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee, clothAndColorResults: result5, emptyClothAndColor: clothAndColorEmpty[0] });
                             else
                                 res.send('No records found')
                         })
@@ -363,7 +367,7 @@ api.post('/getByDate', function (req, res) {
                                 result5 = clothAndColorEmpty;
                             }
                             if (Boolean(queryresdate))
-                                res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee, clothAndColorResults: result5 });
+                                res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee, clothAndColorResults: result5 , emptyClothAndColor: clothAndColorEmpty[0]});
                             else
                                 res.send('No records found')
                         })
@@ -424,7 +428,7 @@ api.post('/emp01', function (req, res) {
                             if (result5.length == 0) {
                                 result5 = clothAndColorEmpty;
                             }
-                            res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee, clothAndColorResults: result5 });
+                            res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee, clothAndColorResults: result5, emptyClothAndColor: clothAndColorEmpty[0] });
                         })
                     })
                 })
@@ -594,8 +598,17 @@ api.post('/shop1', function (req, res) {
 
 })
 api.post('/clothAndColor', function (req, res) {
-    console.log("shivaaa");
-    console.log(req.body.topItem)
+    if ((req.body.clothAndColorUpdateId).length > 0) {
+        console.log("update");
+        db.collection('ClothAndColor').update({ 'performerId': req.body.clothAndColorUpdateId }, {
+            $set: {
+                'topItem': req.body.topItem, 'topColor': req.body.topColor, 'bottomItem': req.body.bottomItem, 'bottomColor': req.body.bottomColor
+                , 'underItem': req.body.underItem, 'underColor': req.body.underColor, 'shoeItem': req.body.shoeItem
+                , 'shoeColor ': req.body.shoeColor, 'otherItem': req.body.otherItem, 
+                'otherColor': req.body.otherColor,
+            }
+        });
+    }else{
     var performerId = req.body.clothAndColorId;
     var topItem = req.body.topItem;
     var topColor = req.body.topColor;
@@ -627,6 +640,8 @@ api.post('/clothAndColor', function (req, res) {
         // console.log("saved");
         return res.redirect('/home')
     })
+    }
+    return res.redirect('/home')
 })
 module.exports = api;
 

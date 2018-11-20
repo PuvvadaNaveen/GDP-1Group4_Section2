@@ -50,6 +50,7 @@
         <% var col = []%>
         <% var em = []%>
         <% var updateVairable = ""%>
+        <% var clthAndClr = []%>
         <% for( i = 0; i < listOfPerformers.length; i++) { %>
         <tr>
           <td>
@@ -65,10 +66,10 @@
             <%= listOfPerformers[i].charactername %>
           </td>
           <td>
-            <% var clthAndClr = []%>
-            <% for(let i = 0; i < clothAndColorResults.length; i++) { %>
-            <%if(listOfPerformers[i]._id == clothAndColorResults[i].performerId){%>
-            <%clthAndClr[i] = clothAndColorResults[i]%>
+            <%clthAndClr[i] = emptyClothAndColor%>
+            <% for(let j = 0; j < clothAndColorResults.length; j++) { %>
+            <%if(listOfPerformers[i]._id == clothAndColorResults[j].performerId){%>
+            <%clthAndClr[i] = clothAndColorResults[j]%>
             <%break%>
             <%}%>
             <% } %>
@@ -85,9 +86,12 @@
                       <h4 class="modal-title">Clothing Item</h4>
                     </div>
                     <div class="modal-body">
+                      <input type="text" name="clothAndColorUpdateId" hidden value="<%=clthAndClr[i].performerId%>">
                       Top&nbsp;&nbsp;&nbsp;&emsp;&emsp;
                       <select style="width: 200px" name="topItem" id="top<%= listOfPerformers[i]._id %>">
-
+                        <%if(clthAndClr[i].topItem.length !=0){%>
+                          <option  selected value="<%=clthAndClr[i].topItem%>"><%=clthAndClr[i].topItem%></option>
+                        <%}%>
                         <option value="">--Select--</option>
                         <option value="Dress shirt-Male fit">Dress shirt-Male fit </option>
                         <option value="Blouse-Female fit">Blouse-Female fit</option>
@@ -116,6 +120,9 @@
                       </select>&emsp;&emsp;&emsp;&emsp;
                       Color&nbsp;
                       <select style="width: 100px" name="topColor" id="topColor<%= listOfPerformers[i]._id %>">
+                          <%if(clthAndClr[i].topColor.length !=0){%>
+                            <option  selected value="<%=clthAndClr[i].topColor%>"><%=clthAndClr[i].topColor%></option>
+                          <%}%>
                         <option value="">--Select--</option>
                         <option value="black">black</option>
                         <option value="white">white</option>
@@ -142,6 +149,9 @@
                       <br>
                       Bottom&emsp;
                       <select style="width: 200px" name="bottomItem" id="bottom<%= listOfPerformers[i]._id %>">
+                          <%if(clthAndClr[i].bottomItem.length !=0){%>
+                            <option  selected value="<%=clthAndClr[i].bottomItem%>"><%=clthAndClr[i].bottomItem%></option>
+                          <%}%>
                         <option value="">--Select--</option>
                         <option value="Jeans-Female fit">Jeans-Female fit</option>
                         <option value="Jeans-Male fit">Jeans-Male fit</option>
@@ -162,6 +172,9 @@
                       &emsp;&emsp;&emsp;&emsp;
                       Color&nbsp;
                       <select style="width: 100px" name="bottomColor" id="bottomColor<%= listOfPerformers[i]._id %>">
+                          <%if(clthAndClr[i].bottomColor.length !=0){%>
+                            <option  selected value="<%=clthAndClr[i].bottomColor%>"><%=clthAndClr[i].bottomColor%></option>
+                          <%}%>
                         <option value="">--Select--</option>
                         <option value="black">black</option>
                         <option value="white">white</option>
@@ -188,6 +201,9 @@
                       <br>
                       Under&nbsp;&nbsp;&emsp;
                       <select style="width: 200px" name="underItem" id="under<%= listOfPerformers[i]._id %>">
+                          <%if(clthAndClr[i].underItem.length !=0){%>
+                            <option  selected value="<%=clthAndClr[i].underItem%>"><%=clthAndClr[i].underItem%></option>
+                          <%}%>
                         <option value="">--Select--</option>
                         <option value="Undershirt: Vneck Tshirt">Undershirt: Vneck Tshirt</option>
                         <option value="Undershirt: Tank top">Undershirt: Tank top</option>
@@ -209,6 +225,9 @@
                       Color&nbsp;
                       <select style="width: 100px" name="underColor" id="underColor<%= listOfPerformers[i]._id %>"
                         onchange="selColor('<%= listOfPerformers[i]._id %>')">
+                        <%if(clthAndClr[i].underColor.length !=0){%>
+                          <option  selected value="<%=clthAndClr[i].underColor%>"><%=clthAndClr[i].underColor%></option>
+                        <%}%>
                         <option value="">--Select--</option>
                         <option value="black">black</option>
                         <option value="white">white</option>
@@ -234,6 +253,9 @@
                       </select><br><br>
                       Shoes&nbsp;&nbsp;&nbsp;&emsp;
                       <select style="width: 200px" name="shoeItem" id="shoes<%= listOfPerformers[i]._id %>" onclick="selectItem('<%= listOfPerformers[i]._id %>')">
+                        <%if(clthAndClr[i].shoeItem.length !=0){%>
+                          <option  selected value="<%=clthAndClr[i].shoeItem%>"><%=clthAndClr[i].shoeItem%></option>
+                        <%}%>
                         <option value="">--Select--</option>
                         <option value="Shoes: dress shoes men's fit">Shoes: dress shoes men's fit</option>
                         <option value="Shoes: dress shoes women's fit">Shoes: dress shoes women's fit</option>
@@ -264,6 +286,9 @@
                       Color&nbsp;
                       <select style="width: 100px" name="shoeColor" id="shoesColor<%= listOfPerformers[i]._id %>"
                         onchange="selColor('<%= listOfPerformers[i]._id %>')">
+                        <%if(clthAndClr[i].shoeColor.length !=0){%>
+                          <option  selected value="<%=clthAndClr[i].shoeColor%>"><%=clthAndClr[i].shoeColor%></option>
+                        <%}%>
                         <option value="">--Select--</option>
                         <option value="black">black</option>
                         <option value="white">white</option>
@@ -288,6 +313,9 @@
                       </select><br><br>
                       Other&nbsp;&nbsp;&nbsp;&emsp;
                       <select style="width: 200px" name="otherItem" id="other<%= listOfPerformers[i]._id %>" onclick="selectItem('<%= listOfPerformers[i]._id %>')">
+                        <%if(clthAndClr[i].otherItem.length !=0){%>
+                          <option  selected value="<%=clthAndClr[i].otherItem%>"><%=clthAndClr[i].otherItem%></option>
+                        <%}%>
                         <option value="">--Select--</option>
                         <option value="Set: Tuxedo jacket">Set: Tuxedo jacket</option>
                         <option value="Set: Tuxedo shirt">Set: Tuxedo shirt</option>
@@ -318,6 +346,9 @@
                       Color&nbsp;
                       <select style="width: 100px" name="otherColor" id="otherColor<%= listOfPerformers[i]._id %>"
                         onchange="selColor('<%= listOfPerformers[i]._id %>')">
+                        <%if(clthAndClr[i].otherColor.length !=0){%>
+                          <option  selected value="<%=clthAndClr[i].otherColor%>"><%=clthAndClr[i].otherColor%></option>
+                        <%}%>
                         <option value="">--Select--</option>
                         <option value="black">black</option>
                         <option value="white">white</option>

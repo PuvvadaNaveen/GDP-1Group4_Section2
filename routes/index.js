@@ -75,34 +75,17 @@ let emptyShoplist = [
 ]
 let clothAndColorEmpty = [
     {
-        topItem: ""
-    },
-    {
-        topColor: ""
-    },
-    {
-        bottomItem: ""
-    },
-    {
-        bottomColor: ""
-    },
-    {
-        underItem: ""
-    },
-    {
-        underColor: ""
-    },
-    {
-        shoeItem: ""
-    },
-    {
-        shoeColor: ""
-    },
-    {
-        otherItem: ""
-    },
-    {
-        otherColor: ""
+        performerId:"",
+        topItem: "",
+        topColor: "",
+        bottomItem: "",
+        bottomColor: "",
+        underItem: "",
+        underColor: "",
+        shoeItem: "",
+        shoeColor: "",
+        otherItem: "",
+        otherColor: "",
     }
 ]
 
@@ -115,6 +98,7 @@ router.get('/', ensureAuthenticated, function (req, res) {
 
     db.collection('forms').find().sort(sort).toArray(function (err, result) {
         if (err) throw err;
+        // console.log(result);
         db.collection('measures').find().toArray(function (err, result1) {
             if (err) throw err;
             if (result1.length == 0) {
@@ -132,7 +116,7 @@ router.get('/', ensureAuthenticated, function (req, res) {
                     }
                     db.collection('employeeoptions').find().toArray(function (err, result4) {
                         if (err) throw err;
-                        console.log(result4)
+                        // console.log(result4)
                         if (result4.length == 0) {
                             result4 = emptyEmployee;
                         }
@@ -141,7 +125,9 @@ router.get('/', ensureAuthenticated, function (req, res) {
                             if (result5.length == 0) {
                                 result5 = clothAndColorEmpty;
                             }
-                            res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee, clothAndColorResults: result5 });
+                            console.log(clothAndColorEmpty[0]);
+                            // console.log(result5);
+                            res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee, clothAndColorResults: result5,emptyClothAndColor: clothAndColorEmpty[0]});
                         });
                     });
                 });
@@ -192,7 +178,7 @@ function ensureAuthenticated(req, res, next) {
                                 if (result5.length == 0) {
                                     result5 = clothAndColorEmpty;
                                 }
-                                response.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee, clothAndColorResults: result5 });
+                                response.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee, clothAndColorResults: result5, emptyClothAndColor: clothAndColorEmpty[0] });
                             })
                         })
                     })
