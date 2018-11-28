@@ -76,7 +76,7 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myClothingModal<%= listOfPerformers[i]._id %>">Click
               here</button>
             <form id="clothAndColor" method="POST" action="/FormController/clothAndColor">
-              <input name="clothAndColorId" type="text" value="<%=listOfPerformers[i]._id%>" >
+              <input name="clothAndColorId" type="text" value="<%=listOfPerformers[i]._id%>" hidden>
 
               <div id="myClothingModal<%= listOfPerformers[i]._id %>" class="modal fade" role="dialog">
                 <div class="modal-dialog">
@@ -426,7 +426,7 @@
                 <br>
                 <input type="text" name="employeeId" value="<%= em[i]._id %>" hidden>
                 <input id="emp<%= listOfPerformers[i]._id %>" type="text" name="selectEmployee1" hidden>
-                <input type="text" name="empID" value="<%= listOfPerformers[i]._id %>" >
+                <input type="text" name="empID" value="<%= listOfPerformers[i]._id %>" hidden >
                 
               </select>
               <br>
@@ -448,8 +448,8 @@
   <td>
     <form onsubmit="return confirm('Are you sure want to delete?')" action="/FormController/delete" method="POST">
       <input type="text" name="perfId2"  value="<%= listOfPerformers[i]._id %>" hidden>
-      <input type="text" name="empdel" value="<%= em[i]._id %>"  >
-      <input name="clothAndColorId" type="text" value="<%= clthAndClr[i]._id%>" >
+      <input type="text" name="empdel" value="<%= em[i]._id %>" hidden >
+      <input name="clothAndColorId" type="text" value="<%= clthAndClr[i]._id%>" hidden>
       <input type="image" title="Delete performer" src="/css/remove.png" alt="Submit" width="42" height="40">
 
     </form>
