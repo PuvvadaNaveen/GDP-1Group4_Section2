@@ -187,10 +187,10 @@ api.post('/delete', function (req, res) {
     var query = { "_id": ObjectId(req.body.perfId2) };
     var query1 = { "_id": ObjectId(req.body.empdel) };
     var query2 = { "_id": ObjectId(req.body.itemId1) };
-    var query3 = { "_id": ObjectId(req.body.clothselect1) };
+    var query3 = { "_id": ObjectId(req.body.clothAndColorId) };
     db.collection('forms').deleteOne(query, function (err, result) {
         if (err) throw err;
-        db.collection('clothoptions').deleteOne(query3, function (err, result) {
+        db.collection('ClothAndColor').deleteOne(query3, function (err, result) {
             if (err) throw err;
             db.collection('coloroptions').deleteOne(query2, function (err, result) {
                 if (err) throw err;
@@ -637,8 +637,6 @@ api.post('/clothAndColor', function (req, res) {
 
     db.collection('ClothAndColor').save(newClothAndColor, (err, result5) => {
         if (err) return console.log('error')
-        // console.log("saved");
-        return res.redirect('/home')
     })
     }
     return res.redirect('/home')
