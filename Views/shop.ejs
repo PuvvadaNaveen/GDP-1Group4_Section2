@@ -13,6 +13,8 @@
   <br>
   <div class="w3-container">
     <table class="w3-table-all w3-card-4" id="rent" align="center">
+      <% var perfSize = []%>
+      <% var CloAndCol = []%>
       <tr>
         <th>Pulled</th>
         <th>First Name</th>
@@ -21,8 +23,7 @@
         <th>Character Name</th>
         <th>Size</th>
         <th>Due Date</th>
-        <th>Clothing Item</th>
-        <th>Color</th>
+        <th>Clothing Item & Color</th>
         <th>Notes</th>
         <th></th>
 
@@ -45,7 +46,16 @@
         <form method="POST" action="/FormController/shop1">
           <td>
             <select id="size<%= list[i]._id %>" name="size">
-              <%if(shp[i].shopID.length == 0){%>
+              <% for(let j = 0; j < shp.length; j++) { %>
+                <%perfSize[i] = shp1%>
+                <%if(list[i]._id == shp[j].shopID){%>
+                    <%perfSize[i] = shp[j]%>;
+                    <%break%>
+                  <%}%>
+                  <%}%>
+                  <%if(perfSize[i].size != null){%>
+                <option value="<%= perfSize[i].size%>"><%= perfSize[i].size%></option>
+                <%}%>
               <option value="Choose Size">Choose size</option>
               <option value="xs">xs</option>
               <option value="s">s</option>
@@ -55,50 +65,43 @@
               <option value="xxl">xxl</option>
               <option value="xxxl">xxxl</option>
               <option value="Other">Other</option>
-              <%}%>
-              <%if(shp[i].shopID.length != 0){%>
-                <option value="<%= shp[i].size%>">
-                  <%= shp[i].size%>
-                </option>
-                <option value="Choose size">Choose size</option>
-                <option value="xs">xs</option>
-                <option value="s">s</option>
-                <option value="m">m</option>
-                <option value="l">l</option>
-                <option value="xl">xl</option>
-                <option value="xxl">xxl</option>
-                <option value="xxxl">xxxl</option>
-                <option value="Other">Other</option>
-                <%}%>
+              
+              
+              
             </select>
           </td>
           <td>
             <div>
-              <%if(shp[i].shopID.length != 0){%>
-              <input type="date" name="duedate" value="<%= shp[i].duedate %>">
+                <%if(perfSize[i].duedate != null){%>
+              <input type="date" name="duedate" value="<%= perfSize[i].duedate %>">
               <%}%>
-              <%if(shp[i].shopID.length == 0){%>
+              <%if(perfSize[i].duedate == null){%>
               <input type="date" name="duedate">
               <%}%>
               <input type="text" name="shopID" value="<%= list[i]._id %>" hidden>
-              <input type="text" name="sID" value="<%= shp[i]._id %>" hidden>
+              <input type="text" name="sID" value="<%= perfSize[i]._id %>" hidden>
             </div>
           </td>
+          <% for(let j = 0; j < ClothAndColor.length; j++) { %>
+            <%CloAndCol[i] = clothAndColorEmp%>
+            <%if(list[i]._id == ClothAndColor[j].performerId){%>
+                <%CloAndCol[i] = ClothAndColor[j]%>;
+                <%break%>
+              <%}%>
+              <%}%>
           <td>
-            <%= cloth[i].selectCloth %>
-          </td>
-          <td>
-            <%= item[i].selectColor01 %>
+              <%= CloAndCol[i].topItem %> 
+              <%= CloAndCol[i].topColor %>
           </td>
           <td>
             <% if(!user.isAdmin) { %>
               <textarea name="notes" readonly></textarea>
               <% } %>
               <% if(user && user.isAdmin) { %>
-                <%if(shp[i].notes == null){%>
+                <%if(perfSize[i].notes == null){%>
                   <textarea name="notes" placeholder="Enter some notes here"></textarea>
                 <%}%>
-                <%if(shp[i].notes != null){%>
+                <%if(perfSize[i].notes != null){%>
                   <textarea name="notes"><%=shp[i].notes%></textarea>
                   <%}%>
               <% } %>
