@@ -2,7 +2,7 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/Rentallist.css" />
+<link rel="stylesheet" type="text/css" href="/css/shoppulllist.css" />
 <!-- <link rel ="stylesheet" type="text/css"href="https://www.w3schools.com/w3css/4/w3.css"/>  -->
 <script src="/js/Test.js"></script>
 
@@ -22,8 +22,8 @@
         <th>Play</th>
         <th>Character Name</th>
         <th>Size</th>
-        <th>Due Date</th>
-        <th>Clothing Item & Color</th>
+        <th style="width:0%">Due Date</th>
+        <th style="width:40%">Clothing Item & Color</th>
         <th>Notes</th>
         <th></th>
 
@@ -47,15 +47,17 @@
           <td>
             <select id="size<%= list[i]._id %>" name="size">
               <% for(let j = 0; j < shp.length; j++) { %>
-                <%perfSize[i] = shp1%>
-                <%if(list[i]._id == shp[j].shopID){%>
-                    <%perfSize[i] = shp[j]%>;
-                    <%break%>
-                  <%}%>
-                  <%}%>
-                  <%if(perfSize[i].size != null){%>
-                <option value="<%= perfSize[i].size%>"><%= perfSize[i].size%></option>
-                <%}%>
+              <%perfSize[i] = shp1%>
+              <%if(list[i]._id == shp[j].shopID){%>
+              <%perfSize[i] = shp[j]%>
+              <%break%>
+              <%}%>
+              <%}%>
+              <%if(perfSize[i].size != null){%>
+              <option value="<%= perfSize[i].size%>">
+                <%= perfSize[i].size%>
+              </option>
+              <%}%>
               <option value="Choose Size">Choose size</option>
               <option value="xs">xs</option>
               <option value="s">s</option>
@@ -65,14 +67,11 @@
               <option value="xxl">xxl</option>
               <option value="xxxl">xxxl</option>
               <option value="Other">Other</option>
-              
-              
-              
             </select>
           </td>
           <td>
             <div>
-                <%if(perfSize[i].duedate != null){%>
+              <%if(perfSize[i].duedate != null){%>
               <input type="date" name="duedate" value="<%= perfSize[i].duedate %>">
               <%}%>
               <%if(perfSize[i].duedate == null){%>
@@ -83,28 +82,78 @@
             </div>
           </td>
           <% for(let j = 0; j < ClothAndColor.length; j++) { %>
-            <%CloAndCol[i] = clothAndColorEmp%>
-            <%if(list[i]._id == ClothAndColor[j].performerId){%>
-                <%CloAndCol[i] = ClothAndColor[j]%>;
-                <%break%>
-              <%}%>
-              <%}%>
+          <%CloAndCol[i] = clothAndColorEmp%>
+          <%if(list[i]._id == ClothAndColor[j].performerId){%>
+          <%CloAndCol[i] = ClothAndColor[j]%>
+          <%break%>
+          <%}%>
+          <%}%>
           <td>
-              <%= CloAndCol[i].topItem %> 
-              <%= CloAndCol[i].topColor %>
+            <table border="1px">
+              <% if(CloAndCol[i].topItem.length != 0){%>
+              <tr>
+                <td>
+                  <%= CloAndCol[i].topItem %>
+                </td>
+                <td>
+                  <%= CloAndCol[i].topColor %>
+                </td>
+              </tr>
+              <%}%>
+              <% if(CloAndCol[i].bottomItem.length != 0){%>
+              <tr>
+                <td>
+                  <%= CloAndCol[i].bottomItem %>
+                </td>
+                <td>
+                  <%= CloAndCol[i].bottomColor %>
+                </td>
+              </tr>
+              <%}%>
+              <% if(CloAndCol[i].underItem.length != 0){%>
+              <tr>
+                <td>
+                  <%= CloAndCol[i].underItem %>
+                </td>
+                <td>
+                  <%= CloAndCol[i].underColor %>
+                </td>
+              </tr>
+              <%}%>
+              <% if(CloAndCol[i].shoeItem.length != 0){%>
+              <tr>
+                <td>
+                  <%= CloAndCol[i].shoeItem %>
+                </td>
+                <td>
+                  <%= CloAndCol[i].shoeColor %>
+                </td>
+              </tr>
+              <%}%>
+              <% if(CloAndCol[i].otherItem.length != 0){%>
+              <tr>
+                <td>
+                  <%= CloAndCol[i].otherItem %>
+                </td>
+                <td>
+                  <%= CloAndCol[i].otherColor %>
+                </td>
+              </tr>
+              <%}%>
+            </table>
           </td>
           <td>
             <% if(!user.isAdmin) { %>
-              <textarea name="notes" readonly></textarea>
-              <% } %>
-              <% if(user && user.isAdmin) { %>
-                <%if(perfSize[i].notes == null){%>
-                  <textarea name="notes" placeholder="Enter some notes here"></textarea>
-                <%}%>
-                <%if(perfSize[i].notes != null){%>
-                  <textarea name="notes"><%=shp[i].notes%></textarea>
-                  <%}%>
-              <% } %>
+            <textarea name="notes" readonly></textarea>
+            <% } %>
+            <% if(user && user.isAdmin) { %>
+            <%if(perfSize[i].notes == null){%>
+            <textarea name="notes" placeholder="Enter some notes here"></textarea>
+            <%}%>
+            <%if(perfSize[i].notes != null){%>
+            <textarea name="notes"><%=shp[i].notes%></textarea>
+            <%}%>
+            <% } %>
           </td>
           <td>
             <input class="btn btn-update" type="submit" value="update">
