@@ -75,7 +75,7 @@ let emptyShoplist = [
 ]
 let clothAndColorEmpty = [
     {
-        performerId:"",
+        performerId: "",
         topItem: "",
         topColor: "",
         bottomItem: "",
@@ -86,6 +86,13 @@ let clothAndColorEmpty = [
         shoeColor: "",
         otherItem: "",
         otherColor: "",
+    }
+]
+let emptyPlay = [
+    {
+        PlayStartDate: "",
+        PlayEndDate: "",
+        playname: ""
     }
 ]
 
@@ -125,8 +132,14 @@ router.get('/', ensureAuthenticated, function (req, res) {
                             if (result5.length == 0) {
                                 result5 = clothAndColorEmpty;
                             }
-                            // console.log(result5);
-                            res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee, clothAndColorResults: result5,emptyClothAndColor: clothAndColorEmpty[0]});
+                            db.collection('plays').find().toArray(function (err, result10) {
+                                if (err) throw err;
+                                if (result10.length == 0) {
+                                    result10 = emptyPlay;
+                                }
+                                // console.log(result5);
+                                res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee, clothAndColorResults: result5, emptyClothAndColor: clothAndColorEmpty[0], plays: result10 });
+                            });
                         });
                     });
                 });
@@ -212,11 +225,11 @@ function ensureAuthenticated(req, res, next) {
                             if (result6.length == 0) {
                                 result6 = clothAndColorEmpty;
                             }
-                        
-                        return response.render('shop.ejs', { list: result, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, shp: result5, shp1: emptyShoplist,ClothAndColor : result6,clothAndColorEmp :  clothAndColorEmpty})
-                    });
+
+                            return response.render('shop.ejs', { list: result, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, shp: result5, shp1: emptyShoplist, ClothAndColor: result6, clothAndColorEmp: clothAndColorEmpty })
+                        });
+                    })
                 })
-            })
             })
         })
     })
@@ -304,8 +317,16 @@ function ensureAuthenticated(req, res, next) {
             }
         ]
         result = emptyForm;
+        db.collection('plays').find().toArray(function (err, result10) {
+            if (err) throw err;
+            if (result10.length == 0) {
+                result10 = emptyPlay;
+            }
+            console.log(result10)
 
-        response.render('form.ejs', { perf: result })
+
+        response.render('form.ejs', { perf: result , playDetails: result10})
+        })
 
     })
 

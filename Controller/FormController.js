@@ -96,6 +96,13 @@ let clothAndColorEmpty = [
         otherColor: "",
     }
 ]
+let emptyPlay = [
+    {
+        PlayStartDate: "",
+        PlayEndDate: "",
+        playname: ""
+    }
+]
 
 // Method for saving form details
 
@@ -176,9 +183,14 @@ api.post('/edit', function (req, res) {
     var query = { "_id": ObjectId(req.body.perfId1) };
     db.collection('forms').find(query).toArray(function (err, result) {
         if (err) throw err;
-        res.render('form.ejs', { perf: result });
+        db.collection('plays').find().toArray(function (err, result10) {
+            if (err) throw err;
+            if (result10.length == 0) {
+                result10 = emptyPlay;
+            }
+        res.render('form.ejs', { perf: result, playDetails: result10 });
         // res.redirect('Homepage.ejs',{listOfPerformers : result});
-    });
+     }); });
 })
 
 // Method for deleting the performer details from designer pull list

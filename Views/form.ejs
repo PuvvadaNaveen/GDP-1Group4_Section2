@@ -27,9 +27,22 @@
         <input class="form-control" type="text" name="lastname" placeholder="Please enter your lastname" required value="<%= perf[i].lastname %>">
       </div>
       <div class="form-group">
+        <%if(perf[i].playname.length == 0){%>
         Play name:<br>
-        <input class="form-control" type="text" name="playname" placeholder="Please enter the play name" required value="<%= perf[i].playname %>">
+        <select name="playname">
+          <option value="">--Select--</option>
+          <%for(let k=0; k < playDetails.length; k++){%>
+          <option value="<%=playDetails[k].playname%>">
+            <%=playDetails[k].playname%>
+          </option>
+          <%}%>
+          <%}%>
+        </select>
       </div>
+      Play name:<br>
+      <%if(perf[i].playname.length != 0){%>
+      <input class="form-control" type="text" name="playname" required value=<%=perf[i].playname %>><br>
+      <%}%>
       <div class="form-group">
         Play date:<br>
         <input class="form-control" type="date" name="playdate" placeholder="Please enter the play date" required value="<%= perf[i].playdate %>">
@@ -57,14 +70,14 @@
       rescheduled at the discretion of the Costume Shop."<br>
       <input type="checkbox" name="agreement" value="iagree" required> Yes, I understand.<br><br>
       Dominant Hand: <br>
-      <%if(perf[i].dominanthand == null){%>
+      <%if(perf[i].dominanthand.length == 0){%>
       <select name="dominanthand" class="form-control">
         <option value="">--Please select--</option>
         <option value="Right">Right</option>
         <option value="Left">Left</option>
       </select>
       <%}%>
-      <%if(perf[i].dominanthand != null){%>
+      <%if(perf[i].dominanthand.length != 0){%>
       <input class="form-control" type="text" name="dominanthand" required value=<%=perf[i].dominanthand %>><br>
       <%}%>
 
@@ -114,7 +127,7 @@
       <div class="form-group">
         <input class="form-control" type="text" name="comments" required value="<%= perf[i].comments %>"><br>
         Shoes: <br>
-        <%if(perf[i].shoes == null){%>
+        <%if(perf[i].shoes.length == 0){%>
         <select name="shoes" class="form-control">
           <option value="">--Please select--</option>
           <option value="5.5">5.5</option>
@@ -139,7 +152,7 @@
 
         </select><br>
         <%}%>
-        <%if(perf[i].shoes != null){%>
+        <%if(perf[i].shoes.length != 0){%>
         <input class="form-control" type="text" name="shoes" required value=<%=perf[i].shoes %>><br>
         <%}%>
         Dance Shoes: Size and Type<br>
@@ -197,7 +210,9 @@
       <div class="b"><input type="submit" value="Submit" class="btn btn-primary"></div>
       <%}%>
     </form>
-    <p><%=perf[i].firstname%></p>
+    <p>
+      <%=perf[i].firstname%>
+    </p>
     <%if(perf[i].firstname.length != 0 ){%>
     <div class="b"><button value="HomePage" class="btn btn-primary" onclick="goToHomePage()">HomePage</button></div>
     <%}%>
