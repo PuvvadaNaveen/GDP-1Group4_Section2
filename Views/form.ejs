@@ -39,9 +39,10 @@
           <%}%>
         </select>
       </div>
-      Play name:<br>
+      
       <%if(perf[i].playname.length != 0){%>
-      <input class="form-control" type="text" name="playname" required value=<%=perf[i].playname %>><br>
+        Play name:<br>
+      <input class="form-control" type="text" name="playname" style="width:53.5%" required value=<%=perf[i].playname %>><br>
       <%}%>
       <div class="form-group">
         Play date:<br>
@@ -71,14 +72,14 @@
       <input type="checkbox" name="agreement" value="iagree" required> Yes, I understand.<br><br>
       Dominant Hand: <br>
       <%if(perf[i].dominanthand.length == 0){%>
-      <select name="dominanthand" class="form-control">
+      <select name="dominanthand" class="form-control" style="width:53.5%">
         <option value="">--Please select--</option>
         <option value="Right">Right</option>
         <option value="Left">Left</option>
       </select>
       <%}%>
       <%if(perf[i].dominanthand.length != 0){%>
-      <input class="form-control" type="text" name="dominanthand" required value=<%=perf[i].dominanthand %>><br>
+      <input class="form-control" type="text" name="dominanthand" style="width:53.5%" required value=<%=perf[i].dominanthand %>><br>
       <%}%>
 
       <!-- <input type="checkbox" name="dominanthand" value="right" > Right<br>

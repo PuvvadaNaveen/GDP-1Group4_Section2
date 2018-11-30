@@ -59,24 +59,34 @@
               </option>
               <%}%>
               <option value="Choose Size">Choose size</option>
-              <option value="xs">xs</option>
-              <option value="s">s</option>
-              <option value="m">m</option>
-              <option value="l">l</option>
-              <option value="xl">xl</option>
-              <option value="xxl">xxl</option>
-              <option value="xxxl">xxxl</option>
+              <option value="XS">XS</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+              <option value="XXL">XXL</option>
+              <option value="XXXL">XXXL</option>
               <option value="Other">Other</option>
             </select>
           </td>
           <td>
             <div>
+              <%if(user.isAdmin){%>
               <%if(perfSize[i].duedate != null){%>
               <input type="date" name="duedate" value="<%= perfSize[i].duedate %>">
               <%}%>
               <%if(perfSize[i].duedate == null){%>
               <input type="date" name="duedate">
               <%}%>
+              <%}%>
+              <%if(!user.isAdmin){%>
+                <%if(perfSize[i].duedate != null){%>
+                  <input type="date" name="duedate" value="<%= perfSize[i].duedate %>" readonly>
+                  <%}%>
+                  <%if(perfSize[i].duedate == null){%>
+                  <input type="date" name="duedate" readonly>
+                  <%}%>
+                <%}%>
               <input type="text" name="shopID" value="<%= list[i]._id %>" hidden>
               <input type="text" name="sID" value="<%= perfSize[i]._id %>" hidden>
             </div>
@@ -144,7 +154,14 @@
           </td>
           <td>
             <% if(!user.isAdmin) { %>
-            <textarea name="notes" readonly></textarea>
+              
+                <%if(perfSize[i].notes == null){%>
+                <textarea name="notes" placeholder="Enter some notes here" readonly></textarea>
+                <%}%>
+                <%if(perfSize[i].notes != null){%>
+                <textarea name="notes" readonly><%=shp[i].notes%></textarea>
+                <%}%>
+                
             <% } %>
             <% if(user && user.isAdmin) { %>
             <%if(perfSize[i].notes == null){%>

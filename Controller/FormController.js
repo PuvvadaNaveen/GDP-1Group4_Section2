@@ -276,7 +276,7 @@ api.post('/getByName', function (req, res) {
                             if (Boolean(queryresname))
                                 res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee, clothAndColorResults: result5, emptyClothAndColor: clothAndColorEmpty[0] });
                             else
-                                res.send('No records found')
+                                res.render('norecords.ejs')
                         })
                     })
                 })
@@ -329,7 +329,7 @@ api.post('/getByPlay', function (req, res) {
                             if (Boolean(queryresplay))
                                 res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee, clothAndColorResults: result5, emptyClothAndColor: clothAndColorEmpty[0] });
                             else
-                                res.send('No records found')
+                            res.render('norecords.ejs')
                         })
                     })
                 })
@@ -381,7 +381,7 @@ api.post('/getByDate', function (req, res) {
                             if (Boolean(queryresdate))
                                 res.render('Homepage.ejs', { listOfPerformers: result, measures: result1, Measurements: emptyModel, cloth: result2, cloth1: emptyCloth, item1: emptyItem, item: result3, empl: result4, empl1: emptyEmployee, clothAndColorResults: result5 , emptyClothAndColor: clothAndColorEmpty[0]});
                             else
-                                res.send('No records found')
+                            res.render('norecords.ejs')
                         })
                     })
                 })
