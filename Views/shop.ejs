@@ -22,7 +22,7 @@
         <th>Play</th>
         <th>Character Name</th>
         <th>Size</th>
-        <th style="width:0%">Due Date</th>
+        <th style="width:0%">Delivery Due Date</th>
         <th style="width:40%">Clothing Item & Color</th>
         <th>Notes</th>
         <th></th>
@@ -153,24 +153,15 @@
             </table>
           </td>
           <td>
-            <% if(!user.isAdmin) { %>
-              
-                <%if(perfSize[i].notes == null){%>
-                <textarea name="notes" placeholder="Enter some notes here" readonly></textarea>
-                <%}%>
-                <%if(perfSize[i].notes != null){%>
-                <textarea name="notes" readonly><%=shp[i].notes%></textarea>
-                <%}%>
-                
-            <% } %>
-            <% if(user && user.isAdmin) { %>
+           
+           
             <%if(perfSize[i].notes == null){%>
             <textarea name="notes" placeholder="Enter some notes here"></textarea>
             <%}%>
             <%if(perfSize[i].notes != null){%>
             <textarea name="notes"><%=shp[i].notes%></textarea>
             <%}%>
-            <% } %>
+           
           </td>
           <td>
             <input class="btn btn-update" type="submit" value="update">
